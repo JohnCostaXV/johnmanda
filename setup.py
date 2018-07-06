@@ -200,7 +200,7 @@ async def on_message(message):
             await client.send_message(message.channel, '❌ Você não pode fazer isso!')  
 
     if message.content.startswith('/ban'):
-        if gd in [role.id for role in message.author.roles]:
+        if '407677666750365706' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
             channel1 = client.get_channel('448449971629588481')
@@ -211,9 +211,10 @@ async def on_message(message):
                 color=COR,
                 description='O usuário **{}#{}**, foi banido com sucesso!'.format(user.name, user.discriminator)
             )
-            await client.send_message(channel1, embed=embed)
         else:
             await client.send_message(message.channel, '❌ Você não pode fazer isso!')    
-
+        try:
+            await client.send_message(channel1, embed=embed)
+        except IndexError:
 
 client.run(os.environ.get("BOT_TOKEN"))
