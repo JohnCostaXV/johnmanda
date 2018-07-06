@@ -28,6 +28,21 @@ user_timer = {}
 user_spam_count = {}
 
 @client.event
+async def on_member_join(member):
+    canal = client.get_channel('448326795692081152')
+    embed = discord.Embed(
+        title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
+        color=COR,
+        description='**Redes sociais:**\nTwitter:[Clique aqui](https://twitter.com/ServidoresEnd)\nDiscord:[Clique aqui](https://discord.gg/uhxPeqS)\n**Endereços:**\nEndereço de loja:[Clique aqui](https://loja.end-mc.com/)\nEndereço de ip para conexão ao servidor: __jogar.end-mc.com\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\nData de lançamento: 07/07/2018'
+    )
+    embed.set_author(name='Olá {}!'.format(member.name), icon_url=member.avatar_url)
+    embed.set_footer(text='End', icon_url=member.server.icon_url)
+    await client.send_message(canal, embed=embed)
+    role = discord.utils.get(member.server.roles, name="Membro")
+    await client.add_roles(member, role)
+    print("Adicionado o cargo '" + role.name + "' para " + member.name)
+
+@client.event
 async def on_ready():
     print('Iniciado com sucesso!')
     print(client.user.name)
