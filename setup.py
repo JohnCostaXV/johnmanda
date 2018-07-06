@@ -97,7 +97,13 @@ async def on_message(message):
             time.sleep(3)
         finally:
             pass
-
+    
+    if message.content.upper().startswith('!say'):
+        if message.author.id == "247727808166494211": #Replace <User ID> with the ID of the user you want to be able to execute this command!
+            args = message.content.split(" ")
+            await client.delete_message(message)
+            await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
+    
     if message.content.startswith('/revisão'):
         try:
             await client.delete_message(message)
