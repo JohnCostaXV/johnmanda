@@ -44,10 +44,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('!sugestão'):
+    if message.content.startswith('/sugestão'):
         try:
             await client.delete_message(message)
-            remover_sugestao = message.content.replace("!sugestão", "")
+            remover_sugestao = message.content.replace("/sugestão", "")
             separar = remover_sugestao.split("|", 1)
             embed = discord.Embed(
                 title="SUGESTÃO 💡",
@@ -74,7 +74,7 @@ async def on_message(message):
             await client.add_reaction(botmsg, "👍")
             await client.add_reaction(botmsg, "👎")
         except IndexError:
-            await client.send_message(message.author, "Uso correto do comando: !sugestão <sugestão> | <por quê adicionariamos?>")
+            await client.send_message(message.author, "Uso correto do comando: /sugestão <sugestão> | <por quê adicionariamos?>")
             time.sleep(3)
         except:
             await client.send_message(message.author,"Desculpe pelo erro.")
@@ -82,10 +82,10 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('!revisão'):
+    if message.content.startswith('/revisão'):
         try:
             await client.delete_message(message)
-            remover_revisão = message.content.replace("!revisão ", "")
+            remover_revisão = message.content.replace("/revisão ", "")
             separar = remover_revisão.split("|", 2)
             embed = discord.Embed(
                 title='REVISÃO ⛔',
@@ -113,7 +113,7 @@ async def on_message(message):
             time.sleep(3)
             await client.send_message(message.channel, embed=embed)
         except IndexError:
-            await client.send_message(message.author, '{}, use !revisão <nickname> | <motivo> | <Por quê está irregular?>'.format(message.author.mention))
+            await client.send_message(message.author, '{}, use /revisão <nickname> | <motivo> | <Por quê está irregular?>'.format(message.author.mention))
             time.sleep(3)
         except:
             await client.send_message(message.author, 'Desculpe pelo erro.')
@@ -123,9 +123,9 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith('!reportar'):
+    if message.content.startswith('/reportar'):
         try:
-            remover_reportar = message.content.replace("!reportar ", "")
+            remover_reportar = message.content.replace("/reportar ", "")
             separar = remover_reportar.split("|", 1)
             tmp1 = datetime.datetime.now()
 
@@ -154,7 +154,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=embed)
             await client.delete_message(message)
         except IndexError:
-            await client.send_message(message.author, '{}, use !reportar <Suspeito> | <Motivo>'.format(message.author.mention))
+            await client.send_message(message.author, '{}, use /reportar <Suspeito> | <Motivo>'.format(message.author.mention))
             await client.delete_message(message)
         except:
             await client.send_message(message.author, 'Desculpe pelo erro.')
@@ -162,7 +162,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('!ajuda'):
+    if message.content.startswith('/ajuda'):
         embed = discord.Embed(
             title='Olá {}!'.format(message.author.name),
             color=COR,
@@ -183,25 +183,35 @@ async def on_message(message):
         await client.send_message(message.author, embed=embed)
         await client.delete_message(message)
 
-    if message.content.startswith('!kick'):
+    if message.content.startswith('/kick'):
         if ex in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
             channel = client.get_channel('448449971629588481')
             user = message.mentions[0]         
             await client.kick(user)
-            await client.send_message(channel, 'O usuário **{}#{}**, foi expulso com sucesso!'.format(user.name, user.discriminator))
+            embed = discord.Embed(
+                title='EXPULSO ⛔',
+                color=COR,
+                description='O usuário **{}#{}**, foi expulso com sucesso!'.format(user.name, user.discriminator)
+            )
+            await client.send_message(channel, embed=embed)
         else:
             await client.send_message(message.channel, '❌ Você não pode fazer isso!')  
 
-    if message.content.startswith('!ban'):
+    if message.content.startswith('/ban'):
         if gd in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
             channel1 = client.get_channel('448449971629588481')
             user = message.mentions[0]
             await client.ban(user)
-            await client.send_message(channel1, 'O usuário **{}#{}**, foi banido com sucesso!'.format(user.name, user.discriminator))
+            embed = discord.Embed(
+                title='BANIDO ⛔',
+                color=COR,
+                description='O usuário **{}#{}**, foi banido com sucesso!'.format(user.name, user.discriminator)
+            )
+            await client.send_message(channel1, embed=embed)
         else:
             await client.send_message(message.channel, '❌ Você não pode fazer isso!')    
 
