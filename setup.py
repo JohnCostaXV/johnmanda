@@ -211,10 +211,8 @@ async def on_message(message):
                 color=COR,
                 description='O usuário **{}#{}**, foi banido com sucesso!'.format(user.name, user.discriminator)
             )
-        else:
-            await client.send_message(message.channel, '❌ Você não pode fazer isso!')    
-        try:
             await client.send_message(channel1, embed=embed)
-        except IndexError:
+        else:
+            await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             
 client.run(os.environ.get("BOT_TOKEN"))
