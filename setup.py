@@ -142,7 +142,7 @@ async def on_message(message):
     if message.content.startswith('/reportar'):
         try:
             remover_reportar = message.content.replace("/reportar ", "")
-            separar = remover_reportar.split("|", 1)
+            separar = remover_reportar.split("|", 2)
             tmp1 = datetime.datetime.now()
 
             utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
@@ -161,6 +161,11 @@ async def on_message(message):
             embed.add_field(
                 name="Motivo:",
                 value="```%s```" % "".join(separar[1]),
+                inline=False
+            )
+            embed.add_field(
+                name="Prova:",
+                value="```%s```" % "".join(separar[2]),
                 inline=False
             )
             embed.set_footer(
