@@ -36,6 +36,7 @@ async def on_member_join(member):
         description='**Redes sociais:**\nTwitter:[Clique aqui](https://twitter.com/ServidoresEnd)\nDiscord:[Clique aqui](https://discord.gg/uhxPeqS)\n**Endereços:**\nEndereço de loja:[Clique aqui](https://loja.end-mc.com/)\nEndereço de ip para conexão ao servidor: __jogar.end-mc.com\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\nData de lançamento: 07/07/2018'
     )
     embed.set_author(name='Olá {}!'.format(member.name), icon_url=member.avatar_url)
+    embed.set_thumbnail(url=member.server.icon_url)
     embed.set_footer(text='End', icon_url=member.server.icon_url)
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
