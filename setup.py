@@ -187,7 +187,7 @@ async def on_message(message):
         if ex in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
-            channel = client.get_channel('425081290941792276')
+            channel = client.get_channel('448449971629588481')
             user = message.mentions[0]         
             await client.kick(user)
             await client.send_message(channel, 'O usuário **{}#{}**, foi expulso com sucesso!'.format(user.name, user.discriminator))
@@ -198,7 +198,7 @@ async def on_message(message):
         if gd in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
-            channel1 = client.get_channel('425081290941792276')
+            channel1 = client.get_channel('448449971629588481')
             user = message.mentions[0]
             await client.ban(user)
             await client.send_message(channel1, 'O usuário **{}#{}**, foi banido com sucesso!'.format(user.name, user.discriminator))
