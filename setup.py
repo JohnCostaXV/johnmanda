@@ -43,22 +43,6 @@ async def on_ready():
     print("Copyright ©")
 
 @client.event
-async def on_member_join(member):
-    canal = client.get_channel('448326795692081152')
-    embed = discord.Embed(
-        title="",
-        color=COR,
-        description="Seja bem-vindo(a) ao discord da rede de servidores End."
-    )
-    embed.set_author(name='Olá {}!'.format(member.name))
-    embed.set_thumbnail(url=member.avatar_url)
-    await client.send_message(canal, embed=embed)
-
-    role = discord.utils.get(member.server.roles, name="Membro")
-    await client.add_roles(member, role)
-    print("Adicionado o cargo '" + role.name + "' para " + member.name)
-
-@client.event
 async def on_message(message):
     if message.content.startswith('!sugestão'):
         try:
