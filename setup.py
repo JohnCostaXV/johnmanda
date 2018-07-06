@@ -216,5 +216,5 @@ async def on_message(message):
         try:
             await client.send_message(channel1, embed=embed)
         except IndexError:
-
+            
 client.run(os.environ.get("BOT_TOKEN"))
