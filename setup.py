@@ -100,7 +100,7 @@ async def on_message(message):
             pass
         
     if message.content.startswith('/say'):
-        if message.author.id == '460208889464487937' '247727808166494211':
+        if '407677666750365706' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
             asyncio.sleep(1)
@@ -203,7 +203,7 @@ async def on_message(message):
             icon_url=message.server.icon_url
         )
         embed.set_thumbnail(
-            url=message.server.icon_url
+            url='https://i.imgur.com/yJey64O.png'
         )
         embed.add_field(
             name='teste',
@@ -224,6 +224,9 @@ async def on_message(message):
                 title='EXPULSO ⛔',
                 color=COR,
                 description='O usuário **{}#{}**, foi expulso com sucesso!'.format(user.name, user.discriminator)
+            )
+            embed.set_thumbnail(
+                url='https://i.imgur.com/yJey64O.png'
             )
             await client.send_message(channel, embed=embed)
         else:
@@ -263,7 +266,7 @@ async def on_message(message):
             await client.delete_message(message)
             args = message.content.split(" ")
             embed = discord.Embed(
-                title="📢 End 📢",
+                title="End 📢",
                 color=COR,
                 description=" ".join(args[1:])
             )
@@ -272,7 +275,7 @@ async def on_message(message):
                 icon_url=message.author.avatar_url
             )
             embed.set_thumbnail(
-                url=message.server.icon_url
+                url='https://i.imgur.com/yJey64O.png'
             )
             await client.send_message(message.channel, "@everyone")
             await client.send_message(message.channel, embed=embed)
