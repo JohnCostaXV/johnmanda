@@ -343,7 +343,7 @@ async def on_message(message):
         embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime("%d %b %Y %H:%M"))
         embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
         embed.add_field(name=":flag_eu: Região:", value=str(message.server.region).title())
-        embed.set_thumbnail(url=message.server.icon_url)
+        embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
         embed.set_footer(text="End", icon_url="https://i.imgur.com/yJey64O.png")
         await client.send_message(message.channel, embed=embed)        
             
@@ -356,7 +356,7 @@ async def on_message(message):
         )
         embed.set_author(
             name=message.server.name,
-            icon_url=message.server.icon_url
+            icon_url='https://i.imgur.com/yJey64O.png'
         )
         embed.set_image(
             url=user.avatar_url
@@ -403,7 +403,7 @@ async def on_message(message):
                 value=user.id
             )
             userembed.set_thumbnail(
-                url=user.avatar_url
+                url='https://i.imgur.com/yJey64O.png'
             )
             userembed.set_footer(
                 text="End",
