@@ -275,6 +275,7 @@ async def on_message(message):
             channel1 = client.get_channel('448449971629588481')
             user = message.mentions[0]
             await client.ban(user)
+            await client.unban(client.get_user_info(user))
             join = (" ".join(args[2:]))
             embed = discord.Embed(
                 title='BANIDO ⛔',
