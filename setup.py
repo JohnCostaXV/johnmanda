@@ -426,12 +426,12 @@ async def on_message(message):
         )
         embed.add_field(
             name='Aplicação para a equipe:',
-            value='[Clique aqui!](https://t.co/wuIvHTsoAh)',
+            value='[Clique aqui!](https://t.co/wuIvHTsoAh)\n',
             inline=False
         )
         embed.add_field(
             name='Aplicação para o HRC:',
-            value='[Clique aqui!](https://bit.ly/2KSMniB)',
+            value='[Clique aqui!](https://bit.ly/2KSMniB)\n',
             inline=False
         )
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
