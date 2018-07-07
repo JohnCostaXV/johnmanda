@@ -259,7 +259,7 @@ async def on_message(message):
             pass
    
     if message.content.startswith('/anunciar'):
-        if '407677666750365706' '417426253658849281' in [role.id for role in message.author.roles]:
+        if '407677666750365706' '4174262536588492810' '407706417282416641' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             embed = discord.Embed(
                 title="📢 End 📢",
