@@ -206,7 +206,7 @@ async def on_message(message):
             url=message.server.icon_url
         )
         embed.add_field(
-            name='',
+            name='teste',
             value='',
             inline=False
         )
