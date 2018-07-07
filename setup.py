@@ -106,6 +106,10 @@ async def on_message(message):
             asyncio.sleep(1)
             await client.delete_message(message)
             asyncio.sleep(1)
+        else:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            time.sleep(10)
+            await client.delete_message(msglg)
     
     if message.content.startswith('/revisão'):
         try:
