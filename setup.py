@@ -112,7 +112,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msglg)
         
-    if message.content.startswith('/youtuber'):
+    if message.content.lower().startswith('/youtuber'):
         try:
             embed = discord.Embed(
                 title='YOUTUBE 🔴',
