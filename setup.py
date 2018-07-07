@@ -235,7 +235,10 @@ async def on_message(message):
             )
             await client.send_message(channel, embed=embed)
         else:
-            await client.send_message(message.channel, '❌ Você não pode fazer isso!')  
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)  
 
     if message.content.startswith('/ban'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
@@ -252,7 +255,10 @@ async def on_message(message):
                 description='O usuário **{}#{}**, foi banido por {}!'.format(user.name, user.discriminator, join)
             )
         else:
-            await client.send_message(message.channel, '❌ Você não pode fazer isso!')    
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)    
         try:
             await client.send_message(channel1, embed=embed)
         except IndexError:
@@ -285,8 +291,9 @@ async def on_message(message):
             await client.send_message(message.channel, "@everyone")
             await client.send_message(message.channel, embed=embed)
         else:
-            amsg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
             time.sleep(10)
-            await client.delete_message(amsg)
+            await client.delete_message(msglg)
             
 client.run(os.environ.get("BOT_TOKEN"))
