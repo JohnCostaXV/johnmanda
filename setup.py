@@ -434,6 +434,11 @@ async def on_message(message):
             value='[Clique aqui!](https://bit.ly/2KSMniB)',
             inline=False
         )
+        embed.add_field(
+            name='',
+            value='Caso tenha alguma dúvida, contate a um superior.',
+            inline=False
+        )
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
         embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
