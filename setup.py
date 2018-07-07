@@ -38,6 +38,7 @@ async def on_member_join(member):
     embed.set_author(name='Olá {}!'.format(member.name), icon_url=member.avatar_url)
     embed.set_thumbnail(url='https://images-ext-2.discordapp.net/external/qqpR3EAVA875IAOuBhOmwTlWZaixZ4UHykdViyrCdy0/http/i68.tinypic.com/k36qvk.png')
     embed.set_footer(text='End', icon_url=member.server.icon_url)
+    await client.send_message(canal, 'Seja bem-vindo(a) {}!'.format(member.mention))
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
