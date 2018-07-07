@@ -260,6 +260,7 @@ async def on_message(message):
    
     if message.content.startswith('/anunciar'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
+            await client.delete_message(message)
             args = message.content.split(" ")
             embed = discord.Embed(
                 title="📢 End 📢",
@@ -275,7 +276,6 @@ async def on_message(message):
             )
             await client.send_message(message.channel, "@everyone")
             await client.send_message(message.channel, embed=embed)
-            await client.delete_message(message)
         else:
             amsg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
