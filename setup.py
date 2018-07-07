@@ -208,9 +208,6 @@ async def on_message(message):
                 value="%s" % "".join(separar[2]),
                 inline=False
             )
-            embed.set_thumbnail(
-                url="%s.png" % "".join(separar[2])
-            )
             embed.set_footer(
                 text="Denúncia postada com sucesso.",
                 icon_url=message.author.avatar_url
