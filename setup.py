@@ -236,7 +236,7 @@ async def on_message(message):
             channel1 = client.get_channel('448449971629588481')
             user = message.mentions[0]
             await client.ban(user)
-            join = (" ".join(args[1:]))
+            join = (" ".join(args[2:]))
             embed = discord.Embed(
                 title='BANIDO ⛔',
                 color=COR,
@@ -256,5 +256,24 @@ async def on_message(message):
             await client.delete_message(a)
         finally:
             pass
+   
+    if message.content.startswith('!anunciar'):
+        canal = client.get_channel('448326186095869953')
+        args = message.content.split(" ")
+        embed = discord.Embed(
+            title="📢 End 📢",
+            color=COR,
+            description=" ".join(args[1:])
+        )
+        embed.set_footer(
+            text="Enviado por: {}".format(message.author.name),
+            icon_url=message.author.avatar_url
+        )
+        embed.set_thumbnail(
+            url=message.server.icon_url
+        )
+        await client.send_message(message.canal, "@everyone")
+        await client.send_message(message.canal, embed=embed)
+        await client.delete_message(message)
             
 client.run(os.environ.get("BOT_TOKEN"))
