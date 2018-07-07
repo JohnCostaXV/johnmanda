@@ -115,7 +115,7 @@ async def on_message(message):
         
     if message.content.lower().startswith('/youtuber'):
         embed = discord.Embed(
-            title='YOUTUBE 🔴',
+            title='YOUTUBER 🔴',
             color=COR,
             description='Abaixo terão os requisitos para você que é youtuber e deseja possuir uma tag.\n\n**Shulker**: ***1.000***;\n**End**: ***3.000***;\n**Youtuber**: ***10.000***;\n**Youtuber+**: ***15.000***;\n\nCaso possui um dos requisitos, solicite a tag a um superior.'
         )
