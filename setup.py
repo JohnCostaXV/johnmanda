@@ -252,7 +252,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='BANIDO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi banido por {}!'.format(user.name, user.discriminator, join)
+                description='O usuário **{}#{}**, foi banido por **{}**!'.format(user.name, user.discriminator, join)
             )
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
