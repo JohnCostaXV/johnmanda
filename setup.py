@@ -112,31 +112,31 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msglg)
         
-    if message.content.lower().startswith('/youtuber'):
-        try:
-            embed = discord.Embed(
-                title='YOUTUBE 🔴',
-                color=COR,
-                description='Abaixo terão os requisitos para você que é youtuber e deseja possuir uma tag.\n\n**Shulker**: ***1.000***;\n**End**: ***3.000***;\n**Youtuber**: ***10.000***;\n**Youtuber+**: ***15.000***;\n\nCaso possui um dos requisitos, solicite a tag a um superior.'
-            )
-            embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
-            embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-            embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
-            try:
-                apg = await client.send_message(message.channel, '{}, foi enviada uma mensagem em seu privado!'.format(message.author.mention))
-                time.sleep(10)
-                await client.delete_message(apg)
-            finally:
-                pass
-            await client.send_message(message.author, embed=embed)
-        except IndexError:
-            print('error')
-            await client.send_message(message.channel, "Use o comando corretamente! `/youtuber`.")
-        except:
-            await client.delete_message(apg)
-            await client.send_message(message.channel, "{}, libere seu privado para poder enviar as informações!".format(message.author.mention))
-        finally:
-            pass
+    #if message.content.lower().startswith('/youtuber'):
+        #try:
+            #embed = discord.Embed(
+                #title='YOUTUBE 🔴',
+                #color=COR,
+                #description='Abaixo terão os requisitos para você que é youtuber e deseja possuir uma tag.\n\n**Shulker**: ***1.000***;\n**End**: ***3.000***;\n**Youtuber**: ***10.000***;\n**Youtuber+**: ***15.000***;\n\nCaso possui um dos requisitos, solicite a tag a um superior.'
+            #)
+            #embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
+            #embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
+            #embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
+            #try:
+                #apg = await client.send_message(message.channel, '{}, foi enviada uma mensagem em seu privado!'.format(message.author.mention))
+                #time.sleep(10)
+                #await client.delete_message(apg)
+            #finally:
+                #pass
+            #await client.send_message(message.author, embed=embed)
+        #except IndexError:
+            #print('error')
+            #await client.send_message(message.channel, "Use o comando corretamente! `/youtuber`.")
+        #except:
+            #await client.delete_message(apg)
+            #await client.send_message(message.channel, "{}, libere seu privado para poder enviar as informações!".format(message.author.mention))
+        #finally:
+            #pass
     
     if message.content.startswith('/revisão'):
         try:
