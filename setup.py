@@ -328,10 +328,100 @@ async def on_message(message):
             await client.delete_message(message)
             time.sleep(10)
             await client.delete_message(msglg)
+
+    if message.content.startswith('/serverinfo'):
+        embed = discord.Embed(
+            title='Informações do Servidor',
+            color=0x03c3f5,
+            descripition='Essas são as informações\n')
+        embed.set_author(name=message.server.name, icon_url=message.server.icon_url)
+        embed.add_field(name="Nome:", value=message.server.name, inline=True)
+        embed.add_field(name=":crown: Dono:", value=message.server.owner.mention)
+        embed.add_field(name="ID:", value=message.server.id, inline=True)
+        embed.add_field(name="Cargos:", value=len(message.server.roles), inline=True)
+        embed.add_field(name=":family: Membros:", value=len(message.server.members), inline=True)
+        embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime("%d %b %Y %H:%M"))
+        embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
+        embed.add_field(name=":flag_eu: Região:", value=str(message.server.region).title())
+        embed.set_thumbnail(url=message.server.icon_url)
+        embed.set_footer(text="End", icon_url="https://i.imgur.com/yJey64O.png")
+        await client.send_message(message.channel, embed=embed)        
             
+    if message.content.startswith('/avatar'):
+        user = message.mentions[0]
+        embed = discord.Embed(
+            title="",
+            color=COR,
+            description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}'.format(user.name)
+        )
+        embed.set_author(
+            name=message.server.name,
+            icon_url=message.server.icon_url
+        )
+        embed.set_image(
+            url=user.avatar_url
+        )
+        await client.send_message(message.channel, embed=embed)
+            
+    if message.content.lower().startswith('/userinfo'):
+        try:
+            tmp1 = datetime.datetime.now()
+
+            utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
+            del tmp1
+            user = message.mentions[0]
+            userjoinedat = str(user.joined_at).split('.', 1)[0]
+            usercreatedat = str(user.created_at).split('.', 1)[0]
+
+            userembed = discord.Embed(
+                title="Informações do usuário",
+                description="\n",
+                color=COR
+            )
+            userembed.set_author(
+                name=user.server.name,
+                icon_url=user.server.icon_url
+            )
+            userembed.add_field(
+                name="Nome de usuário:",
+                value=user.name
+            )
+            userembed.add_field(
+                name="Juntou-se ao servidor em:",
+                value=userjoinedat
+            )
+            userembed.add_field(
+                name="Usuário criado em:",
+                value=usercreatedat
+            )
+            userembed.add_field(
+                name="Identificação:",
+                value=user.discriminator
+            )
+            userembed.add_field(
+                name="ID de Usuário:",
+                value=user.id
+            )
+            userembed.set_thumbnail(
+                url=user.avatar_url
+            )
+            userembed.set_footer(
+                text="End",
+                icon_url="https://i.imgur.com/yJey64O.png"
+            )
+            await client.send_message(message.channel, embed=userembed)
+        except IndexError:
+            await client.send_message(message.channel, "{}, o usuário não foi encontrado.".format(message.author.mention))
+        except:
+            await client.send_message(message.channel, "Desculpe pelo erro.")
+        finally:
+            pass
+    
     if message.content.startswith('/ping'):
         now = datetime.datetime.utcnow()
         delta = now-client.message.timestamp
         await client.send_message('{}ms'.format(delta(microseconds=1)))
+        
+     
         
 client.run(os.environ.get("BOT_TOKEN"))
