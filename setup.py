@@ -30,6 +30,7 @@ user_spam_count = {}
 @client.event
 async def on_member_join(member):
     canal = client.get_channel('448326795692081152')
+    await client.send_message(canal, 'Seja bem-vindo(a) {}!'.format(member.mention))
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
@@ -38,7 +39,6 @@ async def on_member_join(member):
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url='https://imgur.com/a/Uq1Cr6A')
     embed.set_footer(text='End', icon_url=member.server.icon_url)
-    await client.send_message(canal, 'Seja bem-vindo(a) {}!'.format(member.mention))
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
