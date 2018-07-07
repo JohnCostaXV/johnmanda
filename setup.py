@@ -259,21 +259,26 @@ async def on_message(message):
             pass
    
     if message.content.startswith('!anunciar'):
-        args = message.content.split(" ")
-        embed = discord.Embed(
-            title="📢 End 📢",
-            color=COR,
-            description=" ".join(args[1:])
-        )
-        embed.set_footer(
-            text="Enviado por: {}".format(message.author.name),
-            icon_url=message.author.avatar_url
-        )
-        embed.set_thumbnail(
-            url=message.server.icon_url
-        )
-        await client.send_message(message.channel, "@everyone")
-        await client.send_message(message.channel, embed=embed)
-        await client.delete_message(message)
+        if '407677666750365706' '417426253658849281' in [role.id for role in message.author.roles]:
+            args = message.content.split(" ")
+            embed = discord.Embed(
+                title="📢 End 📢",
+                color=COR,
+                description=" ".join(args[1:])
+            )
+            embed.set_footer(
+                text="Enviado por: {}".format(message.author.name),
+                icon_url=message.author.avatar_url
+            )
+            embed.set_thumbnail(
+                url=message.server.icon_url
+            )
+            await client.send_message(message.channel, "@everyone")
+            await client.send_message(message.channel, embed=embed)
+            await client.delete_message(message)
+        else:
+            amsg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            time.sleep(10)
+            await client.delete_message(amsg)
             
 client.run(os.environ.get("BOT_TOKEN"))
