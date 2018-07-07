@@ -418,5 +418,25 @@ async def on_message(message):
         finally:
             pass
      
+    if message.content.startswith('/formulário'):
+        embed = discord.Embed(
+            title='FORMULÁRIO 📝',
+            color=COR,
+            description='Abaixo terá o link de nosso formulário, lembrando, faça com total atenção!'
+        )
+        embed.add_field(
+            name='Aplicação para a equipe:',
+            value='[clique aqui](https://t.co/wuIvHTsoAh)',
+            inline=False
+        )
+        embed.add_field(
+            name='Aplicação para o HRC:',
+            value='[clique aqui](https://bit.ly/2KSMniB)',
+            inline=False
+        )
+        embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
+        embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
+        embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
+        await client.send_message(message.channel, embed=embed)
         
 client.run(os.environ.get("BOT_TOKEN"))
