@@ -333,21 +333,31 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)        
             
     if message.content.startswith('/avatar'):
-        user = message.mentions[0]
-        embed = discord.Embed(
-            title="",
-            color=COR,
-            description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}'.format(user.name)
-        )
-        embed.set_author(
-            name=message.server.name,
-            icon_url='https://i.imgur.com/yJey64O.png'
-        )
-        embed.set_image(
-            url=user.avatar_url
-        )
-        await client.send_message(message.channel, embed=embed)
+        try:
+            user = message.mentions[0]
+            embed = discord.Embed(
+                title="",
+                color=COR,
+                description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}'.format(user.name)
+            )
+            embed.set_author(
+                name=message.server.name,
+                icon_url='https://i.imgur.com/yJey64O.png'
+            )
+            embed.set_image(
+                url=user.avatar_url
+            )
+            await client.send_message(message.channel, embed=embed)
+        except IndexError:
+            msg = await client.send_message(message.channel, '{}, mencione um usuário existente, por exemplo, `/avatar @JohnnCosta`.')
+            time.sleep(10)
+            await client.delete_message(msg)
+        except:
+            msg1 = await client.send_message(message.channel, 'Desculpe pelo erro.')
+            time.sleep(5)
+            await client.delete_message(msg1)
             
+
     if message.content.lower().startswith('/userinfo'):
         try:
             tmp1 = datetime.datetime.now()
@@ -396,9 +406,13 @@ async def on_message(message):
             )
             await client.send_message(message.channel, embed=userembed)
         except IndexError:
-            await client.send_message(message.channel, "{}, o usuário não foi encontrado.".format(message.author.mention))
+            msg = await client.send_message(message.channel, "{}, mencione um usuário existente, por exemplo, `/userinfo @JohnnCosta`.".format(message.author.mention))
+            time.sleep(10)
+            await client.delete_message(msg)
         except:
-            await client.send_message(message.channel, "Desculpe pelo erro.")
+            msg1 = await client.send_message(message.channel, "Desculpe pelo erro.")
+            time.sleep(5)
+            await client.delete_message(msg1)
         finally:
             pass
     
