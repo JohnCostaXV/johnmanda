@@ -98,11 +98,13 @@ async def on_message(message):
         finally:
             pass
         
-    if message.content.upper().startswith('!say'):
-        if message.author.id == '460208889464487937': #Replace <User ID> with the ID of the user you want to be able to execute this command!
+    if message.content.startswith('!say'):
+        if message.author.id == '460208889464487937' '247727808166494211':
             args = message.content.split(" ")
+            await client.send_message(message.channel, (" ".join(args[1:])))
+            asyncio.sleep(1)
             await client.delete_message(message)
-            await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
+            asyncio.sleep(1)
     
     if message.content.startswith('/revisão'):
         try:
