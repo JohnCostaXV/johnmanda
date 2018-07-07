@@ -100,7 +100,7 @@ async def on_message(message):
             pass
     
     if message.content.startswith('/cc'):
-        msg = await client.send_message(message.channel, 'Limpando mensagens...')
+        tmp = await client.send_message(message.channel, 'Limpando mensagens...')
         async for msg in client.logs_from(message.channel):
             await client.delete_message(msg)
     
