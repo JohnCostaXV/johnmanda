@@ -420,9 +420,9 @@ async def on_message(message):
      
     if message.content.startswith('/formulário'):
         embed = discord.Embed(
-            title='FORMULÁRIO 📝',
+            title='FORMULÁRIOS 📝',
             color=COR,
-            description='Abaixo terá o link de nosso formulário, lembrando, faça com total atenção!'
+            description='Abaixo terá o link de nossos formulários, lembrando, qualquer um outro não pertence a rede End.'
         )
         embed.add_field(
             name='Aplicação para a equipe:',
