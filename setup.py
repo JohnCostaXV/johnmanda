@@ -35,7 +35,7 @@ async def on_member_join(member):
         color=COR,
         description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidoresEnd\n\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\n\nEndereço de ip para conexão ao servidor: __jogar.end-mc.com__\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\nData de lançamento: 07/07/2018'
     )
-    embed.set_author(name='{}#{}!'.format(member.name, member.discriminator), icon_url=member.avatar_url)
+    embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url='https://imgur.com/a/ksoaRev.png')
     embed.set_footer(text='End', icon_url=member.server.icon_url)
     await client.send_message(canal, 'Seja bem-vindo(a) {}!'.format(member.mention))
