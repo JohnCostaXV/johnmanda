@@ -300,57 +300,5 @@ async def on_message(message):
             await client.delete_message(message)
             time.sleep(10)
             await client.delete_message(msglg)
-        
-    if message.content.startswith('/tempmute'):
-        mperms = message.author.server_permissions
-
-        if mperms.kick_members == True:
-
-            canal = client.get_channel('448449971629588481')
-            user = message.mentions[0]
-            # Vamos verificar se o usuario já esta no banco
-
-            overwrite = message.channel.overwrites_for(user) or \
-            discord.PermissionOverwrite()
-            overwrite.send_messages = False
-            await client.edit_channel_permissions(
-                message.channel,
-                user,
-                overwrite
-            )        
-            tempo = args[1]        
-            timesquad = int(tempo)
-            reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
-
-            await client.send_message(canal, "O usuário **{}#{}** foi mutado com sucesso, duração: {}".format(user.name, user.discriminator, reallytime))
-            time.sleep(timesquad)
-
-
-            overwrite = message.channel.overwrites_for(user) or \
-            discord.PermissionOverwrite()
-            overwrite.send_messages = True
-            await client.edit_channel_permissions(
-                message.channel,
-                user,
-                overwrite
-            )
-        
-    if message.content.startswith('/unban'):
-        ban_list = await client.get_bans(message.channel)
-
-        await client.send_message('Lista de punições:\n{}'.format('\n'.join([user.name for  user in ban_list])))
-
-        if not ban_list:
-            await client.send_message('Lista de punições vazia.')
-            return
-        try:
-            await client.unban(message.server, ban_list[-1])
-            await client.send_message('Usuário desbanido: `{}`'.format(ban_list[-1].name))
-        except discord.Forbidden:
-            await client.send_message('Eu não tenho permissão para desbanir esse usuário!')
-            return
-        except discord.HTTPException:
-            await client.send_message('Desbanimento falhado.')
-            return
             
 client.run(os.environ.get("BOT_TOKEN"))
