@@ -98,7 +98,7 @@ async def on_message(message):
         finally:
             pass
         
-    if message.content.startswith('!say'):
+    if message.content.startswith('/say'):
         if message.author.id == '460208889464487937' '247727808166494211':
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
@@ -231,14 +231,16 @@ async def on_message(message):
     if message.content.startswith('/ban'):
         if '407677666750365706' '417426253658849281' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
+            args = message.content.split(" ")
             await client.delete_message(message)
             channel1 = client.get_channel('448449971629588481')
             user = message.mentions[0]
             await client.ban(user)
+            join = (" ".join(args[1:]))
             embed = discord.Embed(
                 title='BANIDO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi banido com sucesso!'.format(user.name, user.discriminator)
+                description='O usuário **{}#{}**, foi banido por {}!'.format(user.name, user.discriminator, join)
             )
         else:
             await client.send_message(message.channel, '❌ Você não pode fazer isso!')    
@@ -249,7 +251,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msg)
         except:
-            a = await client.send_message(message.channel, 'Testando...')
+            a = await client.send_message(message.channel, '{}, use /ban <@> <motivo>.'.format(message.author.mention))
             time.sleep(5)
             await client.delete_message(a)
         finally:
