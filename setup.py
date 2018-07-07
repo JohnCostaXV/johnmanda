@@ -99,11 +99,6 @@ async def on_message(message):
         finally:
             pass
     
-    if message.content.startswith('/cc'):
-        tmp = await client.send_message(message.channel, 'Limpando mensagens...')
-        async for msg in client.logs_from(message.channel):
-            await client.delete_message(msg)
-    
     
     if message.content.startswith('/say'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
