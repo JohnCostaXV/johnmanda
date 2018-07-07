@@ -108,6 +108,7 @@ async def on_message(message):
             asyncio.sleep(1)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
             time.sleep(10)
             await client.delete_message(msglg)
     
