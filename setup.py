@@ -338,7 +338,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title="",
                 color=COR,
-                description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}'.format(user.name)
+                description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}.'.format(user.name)
             )
             embed.set_author(
                 name=message.server.name,
