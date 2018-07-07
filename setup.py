@@ -218,7 +218,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=embed)
             await client.delete_message(message)
         except IndexError:
-            await client.send_message(message.author, '{}, use /reportar <Suspeito> | <Motivo>'.format(message.author.mention))
+            await client.send_message(message.author, '{}, use /reportar <Suspeito> | <Motivo> | <Prova>'.format(message.author.mention))
             await client.delete_message(message)
         except:
             await client.send_message(message.author, 'Desculpe pelo erro.')
