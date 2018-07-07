@@ -214,7 +214,7 @@ async def on_message(message):
         await client.delete_message(message)
 
     if message.content.startswith('/kick'):
-        if ex in [role.id for role in message.author.roles]:
+        if '407677666750365706' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
             channel = client.get_channel('448449971629588481')
@@ -230,7 +230,7 @@ async def on_message(message):
             await client.send_message(message.channel, '❌ Você não pode fazer isso!')  
 
     if message.content.startswith('/ban'):
-        if '407677666750365706' '417426253658849281' in [role.id for role in message.author.roles]:
+        if '407677666750365706' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             args = message.content.split(" ")
             await client.delete_message(message)
@@ -259,6 +259,7 @@ async def on_message(message):
             pass
    
     if message.content.startswith('/anunciar'):
+        if '407677666750365706' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             embed = discord.Embed(
                 title="📢 End 📢",
