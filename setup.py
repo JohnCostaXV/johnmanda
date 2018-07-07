@@ -301,4 +301,9 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msglg)
             
+    if message.content.startswith('/ping'):
+        now = datetime.datetime.utcnow()
+        delta = now-client.message.timestamp
+        await client.send_message('{}ms'.format(delta(microseconds=1)))
+        
 client.run(os.environ.get("BOT_TOKEN"))
