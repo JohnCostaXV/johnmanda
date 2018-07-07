@@ -194,18 +194,18 @@ async def on_message(message):
                 description="Denúncia recebida. \nEnviada por: {}".format(message.author.mention)
             )
             embed.add_field(
-                name="Suspeito:",
-                value="```%s```" % "".join(separar[0]),
+                name="**Suspeito**:",
+                value="%s" % "".join(separar[0]),
                 inline=False
             )
             embed.add_field(
-                name="Motivo:",
-                value="```%s```" % "".join(separar[1]),
+                name="**Motivo**:",
+                value="%s" % "".join(separar[1]),
                 inline=False
             )
             embed.add_field(
-                name="Prova:",
-                value="```%s```" % "".join(separar[2]),
+                name="**Prova**:",
+                value="%s" % "".join(separar[2]),
                 inline=False
             )
             embed.set_footer(
