@@ -208,7 +208,7 @@ async def on_message(message):
                 value="%s" % "".join(separar[2]),
                 inline=False
             )
-            embed.set_image(
+            embed.set_thumbnail(
                 url="%s.png" % "".join(separar[2])
             )
             embed.set_footer(
