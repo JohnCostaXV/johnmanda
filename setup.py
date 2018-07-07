@@ -334,5 +334,23 @@ async def on_message(message):
             user,
             overwrite
         )
+        
+    if message.content.startswith('/unban'):
+        ban_list = await client.get_bans(message.channel)
+
+        await client.send_message('Lista de punições:\n{}'.format('\n'.join([user.name for  user in ban_list])))
+
+        if not ban_list:
+            await client.send_message('Lista de punições vazia.')
+            return
+        try:
+            await client.unban(message.server, ban_list[-1])
+            await client.send_message('Usuário desbanido: `{}`'.format(ban_list[-1].name))
+        except discord.Forbidden:
+            await client.send_message('Eu não tenho permissão para desbanir esse usuário!')
+            return
+        except discord.HTTPException:
+            await client.send_message('Desbanimento falhado.')
+            return
             
 client.run(os.environ.get("BOT_TOKEN"))
