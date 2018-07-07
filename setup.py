@@ -349,6 +349,7 @@ async def on_message(message):
             )
             await client.send_message(message.channel, embed=embed)
         except IndexError:
+            await client.delete_message(message)
             msg = await client.send_message(message.channel, '{}, mencione um usuário existente, por exemplo, `/avatar @JohnnCosta`.'.format(message.author.mention))
             time.sleep(10)
             await client.delete_message(msg)
@@ -410,6 +411,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msg)
         except:
+            await client.delete_message(message)
             msg1 = await client.send_message(message.channel, "Desculpe pelo erro.")
             time.sleep(5)
             await client.delete_message(msg1)
