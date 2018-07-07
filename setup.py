@@ -258,7 +258,6 @@ async def on_message(message):
             pass
    
     if message.content.startswith('!anunciar'):
-        canal = client.get_channel('448326186095869953')
         args = message.content.split(" ")
         embed = discord.Embed(
             title="📢 End 📢",
@@ -272,8 +271,8 @@ async def on_message(message):
         embed.set_thumbnail(
             url=message.server.icon_url
         )
-        await client.send_message(message.canal, "@everyone")
-        await client.send_message(message.canal, embed=embed)
+        await client.send_message(message.channel, "@everyone")
+        await client.send_message(message.channel, embed=embed)
         await client.delete_message(message)
             
 client.run(os.environ.get("BOT_TOKEN"))
