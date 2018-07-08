@@ -220,7 +220,7 @@ async def on_message(message):
         embed = discord.Embed(
             title='Você solicitou o comando e aqui estamos enviando umas informações básicas sobre o End.',
             color=COR,
-            description='**Seja bem-vindo ao discord da rede End.Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nSite: [clique aqui!]()\n\nTwitter: [clique aqui!]()\n\nLoja: [clique aqui!]()\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
+            description='**Seja bem-vindo ao discord da rede End.Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
         )
         embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
         embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
