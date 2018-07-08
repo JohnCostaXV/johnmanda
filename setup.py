@@ -299,8 +299,8 @@ async def on_message(message):
                 description=" ".join(args[1:])
             )
             embed.set_footer(
-                text="Enviado por: {}".format(message.author.name),
-                icon_url=message.author.avatar_url
+                text="Enviado por: {} • End".format(message.author.name),
+                icon_url='https://i.imgur.com/yJey64O.png'
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -431,7 +431,7 @@ async def on_message(message):
         )
         embed.add_field(
             name='Aplicação para o HRC:',
-            value='[Clique aqui!](https://bit.ly/2KSMniB)\n',
+            value='[Clique aqui!](https://bit.ly/2KSMniB)',
             inline=False
         )
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
