@@ -491,6 +491,7 @@ async def on_message(message):
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(channel, embed=embed)
+            await client.delete_message(message)
             time.sleep(timesquad)
             await client.remove_roles(user, role)
         else:
