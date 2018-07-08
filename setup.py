@@ -356,6 +356,8 @@ async def on_message(message):
             msg1 = await client.send_message(message.channel, 'Desculpe pelo erro.')
             time.sleep(5)
             await client.delete_message(msg1)
+        finally:
+            pass
             
 
     if message.content.lower().startswith('/userinfo'):
