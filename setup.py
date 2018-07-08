@@ -457,7 +457,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado.\nMotivo: {}.'.format(user.name, user.discriminator, join)
+                description='O usuário **{}#{}**, foi silenciado!\nMotivo: {}.'.format(user.name, user.discriminator, join)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -470,4 +470,33 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msglg)
 
+    if message.content.startswith('/tempmute'):
+        if '407677666750365706' or '417426253658849281' or '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
+            args = message.content.split(" ")
+            tempo = (" ".join(args[2:]))
+            channel = client.get_channel('448449971629588481')
+            role = discord.utils.get(user.server.roles, name="Silenciado")
+            await client.add_roles(user, role)
+            print("Adicionado o cargo '" + role.name + "' para " + user.name)
+            user = message.mentions[0]
+            timesquad = int(tempo)
+            reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
+            embed = discord.Embed(
+                title='SILENCIADO ⛔',
+                color=COR,
+                description='O usuário **{}#{}**, foi silenciado!\nDuração: {}\nMotivo: {}.'.format(user.name, user.discriminator, reallytime, tempo)
+            )
+            embed.set_thumbnail(
+                url='https://i.imgur.com/yJey64O.png'
+            )
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            await client.send_message(channel, embed=embed)
+            time.sleep(timesquad)
+            await client.remove_roles(user, role)
+        else:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            time.sleep(10)
+            await client.delete_message(message)
+            await client.delete_message(msglg)
+                
 client.run(os.environ.get("BOT_TOKEN"))
