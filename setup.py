@@ -218,24 +218,17 @@ async def on_message(message):
 
     if message.content.startswith('/ajuda'):
         embed = discord.Embed(
-            title='Olá {}!'.format(message.author.name),
+            title='Você solicitou o comando e aqui estamos enviando umas informações básicas sobre o End.',
             color=COR,
-            description='Temos aqui as informações básicas de nossa rede de servidores End.\nSegue abaixo:'
+            description='**Seja bem-vindo ao discord da rede End.Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nSite: [clique aqui!]()\n\nTwitter: [clique aqui!]()\n\nLoja: [clique aqui!]()\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
         )
-        embed.set_author(
-            name=message.server.name,
-            icon_url=message.server.icon_url
-        )
-        embed.set_thumbnail(
-            url='https://i.imgur.com/yJey64O.png'
-        )
-        embed.add_field(
-            name='teste',
-            value='',
-            inline=False
-        )
+        embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+        embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
+        embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+        msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
         await client.send_message(message.author, embed=embed)
-        await client.delete_message(message)
+        time.sleep(10)
+        await client.delete_message(msg)
 
     if message.content.startswith('/kick'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
