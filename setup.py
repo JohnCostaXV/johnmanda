@@ -475,10 +475,10 @@ async def on_message(message):
             args = message.content.split(" ")
             tempo = (" ".join(args[3:]))
             user = message.mentions[0]
-            channel = client.get_channel('448449971629588481')
-            role = discord.utils.get(user.server.roles, name="Silenciado")
-            await client.add_roles(user, role)
-            print("Adicionado o cargo '" + role.name + "' para " + user.name)
+            canal = client.get_channel('448449971629588481')
+            cargo = discord.utils.get(user.server.roles, name="Silenciado")
+            await client.add_roles(user, cargo)
+            print("Adicionado o cargo '" + cargo.name + "' para " + user.name)
             timesquad = int(tempo)
             reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
             embed = discord.Embed(
@@ -490,11 +490,11 @@ async def on_message(message):
                 url='https://i.imgur.com/yJey64O.png'
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-            await client.send_message(channel, embed=embed)
+            await client.send_message(canal, embed=embed)
             await client.delete_message(message)
             time.sleep(timesquad)
-            role1 = client.utils.get(user.server.roles, name='Silenciado')
-            await client.remove_roles(user, role1)
+            cargo1 = client.utils.get(user.server.roles, name='Silenciado')
+            await client.remove_roles(user, cargo1)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
