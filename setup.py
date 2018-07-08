@@ -11,7 +11,7 @@ import os
 import re
 
 RANDOM_STATUS = ['jogar.end-mc.com']
-RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso [twitter](https://twitter.com/ServidorEnd) para ter informações exclusívas da nossa rede de servidores End.']
+RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
 
 client = discord.Client()
 COR = 0x3498DB
@@ -59,11 +59,6 @@ async def on_ready():
     except Exception as e:
         print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
-    
-    auto = random.choice(RANDOM_AUTO)
-    canal = client.get_channel('407669684616560650')
-    time.sleep(30)
-    await client.send_message(canal, auto)
     
 @client.event
 async def on_message(message):
@@ -169,7 +164,13 @@ async def on_message(message):
             print('Error')
         finally:
             pass
-
+    
+    if message.content.startswith('/tt'):
+        await client.delete_message(message)
+        auto = random.choice(RANDOM_AUTO)
+        canal = client.get_channel('407669684616560650')
+        time.sleep(3)
+        await client.send_message(canal, auto)
 
     if message.content.startswith('/reportar'):
         try:
