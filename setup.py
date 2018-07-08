@@ -11,6 +11,7 @@ import os
 import re
 
 RANDOM_STATUS = ['jogar.end-mc.com']
+RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso [twitter](https://twitter.com/ServidorEnd) para ter informações exclusívas da nossa rede de servidores End.']
 
 client = discord.Client()
 COR = 0x3498DB
@@ -58,7 +59,12 @@ async def on_ready():
     except Exception as e:
         print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
-
+    
+    auto = random.choice(RANDOM_AUTO)
+    canal = client.get_channel('407669684616560650')
+    time.sleep(30)
+    await client.send_message(canal, auto)
+    
 @client.event
 async def on_message(message):
     if message.content.startswith('/sugestão'):
