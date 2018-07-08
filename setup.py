@@ -447,6 +447,6 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
        
     if message.content.startswith('/ip'):
-        await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__')
+        await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention)
         
 client.run(os.environ.get("BOT_TOKEN"))
