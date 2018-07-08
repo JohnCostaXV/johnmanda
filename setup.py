@@ -220,7 +220,7 @@ async def on_message(message):
         embed = discord.Embed(
             title='Você solicitou o comando e aqui estamos enviando umas informações básicas sobre o End.',
             color=COR,
-            description='**Seja bem-vindo ao discord da rede End.Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
+            description='**Seja bem-vindo ao discord da rede End. Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
         )
         embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
         embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
@@ -318,7 +318,7 @@ async def on_message(message):
             title='Informações do Servidor',
             color=0x03c3f5,
             descripition='Essas são as informações\n')
-        embed.set_author(name=message.server.name, icon_url=message.server.icon_url)
+        embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
         embed.add_field(name="Nome:", value=message.server.name, inline=True)
         embed.add_field(name=":crown: Dono:", value=message.server.owner.mention)
         embed.add_field(name="ID:", value=message.server.id, inline=True)
