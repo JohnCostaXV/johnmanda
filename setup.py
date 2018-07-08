@@ -62,30 +62,6 @@ async def on_ready():
     
 @client.event
 async def on_message(message):
-    if message.content.startswith('/mute'):
-        args = message.content.split(" ")
-        join = (" ".join(args[2:]))
-        user = message.mentions[0]
-        channel = client.get_channel('448449971629588481')
-        role = discord.utils.get(user.server.roles, name="Silenciado")
-        await client.add_roles(user, role)
-        print("Adicionado o cargo '" + role.name + "' para " + user.name)
-        embed = discord.Embed(
-            title='SILENCIADO ⛔',
-            color=COR,
-            description='O usuário **{}#{}**, foi silenciado.\nMotivo: {}.\nAutor: {}.'.format(user.name, user.discriminator, join, user.author.mention)
-        )
-        embed.set_thumbnail(
-            url='https://i.imgur.com/yJey64O.png'
-        )
-        embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-        await client.send_message(channel, embed=embed)
-    else:
-        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-        time.sleep(10)
-        await client.delete_message(message)
-        await client.delete_message(msglg)
-
     if message.content.startswith('/sugestão'):
         try:
             await client.delete_message(message)
@@ -273,12 +249,12 @@ async def on_message(message):
             await client.send_message(channel, embed=embed)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            time.sleep(10)
             await client.delete_message(message)
-            await client.delete_message(msglg)
+            time.sleep(10)
+            await client.delete_message(msglg)  
 
     if message.content.startswith('/ban'):
-        if '407677666750365706' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
+        if '407677666750365706' or '417426253658849281' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             args = message.content.split(" ")
             await client.delete_message(message)
@@ -289,7 +265,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='BANIDO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi banido!\nMotivo: {}.\nAutor: {}.'.format(user.name, user.discriminator, join, user.author.mention)
+                description='O usuário **{}#{}**, foi banido por: {}!'.format(user.name, user.discriminator, join)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -297,8 +273,8 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            time.sleep(10)
             await client.delete_message(message)
+            time.sleep(10)
             await client.delete_message(msglg)    
         try:
             await client.send_message(channel1, embed=embed)
