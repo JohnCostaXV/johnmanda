@@ -82,8 +82,8 @@ async def on_message(message):
         await client.send_message(channel, embed=embed)
     else:
         msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-        await client.delete_message(message)
         time.sleep(10)
+        await client.delete_message(message)
         await client.delete_message(msglg)
 
     if message.content.startswith('/sugestão'):
@@ -273,8 +273,8 @@ async def on_message(message):
             await client.send_message(channel, embed=embed)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            await client.delete_message(message)
             time.sleep(10)
+            await client.delete_message(message)
             await client.delete_message(msglg)
 
     if message.content.startswith('/ban'):
@@ -297,8 +297,8 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            await client.delete_message(message)
             time.sleep(10)
+            await client.delete_message(message)
             await client.delete_message(msglg)    
         try:
             await client.send_message(channel1, embed=embed)
