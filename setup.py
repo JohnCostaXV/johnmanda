@@ -472,9 +472,9 @@ async def on_message(message):
 
     if message.content.startswith('/tempmute'):
         if '407677666750365706' or '417426253658849281' or '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
-            user = message.mentions[0]
             args = message.content.split(" ")
             tempo = (" ".join(args[3:]))
+            user = message.mentions[0]
             channel = client.get_channel('448449971629588481')
             role = discord.utils.get(user.server.roles, name="Silenciado")
             await client.add_roles(user, role)
@@ -493,7 +493,8 @@ async def on_message(message):
             await client.send_message(channel, embed=embed)
             await client.delete_message(message)
             time.sleep(timesquad)
-            await client.remove_roles(user, role)
+            role1 = client.utils.get(user.server.roles, name='Silenciado')
+            await client.remove_roles(user, role1)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
