@@ -445,5 +445,8 @@ async def on_message(message):
         embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
         embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
         await client.send_message(message.channel, embed=embed)
+       
+    if message.content.startswith('/ip'):
+        await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__')
         
 client.run(os.environ.get("BOT_TOKEN"))
