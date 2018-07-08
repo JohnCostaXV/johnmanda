@@ -440,30 +440,4 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
        
     if message.content.startswith('/ip'):
-        await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention)) 
-
-    if message.content.startswith('/mute'):
-        args = message.content.split(" ")
-        join = (" ".join(args[2:]))
-        user = message.mentions[0]
-        channel = client.get_channel('448449971629588481')
-        role = discord.utils.get(user.server.roles, name="Silenciado")
-        await client.add_roles(user, role)
-        print("Adicionado o cargo '" + role.name + "' para " + user.name)
-        embed = discord.Embed(
-            title='SILENCIADO ⛔',
-            color=COR,
-            description='O usuário **{}#{}**, foi silenciado.\nMotivo: {}.'.format(user.name, user.discriminator, join)
-        )
-        embed.set_thumbnail(
-            url='https://i.imgur.com/yJey64O.png'
-        )
-        embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-        await client.send_message(channel, embed=embed)
-    else:
-        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-        time.sleep(10)
-        await client.delete_message(message)
-        await client.delete_message(msglg)
-
-client.run(os.environ.get("BOT_TOKEN"))
+        await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
