@@ -254,7 +254,7 @@ async def on_message(message):
             await client.delete_message(msglg)  
 
     if message.content.startswith('/ban'):
-        if '407677666750365706' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
+        if '407677666750365706' or '417426253658849281' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             args = message.content.split(" ")
             await client.delete_message(message)
