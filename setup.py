@@ -10,7 +10,6 @@ import io
 import os
 import re
 import json
-import requests
 import base64
 
 RANDOM_STATUS = ['jogar.end-mc.com']
@@ -520,12 +519,5 @@ async def on_message(message):
         embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
         await client.edit_message(bot_msg, embed=embed)
 
-    if message.content.lower().startswith('/skin'):
-        args = message.content.split(" ")
-        user = message.mentions[0]
-        uuid = requests.get('https://api.mojang.com/users/profiles/minecraft/{}'.format(user)).json()['id']
-        url = json.loads(base64.b64decode(requests.get('https://sessionserver.mojang.com/session/minecraft/profile/{}'.format(uuid)).json()['properties'][0]['value']).decode('utf-8'))['textures']['SKIN']['url']
-        skin = requests.get(url).content
-        await client.send_message(message.channel, '**Nickname: `{}`**\n{}.png'.format(user, user))
 
 client.run(os.environ.get("BOT_TOKEN"))
