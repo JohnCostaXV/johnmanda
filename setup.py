@@ -229,11 +229,12 @@ async def on_message(message):
             embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+            time.sleep(2)
+            await client.delete_message(msg)
             await client.send_message(message.author, embed=embed)
         except IndexError:
             msg1 = await client.send_message(message.channel, '{}, libere seu privado!'.format(message.author.mention))
             time.sleep(10)
-            await client.delete_message(msg)
             await client.delete_message(msg1)
         except:
             tst = await client.delete.send_message(message.channel, 'Teste')
