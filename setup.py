@@ -237,7 +237,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msg1)
         except:
-            tst = await client.delete.send_message(message.channel, 'Teste')
+            tst = await client.send_message(message.channel, 'Teste')
             time.sleep(10)
             await client.delete_message(tst)
         finally:
