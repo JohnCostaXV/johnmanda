@@ -511,10 +511,11 @@ async def on_message(message):
         bot_msg = await client.send_message(message.channel, embed=embed1)
         time_delta = bot_msg.timestamp - message.timestamp
         embed = discord.Embed(
-            title='Pong! 🎾',
+            title=':ping_pong: Pong!',
             color=COR,
-            description='Tempo de resposta é {ping_sec}ms'.format(ping_sec=time_delta.total_seconds())
+            description='Tempo de resposta é `{ping_sec}` ms.'.format(ping_sec=time_delta.total_seconds())
         )
+        embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
         await client.edit_message(bot_msg, embed=embed)
 
 client.run(os.environ.get("BOT_TOKEN"))
