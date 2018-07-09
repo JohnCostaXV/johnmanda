@@ -242,7 +242,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='EXPULSO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi expulso com sucesso!'.format(user.name, user.discriminator)
+                description='O usuário **{}#{}**, foi expulso com sucesso!\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -267,7 +267,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='BANIDO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi banido!\nMotivo: {}'.format(user.name, user.discriminator, join)
+                description='O usuário **{}#{}**, foi banido!\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, join, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -459,7 +459,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\nMotivo: {}.'.format(user.name, user.discriminator, join)
+                description='O usuário **{}#{}**, foi silenciado!\nMotivo: {}.\nAutor: {}'.format(user.name, user.discriminator, join, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -486,7 +486,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\nDuração: {}\nMotivo: {}.'.format(user.name, user.discriminator, reallytime, tempo)
+                description='O usuário **{}#{}**, foi silenciado!\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
