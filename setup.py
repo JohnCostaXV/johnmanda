@@ -233,11 +233,13 @@ async def on_message(message):
             await client.delete_message(msg)
             await client.send_message(message.author, embed=embed)
         except IndexError:
-            msg1 = await client.send_message(message.channel, '{}, libere seu privado!'.format(message.author.mention))
+            msg1 = await client.send_message(message.channel, 'Error')
+            await client.delete_message(message)
             time.sleep(10)
             await client.delete_message(msg1)
         except:
-            tst = await client.send_message(message.channel, 'Teste')
+            tst = await client.send_message(message.channel, '{}, libere seu privado!'.format(message.author.mention))
+            await client.delete_message(message)
             time.sleep(10)
             await client.delete_message(tst)
         finally:
