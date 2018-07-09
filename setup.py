@@ -500,5 +500,10 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(message)
             await client.delete_message(msglg)
-                
+          
+       
+    if message.content.lower().startswith('/ping'):
+        bot_msg = await client.send_message(message.channel, "Pong `calc ms`")
+        time_delta = bot_msg.timestamp - message.timestamp
+        await client.edit_message(bot_msg, "Pong! {ping_sec}ms".format(ping_sec=time_delta.total_seconds()))
 client.run(os.environ.get("BOT_TOKEN"))
