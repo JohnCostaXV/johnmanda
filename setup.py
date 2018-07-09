@@ -501,7 +501,9 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msglg)
           
-       
+    if message.content.lower().startswith('/pingg'):
+        await client.send_message(message.channel, ':ping_pong: Pong: **{}ms** '.format(round(client.latency * 1000, 2)))
+
     if message.content.lower().startswith('/ping'):
         embed1 = discord.Embed(
             title='Pong! 🎾',
