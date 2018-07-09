@@ -219,18 +219,28 @@ async def on_message(message):
             pass
 
     if message.content.startswith('/ajuda'):
-        embed = discord.Embed(
-            title='Você solicitou o comando e aqui estamos enviando umas informações básicas sobre o End.',
-            color=COR,
-            description='**Seja bem-vindo ao discord da rede End. Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
-        )
-        embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-        embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
-        embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-        msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
-        await client.send_message(message.author, embed=embed)
-        time.sleep(10)
-        await client.delete_message(msg)
+        try:
+            embed = discord.Embed(
+                title='Você solicitou o comando e aqui estamos enviando umas informações básicas sobre o End.',
+                color=COR,
+                description='**Seja bem-vindo ao discord da rede End. Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
+            )
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+            await client.send_message(message.author, embed=embed)
+        except IndexError:
+            msg1 = await client.send_message(message.channel, '{}, libere seu privado!'.format(message.author.mention))
+            time.sleep(10)
+            await client.delete_message(msg)
+            await client.delete_message(msg1)
+        except:
+            tst = await client.delete.send_message(message.channel, 'Teste')
+            time.sleep(10)
+            await client.delete_message(tst)
+        finally:
+            pass
 
     if message.content.startswith('/kick'):
         if '407677666750365706' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
