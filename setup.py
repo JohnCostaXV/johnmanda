@@ -443,7 +443,7 @@ async def on_message(message):
         embed = discord.Embed(
             title='FORMULÁRIOS 📝',
             color=COR,
-            description='Abaixo terá o link de nossos formulários, lembrando, qualquer um outro não pertence a rede End.'
+            description='Abaixo terá o link de nossos formulários, lembrando, qualquer um outro não pertence à rede End.'
         )
         embed.add_field(
             name='Aplicação para a equipe:',
