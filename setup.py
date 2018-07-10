@@ -490,7 +490,7 @@ async def on_message(message):
             await client.delete_message(msglg)
 
     if message.content.startswith('/tempmute'):
-        if '407677666750365706' or '417426253658849281' or '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
+        if '407677666750365706' or '417426253658849281' or '431189978631110666' or  '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             tempo = (" ".join(args[3:]))
             user = message.mentions[0]
