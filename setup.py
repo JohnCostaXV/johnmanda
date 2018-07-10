@@ -285,7 +285,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='BANIDO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi banido!\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, join, message.author.mention)
+                description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
