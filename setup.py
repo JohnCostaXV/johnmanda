@@ -37,7 +37,7 @@ async def on_member_join(member):
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
-        description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidoresEnd\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\n**Atualmente**: *{} membros*.'.format(member.server.members)
+        description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidoresEnd\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\n*Data de lançamento: 21/07/2018*
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
@@ -468,7 +468,7 @@ async def on_message(message):
     if message.content.startswith('/mute'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
-            #join = (" ".join(args[2:]))
+            join = (" ".join(args[2:]))
             user = message.mentions[0]
             cargo = discord.utils.get(message.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
@@ -476,7 +476,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, join, user.discriminator, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
