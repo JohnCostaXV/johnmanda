@@ -64,7 +64,7 @@ async def on_ready():
     
 @client.event
 async def on_message(message):
-    if message.content.startswith('/sugestão' or '/sugerir'):
+    if message.content.startswith('/sugestão'):
         try:
             await client.delete_message(message)
             remover_sugestao = message.content.replace("/sugestão", "")
@@ -116,7 +116,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msglg)
         
-    if message.content.lower().startswith('/youtuber' or '/yt'):
+    if message.content.lower().startswith('/youtuber'):
         embed = discord.Embed(
             title='YOUTUBER 🔴',
             color=COR,
@@ -175,7 +175,7 @@ async def on_message(message):
             time.sleep(3)
             await client.send_message(canal, auto)
 
-    if message.content.startswith('/reportar' or '/report'):
+    if message.content.startswith('/reportar'):
         try:
             remover_reportar = message.content.replace("/reportar ", "")
             separar = remover_reportar.split("|", 2)
@@ -440,7 +440,7 @@ async def on_message(message):
         finally:
             pass
      
-    if message.content.startswith('/formulário' or '/form'):
+    if message.content.startswith('/formulário'):
         embed = discord.Embed(
             title='FORMULÁRIOS 📝',
             color=COR,
