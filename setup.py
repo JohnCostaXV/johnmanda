@@ -476,7 +476,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\nMotivo: {}.\nAutor: {}'.format(user.name, user.discriminator, join, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, join, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -488,6 +488,29 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(message)
             await client.delete_message(msglg)
+
+    if message.content.startswith('/unmute'):
+        if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
+            args = message.content.split(" ")
+            user = message.mentions[0]
+            canal = client.get_channel('448449971629588481')
+            role = discord.utils.get(user.server.roles, name='Silenciado')
+            await client.remove_roles(user, role)
+            embed = discord.Embed(
+                title='DESMUTADO',
+                color=COR,
+                description='O usuário **{}#{}**, foi desmutado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
+            )
+            embed.set_thumbnail(
+                url='https://i.imgur.com/yJey64O.png'
+            )
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            await client.send_message(canal, embed=embed)
+        else:
+            msg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            time.sleep(10)
+            await client.delete_message(message)
+            await client.delete_message(msg)
 
     if message.content.startswith('/tempmute'):
         if '407677666750365706' or '417426253658849281' or '431189978631110666' or  '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
@@ -502,7 +525,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
