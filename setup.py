@@ -41,7 +41,7 @@ async def on_member_join(member):
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-    embed.set_footer(text='End', icon_url=member.server.icon_url)
+    embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
@@ -64,7 +64,7 @@ async def on_ready():
     
 @client.event
 async def on_message(message):
-    if message.content.startswith('/sugestão'):
+    if message.content.startswith('/sugestão' or '/sugerir'):
         try:
             await client.delete_message(message)
             remover_sugestao = message.content.replace("/sugestão", "")
@@ -116,7 +116,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msglg)
         
-    if message.content.lower().startswith('/youtuber'):
+    if message.content.lower().startswith('/youtuber' or '/yt'):
         embed = discord.Embed(
             title='YOUTUBER 🔴',
             color=COR,
@@ -175,7 +175,7 @@ async def on_message(message):
             time.sleep(3)
             await client.send_message(canal, auto)
 
-    if message.content.startswith('/reportar'):
+    if message.content.startswith('/reportar' or '/report'):
         try:
             remover_reportar = message.content.replace("/reportar ", "")
             separar = remover_reportar.split("|", 2)
@@ -440,7 +440,7 @@ async def on_message(message):
         finally:
             pass
      
-    if message.content.startswith('/formulário'):
+    if message.content.startswith('/formulário' or '/form'):
         embed = discord.Embed(
             title='FORMULÁRIOS 📝',
             color=COR,
