@@ -470,8 +470,9 @@ async def on_message(message):
             args = message.content.split(" ")
             join = (" ".join(args[2:]))
             user = message.mentions[0]
+            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
-            await client.add_roles(user, 'Silenciado')
+            await client.add_roles(user, cargo)
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
@@ -492,8 +493,9 @@ async def on_message(message):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             user = message.mentions[0]
+            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
-            await client.remove_roles(user, 'Silenciado')
+            await client.remove_roles(user, cargo)
             embed = discord.Embed(
                 title='DESMUTADO',
                 color=COR,
@@ -515,8 +517,9 @@ async def on_message(message):
             args = message.content.split(" ")
             tempo = (" ".join(args[3:]))
             user = message.mentions[0]
+            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
-            await client.add_roles(user, 'Silenciado')
+            await client.add_roles(user, cargo)
             timesquad = int(tempo)
             reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
             embed = discord.Embed(
@@ -531,7 +534,8 @@ async def on_message(message):
             await client.send_message(canal, embed=embed)
             await client.delete_message(message)
             time.sleep(timesquad)
-            await client.remove_roles(user, 'Silenciado')
+            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
+            await client.remove_roles(user, cargo)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
