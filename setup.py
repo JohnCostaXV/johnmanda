@@ -472,7 +472,7 @@ async def on_message(message):
             user = message.mentions[0]
             cargo = discord.utils.get(message.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
-            await client.add_roles(user, cargo)
+            await client.add_roles(message, cargo)
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
