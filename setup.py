@@ -37,11 +37,11 @@ async def on_member_join(member):
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
-        description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidorEnd\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\n*Data de lançamento: 09/07/2018*'
+        description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidoresEnd\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\n*Data de lançamento: 09/07/2018*'
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-    embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+    embed.set_footer(text='End', icon_url=member.server.icon_url)
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
@@ -471,8 +471,7 @@ async def on_message(message):
             join = (" ".join(args[2:]))
             user = message.mentions[0]
             canal = client.get_channel('448449971629588481')
-            role = discord.utils.get(user.server.roles, name="Silenciado")
-            await client.add_roles(user, role)
+            await client.add_roles(user, 'Silenciado')
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
@@ -494,8 +493,7 @@ async def on_message(message):
             args = message.content.split(" ")
             user = message.mentions[0]
             canal = client.get_channel('448449971629588481')
-            role = discord.utils.get(user.server.roles, name='Silenciado')
-            await client.remove_roles(user, role)
+            await client.remove_roles(user, 'Silenciado')
             embed = discord.Embed(
                 title='DESMUTADO',
                 color=COR,
@@ -518,8 +516,7 @@ async def on_message(message):
             tempo = (" ".join(args[3:]))
             user = message.mentions[0]
             canal = client.get_channel('448449971629588481')
-            cargo = discord.utils.get(user.server.roles, name="Silenciado")
-            await client.add_roles(user, cargo)
+            await client.add_roles(user, 'Silenciado')
             timesquad = int(tempo)
             reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
             embed = discord.Embed(
@@ -534,8 +531,7 @@ async def on_message(message):
             await client.send_message(canal, embed=embed)
             await client.delete_message(message)
             time.sleep(timesquad)
-            cargo1 = client.utils.get(user.server.roles, name='Silenciado')
-            await client.remove_roles(user, cargo1)
+            await client.remove_roles(user, 'Silenciado')
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
