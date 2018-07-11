@@ -468,15 +468,15 @@ async def on_message(message):
     if message.content.startswith('/mute'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
-            join = (" ".join(args[2:]))
+            #join = (" ".join(args[2:]))
             user = message.mentions[0]
             cargo = discord.utils.get(message.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
-            await client.add_roles(message, cargo)
+            await client.add_roles(user, cargo)
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, join, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
