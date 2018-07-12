@@ -470,7 +470,7 @@ async def on_message(message):
             args = message.content.split(" ")
             join = (" ".join(args[2:]))
             user = message.mentions[0]
-            cargo = discord.utils.get(message.server.roles, name='Silenciado')
+            cargo = discord.utils.find(lambda r: r.name == "Silenciado", message.server.roles)
             canal = client.get_channel('448449971629588481')
             await client.add_roles(user, cargo)
             embed = discord.Embed(
