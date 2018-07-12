@@ -41,7 +41,7 @@ async def on_member_join(member):
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-    embed.set_footer(text='End', icon_url=member.server.icon_url)
+    embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
