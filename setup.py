@@ -41,7 +41,7 @@ async def on_member_join(member):
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-    embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
+    embed.set_footer(text='End', icon_url=member.server.icon_url)
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
@@ -61,7 +61,8 @@ async def on_ready():
     except Exception as e:
         print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
-    
+
+
 @client.event
 async def on_message(message):
     if message.content.startswith('/sugestão'):
@@ -102,7 +103,60 @@ async def on_message(message):
         finally:
             pass
     
-    
+    if message.content.startswith('/dado'):
+        numr = random.randint(1,6)
+        embed = discord.Embed(
+            title='Dado',
+            color=COR,
+            description=':game_die: Joguei o dado, o resultado é: {}'.format(str(numr))
+        )
+        await client.send_message(message.channel, embed=embed)
+
+    if message.content.startswith('/convite'):
+        await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
+
+    if message.content.startswith('/comandos'):
+        try:
+            embed = discord.Embed(
+                title='Comandos do bot:',
+                color=COR,
+                description='/userinfo `[usuário]` » Veja as informações de um usuário\n'
+                            '/serverinfo » Veja as informações do servidor\n'
+                            '/dado » Role um dado de um número de 1 á 6\n'
+                            '/avatar `[usuário]` » Veja o avatar seu ou de um membro\n'
+                            '/convite » Gere um convite para convidar todos para nossa comunidade\n'
+                            '/ping » Veja o tempo de resposta do bot\n'
+                            '/ajuda » Veja as informações básicas do servidor End\n'
+                            '/youtuber » Veja os requisitos para ter tag youtuber\n'
+                            '/revisão `[nickname]` | `[motivo]` | `[por quê está irregular?]` » Crie uma revisão de seu banimento\n'
+                            '/reportar `[usuário/nickname]` | `[motivo]` | `[prova]` » Denúncie um usuário do discord ou do servidor\n'
+                            '/sugestão `[sugestão]` | `[por quê adicionariamos?]` » Crie uma sugestão\n'
+                            '/formulário » Veja os formulários disponíveis do servidor\n'
+                            '/ip » Veja o IP de conexão ao servidor'
+                )
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+            await client.send_message(message.author, embed=embed)
+        except IndexError:
+            time.sleep(2)
+            await client.delete_message(msg)
+            asyncio.sleep(21000)
+            msg1 = await client.send_message(message.channel, 'Error')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msg1)
+        except:
+            time.sleep(2)
+            await client.delete_message(msg)
+            asyncio.sleep(21000)
+            tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(tst)
+        finally:
+            pass
+
     if message.content.startswith('/say'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
@@ -470,8 +524,8 @@ async def on_message(message):
             args = message.content.split(" ")
             join = (" ".join(args[2:]))
             user = message.mentions[0]
-            cargo = discord.utils.find(lambda r: r.name == "Silenciado", message.server.roles)
             canal = client.get_channel('448449971629588481')
+            cargo = discord.utils.find(lambda r: r.name == "Silenciado", user.server.roles)
             await client.add_roles(user, cargo)
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
@@ -493,7 +547,7 @@ async def on_message(message):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             user = message.mentions[0]
-            cargo = discord.utils.get(message.server.roles, name='Silenciado')
+            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
             await client.remove_roles(user, cargo)
             embed = discord.Embed(
