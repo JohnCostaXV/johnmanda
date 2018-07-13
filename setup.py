@@ -142,9 +142,9 @@ async def on_message(message):
                             '/ip » Veja o IP de conexão ao servidor.\n'
                             '/moeda » Brinque de cara ou coroa.\n\n'
                             '**UTILITÁRIOS:**\n'
-                            '/revisão `[nickname]` | `[motivo]` | `[por quê está irregular?]` » Crie uma revisão de seu banimento.\n'
-                            '/reportar `[usuário/nickname]` | `[motivo]` | `[prova]` » Denúncie um usuário do discord ou do servidor.\n'
-                            '/sugestão `[sugestão]` | `[por quê adicionariamos?]` » Crie uma sugestão.'
+                            '/revisão `[nickname] | [motivo] | [por quê está irregular?]` » Crie uma revisão de seu banimento.\n'
+                            '/reportar `[usuário/nickname] | [motivo] | [prova]` » Denúncie um usuário do discord ou do servidor.\n'
+                            '/sugestão `[sugestão] | [por quê adicionariamos?]` » Crie uma sugestão.'
                 )
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
