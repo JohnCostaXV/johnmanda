@@ -122,19 +122,19 @@ async def on_message(message):
             embed = discord.Embed(
                 title='Comandos do bot:',
                 color=COR,
-                description='/userinfo `[usuário]` » Veja as informações de um usuário\n'
-                            '/serverinfo » Veja as informações do servidor\n'
-                            '/dado » Role um dado de um número de 1 á 6\n'
-                            '/avatar `[usuário]` » Veja o avatar seu ou de um membro\n'
-                            '/convite » Gere um convite para convidar todos para nossa comunidade\n'
-                            '/ping » Veja o tempo de resposta do bot\n'
-                            '/ajuda » Veja as informações básicas do servidor End\n'
-                            '/youtuber » Veja os requisitos para ter tag youtuber\n'
-                            '/revisão `[nickname]` | `[motivo]` | `[por quê está irregular?]` » Crie uma revisão de seu banimento\n'
-                            '/reportar `[usuário/nickname]` | `[motivo]` | `[prova]` » Denúncie um usuário do discord ou do servidor\n'
-                            '/sugestão `[sugestão]` | `[por quê adicionariamos?]` » Crie uma sugestão\n'
-                            '/formulário » Veja os formulários disponíveis do servidor\n'
-                            '/ip » Veja o IP de conexão ao servidor'
+                description='/userinfo `[usuário]` » Veja as informações de um usuário.\n'
+                            '/serverinfo » Veja as informações do servidor.\n'
+                            '/dado » Role um dado de um número de 1 á 6.\n'
+                            '/avatar `[usuário]` » Veja o avatar seu ou de um membro.\n'
+                            '/convite » Gere um convite para convidar todos para nossa comunidade.\n'
+                            '/ping » Veja o tempo de resposta do bot.\n'
+                            '/ajuda » Veja as informações básicas do servidor End.\n'
+                            '/youtuber » Veja os requisitos para ter tag youtuber.\n'
+                            '/revisão `[nickname]` | `[motivo]` | `[por quê está irregular?]` » Crie uma revisão de seu banimento.\n\n'
+                            '/reportar `[usuário/nickname]` | `[motivo]` | `[prova]` » Denúncie um usuário do discord ou do servidor.\n\n'
+                            '/sugestão `[sugestão]` | `[por quê adicionariamos?]` » Crie uma sugestão.\n'
+                            '/formulário » Veja os formulários disponíveis do servidor.\n'
+                            '/ip » Veja o IP de conexão ao servidor.'
                 )
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
