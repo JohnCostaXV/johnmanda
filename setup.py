@@ -117,6 +117,14 @@ async def on_message(message):
         time.sleep(50)
         await client.delete_message(msg)
 
+    if message.content.startswith('/moeda'):
+        escolha = random.randint(1,2)
+        if escolha == 1:
+            await client.add_reaction(message, '🌚')
+        if escolha == 2:
+            await client.add_reaction(message, '👑')
+
+
     if message.content.startswith('/comandos'):
         try:
             embed = discord.Embed(
@@ -131,7 +139,8 @@ async def on_message(message):
                             '/ajuda » Veja as informações básicas do servidor End.\n'
                             '/youtuber » Veja os requisitos para ter tag youtuber.\n'
                             '/formulário » Veja os formulários disponíveis do servidor.\n'
-                            '/ip » Veja o IP de conexão ao servidor.\n\n'
+                            '/ip » Veja o IP de conexão ao servidor.\n'
+                            '/moeda » Brinque de cara ou coroa.\n\n'
                             '**UTILITÁRIOS:**\n'
                             '/revisão `[nickname]` | `[motivo]` | `[por quê está irregular?]` » Crie uma revisão de seu banimento.\n'
                             '/reportar `[usuário/nickname]` | `[motivo]` | `[prova]` » Denúncie um usuário do discord ou do servidor.\n'
