@@ -113,7 +113,9 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
 
     if message.content.startswith('/convite'):
-        await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
+        msg = await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
+        time.sleep(50)
+        await client.delete_message(msg)
 
     if message.content.startswith('/comandos'):
         try:
