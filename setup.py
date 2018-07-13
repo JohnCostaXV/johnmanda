@@ -130,11 +130,12 @@ async def on_message(message):
                             '/ping » Veja o tempo de resposta do bot.\n'
                             '/ajuda » Veja as informações básicas do servidor End.\n'
                             '/youtuber » Veja os requisitos para ter tag youtuber.\n'
-                            '/revisão `[nickname]` | `[motivo]` | `[por quê está irregular?]` » Crie uma revisão de seu banimento.\n\n'
-                            '/reportar `[usuário/nickname]` | `[motivo]` | `[prova]` » Denúncie um usuário do discord ou do servidor.\n\n'
-                            '/sugestão `[sugestão]` | `[por quê adicionariamos?]` » Crie uma sugestão.\n'
                             '/formulário » Veja os formulários disponíveis do servidor.\n'
-                            '/ip » Veja o IP de conexão ao servidor.'
+                            '/ip » Veja o IP de conexão ao servidor.\n\n'
+                            '**UTILITÁRIOS:**\n'
+                            '/revisão `[nickname]` | `[motivo]` | `[por quê está irregular?]` » Crie uma revisão de seu banimento.\n'
+                            '/reportar `[usuário/nickname]` | `[motivo]` | `[prova]` » Denúncie um usuário do discord ou do servidor.\n'
+                            '/sugestão `[sugestão]` | `[por quê adicionariamos?]` » Crie uma sugestão.'
                 )
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
