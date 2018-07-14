@@ -590,7 +590,7 @@ async def on_message(message):
             args = message.content.split(" ")
             tempo = (" ".join(args[3:]))
             user = message.mentions[0]
-            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
+            cargo = discord.utils.get(user.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
             await client.add_roles(user, cargo)
             timesquad = int(tempo)
