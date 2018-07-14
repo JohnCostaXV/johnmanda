@@ -543,7 +543,6 @@ async def on_message(message):
             user = message.mentions[0]
             canal = client.get_channel('448449971629588481')
             cargo = discord.utils.get(user.server.roles, name="Silenciado")
-            await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
                 title='SILENCIADO 🔈',
                 color=COR,
@@ -555,6 +554,7 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
             await client.add_roles(user, cargo)
+            await client.delete_message(message)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
@@ -567,7 +567,6 @@ async def on_message(message):
             user = message.mentions[0]
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
-            await client.send_message(message.channel, "Não está mais silenciado!")
             embed = discord.Embed(
                 title='DESMUTADO 🔊',
                 color=COR,
@@ -579,6 +578,7 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
             await client.remove_roles(user, cargo)
+            await client.delete_message(message)
         else:
             msg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
@@ -596,11 +596,10 @@ async def on_message(message):
             temp = args[2]
             timesquad = int(temp)
             reallytime = datetime.timedelta(seconds=timesquad)
-            await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
                 title='SILENCIADO 🔈',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
