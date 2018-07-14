@@ -546,7 +546,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, join, user.discriminator, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
