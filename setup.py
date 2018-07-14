@@ -113,11 +113,6 @@ async def on_message(message):
         )
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.startswith('/convite'):
-        msg = await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
-        time.sleep(50)
-        await client.delete_message(msg)
-
     if message.content.startswith('/moeda'):
         escolha = random.randint(1,2)
         if escolha == 1:
@@ -627,5 +622,9 @@ async def on_message(message):
         embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
         await client.edit_message(bot_msg, embed=embed)
 
+    if message.content.startswith('/convite'):
+        msg = await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
+        time.sleep(50)
+        await client.delete_message(msg)
 
 client.run(os.environ.get("BOT_TOKEN"))
