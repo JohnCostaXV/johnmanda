@@ -611,7 +611,7 @@ async def on_message(message):
             embed1 = discord.Embed(
                 title='DESMUTADO 🔊',
                 color=COR,
-                description='O usuário **{}#{}**, não está mais silenciado!'
+                description='O usuário **{}#{}**, não está mais silenciado!'.format(user.name, user.discriminator)
             )
             embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
