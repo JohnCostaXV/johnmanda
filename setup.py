@@ -543,6 +543,7 @@ async def on_message(message):
             user = message.mentions[0]
             canal = client.get_channel('448449971629588481')
             cargo = discord.utils.get(user.server.roles, name="Silenciado")
+            await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
@@ -566,6 +567,7 @@ async def on_message(message):
             user = message.mentions[0]
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
+            await client.send_message(message.channel, "Não está mais silenciado!")
             embed = discord.Embed(
                 title='DESMUTADO',
                 color=COR,
@@ -593,6 +595,7 @@ async def on_message(message):
             await client.add_roles(user, cargo)
             timesquad = int(tempo)
             reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
+            await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
