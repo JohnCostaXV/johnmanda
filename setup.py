@@ -608,7 +608,7 @@ async def on_message(message):
             await client.send_message(canal, embed=embed)
             await client.delete_message(message)
             time.sleep(timesquad)
-            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
+            cargo = discord.utils.get(user.server.roles, name='Silenciado')
             await client.remove_roles(user, cargo)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
