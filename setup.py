@@ -593,7 +593,7 @@ async def on_message(message):
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
             await client.add_roles(user, cargo)
-            timesquad = int(tempo)
+            timesquad = int()
             await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
                 title='SILENCIADO 🔈',
