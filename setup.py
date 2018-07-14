@@ -594,12 +594,13 @@ async def on_message(message):
             canal = client.get_channel('448449971629588481')
             await client.add_roles(user, cargo)
             timesquad = int(tempo)
+            time = (" ".join(args[2:]))
             reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
             await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
                 title='SILENCIADO 🔈',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, time, tempo, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
