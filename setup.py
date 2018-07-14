@@ -169,6 +169,7 @@ async def on_message(message):
         finally:
             pass
 
+
     if message.content.startswith('/say'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
@@ -537,8 +538,7 @@ async def on_message(message):
             join = (" ".join(args[2:]))
             user = message.mentions[0]
             canal = client.get_channel('448449971629588481')
-            cargo = discord.utils.find(lambda r: r.name == "Silenciado", user.server.roles)
-            await client.add_roles(user, cargo)
+            cargo = discord.utils.get(user.server.roles, name="Silenciado")
             embed = discord.Embed(
                 title='SILENCIADO ⛔',
                 color=COR,
@@ -549,19 +549,33 @@ async def on_message(message):
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
+            await client.add_roles(user, cargo)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
             await client.delete_message(message)
             await client.delete_message(msglg)
 
+
+    if message.content.startswith('/changelog'):
+        if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
+            args = message.content.split(" ")
+            canal = client.get_channel('417395893495660544')
+            embed = discord.Embed(
+                title='',
+                color=COR,
+                description=''
+            )
+            embed.set_author(name='📂 Changelog')
+            embed.add_field(name=message.server.created_at.strftime("%d/%b/%Y %H:%M"), value=" ".join(args[1:]))
+            await client.send_message(message.channel, embed=embed)
+
     if message.content.startswith('/unmute'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             user = message.mentions[0]
-            cargo = discord.utils.get(user.guild.roles, name='Silenciado')
+            cargo = discord.utils.get(user.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
-            await client.remove_roles(user, cargo)
             embed = discord.Embed(
                 title='DESMUTADO',
                 color=COR,
@@ -572,6 +586,7 @@ async def on_message(message):
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
+            await client.remove_roles(user, cargo)
         else:
             msg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
