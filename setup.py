@@ -67,6 +67,7 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('/sugestão'):
         try:
+            canal = client.get_channel('448435617848885248')
             await client.delete_message(message)
             remover_sugestao = message.content.replace("/sugestão", "")
             separar = remover_sugestao.split("|", 1)
@@ -196,6 +197,7 @@ async def on_message(message):
     
     if message.content.startswith('/revisão'):
         try:
+            canal = client.get_channel('466666024788295690')
             await client.delete_message(message)
             remover_revisão = message.content.replace("/revisão ", "")
             separar = remover_revisão.split("|", 2)
@@ -223,7 +225,7 @@ async def on_message(message):
             )
             await client.send_message(message.author, 'Sua revisão foi enviada')
             time.sleep(3)
-            await client.send_message(message.channel, embed=embed)
+            await client.send_message(canal, embed=embed)
         except IndexError:
             await client.send_message(message.author, '{}, use /revisão <nickname> | <motivo> | <Por quê está irregular?>'.format(message.author.mention))
             time.sleep(3)
@@ -242,8 +244,10 @@ async def on_message(message):
             time.sleep(3)
             await client.send_message(canal, auto)
 
+
     if message.content.startswith('/reportar'):
         try:
+            canal = client.get_channel('466665871218049024')
             remover_reportar = message.content.replace("/reportar ", "")
             separar = remover_reportar.split("|", 2)
             tmp1 = datetime.datetime.now()
@@ -275,7 +279,7 @@ async def on_message(message):
                 text="Denúncia postada com sucesso.",
                 icon_url=message.author.avatar_url
             )
-            await client.send_message(message.channel, embed=embed)
+            await client.send_message(canal, embed=embed)
             await client.delete_message(message)
         except IndexError:
             await client.send_message(message.author, '{}, use /reportar <Suspeito> | <Motivo> | <Prova>'.format(message.author.mention))
@@ -566,7 +570,7 @@ async def on_message(message):
                 color=COR,
                 description=''
             )
-            embed.add_field(name=':white_small_square: ' + message.embed.created_at.strftime("%d/%m/%Y, %H:%M:%S"), value=" ".join(args[1:]))
+            embed.add_field(name=':white_small_square: ' + message.discordObject.created_at.strftime("%d/%m/%Y, %H:%M:%S"), value=" ".join(args[1:]))
             await client.delete_message(message)
             await client.send_message(message.channel, embed=embed)
 
