@@ -567,7 +567,7 @@ async def on_message(message):
                 description=''
             )
             embed.set_author(name='📂 Changelog')
-            embed.add_field(name='◽ ' + message.server.created_at.strftime("%d/%m/%Y"), value=" ".join(args[1:]))
+            embed.add_field(name='▫ ' + message.server.created_at.strftime("%d/%m/%Y"), value=" ".join(args[1:]))
             await client.send_message(message.channel, embed=embed)
 
     if message.content.startswith('/unmute'):
