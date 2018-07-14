@@ -560,20 +560,6 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msglg)
 
-
-    if message.content.startswith('/changelog'):
-        if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
-            args = message.content.split(" ")
-            canal = client.get_channel('417395893495660544')
-            embed = discord.Embed(
-                title=':clipboard: Changelog',
-                color=COR,
-                description=''
-            )
-            embed.add_field(name=':white_small_square: ' + message.discordObject.created_at.strftime("%d/%m/%Y, %H:%M:%S"), value=" ".join(args[1:]))
-            await client.delete_message(message)
-            await client.send_message(message.channel, embed=embed)
-
     if message.content.startswith('/unmute'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
