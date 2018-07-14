@@ -567,8 +567,8 @@ async def on_message(message):
                 description=''
             )
             embed.set_author(name='📂 Changelog')
-            embed.add_field(name=message.server.created_at.strftime("%d/%b/%Y %H:%M"), value=" ".join(args[1:]))
-            await client.send_message(message.channel, embed=embed)
+            embed.add_field(name='◽ ' + message.server.created_at.strftime("%d/%m/%Y"), value=" ".join(args[1:]))
+            await client.send_message(canal, embed=embed)
 
     if message.content.startswith('/unmute'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
