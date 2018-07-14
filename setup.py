@@ -170,6 +170,34 @@ async def on_message(message):
         finally:
             pass
 
+    if message.content.startswith('/avatar'):
+        try:
+            user = message.mentions[0]
+            embed = discord.Embed(
+                title="",
+                color=COR,
+                description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}.'.format(user.name)
+            )
+            embed.set_author(
+                name=message.server.name,
+                icon_url='https://i.imgur.com/yJey64O.png'
+            )
+            embed.set_image(
+                url=user.avatar_url
+            )
+            await client.send_message(message.channel, embed=embed)
+        except IndexError:
+            await client.delete_message(message)
+            msg = await client.send_message(message.channel, '{}, mencione um usuário existente, por exemplo, `/avatar @JohnnCosta`.'.format(message.author.mention))
+            time.sleep(10)
+            await client.delete_message(msg)
+        except:
+            msg1 = await client.send_message(message.channel, 'Desculpe pelo erro.')
+            time.sleep(5)
+            await client.delete_message(msg1)
+        finally:
+            pass
+
 
     if message.content.startswith('/say'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
@@ -250,10 +278,6 @@ async def on_message(message):
             canal = client.get_channel('466665871218049024')
             remover_reportar = message.content.replace("/reportar ", "")
             separar = remover_reportar.split("|", 2)
-            tmp1 = datetime.datetime.now()
-
-            utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
-            del tmp1
 
             embed = discord.Embed(
                 title="DENÚNCIA 🔔",
@@ -420,36 +444,7 @@ async def on_message(message):
         embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
         embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
         embed.set_footer(text="End", icon_url="https://i.imgur.com/yJey64O.png")
-        await client.send_message(message.channel, embed=embed)        
-            
-    if message.content.startswith('/avatar'):
-        try:
-            user = message.mentions[0]
-            embed = discord.Embed(
-                title="",
-                color=COR,
-                description='Clique [aqui](' + user.avatar_url + ') para acessar o avatar do {}.'.format(user.name)
-            )
-            embed.set_author(
-                name=message.server.name,
-                icon_url='https://i.imgur.com/yJey64O.png'
-            )
-            embed.set_image(
-                url=user.avatar_url
-            )
-            await client.send_message(message.channel, embed=embed)
-        except IndexError:
-            await client.delete_message(message)
-            msg = await client.send_message(message.channel, '{}, mencione um usuário existente, por exemplo, `/avatar @JohnnCosta`.'.format(message.author.mention))
-            time.sleep(10)
-            await client.delete_message(msg)
-        except:
-            msg1 = await client.send_message(message.channel, 'Desculpe pelo erro.')
-            time.sleep(5)
-            await client.delete_message(msg1)
-        finally:
-            pass
-            
+        await client.send_message(message.channel, embed=embed)                    
 
     if message.content.lower().startswith('/userinfo'):
         try:
