@@ -544,7 +544,6 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
             await client.add_roles(user, cargo)
-            await client.delete_message(message)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
@@ -568,7 +567,6 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
             await client.remove_roles(user, cargo)
-            await client.delete_message(message)
         else:
             msg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
@@ -596,7 +594,6 @@ async def on_message(message):
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
-            await client.delete_message(message)
             time.sleep(timesquad)
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             await client.remove_roles(user, cargo)
