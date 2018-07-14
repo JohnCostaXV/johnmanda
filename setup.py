@@ -608,6 +608,14 @@ async def on_message(message):
             await client.send_message(canal, embed=embed)
             await client.delete_message(message)
             time.sleep(timesquad)
+            embed1 = discord.Embed(
+                title='DESMUTADO 🔊',
+                color=COR,
+                description='O usuário **{}#{}**, não está mais silenciado!'
+            )
+            embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            await client.send_message(canal, embed=embed1)
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             await client.remove_roles(user, cargo)
         else:
