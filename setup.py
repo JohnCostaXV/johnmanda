@@ -67,7 +67,7 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('/sugestão'):
         try:
-            canal = client.get_channel('467704726411018260')
+            canal = client.get_channel('448435617848885248')
             await client.delete_message(message)
             remover_sugestao = message.content.replace("/sugestão", "")
             separar = remover_sugestao.split("|", 1)
@@ -193,7 +193,7 @@ async def on_message(message):
 
 
     if message.content.startswith('/say'):
-        if '407677666750365706' or '431189978631110666' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
+        if '431189978631110666' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
             asyncio.sleep(1)
@@ -337,7 +337,7 @@ async def on_message(message):
             pass
 
     if message.content.startswith('/kick'):
-        if '407677666750365706' or '431189978631110666' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
+        if '431189978631110666' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
             channel = client.get_channel('448449971629588481')
@@ -360,7 +360,7 @@ async def on_message(message):
             await client.delete_message(msglg)  
 
     if message.content.startswith('/ban'):
-        if '407677666750365706' or '431189978631110666' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
+        if '431189978631110666' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             args = message.content.split(" ")
             await client.delete_message(message)
@@ -396,7 +396,7 @@ async def on_message(message):
             pass
    
     if message.content.startswith('/anunciar'):
-        if '407677666750365706' or '431189978631110666' or '417426253658849281' or '407678188773179417' in [role.id for role in message.author.roles]:
+        if '431189978631110666' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
             args = message.content.split(" ")
             embed = discord.Embed(
@@ -522,7 +522,7 @@ async def on_message(message):
         await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
 
     if message.content.startswith('/mute'):
-        if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
+        if '431189978631110666' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             join = (" ".join(args[2:]))
             user = message.mentions[0]
@@ -546,7 +546,7 @@ async def on_message(message):
             await client.delete_message(msglg)
 
     if message.content.startswith('/unmute'):
-        if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
+        if '431189978631110666' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             user = message.mentions[0]
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
@@ -569,7 +569,7 @@ async def on_message(message):
             await client.delete_message(msg)
 
     if message.content.startswith('/tempmute'):
-        if '407677666750365706' or '417426253658849281' or '431189978631110666' or  '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
+        if '407706417282416641' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             tempo = (" ".join(args[3:]))
             user = message.mentions[0]
