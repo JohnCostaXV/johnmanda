@@ -67,7 +67,7 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('/sugestão'):
         try:
-            canal = client.get_channel('448435617848885248')
+            canal = client.get_channel('467704726411018260')
             await client.delete_message(message)
             remover_sugestao = message.content.replace("/sugestão", "")
             separar = remover_sugestao.split("|", 1)
