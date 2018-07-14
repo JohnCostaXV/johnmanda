@@ -97,10 +97,8 @@ async def on_message(message):
             await client.add_reaction(botmsg, "👎")
         except IndexError:
             await client.send_message(message.author, "Uso correto do comando: /sugestão <sugestão> | <por quê adicionariamos?>")
-            time.sleep(3)
         except:
             await client.send_message(message.author,"Desculpe pelo erro.")
-            time.sleep(3)
         finally:
             pass
     
@@ -251,10 +249,8 @@ async def on_message(message):
             await client.send_message(canal, embed=embed)
         except IndexError:
             await client.send_message(message.author, '{}, use /revisão <nickname> | <motivo> | <Por quê está irregular?>'.format(message.author.mention))
-            time.sleep(3)
         except:
             await client.send_message(message.author, 'Desculpe pelo erro.')
-            time.sleep(3)
             print('Error')
         finally:
             pass
@@ -524,7 +520,6 @@ async def on_message(message):
        
     if message.content.startswith('/ip'):
         await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
-
 
     if message.content.startswith('/mute'):
         if '407677666750365706' or '431189978631110666' or '417426253658849281' in [role.id for role in message.author.roles]:
