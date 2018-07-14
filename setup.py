@@ -593,12 +593,14 @@ async def on_message(message):
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             canal = client.get_channel('448449971629588481')
             await client.add_roles(user, cargo)
-            timesquad = int()
+            temp = args[2]
+            timesquad = int(temp)
+            reallytime = datetime.timedelta(seconds=timesquad)
             await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
                 title='SILENCIADO 🔈',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, datetime.timedelta(seconds=timesquad), tempo, message.author.mention)
+                description='O usuário **{}#{}**, foi silenciado!\n\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
