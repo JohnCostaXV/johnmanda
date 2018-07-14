@@ -545,7 +545,7 @@ async def on_message(message):
             cargo = discord.utils.get(user.server.roles, name="Silenciado")
             await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
-                title='SILENCIADO ⛔',
+                title='SILENCIADO 🔈',
                 color=COR,
                 description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
             )
@@ -569,9 +569,9 @@ async def on_message(message):
             canal = client.get_channel('448449971629588481')
             await client.send_message(message.channel, "Não está mais silenciado!")
             embed = discord.Embed(
-                title='DESMUTADO',
+                title='DESMUTADO 🔊',
                 color=COR,
-                description='O usuário **{}#{}**, foi desmutado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
+                description='O usuário **{}#{}**, não está mais silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
             )
             embed.set_thumbnail(
                 url='https://i.imgur.com/yJey64O.png'
@@ -597,7 +597,7 @@ async def on_message(message):
             reallytime = "{}".format(datetime.timedelta(seconds=timesquad))
             await client.send_message(message.channel, "Silenciado com sucesso!")
             embed = discord.Embed(
-                title='SILENCIADO ⛔',
+                title='SILENCIADO 🔈',
                 color=COR,
                 description='O usuário **{}#{}**, foi silenciado!\n\nDuração: {}\nMotivo: {}\nAutor: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
             )
