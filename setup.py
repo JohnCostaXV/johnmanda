@@ -586,9 +586,8 @@ async def on_message(message):
             await client.delete_message(msg)
 
     if message.content.startswith('/tempmute'):
-        if '407677666750365706' or '417426253658849281' or '431189978631110666' or '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
+        if '407677666750365706' or '417426253658849281' or '431189978631110666' or  '407678188773179417' or '407678481670078475' or '407706417282416641' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
-            await client.delete_message(message)
             tempo = (" ".join(args[3:]))
             user = message.mentions[0]
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
@@ -607,6 +606,7 @@ async def on_message(message):
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
+            await client.delete_message(message)
             time.sleep(timesquad)
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             await client.remove_roles(user, cargo)
