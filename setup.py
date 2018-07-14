@@ -92,7 +92,7 @@ async def on_message(message):
             )
             await client.send_message(message.author, "Sua sugestão foi enviada!")
             time.sleep(3)
-            botmsg = await client.send_message(message.channel, embed=embed)
+            botmsg = await client.send_message(canal, embed=embed)
             await client.add_reaction(botmsg, "👍")
             await client.add_reaction(botmsg, "👎")
         except IndexError:
