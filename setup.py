@@ -562,11 +562,10 @@ async def on_message(message):
             args = message.content.split(" ")
             canal = client.get_channel('417395893495660544')
             embed = discord.Embed(
-                title='',
+                title=':clipboard: Changelog',
                 color=COR,
                 description=''
             )
-            embed.set_author(name=' 📋 Changelog')
             embed.add_field(name=':white_small_square: ' + message.server.created_at.strftime("%d/%m/%Y"), value=" ".join(args[1:]))
             await client.delete_message(message)
             await client.send_message(message.channel, embed=embed)
