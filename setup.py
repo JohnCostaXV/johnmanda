@@ -566,7 +566,7 @@ async def on_message(message):
                 color=COR,
                 description=''
             )
-            embed.set_author(name='📋 Changelog\n\n')
+            embed.set_author(name=':clipboard: Changelog')
             embed.add_field(name=':white_small_square: ' + message.server.created_at.strftime("%d/%m/%Y"), value=" ".join(args[1:]))
             await client.delete_message(message)
             await client.send_message(message.channel, embed=embed)
