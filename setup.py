@@ -608,17 +608,8 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
             time.sleep(timesquad)
-            channel = client.get_channel('448449971629588481')
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             await client.remove_roles(user, cargo)
-            embed1 = discord.Embed(
-                title='DESMUTADO 🔊',
-                color=COR,
-                description='O usuário **{}#{}**, não está mais silenciado!'.format(user.name, user.discriminator)
-            )
-            embed1.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
-            embed1.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-            await client.send_message(channel, embed=embed1)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             time.sleep(10)
