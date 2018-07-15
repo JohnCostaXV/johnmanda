@@ -617,8 +617,8 @@ async def on_message(message):
                     description='/tempmute [usuário] » Silenciar temporariamente do discord.\n'
                                 'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`'
                 )
-                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey640.png')
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey640.png')
+                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
                 msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                 await client.send_message(message.author, embed=embed)
             else:
