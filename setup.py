@@ -670,7 +670,7 @@ async def on_message(message):
                                 '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
                                 '**Ameaça ao servidor** - *Ban permanente*.\n\n' 
                                 '**Abuso de bug´s** - *Ban permanente*.\n\n'
-                                '**Descriminação** - *Ban temporário de __172800__ segundos*.\n\n'
+                                '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
                                 '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
                                 '**Falsificação de provas** - *Ban permanente*.\n\n' 
                                 '**Chantagem** - *Ban permanente*.\n\n'
@@ -751,14 +751,22 @@ async def on_message(message):
                 embed = discord.Embed(
                     title='Comandos para o cargo `STAFF+`:',
                     color=COR,
-                    description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n\n'
-                                '/kick [usuário] » Expulsão do discord.\n\n'
-                                '/mute [usuário] [motivo] » Mute permanentemente do discord.\n\n'
-                                '/unmute [usuário] » Unmute do discord.\n\n'
-                                '/tempban [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n\n'
-                                '/tempmute [usuário] [duração] [motivo] » Mute temporariamente do discord.\n\n'
-                                '/say [mensagem] » bot repete a mensagem.\n\n'
-                                '/anunciar [mensagem] » bot repete em Embed'
+                    description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n'
+                                'exemplo: `/ban @JohnnCosta Divulgação de link´s`\n\n'
+                                '/kick [usuário] » Expulsão do discord.\n'
+                                'exemplo: `/kick @JohnnCosta`\n\n'
+                                '/mute [usuário] [motivo] » Mute permanentemente do discord.\n'
+                                'exemplo: `/mute @JohnnCosta Spam`\n\n'
+                                '/unmute [usuário] » Unmute do discord.\n'
+                                'exemplo: `/unmute @JohnnCosta`\n\n'
+                                '/tempban [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
+                                'exemplo: `/tempban @JohnnCosta 172800 Discriminação`\n\n'
+                                '/tempmute [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
+                                'exemplo: `/tempmute @JohnnCosta 21600 Iniciativa de Flood`\n\n'
+                                '/say [mensagem] » bot repete a mensagem.\n'
+                                'exemplo: `/say Olá`\n\n'
+                                '/anunciar [mensagem] » bot repete em Embed\n'
+                                'exemplo: `/anunciar Olá`\n\n'
                 )
                 embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
                 embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
