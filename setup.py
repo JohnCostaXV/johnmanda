@@ -487,36 +487,36 @@ async def on_message(message):
             await client.delete_message(msglg)
 
     if message.content.startswith('/ban'):
-        if '468087006736416779' in [role.id for role in message.author.roles]:
-            asyncio.sleep(10)
-            args = message.content.split(" ")
-            await client.delete_message(message)
-            channel1 = client.get_channel('448449971629588481')
-            user = message.mentions[0]
-            await client.ban(user)
-            join = (" ".join(args[2:]))
-            embed = discord.Embed(
-                title='BANIDO ⛔',
-                color=COR,
-                description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/yJey64O.png'
-            )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-        else:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            time.sleep(10)
-            await client.delete_message(message)
-            await client.delete_message(msglg)    
         try:
-            await client.send_message(channel1, embed=embed)
+            if '468087006736416779' in [role.id for role in message.author.roles]:
+                asyncio.sleep(10)
+                args = message.content.split(" ")
+                await client.delete_message(message)
+                channel1 = client.get_channel('448449971629588481')
+                user = message.mentions[0]
+                await client.ban(user)
+                join = (" ".join(args[2:]))
+                embed = discord.Embed(
+                    title='BANIDO ⛔',
+                    color=COR,
+                    description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
+                )
+                embed.set_thumbnail(
+                    url='https://i.imgur.com/yJey64O.png'
+                )
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                await client.send_message(channel1, embed=embed)
+            else:
+                msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(msglg)    
         except IndexError:
-            msg = await client.send_message(message.channel, '{}, use /ban <@>.'.format(message.author.mention))
+            msg = await client.send_message(message.channel, '{}, use /ban [usuário] [motivo]'.format(message.author.mention))
             time.sleep(10)
             await client.delete_message(msg)
         except:
-            a = await client.send_message(message.channel, '{}, use /ban <@> <motivo>.'.format(message.author.mention))
+            a = await client.send_message(message.channel, '{}, use /ban [usuário] [motivo].'.format(message.author.mention))
             time.sleep(5)
             await client.delete_message(a)
         finally:
