@@ -750,6 +750,8 @@ async def on_message(message):
                                 '/kick [usuário] » Expulsão do discord.\n\n'
                                 '/mute [usuário] [motivo] » Mute permanentemente do discord.\n\n'
                                 '/unmute [usuário] » Unmute do discord.\n\n'
+                                '/tempban [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n\n'
+                                '/tempmute [usuário] [duração] [motivo] » Mute temporariamente do discord.\n\n'
                                 '/say [mensagem] » bot repete a mensagem.\n\n'
                                 '/anunciar [mensagem] » bot repete em Embed'
                 )
