@@ -651,11 +651,11 @@ async def on_message(message):
                 embed = discord.Embed(
                     title='Comandos para o cargo `STAFF+`:',
                     color=COR,
-                    description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                                '/kick [usuário] » Expulsão do discord.\n'
-                                '/mute [usuário] [motivo] » Mute permanentemente do discord.\n'
-                                '/unmute [usuário] » Unmute do discord.\n'
-                                '/say [mensagem] » bot repete a mensagem.\n'
+                    description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n\n'
+                                '/kick [usuário] » Expulsão do discord.\n\n'
+                                '/mute [usuário] [motivo] » Mute permanentemente do discord.\n\n'
+                                '/unmute [usuário] » Unmute do discord.\n\n'
+                                '/say [mensagem] » bot repete a mensagem.\n\n'
                                 '/anunciar [mensagem] » bot repete em Embed'
                 )
                 embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
