@@ -67,7 +67,7 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('/sugestão'):
         try:
-            canal = client.get_channel('467704726411018260')
+            canal = client.get_channel('448435617848885248')
             await client.delete_message(message)
             remover_sugestao = message.content.replace("/sugestão", "")
             separar = remover_sugestao.split("|", 1)
@@ -569,34 +569,46 @@ async def on_message(message):
             await client.delete_message(msg)
 
     if message.content.startswith('/tempmute'):
-        if '407706417282416641' in [role.id for role in message.author.roles]:
-            args = message.content.split(" ")
-            tempo = (" ".join(args[3:]))
-            user = message.mentions[0]
-            cargo = discord.utils.get(user.server.roles, name='Silenciado')
-            canal = client.get_channel('448449971629588481')
-            await client.add_roles(user, cargo)
-            temp = args[2]
-            timesquad = int(temp)
-            reallytime = datetime.timedelta(seconds=timesquad)
-            embed = discord.Embed(
-                title='SILENCIADO 🔈',
-                color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/yJey64O.png'
-            )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-            await client.send_message(canal, embed=embed)
-            time.sleep(timesquad)
-            cargo = discord.utils.get(user.server.roles, name='Silenciado')
-            await client.remove_roles(user, cargo)
-        else:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+        try:
+            if '407706417282416641' in [role.id for role in message.author.roles]:
+                args = message.content.split(" ")
+                tempo = (" ".join(args[3:]))
+                user = message.mentions[0]
+                cargo = discord.utils.get(user.server.roles, name='Silenciado')
+                canal = client.get_channel('448449971629588481')
+                await client.add_roles(user, cargo)
+                temp = args[2]
+                timesquad = int(temp)
+                reallytime = datetime.timedelta(seconds=timesquad)
+                embed = discord.Embed(
+                    title='SILENCIADO 🔈',
+                    color=COR,
+                    description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                )
+                embed.set_thumbnail(
+                    url='https://i.imgur.com/yJey64O.png'
+                )
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                await client.send_message(canal, embed=embed)
+                time.sleep(timesquad)
+                cargo = discord.utils.get(user.server.roles, name='Silenciado')
+                await client.remove_roles(user, cargo)
+            else:
+                msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(msglg)
+        except IndexError:
+            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
             time.sleep(10)
-            await client.delete_message(message)
-            await client.delete_message(msglg)
+            await client.delete_message(msg)
+        except:
+            msg1 = await client.send_message(message.channel, 'Teste')
+            time.sleep(10)
+            await client.delete_message(msg1)
+        finally:
+            pass
+
 
     if message.content.lower().startswith('/ping'):
         embed1 = discord.Embed(
