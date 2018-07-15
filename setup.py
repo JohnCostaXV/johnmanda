@@ -648,7 +648,7 @@ async def on_message(message):
             pass
     
     if message.content.startswith('/apagar'):
-        number = args[2]
+        number = args[1]
         number = int(number)
         counter = 0
         async for x in client.logs_from(message.channel, limit = number):
