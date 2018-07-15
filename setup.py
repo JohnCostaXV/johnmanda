@@ -615,7 +615,7 @@ async def on_message(message):
                     title='Comandos para o cargo `STAFF`:',
                     color=COR,
                     description='/tempmute [usuário] » Silenciar temporariamente do discord.\n'
-                                '               exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`'
+                                'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`'
                 )
                 embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey640.png')
                 embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey640.png')
