@@ -533,11 +533,8 @@ async def on_message(message):
             embed = discord.Embed(
                 title='SILENCIADO 🔈',
                 color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/yJey64O.png'
-            )
+                description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention))
+            embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
             await client.send_message(canal, embed=embed)
             await client.add_roles(user, cargo)
@@ -648,7 +645,7 @@ async def on_message(message):
             pass
     
     if message.content.startswith('/apagar'):
-        number = args[1]
+        number = args[2]
         number = int(number)
         counter = 0
         async for x in client.logs_from(message.channel, limit = number):
