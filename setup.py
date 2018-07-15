@@ -608,23 +608,65 @@ async def on_message(message):
         finally:
             pass
 
+    if message.content.startswith('/staff'):
+        try:
+            if '468087214241218560' in [role.id for role in message.author.roles]:
+                embed = discord.Embed(
+                    title='Comandos para o cargo `STAFF`:',
+                    color=COR,
+                    description='/tempmute [usuário] » Silenciar temporariamente do discord.\n'
+                                '               exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`'
+                )
+                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey640.png')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey640.png')
+                msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+                await client.send_message(message.author, embed=embed)
+            else:
+                mssg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(mssg)
+        except IndexError:
+            time.sleep(2)
+            await client.delete_message(msg)
+            asyncio.sleep(21000)
+            msg1 = await client.send_message(message.channel, 'Error')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msg1)
+        except:
+            time.sleep(2)
+            await client.delete_message(msg)
+            asyncio.sleep(21000)
+            tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(tst)
+        finally:
+            pass        
+
     if message.content.startswith('/staff+'):
         try:
-            embed = discord.Embed(
-                title='Comandos para o cargo `STAFF`:',
-                color=COR,
-                description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                            '/kick [usuário] » Expulsão do discord.\n'
-                            '/mute [usuário] [motivo] » Mute permanentemente do discord.\n'
-                            '/unmute [usuário] » Unmute do discord.\n'
-                            '/say [mensagem] » bot repete a mensagem.\n'
-                            '/anunciar [mensagem] » bot repete em Embed\n'
-                            '/apagar [1 à 100] » Apague de 0 à 100 mensagens.\n'
-            )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
-            await client.send_message(message.author, embed=embed)
+            if '468087006736416779' in [role.id for role in message.author.roles]:
+                embed = discord.Embed(
+                    title='Comandos para o cargo `STAFF+`:',
+                    color=COR,
+                    description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n'
+                                '/kick [usuário] » Expulsão do discord.\n'
+                                '/mute [usuário] [motivo] » Mute permanentemente do discord.\n'
+                                '/unmute [usuário] » Unmute do discord.\n'
+                                '/say [mensagem] » bot repete a mensagem.\n'
+                                '/anunciar [mensagem] » bot repete em Embed'
+                )
+                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+                await client.send_message(message.author, embed=embed)
+            else:
+                mssg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(mssg)
         except IndexError:
             time.sleep(2)
             await client.delete_message(msg)
@@ -643,16 +685,6 @@ async def on_message(message):
             await client.delete_message(tst)
         finally:
             pass
-    
-    if message.content.startswith('/apagar'):
-        number = args[2]
-        number = int(number)
-        counter = 0
-        async for x in client.logs_from(message.channel, limit = number):
-            if counter < number:
-                await client.delete_message(x)
-                counter += 1
-                await asyncio.sleep(1.2)
 
     if message.content.lower().startswith('/ping'):
         embed1 = discord.Embed(
