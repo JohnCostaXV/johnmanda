@@ -608,7 +608,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/staff'):
+    if message.content.startswith('/staff-'):
         try:
             if '468087214241218560' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
