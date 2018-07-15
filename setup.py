@@ -608,6 +608,58 @@ async def on_message(message):
         finally:
             pass
 
+    if message.content.startswith('/helpstaff'):
+        try:
+            if '468087214241218560' or '468087006736416779' in [role.id for role in message.author.roles]:
+                embed = discord.Embed(
+                    title='PUNIÇÕES & TEMPOS:',
+                    color=COR,
+                    description='Uso de caps-lock excessivo - *__14400__ segundos de tempmute*\n\n'
+                                'Spam - *__14400__ segundos de tempmute*\n\n'
+                                'Flood - *__14400__ segundos de mute*\n\n'
+                                'Divulgação/Citação de servidores - *Ban permanente*\n\n'
+                                'Iniciativa de flood - *__21600__ segundos de mute*\n\n'
+                                'Mensagem fake - *__10800__ segundos de mute*\n\n'
+                                'Ameaça ao jogador - *Ban temporário de __86400__ segundos*\n\n'
+                                'Ameaça ao servidor - *Ban permanente*.\n\n' 
+                                'Abuso de bug´s - *Ban permanente*.\n\n'
+                                'Descriminação - *Ban temporário de __172800__ segundos*.\n\n'
+                                'Anti-Jogo - *Ban temporário de __43200__ segundos*.\n\n'
+                                'Falsificação de provas - *Ban permanente*.\n\n' 
+                                'Chantagem - *Ban permanente*.\n\n'
+                                'Ofensa à staff - *Ban permanente*.\n\n' 
+                                'Uso de hack - *Ban permanente*.\n\n'
+                                'Uso de algum programa proibido - *Ban permanente*.\n\n'
+                                'Palavras inadequadas - *__28800__ segundos de mute*.\n\n'
+                )
+                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+                await client.send_message(message.author, embed=embed)
+            else:
+                mssg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(mssg)
+        except IndexError:
+            time.sleep(2)
+            await client.delete_message(msg)
+            asyncio.sleep(21000)
+            msg1 = await client.send_message(message.channel, 'Comando incorreto!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msg1)
+        except:
+            time.sleep(2)
+            await client.delete_message(msg)
+            asyncio.sleep(21000)
+            tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(tst)
+        finally:
+            pass
+
     if message.content.startswith('/staff-'):
         try:
             if '468087214241218560' in [role.id for role in message.author.roles]:
@@ -671,7 +723,7 @@ async def on_message(message):
         except IndexError:
             time.sleep(2)
             await client.delete_message(msg)
-            asyncio.sleep(21000)
+            await asyncio.sleep(21000)
             msg1 = await client.send_message(message.channel, 'Comando incorreto!')
             await client.delete_message(message)
             time.sleep(10)
@@ -679,7 +731,7 @@ async def on_message(message):
         except:
             time.sleep(2)
             await client.delete_message(msg)
-            asyncio.sleep(21000)
+            await asyncio.sleep(21000)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
             time.sleep(10)
