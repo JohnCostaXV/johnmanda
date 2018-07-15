@@ -486,6 +486,48 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msglg)
 
+
+    if message.content.startswith('/tempban'):
+        try:
+            if '468087006736416779' in [role.id for role in message.author.roles]:
+                args = message.content.split(" ")
+                tempo = (" ".join(args[3:]))
+                await client.delete_message(message)
+                channel1 = client.get_channel('448449971629588481')
+                user = message.mentions[0]
+                temp = args[2]
+                timesquad = int(temp)
+                reallytime = datetime.timedelta(seconds=timesquad)
+                await client.ban(user)
+                join = (" ".join(args[2:]))
+                embed = discord.Embed(
+                    title='BANIDO ⛔',
+                    color=COR,
+                    description='O usuário **{}#{}**, foi banido temporariamente!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                )
+                embed.set_thumbnail(
+                    url='https://i.imgur.com/yJey64O.png'
+                )
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                await client.send_message(canal, embed=embed)
+                time.sleep(timesquad)
+                await client.unban(message.server, user)
+            else:
+                msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(msglg)
+        except IndexError:
+            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
+            time.sleep(10)
+            await client.delete_message(msg)
+        except:
+            msg1 = await client.send_message(message.channel, 'Teste')
+            time.sleep(10)
+            await client.delete_message(msg1)
+        finally:
+            pass
+
     if message.content.startswith('/ban'):
         try:
             if '468087006736416779' in [role.id for role in message.author.roles]:
