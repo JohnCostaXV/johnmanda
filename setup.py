@@ -615,7 +615,8 @@ async def on_message(message):
                     title='Comandos para o cargo `STAFF`:',
                     color=COR,
                     description='/tempmute [usuário] » Silenciar temporariamente do discord.\n'
-                                'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`'
+                                'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`\n\n'
+                                '*Lembrando que os tempmute é contato por segundo! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
                 )
                 embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
                 embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
