@@ -670,6 +670,7 @@ async def on_message(message):
                                 '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
                                 '**Ameaça ao servidor** - *Ban permanente*.\n\n' 
                                 '**Abuso de bug´s** - *Ban permanente*.\n\n'
+                                '**Uso inadequado do chat** - *__43200__ segundos de mute*\n\n'
                                 '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
                                 '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
                                 '**Falsificação de provas** - *Ban permanente*.\n\n' 
