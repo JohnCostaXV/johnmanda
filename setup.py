@@ -47,6 +47,14 @@ async def on_member_join(member):
     await client.add_roles(member, role)
     print("Adicionado o cargo '" + role.name + "' para " + member.name)
 
+
+@client.event
+async def randommessage():
+    canal = client.get_channel('407669684616560650')
+    mensagens = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd', '**LOJA**\nAdquira benefícios no servidor agora mesmo!\n\nPara ter suporte sobre compras, visite https://twitter.com/ServidorEnd?lang=pt e entre em contato via DM.']
+    time.sleep(1800)
+    await client.send_message(canal, mensagens)
+
 @client.event
 async def on_ready():
     print('Iniciado com sucesso!')
@@ -616,7 +624,7 @@ async def on_message(message):
 
     if message.content.startswith('/tempmute'):
         try:
-            if '468087214241218560' in [role.id for role in message.author.roles]:
+            if '468087214241218560' or '468087006736416779' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
                 tempo = (" ".join(args[3:]))
                 user = message.mentions[0]
@@ -657,7 +665,7 @@ async def on_message(message):
 
     if message.content.startswith('/helpstaff'):
         try:
-            if '468087214241218560' in [role.id for role in message.author.roles]:
+            if '468087214241218560' or '468087006736416779' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
                     title='PUNIÇÕES & TEMPOS:',
                     color=COR,
