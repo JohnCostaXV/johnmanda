@@ -616,7 +616,7 @@ async def on_message(message):
 
     if message.content.startswith('/tempmute'):
         try:
-            if '468087214241218560' or '468087006736416779' in [role.id for role in message.author.roles]:
+            if '468087214241218560' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
                 tempo = (" ".join(args[3:]))
                 user = message.mentions[0]
@@ -657,7 +657,7 @@ async def on_message(message):
 
     if message.content.startswith('/helpstaff'):
         try:
-            if '468087214241218560' or '468087006736416779' in [role.id for role in message.author.roles]:
+            if '468087214241218560' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
                     title='PUNIÇÕES & TEMPOS:',
                     color=COR,
