@@ -446,7 +446,8 @@ async def on_message(message):
             await client.delete_message(msg1)
         finally:
             pass
-     
+
+
     if message.content.startswith('/formulário'):
         embed = discord.Embed(
             title='FORMULÁRIOS 📝',
@@ -818,7 +819,6 @@ async def on_message(message):
             color=COR,
             description=':ping_pong: Ping: `{ping_sec}` ms.'.format(ping_sec=time_delta.total_seconds())
         )
-        embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
         await client.edit_message(bot_msg, embed=embed)
 
     if message.content.startswith('/convite'):
