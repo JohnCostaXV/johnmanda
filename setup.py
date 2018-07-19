@@ -477,7 +477,7 @@ async def on_message(message):
     if message.content.startswith('/ip'):
         await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
 
-    if message.content.startswith('/kick'):
+    if message.content.startswith('!/kick'):
         if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
@@ -501,7 +501,7 @@ async def on_message(message):
             await client.delete_message(msglg)
 
 
-    if message.content.startswith('/tempban'):
+    if message.content.startswith('!/tempban'):
         try:
             if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
@@ -582,7 +582,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith('/mute'):
+    if message.content.startswith('!/mute'):
         if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             join = (" ".join(args[2:]))
@@ -603,7 +603,7 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msglg)
 
-    if message.content.startswith('/unmute'):
+    if message.content.startswith('!/unmute'):
         if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             user = message.mentions[0]
@@ -626,7 +626,7 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msg)
 
-    if message.content.startswith('/tempmute'):
+    if message.content.startswith('!/tempmute'):
         try:
             if '407677666750365706' or '417426253658849281' or '407678188773179417' or '431189978631110666' or '407678481670078475' or '468087214241218560' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
@@ -667,7 +667,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/helpstaff'):
+    if message.content.startswith('!/helpstaff'):
         try:
             if '407677666750365706' or '417426253658849281' or '407678188773179417' or '431189978631110666' or '407678481670078475' or '468087214241218560' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
@@ -758,7 +758,7 @@ async def on_message(message):
         finally:
             pass        
 
-    if message.content.startswith('/staff+'):
+    if message.content.startswith('!/staff+'):
         try:
             if '417426253658849281' or '407677666750365706' or '407678188773179417' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
