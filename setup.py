@@ -41,7 +41,7 @@ async def on_member_join(member):
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-    embed.set_footer(text='End', icon_url=member.server.icon_url)
+    embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
@@ -346,7 +346,7 @@ async def on_message(message):
   
    
     if message.content.startswith('/anunciar'):
-        if '417426253658849281' or '407677666750365706' or '431189978631110666' in [role.id for role in message.author.roles]:
+        if '417426253658849281' and '407677666750365706' and '431189978631110666' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
             args = message.content.split(" ")
             embed = discord.Embed(
@@ -477,8 +477,8 @@ async def on_message(message):
     if message.content.startswith('/ip'):
         await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
 
-    if message.content.startswith('!/kick'):
-        if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
+    if message.content.startswith('/kick'):
+        if '417426253658849281' and '407677666750365706' and '407678188773179417' and '431189978631110666' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
             channel = client.get_channel('448449971629588481')
@@ -501,9 +501,9 @@ async def on_message(message):
             await client.delete_message(msglg)
 
 
-    if message.content.startswith('!/tempban'):
+    if message.content.startswith('/tempban'):
         try:
-            if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
+            if '417426253658849281' and '407677666750365706' and '407678188773179417' and '431189978631110666' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
                 tempo = (" ".join(args[3:]))
                 await client.delete_message(message)
@@ -544,32 +544,29 @@ async def on_message(message):
 
     if message.content.startswith('/ban'):
         try:
-            if '417426253658849281' in [role.id for role in message.author.roles]:
-                if '407677666750365706' in [role.id for role in message.author.roles]:
-                    if '407678188773179417' in [role.id for role in message.author.roles]:
-                        if '431189978631110666' in [role.id for role in message.author.roles]:
-                            asyncio.sleep(10)
-                            args = message.content.split(" ")
-                            await client.delete_message(message)
-                            channel1 = client.get_channel('448449971629588481')
-                            user = message.mentions[0]
-                            await client.ban(user)
-                            join = (" ".join(args[2:]))
-                            embed = discord.Embed(
-                                title='BANIDO ⛔',
-                                color=COR,
-                                description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
-                            )
-                            embed.set_thumbnail(
-                                url='https://i.imgur.com/yJey64O.png'
-                            )
-                            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-                            await client.send_message(channel1, embed=embed)
-                        else:
-                            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-                            time.sleep(10)
-                            await client.delete_message(message)
-                            await client.delete_message(msglg)    
+            if '407677666750365706' or '417426253658849281' in [role.id for role in message.author.roles]:
+                asyncio.sleep(10)
+                args = message.content.split(" ")
+                await client.delete_message(message)
+                channel1 = client.get_channel('448449971629588481')
+                user = message.mentions[0]
+                await client.ban(user)
+                join = (" ".join(args[2:]))
+                embed = discord.Embed(
+                    title='BANIDO ⛔',
+                    color=COR,
+                    description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
+                )
+                embed.set_thumbnail(
+                    url='https://i.imgur.com/yJey64O.png'
+                )
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                await client.send_message(channel1, embed=embed)
+            else:
+                msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(msglg)    
         except IndexError:
             msg = await client.send_message(message.channel, '{}, use /ban [usuário] [motivo]'.format(message.author.mention))
             time.sleep(10)
@@ -582,8 +579,8 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith('!/mute'):
-        if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
+    if message.content.startswith('/mute'):
+        if '407677666750365706' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             join = (" ".join(args[2:]))
             user = message.mentions[0]
@@ -603,8 +600,8 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msglg)
 
-    if message.content.startswith('!/unmute'):
-        if '417426253658849281' or '407677666750365706' or '407678188773179417' or '431189978631110666' in [role.id for role in message.author.roles]:
+    if message.content.startswith('/unmute'):
+        if '407677666750365706' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             user = message.mentions[0]
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
@@ -628,7 +625,7 @@ async def on_message(message):
 
     if message.content.startswith('/tempmute'):
         try:
-            if '431189978631110666' or '407706417282416641' in [role.id for role in message.author.roles]:
+            if '407706417282416641' and '407677666750365706' and '407678481670078475' and '417426253658849281' and '407678188773179417' and '431189978631110666' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
                 tempo = (" ".join(args[3:]))
                 user = message.mentions[0]
@@ -661,46 +658,41 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msg)
         except:
-            msg1 = await client.send_message(message.channel, 'Sem permissão!')
+            msg1 = await client.send_message(message.channel, 'Já está mutado!')
             time.sleep(10)
             await client.delete_message(msg1)
         finally:
             pass
 
-    if message.content.startswith('!/helpstaff'):
+    if message.content.startswith('/helpstaff'):
         try:
-            if '407677666750365706' or '417426253658849281' or '407678188773179417' or '431189978631110666' or '407678481670078475' or '468087214241218560' in [role.id for role in message.author.roles]:
-                embed = discord.Embed(
-                    title='PUNIÇÕES & TEMPOS:',
-                    color=COR,
-                    description='**Uso de caps-lock excessivo** - *__14400__ segundos de tempmute*\n\n'
-                                '**Spam** - *__14400__ segundos de tempmute*\n\n'
-                                '**Flood** - *__14400__ segundos de mute*\n\n'
-                                '**Divulgação/Citação de servidores** - *Ban permanente*\n\n'
-                                '**Iniciativa de flood** - *__21600__ segundos de mute*\n\n'
-                                '**Mensagem fake** - *__10800__ segundos de mute*\n\n'
-                                '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
-                                '**Ameaça ao servidor** - *Ban permanente*.\n\n' 
-                                '**Abuso de bug´s** - *Ban permanente*.\n\n'
-                                '**Uso inadequado do chat** - *__43200__ segundos de mute*\n\n'
-                                '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
-                                '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
-                                '**Falsificação de provas** - *Ban permanente*.\n\n' 
-                                '**Chantagem** - *Ban permanente*.\n\n'
-                                '**Ofensa à staff** - *Ban permanente*.\n\n' 
-                                '**Uso de hack** - *Ban permanente*.\n\n'
-                                '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
-                                '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
-                )
-                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-                msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
-                await client.send_message(message.author, embed=embed)
-            else:
-                mssg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-                time.sleep(10)
-                await client.delete_message(message)
-                await client.delete_message(mssg)
+            await client.delete_message(message)
+            embed = discord.Embed(
+                title='PUNIÇÕES & TEMPOS:',
+                color=COR,
+                description='**Uso de caps-lock excessivo** - *__14400__ segundos de tempmute*\n\n'
+                            '**Spam** - *__14400__ segundos de tempmute*\n\n'
+                            '**Flood** - *__14400__ segundos de mute*\n\n'
+                            '**Divulgação/Citação de servidores** - *Ban permanente*\n\n'
+                            '**Iniciativa de flood** - *__21600__ segundos de mute*\n\n'
+                            '**Mensagem fake** - *__10800__ segundos de mute*\n\n'
+                            '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
+                            '**Ameaça ao servidor** - *Ban permanente*.\n\n' 
+                            '**Abuso de bug´s** - *Ban permanente*.\n\n'
+                            '**Uso inadequado do chat** - *__43200__ segundos de mute*\n\n'
+                            '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
+                            '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
+                            '**Falsificação de provas** - *Ban permanente*.\n\n' 
+                            '**Chantagem** - *Ban permanente*.\n\n'
+                            '**Ofensa à staff** - *Ban permanente*.\n\n' 
+                            '**Uso de hack** - *Ban permanente*.\n\n'
+                            '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
+                            '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
+            )
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+            await client.send_message(message.author, embed=embed)
         except IndexError:
             time.sleep(2)
             await client.delete_message(msg)
@@ -722,7 +714,7 @@ async def on_message(message):
 
     if message.content.startswith('/staff-'):
         try:
-            if '407706417282416641' in [role.id for role in message.author.roles]:
+            if '407706417282416641' or '407678481670078475' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
                     title='Comandos para o cargo `STAFF`:',
                     color=COR,
@@ -758,9 +750,9 @@ async def on_message(message):
         finally:
             pass        
 
-    if message.content.startswith('!/staff+'):
+    if message.content.startswith('/staff+'):
         try:
-            if '417426253658849281' or '407677666750365706' or '407678188773179417' in [role.id for role in message.author.roles]:
+            if '417426253658849281' or '407677666750365706' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
                     title='Comandos para o cargo `STAFF+`:',
                     color=COR,
