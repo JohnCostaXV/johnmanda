@@ -319,6 +319,12 @@ async def on_message(message):
         finally:
             pass
 
+    if message.content.lower().startswith('/end'):
+        user = message.mentions[0]
+        args = message.content.split(" ")
+        await client.change_nickname(user, " ".join(args[1]))
+
+
     if message.content.lower().startswith('/ajuda'):
         try:
             embed = discord.Embed(
