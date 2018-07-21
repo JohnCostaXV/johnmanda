@@ -324,11 +324,6 @@ async def on_message(message):
             user = message.mentions[0]
             args = message.content.split(" ")
             await client.change_nickname(user, " ".join(args[1:])
-        else:
-            msg = await client.send_message(message.channel, 'Você não tem permissão!')
-            await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msg)
 
     if message.content.lower().startswith('/ajuda'):
         try:
