@@ -625,7 +625,7 @@ async def on_message(message):
 
     if message.content.startswith('/tempmute'):
         try:
-            if '407706417282416641' and '407678481670078475' and '417426253658849281' and '407678188773179417' and '431189978631110666' and '407677666750365706' in [role.id for role in message.author.roles]:
+            if '407706417282416641' or '407678481670078475' or '417426253658849281' or '407678188773179417' or '431189978631110666' or '407677666750365706' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
                 tempo = (" ".join(args[3:]))
                 user = message.mentions[0]
@@ -658,7 +658,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msg)
         except:
-            msg1 = await client.send_message(message.channel, 'Já está mutado!')
+            msg1 = await client.send_message(message.channel, 'Desculpe pelo erro!')
             time.sleep(10)
             await client.delete_message(msg1)
         finally:
