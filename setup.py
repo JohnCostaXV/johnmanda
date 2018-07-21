@@ -817,4 +817,42 @@ async def on_message(message):
         time.sleep(50)
         await client.delete_message(msg)
 
+    if message.content.startswith('/enviar'):
+        try:
+            canal = client.get_channel('470242474850254848')
+            args = message.content.split(" ")
+            await client.delete_message(message)
+            user = message.mentions[0]
+            embed = discord.Embed(
+                title='DÚVIDA 🔍',
+                color=COR,
+                description='Dúvida recebida.\nEnviada por: {}'.format(message.author.mention)
+            )
+            embed.add_field(name='Dúvida:', value="```%s```" % "".join(args[1:]))
+            embed.set_author(name=user.server.name, icon_url=user.server.icon_url)
+            embed.set_footer(text='End', icon_url=user.server.icon_url)
+            await client.send_message(canal, embed=embed)
+        except IndexError:
+            error = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use, `/enviar [dúvida]`\n'
+                            'Por exemplo: /enviar Qual é o ip do servidor?'
+            )
+            err = await client.send_message(message.channel, embed=error)
+            time.sleep(50)
+            await client.delete_message(message)
+            await client.delete_message(err)
+        except:
+            er = await client.send_message(message.channel, 'Desculpe pelo erro.')
+            print('erro em `dúvida`')
+            time.sleep(10)
+            await client.delete_message(message)
+            await client.delete_message(er)
+        finally:
+            pass
+
+    
+       
+
 client.run(os.environ.get("BOT_TOKEN"))
