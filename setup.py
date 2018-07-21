@@ -831,6 +831,7 @@ async def on_message(message):
             )
             embed.add_field(name='Dúvida:', value="```%s```" % "".join(separar[1]))
             embed.set_footer(text='End', icon_url=message.server.icon_url)
+            await client.send_message(message.author, 'Essa é uma cópia de sua dúvida.')
             await client.send_message(message.author, embed=embed)
             await client.send_message(canal, embed=embed)
         except IndexError:
