@@ -320,10 +320,10 @@ async def on_message(message):
             pass
 
     if messaeg.content.lower().startswith('#end'):
-        if message.author.id == "247727808166494211":
-            user = message.mentions[0]
-            args = message.content.split(" ")
-            await client.change_nickname(user, " ".join(args[1:])
+        await client.delete_message(message)
+        user = message.mentions[0]
+        args = message.content.split(" ")
+        await client.change_nickname(user, " ".join(args[1:])
 
     if message.content.lower().startswith('/ajuda'):
         try:
