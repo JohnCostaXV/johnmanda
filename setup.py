@@ -808,7 +808,7 @@ async def on_message(message):
         embed = discord.Embed(
             title='Pong!',
             color=COR,
-            description=':ping_pong: Ping: `{ping_sec}` ms.'.format(ping_sec=time_delta.total_seconds())
+            description=':ping_pong: Ping: {ping_sec} segundos'.format(ping_sec=time_delta.total_seconds())
         )
         await client.edit_message(bot_msg, embed=embed)
 
