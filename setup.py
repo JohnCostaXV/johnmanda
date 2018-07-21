@@ -886,10 +886,9 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(er)
         except:
-            erro = await client.send_message(message.channel, 'O {}, está com a dm privada!'.format(user.mention))
+            asd = await client.send_message(message.channel, 'O {}, está com a dm privada!'.format(user.mention))
             time.sleep(10)
-            await client.delete_message(message)
-            await client.delete_message(erro)
+            await client.delete_message(asd)
         finally:
             pass
 
