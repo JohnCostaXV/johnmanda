@@ -828,7 +828,7 @@ async def on_message(message):
                 color=COR,
                 description='Dúvida recebida.\nEnviada por: {}'.format(message.author.mention)
             )
-            embed.add_field(name='Dúvida:', value="```%s```" % "".join(args[1:]))
+            embed.add_field(name='Dúvida:', value="```%s```" % "".join(args[1]))
             embed.set_author(name=user.server.name, icon_url=user.server.icon_url)
             embed.set_footer(text='End', icon_url=user.server.icon_url)
             await client.send_message(canal, embed=embed)
@@ -836,9 +836,9 @@ async def on_message(message):
             error = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
-                description='Use, `/enviar [dúvida]`\n'
-                            'Por exemplo: /enviar Qual é o ip do servidor?'
+                description='Use, `/enviar [dúvida]`\nPor exemplo: /enviar Qual é o ip do servidor?'
             )
+            error.set_thumbnail(url=user.server.icon_url)
             err = await client.send_message(message.channel, embed=error)
             time.sleep(50)
             await client.delete_message(message)
@@ -853,6 +853,7 @@ async def on_message(message):
             pass
 
     
-       
+        
+
 
 client.run(os.environ.get("BOT_TOKEN"))
