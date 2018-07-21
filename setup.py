@@ -812,8 +812,19 @@ async def on_message(message):
             pass
 
     if message.content.lower().startswith('/ping'):
-        userID = message.author.id
-        await client.send_message(message.channel, "<@%s> Pong!" % (userID))
+        embed1 = discord.Embed(
+            title='Pong! 🎾',
+            color=COR,
+            description="Pong `calc ms`"
+        )
+        bot_msg = await client.send_message(message.channel, embed=embed1)
+        time_delta = bot_msg.timestamp - message.timestamp
+        embed = discord.Embed(
+            title='Pong!',
+            color=COR,
+            description=':ping_pong: Ping - {ping_sec} segundos'.format(ping_sec=time_delta.total_seconds())
+        )
+        await client.edit_message(bot_msg, embed=embed)
 
     if message.content.lower().startswith('/convite'):
         msg = await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
