@@ -848,8 +848,8 @@ async def on_message(message):
             await client.delete_message(err)
         except:
             tst = await client.send_message(message.channel, '{}, libere seu privado e efetue o comando novamente!'.format(message.author.mention))
-            time.sleep(10)
             await client.delete_message(message)
+            time.sleep(10)
             await client.delete_message(tst)
         finally:
             pass
