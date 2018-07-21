@@ -843,7 +843,7 @@ async def on_message(message):
             )
             embed1.set_thumbnail(url=message.server.icon_url)
             err = await client.send_message(message.channel, embed=embed1)
-            time.sleep(30)
+            time.sleep(10)
             await client.delete_message(message)
             await client.delete_message(err)
         except:
