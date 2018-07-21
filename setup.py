@@ -201,7 +201,7 @@ async def on_message(message):
 
 
     if message.content.startswith('/say'):
-        if '417426253658849281' or '407677666750365706' in [role.id for role in message.author.roles]:
+        if '407677666750365706' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
             asyncio.sleep(1)
@@ -346,7 +346,7 @@ async def on_message(message):
   
    
     if message.content.startswith('/anunciar'):
-        if '417426253658849281' and '407677666750365706' and '431189978631110666' in [role.id for role in message.author.roles]:
+        if '407677666750365706' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
             args = message.content.split(" ")
             embed = discord.Embed(
