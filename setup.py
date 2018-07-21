@@ -659,7 +659,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msg)
         except:
-            msg1 = await client.send_message(message.channel, 'Desculpe pelo erro!')
+            msg1 = await client.send_message(message.channel, 'Sem permissão!')
             time.sleep(10)
             await client.delete_message(msg1)
         finally:
