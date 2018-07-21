@@ -142,6 +142,7 @@ async def on_message(message):
                             '/youtuber » Veja os requisitos para ter tag youtuber.\n'
                             '/formulário » Veja os formulários disponíveis do servidor.\n'
                             '/ip » Veja o IP de conexão ao servidor.\n'
+                            '/enviar [dúvida] » Enviar uma dúvida para a equipe.\n'
                             '/moeda » Brinque de cara ou coroa.\n\n'
                             '**UTILITÁRIOS:**\n'
                             '/revisão `[nickname] | [motivo] | [por quê está irregular?]` » Crie uma revisão de seu banimento.\n'
