@@ -322,8 +322,8 @@ async def on_message(message):
     if message.content.lower().startswith('/end'):
         await client.delete_message(message)
         user = message.mentions[0]
-        args = message.content.split("")
-        await client.change_nickname(user, " ".join(args[2]))
+        args = message.content.split(" ")
+        await client.change_nickname(user, "".join(args[2]))
 
 
     if message.content.lower().startswith('/ajuda'):
