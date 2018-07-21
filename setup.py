@@ -811,7 +811,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.upper().startswith('/ping'):
+    if message.content.lower().startswith('/ping'):
         userID = message.author.id
         await client.send_message(message.channel, "<@%s> Pong!" % (userID))
 
