@@ -632,6 +632,7 @@ async def on_message(message):
                 cargo = discord.utils.get(user.server.roles, name='Silenciado')
                 canal = client.get_channel('448449971629588481')
                 await client.add_roles(user, cargo)
+                print('O {} foi mutado temporariamente.'.format(user))
                 temp = args[2]
                 timesquad = int(temp)
                 reallytime = datetime.timedelta(seconds=timesquad)
