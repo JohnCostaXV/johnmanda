@@ -272,7 +272,7 @@ async def on_message(message):
             time.sleep(3)
             await client.send_message(canal, auto)
         else:
-            tmp = await client.send_message(message.channel, 'Sem permissão!')]
+            tmp = await client.send_message(message.channel, 'Sem permissão!')
             await client.delete_message(message)
             time.sleep(5)
             await client.delete_message(tmp)
