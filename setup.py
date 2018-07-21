@@ -856,6 +856,7 @@ async def on_message(message):
 
     if message.content.startswith('/responder'):
         try:
+            await client.delete_message(message)
             user = message.mentions[0]
             remover_resposta = message.content.replace("/responder", "")
             separar = remover_resposta.split(" ", 2)
@@ -867,6 +868,7 @@ async def on_message(message):
             embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
             embed.set_footer(text='End', icon_url=message.server.icon_url)
             await client.send_message(user, embed=embed)
+            await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
