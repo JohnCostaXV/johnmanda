@@ -715,7 +715,7 @@ async def on_message(message):
 
     if message.content.startswith('/staff-'):
         try:
-            if '407706417282416641' or '407678481670078475' in [role.id for role in message.author.roles]:
+            if '407706417282416641' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
                     title='Comandos para o cargo `STAFF`:',
                     color=COR,
