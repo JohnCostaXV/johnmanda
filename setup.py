@@ -265,12 +265,17 @@ async def on_message(message):
             pass
 
     if message.content.lower().startswith('/tt'):
-        if '431189978631110666' in [role.id for role in message.author.roles]:
+        if message.author.id == "247727808166494211":
             await client.delete_message(message)
             auto = random.choice(RANDOM_AUTO)
             canal = client.get_channel('407669684616560650')
             time.sleep(3)
             await client.send_message(canal, auto)
+        else:
+            tmp = await client.send_message(message.channel, 'Sem permissão!')]
+            await client.delete_message(message)
+            time.sleep(5)
+            await client.delete_message(tmp)
 
 
     if message.content.lower().startswith('/reportar'):
