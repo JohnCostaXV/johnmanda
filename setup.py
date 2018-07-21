@@ -856,12 +856,6 @@ async def on_message(message):
         finally:
             pass
 
-    global msg_id
-    msg_id = botmsg.id
-
-    global msg_user
-    msg_user = message.author
-
     if message.content.startswith('/responder'):
         try:
             await client.delete_message(message)
@@ -895,6 +889,12 @@ async def on_message(message):
             await client.delete_message(erro)
         finally:
             pass
+
+        global msg_id
+        msg_id = botmsg.id
+
+        global msg_user
+        msg_user = message.author
 
 @client.event
 async def on_reaction_add(reaction):
