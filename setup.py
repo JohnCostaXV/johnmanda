@@ -202,7 +202,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith('/say'):
-        if '407677666750365706' in [role.id for role in message.author.roles]:
+        if '407677666750365706' or '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
             asyncio.sleep(1)
