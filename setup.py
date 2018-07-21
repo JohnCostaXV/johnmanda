@@ -40,8 +40,8 @@ async def on_member_join(member):
         description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidoresEnd\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\n*Data de lançamento: 21/07/2018*'
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
-    embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-    embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+    embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
+    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
     await client.send_message(canal, embed=embed)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
@@ -73,7 +73,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('/sugestão'):
+    if message.content.lower().startswith('/sugestão'):
         try:
             canal = client.get_channel('467704726411018260')
             await client.delete_message(message)
@@ -110,7 +110,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/dado'):
+    if message.content.lower().startswith('/dado'):
         numr = random.randint(1,6)
         embed = discord.Embed(
             title='Dado',
@@ -119,7 +119,7 @@ async def on_message(message):
         )
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.startswith('/moeda'):
+    if message.content.lower().startswith('/moeda'):
         escolha = random.randint(1,2)
         if escolha == 1:
             await client.add_reaction(message, '🌚')
@@ -127,7 +127,7 @@ async def on_message(message):
             await client.add_reaction(message, '👑')
 
 
-    if message.content.startswith('/comandos'):
+    if message.content.lower().startswith('/comandos'):
         try:
             embed = discord.Embed(
                 title='Comandos do bot:',
@@ -149,8 +149,8 @@ async def on_message(message):
                             '/reportar `[usuário/nickname] | [motivo] | [prova]` » Denúncie um usuário do discord ou do servidor.\n'
                             '/sugestão `[sugestão] | [por quê adicionariamos?]` » Crie uma sugestão.'
                 )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
             await client.send_message(message.author, embed=embed)
         except IndexError:
@@ -172,7 +172,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/avatar'):
+    if message.content.lower().startswith('/avatar'):
         try:
             user = message.mentions[0]
             embed = discord.Embed(
@@ -182,7 +182,7 @@ async def on_message(message):
             )
             embed.set_author(
                 name=message.server.name,
-                icon_url='https://i.imgur.com/yJey64O.png'
+                icon_url='https://i.imgur.com/1iJeEea.jpg'
             )
             embed.set_image(
                 url=user.avatar_url
@@ -201,7 +201,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith('/say'):
+    if message.content.lower().startswith('/say'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
@@ -221,11 +221,11 @@ async def on_message(message):
             description='Abaixo terão os requisitos para você que é youtuber e deseja possuir uma tag.\n\n**Shulker**: *1.000*;\n**End**: *3.000*;\n**Youtuber**: *10.000*;\n**Youtuber+**: *15.000*;\n\nCaso possui um dos requisitos, solicite a tag a um superior.'
         )
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
-        embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-        embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
+        embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
+        embed.set_footer(text='End', icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.startswith('/revisão'):
+    if message.content.lower().startswith('/revisão'):
         try:
             canal = client.get_channel('466666024788295690')
             await client.delete_message(message)
@@ -264,7 +264,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/tt'):
+    if message.content.lower().startswith('/tt'):
         if '431189978631110666' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
             auto = random.choice(RANDOM_AUTO)
@@ -273,7 +273,7 @@ async def on_message(message):
             await client.send_message(canal, auto)
 
 
-    if message.content.startswith('/reportar'):
+    if message.content.lower().startswith('/reportar'):
         try:
             canal = client.get_channel('466665871218049024')
             remover_reportar = message.content.replace("/reportar ", "")
@@ -314,16 +314,16 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/ajuda'):
+    if message.content.lower().startswith('/ajuda'):
         try:
             embed = discord.Embed(
                 title='Você solicitou o comando e aqui estamos enviando umas informações básicas sobre o End.',
                 color=COR,
                 description='**Seja bem-vindo ao discord da rede End. Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
             )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-            embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
             await client.send_message(message.author, embed=embed)
         except IndexError:
@@ -346,7 +346,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith('/anunciar'):
+    if message.content.lower().startswith('/anunciar'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
             args = message.content.split(" ")
@@ -357,10 +357,10 @@ async def on_message(message):
             )
             embed.set_footer(
                 text="Enviado por: {} • End".format(message.author.name),
-                icon_url='https://i.imgur.com/yJey64O.png'
+                icon_url='https://i.imgur.com/1iJeEea.jpg'
             )
             embed.set_thumbnail(
-                url='https://i.imgur.com/yJey64O.png'
+                url='https://i.imgur.com/1iJeEea.jpg'
             )
             await client.send_message(message.channel, "@everyone")
             await client.send_message(message.channel, embed=embed)
@@ -370,12 +370,12 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(msglg)
 
-    if message.content.startswith('/serverinfo'):
+    if message.content.lower().startswith('/serverinfo'):
         embed = discord.Embed(
             title='Informações do Servidor',
             color=0x03c3f5,
             descripition='Essas são as informações\n')
-        embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+        embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
         embed.add_field(name="Nome:", value=message.server.name, inline=True)
         embed.add_field(name=":crown: Dono:", value=message.server.owner.mention)
         embed.add_field(name="ID:", value=message.server.id, inline=True)
@@ -384,8 +384,8 @@ async def on_message(message):
         embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime("%d %b %Y %H:%M"))
         embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
         embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
-        embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
-        embed.set_footer(text="End", icon_url="https://i.imgur.com/yJey64O.png")
+        embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+        embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/userinfo'):
@@ -428,11 +428,11 @@ async def on_message(message):
                 value=user.id
             )
             userembed.set_thumbnail(
-                url='https://i.imgur.com/yJey64O.png'
+                url='https://i.imgur.com/1iJeEea.jpg'
             )
             userembed.set_footer(
                 text="End",
-                icon_url="https://i.imgur.com/yJey64O.png"
+                icon_url="https://i.imgur.com/1iJeEea.jpg"
             )
             await client.send_message(message.channel, embed=userembed)
         except IndexError:
@@ -449,7 +449,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith('/formulário'):
+    if message.content.lower().startswith('/formulário'):
         embed = discord.Embed(
             title='FORMULÁRIOS 📝',
             color=COR,
@@ -471,14 +471,14 @@ async def on_message(message):
             inline=False
         )
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
-        embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
-        embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
+        embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
+        embed.set_footer(text='End', icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
     if message.content.startswith('/ip'):
         await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
 
-    if message.content.startswith('/kick'):
+    if message.content.lower().startswith('/kick'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
             asyncio.sleep(10)
             await client.delete_message(message)
@@ -491,9 +491,9 @@ async def on_message(message):
                 description='O usuário **{}#{}**, foi expulso com sucesso!\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
             )
             embed.set_thumbnail(
-                url='https://i.imgur.com/yJey64O.png'
+                url='https://i.imgur.com/1iJeEea.jpg'
             )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(channel, embed=embed)
         else:
             msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
@@ -502,7 +502,7 @@ async def on_message(message):
             await client.delete_message(msglg)
 
 
-    if message.content.startswith('/tempban'):
+    if message.content.lower().startswith('/tempban'):
         try:
             if '407677666750365706' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
@@ -521,9 +521,9 @@ async def on_message(message):
                     description='O usuário **{}#{}**, foi banido temporariamente!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
                 )
                 embed.set_thumbnail(
-                    url='https://i.imgur.com/yJey64O.png'
+                    url='https://i.imgur.com/1iJeEea.jpg'
                 )
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                 await client.send_message(canal, embed=embed)
                 time.sleep(timesquad)
                 await client.unban(message.server, user)
@@ -543,7 +543,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/ban'):
+    if message.content.lower().startswith('/ban'):
         try:
             if '407677666750365706' in [role.id for role in message.author.roles]:
                 asyncio.sleep(10)
@@ -559,9 +559,9 @@ async def on_message(message):
                     description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
                 )
                 embed.set_thumbnail(
-                    url='https://i.imgur.com/yJey64O.png'
+                    url='https://i.imgur.com/1iJeEea.jpg'
                 )
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                 await client.send_message(channel1, embed=embed)
             else:
                 msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
@@ -580,7 +580,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith('/mute'):
+    if message.content.lower().startswith('/mute'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             join = (" ".join(args[2:]))
@@ -591,8 +591,8 @@ async def on_message(message):
                 title='SILENCIADO 🔈',
                 color=COR,
                 description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention))
-            embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(canal, embed=embed)
             await client.add_roles(user, cargo)
         else:
@@ -601,7 +601,7 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msglg)
 
-    if message.content.startswith('/unmute'):
+    if message.content.lower().startswith('/unmute'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             user = message.mentions[0]
@@ -613,9 +613,9 @@ async def on_message(message):
                 description='O usuário **{}#{}**, não está mais silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
             )
             embed.set_thumbnail(
-                url='https://i.imgur.com/yJey64O.png'
+                url='https://i.imgur.com/1iJeEea.jpg'
             )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(canal, embed=embed)
             await client.remove_roles(user, cargo)
         else:
@@ -624,7 +624,7 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msg)
 
-    if message.content.startswith('/tempmute'):
+    if message.content.lower().startswith('/tempmute'):
         try:
             if '407706417282416641' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
@@ -644,9 +644,9 @@ async def on_message(message):
                     description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
                 )
                 embed.set_thumbnail(
-                    url='https://i.imgur.com/yJey64O.png'
+                    url='https://i.imgur.com/1iJeEea.jpg'
                 )
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                 await client.send_message(canal, embed=embed)
                 time.sleep(timesquad)
                 cargo = discord.utils.get(user.server.roles, name='Silenciado')
@@ -667,7 +667,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/helpstaff'):
+    if message.content.lower().startswith('/helpstaff'):
         try:
             await client.delete_message(message)
             embed = discord.Embed(
@@ -692,8 +692,8 @@ async def on_message(message):
                             '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
                             '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
             )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
             await client.send_message(message.author, embed=embed)
         except IndexError:
@@ -715,7 +715,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/staff-'):
+    if message.content.lower().startswith('/staff-'):
         try:
             if '407706417282416641' in [role.id for role in message.author.roles]:
                 embed = discord.Embed(
@@ -725,8 +725,8 @@ async def on_message(message):
                                 'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`\n\n'
                                 '*Lembrando que os tempmute é contato por segundo! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
                 )
-                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+                embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                 msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                 await client.send_message(message.author, embed=embed)
             else:
@@ -753,7 +753,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/staff+'):
+    if message.content.lower().startswith('/staff+'):
         try:
             await client.delete_message(message)
             embed = discord.Embed(
@@ -776,8 +776,8 @@ async def on_message(message):
                             '/anunciar [mensagem] » bot repete em Embed\n'
                             'exemplo: `/anunciar Olá`\n\n'
             )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
             await client.send_message(message.author, embed=embed)
         except IndexError:
@@ -814,12 +814,12 @@ async def on_message(message):
         )
         await client.edit_message(bot_msg, embed=embed)
 
-    if message.content.startswith('/convite'):
+    if message.content.lower().startswith('/convite'):
         msg = await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
         time.sleep(50)
         await client.delete_message(msg)
 
-    if message.content.startswith('/enviar'):
+    if message.content.lower().startswith('/enviar'):
         try:
             await client.delete_message(message)
             canal = client.get_channel('470242474850254848')
@@ -854,7 +854,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.startswith('/responder'):
+    if message.content.lower().startswith('/responder'):
         try:
             await client.delete_message(message)
             user = message.mentions[0]
