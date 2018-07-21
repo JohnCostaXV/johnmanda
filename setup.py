@@ -109,7 +109,7 @@ async def on_message(message):
             await client.send_message(message.author,"Desculpe pelo erro.")
         finally:
             pass
-    
+
     if message.content.startswith('/dado'):
         numr = random.randint(1,6)
         embed = discord.Embed(
@@ -212,7 +212,7 @@ async def on_message(message):
             await client.delete_message(message)
             time.sleep(10)
             await client.delete_message(msglg)
-        
+
     if message.content.lower().startswith('/youtuber'):
         embed = discord.Embed(
             title='YOUTUBER 🔴',
@@ -223,7 +223,7 @@ async def on_message(message):
         embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
         embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
         await client.send_message(message.channel, embed=embed)
-    
+
     if message.content.startswith('/revisão'):
         try:
             canal = client.get_channel('466666024788295690')
@@ -262,7 +262,7 @@ async def on_message(message):
             print('Error')
         finally:
             pass
-    
+
     if message.content.startswith('/tt'):
         if '431189978631110666' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
@@ -343,8 +343,8 @@ async def on_message(message):
             await client.delete_message(tst)
         finally:
             pass
-  
-   
+
+
     if message.content.startswith('/anunciar'):
         if '407677666750365706' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
@@ -385,7 +385,7 @@ async def on_message(message):
         embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
         embed.set_thumbnail(url='https://i.imgur.com/yJey64O.png')
         embed.set_footer(text="End", icon_url="https://i.imgur.com/yJey64O.png")
-        await client.send_message(message.channel, embed=embed)                    
+        await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/userinfo'):
         try:
@@ -473,7 +473,7 @@ async def on_message(message):
         embed.set_thumbnail(url="https://i.imgur.com/yJey64O.png")
         embed.set_footer(text='End', icon_url="https://i.imgur.com/yJey64O.png")
         await client.send_message(message.channel, embed=embed)
-       
+
     if message.content.startswith('/ip'):
         await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
 
@@ -482,7 +482,7 @@ async def on_message(message):
             asyncio.sleep(10)
             await client.delete_message(message)
             channel = client.get_channel('448449971629588481')
-            user = message.mentions[0]         
+            user = message.mentions[0]
             await client.kick(user)
             embed = discord.Embed(
                 title='EXPULSO ⛔',
@@ -566,7 +566,7 @@ async def on_message(message):
                 msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
                 time.sleep(10)
                 await client.delete_message(message)
-                await client.delete_message(msglg)    
+                await client.delete_message(msglg)
         except IndexError:
             msg = await client.send_message(message.channel, '{}, use /ban [usuário] [motivo]'.format(message.author.mention))
             time.sleep(10)
@@ -636,6 +636,7 @@ async def on_message(message):
                 temp = args[2]
                 timesquad = int(temp)
                 reallytime = datetime.timedelta(seconds=timesquad)
+
                 embed = discord.Embed(
                     title='SILENCIADO 🔈',
                     color=COR,
@@ -678,14 +679,14 @@ async def on_message(message):
                             '**Iniciativa de flood** - *__21600__ segundos de mute*\n\n'
                             '**Mensagem fake** - *__10800__ segundos de mute*\n\n'
                             '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
-                            '**Ameaça ao servidor** - *Ban permanente*.\n\n' 
+                            '**Ameaça ao servidor** - *Ban permanente*.\n\n'
                             '**Abuso de bug´s** - *Ban permanente*.\n\n'
                             '**Uso inadequado do chat** - *__43200__ segundos de mute*\n\n'
                             '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
                             '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
-                            '**Falsificação de provas** - *Ban permanente*.\n\n' 
+                            '**Falsificação de provas** - *Ban permanente*.\n\n'
                             '**Chantagem** - *Ban permanente*.\n\n'
-                            '**Ofensa à staff** - *Ban permanente*.\n\n' 
+                            '**Ofensa à staff** - *Ban permanente*.\n\n'
                             '**Uso de hack** - *Ban permanente*.\n\n'
                             '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
                             '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
@@ -749,7 +750,7 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(tst)
         finally:
-            pass        
+            pass
 
     if message.content.startswith('/staff+'):
         try:
@@ -830,6 +831,7 @@ async def on_message(message):
             )
             embed.add_field(name='Dúvida:', value="```%s```" % "".join(separar[1]))
             embed.set_footer(text='End', icon_url=message.server.icon_url)
+            await client.send_message(message.author, embed=embed)
             await client.send_message(canal, embed=embed)
         except IndexError:
             embed1 = discord.Embed(
@@ -851,8 +853,40 @@ async def on_message(message):
         finally:
             pass
 
-    
-        
+
+    if message.content.startswith('/responder'):
+        try:
+            user = message.mentions[0]
+            remover_resposta = message.content.replace("/responder", "")
+            separar = remover_resposta.split(" ", 2)
+            embed = discord.Embed(
+                title='DÚVIDA 🔍',
+                color=COR,
+                description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
+            )
+            embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
+            embed.set_footer(text='End', icon_url=message.server.icon_url)
+            await client.send_message(user, embed=embed)
+        except IndexError:
+            embed1 = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use, `/responder [resposta]`\nPor exemplo: /responder O ip do servidor é jogar.end-mc.com'
+            )
+            embed1.set_thumbnail(url=message.server.icon_url)
+            er = await client.send_message(message.channel, embed=embed1)
+            time.sleep(50)
+            await client.delete_message(message)
+            await client.delete_message(er)
+        except:
+            erro = await client.send_message(message.channel, 'Desculpe pelo erro!')
+            print('erro em `responder`')
+            time.sleep(10)
+            await client.delete_message(message)
+            await client.delete_message(erro)
+        finally:
+            pass
+
 
 
 client.run(os.environ.get("BOT_TOKEN"))
