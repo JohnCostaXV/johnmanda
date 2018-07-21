@@ -625,7 +625,7 @@ async def on_message(message):
 
     if message.content.startswith('/tempmute'):
         try:
-            if '407706417282416641' and '407677666750365706' and '407678481670078475' and '417426253658849281' and '407678188773179417' and '431189978631110666' in [role.id for role in message.author.roles]:
+            if '407706417282416641' and '407678481670078475' and '417426253658849281' and '407678188773179417' and '431189978631110666' and '407677666750365706' in [role.id for role in message.author.roles]:
                 args = message.content.split(" ")
                 tempo = (" ".join(args[3:]))
                 user = message.mentions[0]
