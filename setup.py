@@ -891,7 +891,7 @@ async def on_message(message):
             pass
 
         global msg_id
-        msg_id = botmsg.id
+        msg_id = react.id
 
         global msg_user
         msg_user = message.author
