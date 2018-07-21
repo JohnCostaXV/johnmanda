@@ -753,36 +753,31 @@ async def on_message(message):
 
     if message.content.startswith('/staff+'):
         try:
-            if '417426253658849281' or '407677666750365706' in [role.id for role in message.author.roles]:
-                embed = discord.Embed(
-                    title='Comandos para o cargo `STAFF+`:',
-                    color=COR,
-                    description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                                'exemplo: `/ban @JohnnCosta Divulgação de link´s`\n\n'
-                                '/kick [usuário] » Expulsão do discord.\n'
-                                'exemplo: `/kick @JohnnCosta`\n\n'
-                                '/mute [usuário] [motivo] » Mute permanentemente do discord.\n'
-                                'exemplo: `/mute @JohnnCosta Spam`\n\n'
-                                '/unmute [usuário] » Unmute do discord.\n'
-                                'exemplo: `/unmute @JohnnCosta`\n\n'
-                                '/tempban [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
-                                'exemplo: `/tempban @JohnnCosta 172800 Discriminação`\n\n'
-                                '/tempmute [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
-                                'exemplo: `/tempmute @JohnnCosta 21600 Iniciativa de Flood`\n\n'
-                                '/say [mensagem] » bot repete a mensagem.\n'
-                                'exemplo: `/say Olá`\n\n'
-                                '/anunciar [mensagem] » bot repete em Embed\n'
-                                'exemplo: `/anunciar Olá`\n\n'
-                )
-                embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
-                msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
-                await client.send_message(message.author, embed=embed)
-            else:
-                mssg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-                time.sleep(10)
-                await client.delete_message(message)
-                await client.delete_message(mssg)
+            await client.delete_message(message)
+            embed = discord.Embed(
+                title='Comandos para o cargo `STAFF+`:',
+                color=COR,
+                description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n'
+                            'exemplo: `/ban @JohnnCosta Divulgação de link´s`\n\n'
+                            '/kick [usuário] » Expulsão do discord.\n'
+                            'exemplo: `/kick @JohnnCosta`\n\n'
+                            '/mute [usuário] [motivo] » Mute permanentemente do discord.\n'
+                            'exemplo: `/mute @JohnnCosta Spam`\n\n'
+                            '/unmute [usuário] » Unmute do discord.\n'
+                            'exemplo: `/unmute @JohnnCosta`\n\n'
+                            '/tempban [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
+                            'exemplo: `/tempban @JohnnCosta 172800 Discriminação`\n\n'
+                            '/tempmute [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
+                            'exemplo: `/tempmute @JohnnCosta 21600 Iniciativa de Flood`\n\n'
+                            '/say [mensagem] » bot repete a mensagem.\n'
+                            'exemplo: `/say Olá`\n\n'
+                            '/anunciar [mensagem] » bot repete em Embed\n'
+                            'exemplo: `/anunciar Olá`\n\n'
+            )
+            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/yJey64O.png')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/yJey64O.png')
+            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+            await client.send_message(message.author, embed=embed)
         except IndexError:
             time.sleep(2)
             await client.delete_message(msg)
