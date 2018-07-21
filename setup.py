@@ -200,9 +200,8 @@ async def on_message(message):
         finally:
             pass
 
-
     if message.content.lower().startswith('/say'):
-        if '407677666750365706' or '417426253658849281' in [role.id for role in message.author.roles]:
+        if '417426253658849281' in [role.id for role in message.author.roles]:
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
             asyncio.sleep(1)
@@ -224,6 +223,47 @@ async def on_message(message):
         embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
         embed.set_footer(text='End', icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
+
+    if message.content.lower().startswith('/ativarvip'):
+        try:
+            canal = client.get_channel('470349985070972930')
+            await client.delete_message(message)
+            remover_ativacao = message.content.replace("/ativarvip ", "")
+            separar = remover_ativacao.split("|", 2)
+            embed = discord.Embed(
+                title='ATIVAÇÃO DE RANKS 💎',
+                color=COR,
+                description='Solicitação recebida. \nEnviada por: {}'.format(message.author.mention)
+            )
+            embed.add_field(
+                name="**Nickname:**",
+                value="%s" % "".join(separar[0]),
+                inline=False
+            )
+            embed.add_field(
+                name="**Rank:**",
+                value="%s" % "".join(separar[1]),
+                inline=False
+            )
+            embed.add_field(
+                name="**Prova:**",
+                value="%s" % "".join(separar[2]),
+                inline=False
+            )
+            embed.set_footer(
+                text="Solicitação postada com sucesso.",
+                icon_url=message.author.avatar_url
+            )
+            await client.send_message(canal, embed=embed)
+            await client.delete_message(message)
+        except IndexError:
+            await client.send_message(message.author, '{}, use /ativarvip [nickname] | [rank] | [Prova]'.format(message.author.mention))
+            await client.delete_message(message)
+        except:
+            await client.send_message(message.author, 'Desculpe pelo erro.')
+            await client.delete_message(message)
+        finally:
+            pass
 
     if message.content.lower().startswith('/revisão'):
         try:
