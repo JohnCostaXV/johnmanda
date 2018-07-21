@@ -866,7 +866,7 @@ async def on_message(message):
             )
             embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
             embed.set_footer(text='End', icon_url=message.server.icon_url)
-            await client.send_message(user.author, embed=embed)
+            await client.send_message(user, embed=embed)
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
@@ -879,7 +879,7 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(er)
         except:
-            erro = await client.send_message(message.channel, 'O {}, está com a dm privada!'.format(user.author))
+            erro = await client.send_message(message.channel, 'O {}, está com a dm privada!'.format(user.mention))
             time.sleep(10)
             await client.delete_message(message)
             await client.delete_message(erro)
