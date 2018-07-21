@@ -835,6 +835,9 @@ async def on_message(message):
             await client.send_message(message.author, 'Essa é uma cópia de sua dúvida.')
             await client.send_message(message.author, embed=embed)
             botmsg = await client.send_message(canal, embed=embed)
+            tst = await client.send_message(message.channel, '{}, você precisa deixar sua dm liberada. Para receber a resposta de sua dúvida!'.format(message.author.mention))
+            time.sleep(10)
+            await client.delete_message(tst)
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
