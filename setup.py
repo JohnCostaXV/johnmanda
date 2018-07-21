@@ -870,7 +870,7 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url=message.server.icon_url)
             await client.send_message(user, embed=embed)
             await client.send_message(message.channel, embed=embed)
-            await client.add_reaction(botmsg, '✅')
+            await client.add_reaction(user, '✅')
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
