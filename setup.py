@@ -834,7 +834,8 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url=message.server.icon_url)
             await client.send_message(message.author, 'Essa é uma cópia de sua dúvida.')
             await client.send_message(message.author, embed=embed)
-            await client.send_message(canal, embed=embed)
+            react = await client.send_message(canal, embed=embed)
+            await client.add_reaction(react, '✅')
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
@@ -855,7 +856,23 @@ async def on_message(message):
         finally:
             pass
 
+    global msg_id
+    msg_id = botmsg.id
 
+    global msg_user
+    msg_user = message.author
+
+
+@client.event
+async def on_reaction_add(reaction):
+    msg = reaction.message
+
+    if reaction.emoji == "✅" and msg.id == msg_id:
+     await client.delete_message(react)
+
+
+@client.event
+async def on_message(message):
     if message.content.startswith('/responder'):
         try:
             await client.delete_message(message)
