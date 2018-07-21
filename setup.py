@@ -875,7 +875,7 @@ async def on_message(message):
             embed1 = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
-                description='Use, `/responder [resposta]`\nPor exemplo: /responder O ip do servidor é jogar.end-mc.com'
+                description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder @JohnnCosta O ip do servidor é jogar.end-mc.com'
             )
             embed1.set_thumbnail(url=message.server.icon_url)
             er = await client.send_message(message.channel, embed=embed1)
