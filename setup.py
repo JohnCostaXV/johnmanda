@@ -819,16 +819,16 @@ async def on_message(message):
 
     if message.content.startswith('/enviar'):
         try:
-            canal = client.get_channel('470242474850254848')
-            args = message.content.split(" ")
             await client.delete_message(message)
-            user = message.mentions[0]
+            canal = client.get_channel('470242474850254848')
+            remover_duvida = message.content.replace("/enviar", "")
+            separar = remover_duvida.split(" ", 1)
             embed = discord.Embed(
                 title='DÚVIDA 🔍',
                 color=COR,
                 description='Dúvida recebida.\nEnviada por: {}'.format(message.author.mention)
             )
-            embed.add_field(name='Dúvida:', value="```%s```" % "".join(args[2:]))
+            embed.add_field(name='Dúvida:', value="```%s```" % "".join(separar[1]))
             embed.set_author(name=message.server.name, icon_url=message.server.icon_url)
             embed.set_footer(text='End', icon_url=message.server.icon_url)
             await client.send_message(canal, embed=embed)
