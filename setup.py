@@ -862,17 +862,6 @@ async def on_message(message):
     global msg_user
     msg_user = message.author
 
-
-@client.event
-async def on_reaction_add(reaction):
-    msg = reaction.message
-
-    if reaction.emoji == "✅" and msg.id == msg_id:
-     await client.delete_message(react)
-
-
-@client.event
-async def on_message(message):
     if message.content.startswith('/responder'):
         try:
             await client.delete_message(message)
@@ -907,6 +896,12 @@ async def on_message(message):
         finally:
             pass
 
+@client.event
+async def on_reaction_add(reaction):
+    msg = reaction.message
+
+    if reaction.emoji == "✅" and msg.id == msg_id:
+     await client.delete_message(react)
 
 
 client.run(os.environ.get("BOT_TOKEN"))
