@@ -603,8 +603,6 @@ async def on_message(message):
                 text=datetime.datetime.now(),
                 icon_url=message.author.avatar_url
             )
-            await client.send_message(message.author, "Sua sugestão foi enviada!")
-            time.sleep(3)
             botmsg = await client.send_message(canal, embed=embed)
             await client.add_reaction(botmsg, "👍")
             await client.add_reaction(botmsg, "👎")
@@ -647,7 +645,7 @@ async def on_message(message):
                             '/youtuber » Veja os requisitos para ter tag youtuber.\n'
                             '/formulário » Veja os formulários disponíveis do servidor.\n'
                             '/ip » Veja o IP de conexão ao servidor.\n'
-                            '/enviar [dúvida] » Enviar uma dúvida para a equipe.\n'
+                            '/enviar `[dúvida]` » Enviar uma dúvida para a equipe.\n'
                             '/moeda » Brinque de cara ou coroa.\n\n'
                             '**UTILITÁRIOS:**\n'
                             '/revisão `[nickname] | [motivo] | [por quê está irregular?]` » Crie uma revisão de seu banimento.\n'
