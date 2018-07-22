@@ -545,102 +545,154 @@ async def on_message(message):
 @commands.has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador')
 async def on_message(message):
     if message.content.lower().startswith('/tt'):
+        try:
+            await client.delete_message(message)
+            auto = random.choice(RANDOM_AUTO)
+            canal = client.get_channel('407669684616560650')
+            time.sleep(3)
+            await client.send_message(canal, auto)
+    except IndexError:
+        msglg = await client.send_message(message.channel, 'Comando incorreto.')
         await client.delete_message(message)
-        auto = random.choice(RANDOM_AUTO)
-        canal = client.get_channel('407669684616560650')
-        time.sleep(3)
-        await client.send_message(canal, auto)
-    else:
-        tmp = await client.send_message(message.channel, 'Sem permissão!')
+        time.sleep(10)
+        await client.delete_message(msglg)
+    except:
+        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
         await client.delete_message(message)
-        time.sleep(5)
-        await client.delete_message(tmp)
+        time.sleep(10)
+        await client.delete_message(msglg)
+    finally:
+        pass
 
 
     if message.content.lower().startswith('/end'):
-        await client.delete_message(message)
-        user = message.mentions[0]
-        args = message.content.split(" ")
-        await client.change_nickname(user, " ".join(args[2:]))
+        try:
+            await client.delete_message(message)
+            user = message.mentions[0]
+            args = message.content.split(" ")
+            await client.change_nickname(user, " ".join(args[2:]))
+        except IndexError:
+            msglg = await client.send_message(message.channel, 'Comando incorreto.')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        except:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        finally:
+            pass
 
     if message.content.lower().startswith('/say'):
-        args = message.content.split(" ")
-        await client.send_message(message.channel, (" ".join(args[1:])))
-        asyncio.sleep(1)
+        try:
+            args = message.content.split(" ")
+            await client.send_message(message.channel, (" ".join(args[1:])))
+            asyncio.sleep(1)
+            await client.delete_message(message)
+            asyncio.sleep(1)
+    except IndexError:
+        msglg = await client.send_message(message.channel, 'Comando incorreto.')
         await client.delete_message(message)
-        asyncio.sleep(1)
-    else:
+        time.sleep(10)
+        await client.delete_message(msglg)
+    except:
         msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
         await client.delete_message(message)
         time.sleep(10)
         await client.delete_message(msglg)
-
+    finally:
+        pass
 
 
     if message.content.lower().startswith('/anunciar'):
-        await client.delete_message(message)
-        args = message.content.split(" ")
-        embed = discord.Embed(
-            title="End  📢",
-            color=COR,
-            description=" ".join(args[1:])
-        )
-        embed.set_footer(
-            text="Enviado por: {}  •  End".format(message.author.name),
-            icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
-        )
-        await client.send_message(message.channel, "@everyone")
-        await client.send_message(message.channel, embed=embed)
-    else:
-        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-        await client.delete_message(message)
-        time.sleep(10)
-        await client.delete_message(msglg)
+        try:
+            await client.delete_message(message)
+            args = message.content.split(" ")
+            embed = discord.Embed(
+                title="End  📢",
+                color=COR,
+                description=" ".join(args[1:])
+            )
+            embed.set_footer(
+                text="Enviado por: {}  •  End".format(message.author.name),
+                icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
+            )
+            await client.send_message(message.channel, "@everyone")
+            await client.send_message(message.channel, embed=embed)
+        except IndexError:
+            msglg = await client.send_message(message.channel, 'Comando incorreto.')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        except:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        finally:
+            pass
 
 
 
     if message.content.lower().startswith('/stafflist'):
-        await client.delete_message(message)
-        args = message.content.split(" ")
-        embed = discord.Embed(
-            title="Lista da Equipe:",
-            color=COR,
-            description=" ".join(args[1:])
-        )
-        embed.set_footer(
-            text="Enviado por: {}  •  End".format(message.author.name),
-            icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
-        )
-        await client.send_message(message.channel, "@everyone")
-        await client.send_message(message.channel, embed=embed)
-    else:
-        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-        await client.delete_message(message)
-        time.sleep(10)
-        await client.delete_message(msglg)
+        try:
+            await client.delete_message(message)
+            args = message.content.split(" ")
+            embed = discord.Embed(
+                title="Lista da Equipe:",
+                color=COR,
+                description=" ".join(args[1:])
+            )
+            embed.set_footer(
+                text="Enviado por: {}  •  End".format(message.author.name),
+                icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
+            )
+            await client.send_message(message.channel, "@everyone")
+            await client.send_message(message.channel, embed=embed)
+        except IndexError:
+            msglg = await client.send_message(message.channel, 'Comando incorreto.')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        except:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        finally:
+            pass
 
 
     if message.content.lower().startswith('/kick'):
-        asyncio.sleep(10)
+        try:
+            asyncio.sleep(10)
+            await client.delete_message(message)
+            channel = client.get_channel('448449971629588481')
+            user = message.mentions[0]
+            await client.kick(user)
+            embed = discord.Embed(
+                title='EXPULSO ⛔',
+                color=COR,
+                description='O usuário **{}#{}**, foi expulso com sucesso!\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
+            )
+            embed.set_thumbnail(
+                url='https://i.imgur.com/1iJeEea.jpg'
+            )
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            await client.send_message(channel, embed=embed)
+    except IndexError:
+        msglg = await client.send_message(message.channel, 'Comando incorreto.')
         await client.delete_message(message)
-        channel = client.get_channel('448449971629588481')
-        user = message.mentions[0]
-        await client.kick(user)
-        embed = discord.Embed(
-            title='EXPULSO ⛔',
-            color=COR,
-            description='O usuário **{}#{}**, foi expulso com sucesso!\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
-        )
-        embed.set_thumbnail(
-            url='https://i.imgur.com/1iJeEea.jpg'
-        )
-        embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-        await client.send_message(channel, embed=embed)
-    else:
-        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
         time.sleep(10)
-        await client.delete_message(message)
         await client.delete_message(msglg)
+    except:
+        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+        await client.delete_message(message)
+        time.sleep(10)
+        await client.delete_message(msglg)
+    finally:
+        pass
 
 
     if message.content.lower().startswith('/tempban'):
@@ -667,11 +719,6 @@ async def on_message(message):
             await client.send_message(canal, embed=embed)
             time.sleep(timesquad)
             await client.unban(message.server, user)
-        else:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            time.sleep(10)
-            await client.delete_message(message)
-            await client.delete_message(msglg)
         except IndexError:
             msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
             time.sleep(10)
@@ -685,42 +732,64 @@ async def on_message(message):
 
 
     if message.content.lower().startswith('/mute'):
-        args = message.content.split(" ")
-        join = (" ".join(args[2:]))
-        user = message.mentions[0]
-        canal = client.get_channel('448449971629588481')
-        cargo = discord.utils.get(user.server.roles, name="Silenciado")
-        embed = discord.Embed(
-            title='SILENCIADO 🔈',
-            color=COR,
-            description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention))
-        embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
-        embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-        await client.send_message(canal, embed=embed)
-        await client.add_roles(user, cargo)
-    else:
-        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-        time.sleep(10)
-        await client.delete_message(message)
-        await client.delete_message(msglg)
+        try:
+            args = message.content.split(" ")
+            join = (" ".join(args[2:]))
+            user = message.mentions[0]
+            canal = client.get_channel('448449971629588481')
+            cargo = discord.utils.get(user.server.roles, name="Silenciado")
+            embed = discord.Embed(
+                title='SILENCIADO 🔈',
+                color=COR,
+                description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention))
+            embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            await client.send_message(canal, embed=embed)
+            await client.add_roles(user, cargo)
+        except IndexError:
+            msglg = await client.send_message(message.channel, 'Comando incorreto.')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        except:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        finally:
+            pass
 
 
     if message.content.lower().startswith('/unmute'):
-        args = message.content.split(" ")
-        user = message.mentions[0]
-        cargo = discord.utils.get(user.server.roles, name='Silenciado')
-        canal = client.get_channel('448449971629588481')
-        embed = discord.Embed(
-            title='DESMUTADO 🔊',
-            color=COR,
-            description='O usuário **{}#{}**, não está mais silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
-        )
-        embed.set_thumbnail(
-            url='https://i.imgur.com/1iJeEea.jpg'
-        )
-        embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-        await client.send_message(canal, embed=embed)
-        await client.remove_roles(user, cargo)
+        try:
+            args = message.content.split(" ")
+            user = message.mentions[0]
+            cargo = discord.utils.get(user.server.roles, name='Silenciado')
+            canal = client.get_channel('448449971629588481')
+            embed = discord.Embed(
+                title='DESMUTADO 🔊',
+                color=COR,
+                description='O usuário **{}#{}**, não está mais silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
+            )
+            embed.set_thumbnail(
+                url='https://i.imgur.com/1iJeEea.jpg'
+            )
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            await client.send_message(canal, embed=embed)
+            await client.remove_roles(user, cargo)
+        except IndexError:
+            msglg = await client.send_message(message.channel, 'Comando incorreto.')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        except:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        finally:
+            pass
+
 
     if message.content.lower().startswith('/ban'):
         try:
@@ -741,21 +810,18 @@ async def on_message(message):
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(channel1, embed=embed)
-        else:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            time.sleep(10)
-            await client.delete_message(message)
-            await client.delete_message(msglg)
         except IndexError:
-            msg = await client.send_message(message.channel, '{}, use /ban [usuário] [motivo]'.format(message.author.mention))
+            msglg = await client.send_message(message.channel, 'Comando incorreto.')
+            await client.delete_message(message)
             time.sleep(10)
-            await client.delete_message(msg)
+            await client.delete_message(msglg)
         except:
-            a = await client.send_message(message.channel, 'Sem permissão!'.format(message.author.mention))
-            time.sleep(5)
-            await client.delete_message(a)
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
         finally:
-            pass
+            passs
 
     if message.content.lower().startswith('/staff+'):
         try:
