@@ -685,49 +685,6 @@ async def on_message(message):
             await client.delete_message(message)
             await client.delete_message(msg)
 
-    if message.content.lower().startswith('/tempmute'):
-        try:
-            @commands.has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador', 'Moderador',  'Ajudante')
-                args = message.content.split(" ")
-                tempo = (" ".join(args[3:]))
-                user = message.mentions[0]
-                cargo = discord.utils.get(user.server.roles, name='Silenciado')
-                canal = client.get_channel('448449971629588481')
-                await client.add_roles(user, cargo)
-                print('O {} foi mutado temporariamente.'.format(user))
-                temp = args[2]
-                timesquad = int(temp)
-                reallytime = datetime.timedelta(seconds=timesquad)
-
-                embed = discord.Embed(
-                    title='SILENCIADO 🔈',
-                    color=COR,
-                    description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
-                )
-                embed.set_thumbnail(
-                    url='https://i.imgur.com/1iJeEea.jpg'
-                )
-                embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-                await client.send_message(canal, embed=embed)
-                time.sleep(timesquad)
-                cargo = discord.utils.get(user.server.roles, name='Silenciado')
-                await client.remove_roles(user, cargo)
-            else:
-                msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-                time.sleep(10)
-                await client.delete_message(message)
-                await client.delete_message(msglg)
-        except IndexError:
-            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
-            time.sleep(10)
-            await client.delete_message(msg)
-        except:
-            msg1 = await client.send_message(message.channel, 'Sem permissão!')
-            time.sleep(10)
-            await client.delete_message(msg1)
-        finally:
-            pass
-
     if message.content.lower().startswith('/helpstaff'):
         try:
             await client.delete_message(message)
@@ -947,6 +904,52 @@ async def on_message(message):
             time.sleep(10)
             await client.delete_message(message)
             await client.delete_message(asd)
+        finally:
+            pass
+
+
+@client.event
+@commands.has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador', 'Moderador',  'Ajudante')
+async def on_message(message):
+    if message.content.lower().startswith('/tempmute'):
+        try:
+            args = message.content.split(" ")
+            tempo = (" ".join(args[3:]))
+            user = message.mentions[0]
+            cargo = discord.utils.get(user.server.roles, name='Silenciado')
+            canal = client.get_channel('448449971629588481')
+            await client.add_roles(user, cargo)
+            print('O {} foi mutado temporariamente.'.format(user))
+            temp = args[2]
+            timesquad = int(temp)
+            reallytime = datetime.timedelta(seconds=timesquad)
+
+            embed = discord.Embed(
+                title='SILENCIADO 🔈',
+                color=COR,
+                description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+            )
+            embed.set_thumbnail(
+                url='https://i.imgur.com/1iJeEea.jpg'
+            )
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            await client.send_message(canal, embed=embed)
+            time.sleep(timesquad)
+            cargo = discord.utils.get(user.server.roles, name='Silenciado')
+            await client.remove_roles(user, cargo)
+        else:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            time.sleep(10)
+            await client.delete_message(message)
+            await client.delete_message(msglg)
+        except IndexError:
+            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
+            time.sleep(10)
+            await client.delete_message(msg)
+        except:
+            msg1 = await client.send_message(message.channel, 'Sem permissão!')
+            time.sleep(10)
+            await client.delete_message(msg1)
         finally:
             pass
 
