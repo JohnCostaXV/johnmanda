@@ -226,7 +226,7 @@ async def on_message(message):
 
     if message.content.lower().startswith('/ativarvip'):
         try:
-            canal = client.get_channel('470349985070972930')
+            canal = client.get_channel('470390225529602048')
             await client.delete_message(message)
             remover_ativacao = message.content.replace("/ativarvip ", "")
             separar = remover_ativacao.split("|", 2)
