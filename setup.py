@@ -872,6 +872,9 @@ async def on_message(message):
         finally:
             pass
 
+@client.event
+@commands.has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador', 'Moderador',  'Ajudante')
+async def on_message(message):
     if message.content.lower().startswith('/responder'):
         try:
             await client.delete_message(message)
