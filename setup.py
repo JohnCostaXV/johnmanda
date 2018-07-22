@@ -681,18 +681,18 @@ async def on_message(message):
             )
             embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(channel, embed=embed)
-    except IndexError:
-        msglg = await client.send_message(message.channel, 'Comando incorreto.')
-        await client.delete_message(message)
-        time.sleep(10)
-        await client.delete_message(msglg)
-    except:
-        msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-        await client.delete_message(message)
-        time.sleep(10)
-        await client.delete_message(msglg)
-    finally:
-        pass
+        except IndexError:
+            msglg = await client.send_message(message.channel, 'Comando incorreto.')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        except:
+            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            await client.delete_message(message)
+            time.sleep(10)
+            await client.delete_message(msglg)
+        finally:
+            pass
 
 
     if message.content.lower().startswith('/tempban'):
