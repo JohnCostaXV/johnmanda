@@ -12,7 +12,7 @@ import re
 import json
 import base64
 
-RANDOM_STATUS = ['jogar.end-mc.com', '{0}/{1}'.format(sum(1 for x in server.members if x.status == discord.Status.online or x.status == discord.Status.idle), len(server.members))']
+RANDOM_STATUS = ['jogar.end-mc.com']
 RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
 
 client = discord.Client()
@@ -34,7 +34,7 @@ async def on_member_join(member):
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
-        description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidoresEnd\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\n*Data de lançamento: 21/07/2018*'
+        description='**Redes sociais:**\n\nTwitter: https://twitter.com/ServidoresEnd\nDiscord: https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nEndereço de loja: https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\ntotal de membros: **{0}/{1}**'.format(sum(1 for x in server.members if x.status == discord.Status.online or x.status == discord.Status.idle), len(server.members))'
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
