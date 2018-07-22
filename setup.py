@@ -407,7 +407,7 @@ async def on_message(message):
                 description=" ".join(args[1:])
             )
             embed.set_footer(
-                text="Enviado por: {} • End".format(message.author.name),
+                text="Enviado por: {}  **•**  End".format(message.author.name),
                 icon_url='https://i.imgur.com/1iJeEea.jpg'
             )
             await client.send_message(message.channel, "@everyone")
