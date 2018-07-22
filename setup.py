@@ -402,7 +402,7 @@ async def on_message(message):
             await client.delete_message(message)
             args = message.content.split(" ")
             embed = discord.Embed(
-                title="📌 Equipe",
+                title="End 📢",
                 color=COR,
                 description=" ".join(args[1:])
             )
