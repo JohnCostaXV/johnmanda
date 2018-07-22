@@ -635,7 +635,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='Comandos do bot:',
                 color=COR,
-                description='*Esses são os comandos que não necessitam de permissão.*\n\n\n\n'
+                description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
                             '**/userinfo** `[usuário]` » Veja as informações de um usuário.\n\n'
                             '**/serverinfo** » Veja as informações do servidor.\n\n'
                             '**/dado** » Role um dado de um número de 1 á 6.\n\n'
