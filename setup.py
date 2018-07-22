@@ -12,7 +12,7 @@ import re
 import json
 import base64
 
-RANDOM_STATUS = ['jogar.end-mc.com', '{0}/{1}'.format(sum(1 for x in server.members if x.status == discord.Status.online or x.status == discord.Status.idle), len(server.members))]
+RANDOM_STATUS = ['jogar.end-mc.com']
 RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
 
 client = discord.Client()
