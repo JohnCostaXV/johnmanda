@@ -687,7 +687,7 @@ async def on_message(message):
 
     if message.content.lower().startswith('/tempmute'):
         try:
-            if '407706417282416641' in [role.id for role in message.author.roles]:
+            if has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador', 'Moderador',  'Ajudante')
                 args = message.content.split(" ")
                 tempo = (" ".join(args[3:]))
                 user = message.mentions[0]
@@ -949,6 +949,8 @@ async def on_message(message):
             await client.delete_message(asd)
         finally:
             pass
+
+
 
 
 client.run(os.environ.get("BOT_TOKEN"))
