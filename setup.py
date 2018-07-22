@@ -397,22 +397,18 @@ async def on_message(message):
         finally:
             pass
 
-
     if message.content.lower().startswith('/anunciar'):
-        if '407677666750365706' in [role.id for role in message.author.roles]:
+        if '417426253658849281' in [role.id for role in message.author.roles]:
             await client.delete_message(message)
             args = message.content.split(" ")
             embed = discord.Embed(
-                title="End 📢",
+                title="📌 Equipe",
                 color=COR,
                 description=" ".join(args[1:])
             )
             embed.set_footer(
                 text="Enviado por: {} • End".format(message.author.name),
                 icon_url='https://i.imgur.com/1iJeEea.jpg'
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/1iJeEea.jpg'
             )
             await client.send_message(message.channel, "@everyone")
             await client.send_message(message.channel, embed=embed)
