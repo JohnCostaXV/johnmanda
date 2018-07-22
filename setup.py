@@ -85,6 +85,7 @@ def get_bot_uptime():
 
 
 @client.event
+@commands.has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador', 'Bots', 'Moderador',  'Ajudante', 'Designer', 'Construtor', 'Youtuber+', 'Youtuber', 'Beta', 'End', 'Dragon', 'Shulker', 'Membro')
 async def on_message(message):
     if message.content.lower().startswith('/sugestão'):
         try:
