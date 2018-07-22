@@ -636,22 +636,23 @@ async def on_message(message):
                 title='Comandos do bot:',
                 color=COR,
                 description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
-                            '**/userinfo** `[usuário]` » Veja as informações de um usuário.\n\n'
+                            '**info** [usuário] » Veja as informações de um usuário.\n\n'
                             '**/serverinfo** » Veja as informações do servidor.\n\n'
                             '**/dado** » Role um dado de um número de 1 á 6.\n\n'
-                            '**/avatar** `[usuário]` » Veja o avatar seu ou de um membro.\n\n'
+                            '**/avatar** [usuário] » Veja o avatar seu ou de um membro.\n\n'
                             '**/convite** » Gere um convite para convidar todos para nossa comunidade.\n\n'
                             '**/ping** » Veja o tempo de resposta do bot.\n\n'
                             '**/ajuda** » Veja as informações básicas do servidor End.\n\n'
                             '**/youtuber** » Veja os requisitos para ter tag youtuber.\n\n'
                             '**/formulário** » Veja os formulários disponíveis do servidor.\n\n'
                             '**/ip** » Veja o IP de conexão ao servidor.\n\n'
-                            '**/enviar** `[dúvida]` » Enviar uma dúvida para a equipe.\n\n'
+                            '**/enviar** [dúvida] » Enviar uma dúvida para a equipe.\n\n'
                             '**/moeda** » Brinque de cara ou coroa.\n\n\n'
                             '**UTILITÁRIOS:**\n\n'
-                            '**/revisão** `[nickname] | [motivo] | [por quê está irregular?]` » Crie uma revisão de seu banimento.\n\n'
-                            '**/reportar** `[usuário/nickname] | [motivo] | [prova]` » Denúncie um usuário do discord ou do servidor.\n\n'
-                            '**/sugestão** `[sugestão] | [por quê adicionariamos?]` » Crie uma sugestão.'
+                            '**/ativarvip** [nickname] | [rank] | [prova] » Crie uma solicitação do seu rank no Discord.\n\n'
+                            '**/revisão** [nickname] | [motivo] | [por quê está irregular?] » Crie uma revisão de seu banimento.\n\n'
+                            '**/reportar** [usuário/nickname] | [motivo] | [prova] » Denúncie um usuário do discord ou do servidor.\n\n'
+                            '**/sugestão** [sugestão] | [por quê adicionariamos?] » Crie uma sugestão.'
                 )
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
@@ -887,7 +888,7 @@ async def on_message(message):
         embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.lower().startswith('/userinfo'):
+    if message.content.lower().startswith('/info'):
         try:
             tmp1 = datetime.datetime.now()
 
