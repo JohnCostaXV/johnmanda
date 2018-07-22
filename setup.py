@@ -937,11 +937,11 @@ async def on_message(message):
             time.sleep(timesquad)
             cargo = discord.utils.get(user.server.roles, name='Silenciado')
             await client.remove_roles(user, cargo)
-        else:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            time.sleep(10)
-            await client.delete_message(message)
-            await client.delete_message(msglg)
+        #else:
+            #msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+            #time.sleep(10)
+            #await client.delete_message(message)
+            #await client.delete_message(msglg)
         except IndexError:
             msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
             time.sleep(10)
