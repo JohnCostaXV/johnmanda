@@ -70,6 +70,19 @@ async def on_ready():
         print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
 
+def get_bot_uptime():
+    now = datetime.datetime.utcnow()
+    delta = now - bot.uptime
+    hours, remainder = divmod(int(delta.total_seconds()), 3600)
+    minutes, seconds = divmod(remainder, 60)
+    days, hours = divmod(hours, 24)
+    if days:
+        fmt = '**{d}** dias, **{h}** horas, **{m}** minutos, e **{s}** segundos'
+    else:
+        fmt = '**{h}** horas, **{m}** minutos, e **{s}** segundos'
+
+    return fmt.format(d=days, h=hours, m=minutes, s=seconds)
+
 
 @client.event
 async def on_message(message):
@@ -95,7 +108,7 @@ async def on_message(message):
                 inline=False
             )
             embed.set_footer(
-                text="Sugestão postada com sucesso.",
+                text="{}".format(get_bot_uptime()),
                 icon_url=message.author.avatar_url
             )
             await client.send_message(message.author, "Sua sugestão foi enviada!")
