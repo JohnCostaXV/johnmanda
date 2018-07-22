@@ -600,7 +600,7 @@ async def on_message(message):
                 inline=False
             )
             embed.set_footer(
-                text="Enviada com sucesso.",
+                text=datetime.datetime.now(),
                 icon_url=message.author.avatar_url
             )
             await client.send_message(message.author, "Sua sugestão foi enviada!")
