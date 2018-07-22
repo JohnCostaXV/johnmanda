@@ -108,7 +108,7 @@ async def on_message(message):
                 inline=False
             )
             embed.set_footer(
-                text="{}".format(get_bot_uptime()),
+                text=get_bot_uptime(),
                 icon_url=message.author.avatar_url
             )
             await client.send_message(message.author, "Sua sugestão foi enviada!")
