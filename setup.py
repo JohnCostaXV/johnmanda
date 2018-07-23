@@ -1066,5 +1066,4 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
 
 
-
 client.run(os.environ.get("BOT_TOKEN"))
