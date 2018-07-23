@@ -645,17 +645,17 @@ async def on_message(message):
                         title='Comandos para o cargo `STAFF+`:',
                         color=COR,
                         description='**/ban** [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                                    'exemplo: `/ban @{0.author.mention} Divulgação de link´s`\n\n'
+                                    'exemplo: `/ban @{0.message.author.mention} Divulgação de link´s`\n\n'
                                     '**/kick** [usuário] » Expulsão do discord.\n'
-                                    'exemplo: `/kick @{1.author.mention}`\n\n'
+                                    'exemplo: `/kick @{1.message.author.mention}`\n\n'
                                     '**/mute** [usuário] [motivo] » Mute permanentemente do discord.\n'
-                                    'exemplo: `/mute @{2.author.mention} Spam`\n\n'
+                                    'exemplo: `/mute @{2.message.author.mention} Spam`\n\n'
                                     '**/unmute** [usuário] » Unmute do discord.\n'
-                                    'exemplo: `/unmute @{3.author.mention}`\n\n'
+                                    'exemplo: `/unmute @{3.message.author.mention}`\n\n'
                                     '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
-                                    'exemplo: `/tempban @{4.author.mention} 172800 Discriminação`\n\n'
+                                    'exemplo: `/tempban @{4.message.author.mention} 172800 Discriminação`\n\n'
                                     '**/tempmute** [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
-                                    'exemplo: `/tempmute @{5.author.mention} 21600 Iniciativa de Flood`\n\n'
+                                    'exemplo: `/tempmute @{5.message.author.mention} 21600 Iniciativa de Flood`\n\n'
                                     '**/say** [mensagem] » bot repete a mensagem.\n'
                                     'exemplo: `/say Olá`\n\n'
                                     '**/stafflist** [mensagem/staff] » Bot repete a mensagem em Embed.\n'
@@ -663,7 +663,7 @@ async def on_message(message):
                                     '**/anunciar** [mensagem] » bot repete em Embed\n'
                                     'exemplo: `/anunciar Olá`\n\n'
                                     '**/changenick** [usuário] [nick] » Altera nick de um usuário.\n'
-                                    'exemplo: `/changenick @{6.author.mention} MelhorServidor #END`\n\n'
+                                    'exemplo: `/changenick @{6.message.author.mention} MelhorServidor #END`\n\n'
                     )
                     embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
