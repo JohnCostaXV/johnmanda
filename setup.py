@@ -28,6 +28,15 @@ msg_user = None
 user_timer = {}
 user_spam_count = {}
 
+def mojang(site, json_retorno):
+  site_conectar = requests.get(site)
+  if site_conectar.status_code == 200:
+       _json = json.loads(site_conectar.content)
+       return _json[json_retorno]
+  else:
+     return "cbe7af2b61da46e3aa7d3da39bd55b93"
+
+
 @client.event
 async def on_member_join(member):
     canal = client.get_channel('448326795692081152')
@@ -1011,7 +1020,7 @@ async def on_message(message):
                 description='Dúvida recebida.\nEnviada por: {}'.format(message.author.mention)
             )
             embed.add_field(name='Dúvida:', value="```%s```" % "".join(separar[1]))
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='End', icon_url=message.server.icon_url)
             await client.send_message(message.author, 'Essa é uma cópia de sua dúvida.')
             await client.send_message(message.author, embed=embed)
             botmsg = await client.send_message(canal, embed=embed)
@@ -1036,16 +1045,9 @@ async def on_message(message):
 
 
     if message.content.lower().startswith('/mineinfo'):
-        args = message.content.split(" ")
-        remover_mineinfo = message.content.replace("/mineinfo", "")
+        remover_mineinfo = message.content.replace("/enviar", "")
         separar = remover_mineinfo.split(" ", 1)
-        site_conectar = requests.get(site)
         nome = "%s" % "".join(separar[1])
-        if site_conectar.status_code == 200:
-            _json = json.loads(site_conectar.content)
-            return _json[json_retorno]
-        else:
-            return "cbe7af2b61da46e3aa7d3da39bd55b93"
 
         #UUID
         uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
@@ -1057,13 +1059,11 @@ async def on_message(message):
         embed = discord.Embed(
             title='Informações:',
             color=COR,
-            description="**Nickname:** {}\n**UUID:** {}".format(nome, uuid)
+            description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
         )
         embed.set_image(url=corpo)
-        embed.set_author(name='Perfil de Minecraft:', icon_url='https://i.imgur.com/1iJeEea.jpg')
-        embed.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+        embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
         await client.send_message(message.channel, embed=embed)
-
 
 
 
