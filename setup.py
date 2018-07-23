@@ -1081,7 +1081,7 @@ async def on_message(message):
             embed2 = discord.Embed(
                 title='Usuário não encontrado!',
                 color=COR,
-                description='USe `/mineinfo [nickname]`'
+                description='Use `/mineinfo [nickname]`'
             )
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg1 = await client.send_message(message.channel, embed=embed2)
