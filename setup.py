@@ -1102,8 +1102,9 @@ async def on_message(message):
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
 
-            head = discord.Embed(title='', color=COR, description='Clique [aqui](' + cabeca + ') para acessar a head do {}.'.format(nome)')
+            head = discord.Embed(title='', color=COR, description='Clique [aqui](' + cabeca + ') para acessar a head do {}.'.format(nome))
             head.set_image(url=cabeca)
+            head.set_author(name=message.server.name, icon_url=message.server.icon_url)
             await client.send_message(message.channel, embed=head)
         except IndexError:
             embed = discord.Embed(
