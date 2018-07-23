@@ -660,6 +660,7 @@ async def on_message(message):
                             '**/moeda** » Brinque de cara ou coroa.\n\n\n'
                             '**MINECRAFT:**\n\n'
                             '**/mineinfo** [nickname] » Envia informações de um usuário.\n\n'
+                            '**/skin** [nickname] » Veja a skin de um usuário.\n\n'
                             '**/head** [nickname] » Veja a cabeça da skin de um usuário.\n\n\n'
                             '**UTILITÁRIOS:**\n\n'
                             '**/ativarvip** [nickname] | [rank] | [prova] » Crie uma solicitação do seu rank no Discord.\n\n'
