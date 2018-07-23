@@ -645,25 +645,25 @@ async def on_message(message):
                         title='Comandos para o cargo `STAFF+`:',
                         color=COR,
                         description='**/ban** [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                                    'exemplo: `/ban @JohnnCosta Divulgação de link´s`\n\n'
+                                    'exemplo: `/ban @{} Divulgação de link´s`\n\n'
                                     '**/kick** [usuário] » Expulsão do discord.\n'
-                                    'exemplo: `/kick @JohnnCosta`\n\n'
+                                    'exemplo: `/kick @{}`\n\n'
                                     '**/mute** [usuário] [motivo] » Mute permanentemente do discord.\n'
-                                    'exemplo: `/mute @JohnnCosta Spam`\n\n'
+                                    'exemplo: `/mute @{} Spam`\n\n'
                                     '**/unmute** [usuário] » Unmute do discord.\n'
-                                    'exemplo: `/unmute @JohnnCosta`\n\n'
+                                    'exemplo: `/unmute @{}`\n\n'
                                     '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
-                                    'exemplo: `/tempban @JohnnCosta 172800 Discriminação`\n\n'
+                                    'exemplo: `/tempban @{} 172800 Discriminação`\n\n'
                                     '**/tempmute** [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
-                                    'exemplo: `/tempmute @JohnnCosta 21600 Iniciativa de Flood`\n\n'
+                                    'exemplo: `/tempmute @{} 21600 Iniciativa de Flood`\n\n'
                                     '**/say** [mensagem] » bot repete a mensagem.\n'
                                     'exemplo: `/say Olá`\n\n'
                                     '**/stafflist** [mensagem/staff] » Bot repete a mensagem em Embed.\n'
-                                    'exemplo: `/stafflist :white_small_square: JohnnCosta`\n\n'
+                                    'exemplo: `/stafflist :white_small_square: {}`\n\n'
                                     '**/anunciar** [mensagem] » bot repete em Embed\n'
                                     'exemplo: `/anunciar Olá`\n\n'
                                     '**/changenick** [usuário] [nick] » Altera nick de um usuário.\n'
-                                    'exemplo: `/changenick @JohnnCosta JohnnCosta #END`\n\n'
+                                    'exemplo: `/changenick @{} MelhorServidor #END`\n\n'.format(message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name)
                     )
                     embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
@@ -824,7 +824,7 @@ async def on_message(message):
         embed = discord.Embed(
             title='YOUTUBER 🔴',
             color=COR,
-            description='Abaixo terão os requisitos para você que é youtuber e deseja possuir uma tag.\n\n**Shulker**: *1.000*;\n**End**: *3.000*;\n**Youtuber**: *10.000*;\n**Youtuber+**: *15.000*;\n\nCaso possui um dos requisitos, solicite a tag a um superior.'
+            description='Abaixo terão os requisitos para você que é youtuber e deseja possuir uma tag.\n\n**Shulker**: *1.000*;\n**End**: *3.000*;\n**Youtuber**: *10.000*;\n**Youtuber+**: *15.000*;\n\nCaso possui um dos requisitos, solicite a tag em nosso [Twitter](https://twitter.com/servidorEnd).'
         )
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
@@ -1302,7 +1302,7 @@ async def on_message(message):
             embed1 = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
-                description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder @JohnnCosta O ip do servidor é jogar.end-mc.com'
+                description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder {} O ip do servidor é jogar.end-mc.com'.format(message.author.mention)
             )
             embed1.set_thumbnail(url=message.server.icon_url)
             er = await client.send_message(message.channel, embed=embed1)
