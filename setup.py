@@ -10,6 +10,7 @@ import io
 import os
 import re
 import json
+import requests
 import base64
 
 RANDOM_STATUS = ['jogar.end-mc.com']
@@ -1010,7 +1011,7 @@ async def on_message(message):
                 description='Dúvida recebida.\nEnviada por: {}'.format(message.author.mention)
             )
             embed.add_field(name='Dúvida:', value="```%s```" % "".join(separar[1]))
-            embed.set_footer(text='End', icon_url=message.server.icon_url)
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(message.author, 'Essa é uma cópia de sua dúvida.')
             await client.send_message(message.author, embed=embed)
             botmsg = await client.send_message(canal, embed=embed)
@@ -1032,6 +1033,37 @@ async def on_message(message):
             await client.delete_message(tst)
         finally:
             pass
+
+
+    if message.content.lower().startswith('/mineinfo'):
+        args = message.content.split(" ")
+        remover_mineinfo = message.content.replace("/mineinfo", "")
+        separar = remover_mineinfo.split(" ", 1)
+        site_conectar = requests.get(site)
+        nome = "%s" % "".join(separar[1])
+        if site_conectar.status_code == 200:
+            _json = json.loads(site_conectar.content)
+            return _json[json_retorno]
+        else:
+            return "cbe7af2b61da46e3aa7d3da39bd55b93"
+
+        #UUID
+        uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
+        #Cabeca
+        #cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
+        #Corpo
+        corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
+
+        embed = discord.Embed(
+            title='Informações:',
+            color=COR,
+            description="**Nickname:** {}\n**UUID:** {}".format(nome, uuid)
+        )
+        embed.set_image(url=corpo)
+        embed.set_author(name='Perfil de Minecraft:', icon_url='https://i.imgur.com/1iJeEea.jpg')
+        embed.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+        await client.send_message(message.channel, embed=embed)
+
 
 
 
