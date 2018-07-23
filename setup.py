@@ -151,7 +151,6 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
-                    await client.delete_message(message)
                     embed = discord.Embed(
                         title='PUNIÇÕES & TEMPOS:',
                         color=COR,
@@ -642,7 +641,6 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
-                    await client.delete_message(message)
                     embed = discord.Embed(
                         title='Comandos para o cargo `STAFF+`:',
                         color=COR,
