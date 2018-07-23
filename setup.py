@@ -1168,6 +1168,7 @@ async def on_message(message):
                 description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
             )
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
+            time.sleep(5)
             await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed1 = discord.Embed(
@@ -1207,6 +1208,7 @@ async def on_message(message):
 
             head = discord.Embed()
             head.set_image(url=cabeca)
+            time.sleep(5)
             await client.send_message(message.channel, embed=head)
         except IndexError:
             embed = discord.Embed(
@@ -1246,6 +1248,7 @@ async def on_message(message):
 
             embed = discord.Embed()
             embed.set_image(url=corpo)
+            time.sleep(5)
             await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed = discord.Embed(
