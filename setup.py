@@ -92,29 +92,39 @@ async def tutorial_uptime():
 
 
 @client.event
-@commands.has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador', 'Moderador',  'Ajudante')
 async def on_message(message):
     if message.content.lower().startswith('/staff-'):
         try:
-            embed = discord.Embed(
-                title='Comandos para o cargo `STAFF`:',
-                color=COR,
-                description='/tempmute [usuário] » Silenciar temporariamente do discord.\n'
-                            'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`\n\n'
-                            '*Lembrando que os tempmute é contato por segundo! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
-            )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
-            await client.send_message(message.author, embed=embed)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+                "407678481670078475", #Moderador
+                "407706417282416641", #Ajudante
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    embed = discord.Embed(
+                        title='Comandos para o cargo `STAFF`:',
+                        color=COR,
+                        description='/tempmute [usuário] » Silenciar temporariamente do discord.\n'
+                                    'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`\n\n'
+                                    '*Lembrando que os tempmute é contato por segundo! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
+                    )
+                    embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+                    await client.send_message(message.author, embed=embed)
         except IndexError:
-            time.sleep(2)
-            await client.delete_message(msg)
-            asyncio.sleep(21000)
-            msg1 = await client.send_message(message.channel, 'Comando incorreto!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msg1)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/staff-`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
             time.sleep(2)
             await client.delete_message(msg)
@@ -129,41 +139,52 @@ async def on_message(message):
 
     if message.content.lower().startswith('/helpstaff'):
         try:
-            await client.delete_message(message)
-            embed = discord.Embed(
-                title='PUNIÇÕES & TEMPOS:',
-                color=COR,
-                description='**Uso de caps-lock excessivo** - *__14400__ segundos de tempmute*\n\n'
-                            '**Spam** - *__14400__ segundos de tempmute*\n\n'
-                            '**Flood** - *__14400__ segundos de mute*\n\n'
-                            '**Divulgação/Citação de servidores** - *Ban permanente*\n\n'
-                            '**Iniciativa de flood** - *__21600__ segundos de mute*\n\n'
-                            '**Mensagem fake** - *__10800__ segundos de mute*\n\n'
-                            '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
-                            '**Ameaça ao servidor** - *Ban permanente*.\n\n'
-                            '**Abuso de bug´s** - *Ban permanente*.\n\n'
-                            '**Uso inadequado do chat** - *__43200__ segundos de mute*\n\n'
-                            '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
-                            '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
-                            '**Falsificação de provas** - *Ban permanente*.\n\n'
-                            '**Chantagem** - *Ban permanente*.\n\n'
-                            '**Ofensa à staff** - *Ban permanente*.\n\n'
-                            '**Uso de hack** - *Ban permanente*.\n\n'
-                            '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
-                            '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
-            )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
-            await client.send_message(message.author, embed=embed)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+                "407678481670078475", #Moderador
+                "407706417282416641", #Ajudante
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    embed = discord.Embed(
+                        title='PUNIÇÕES & TEMPOS:',
+                        color=COR,
+                        description='**Uso de caps-lock excessivo** - *__14400__ segundos de tempmute*\n\n'
+                                    '**Spam** - *__14400__ segundos de tempmute*\n\n'
+                                    '**Flood** - *__14400__ segundos de mute*\n\n'
+                                    '**Divulgação/Citação de servidores** - *Ban permanente*\n\n'
+                                    '**Iniciativa de flood** - *__21600__ segundos de mute*\n\n'
+                                    '**Mensagem fake** - *__10800__ segundos de mute*\n\n'
+                                    '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
+                                    '**Ameaça ao servidor** - *Ban permanente*.\n\n'
+                                    '**Abuso de bug´s** - *Ban permanente*.\n\n'
+                                    '**Uso inadequado do chat** - *__43200__ segundos de mute*\n\n'
+                                    '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
+                                    '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
+                                    '**Falsificação de provas** - *Ban permanente*.\n\n'
+                                    '**Chantagem** - *Ban permanente*.\n\n'
+                                    '**Ofensa à staff** - *Ban permanente*.\n\n'
+                                    '**Uso de hack** - *Ban permanente*.\n\n'
+                                    '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
+                                    '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
+                    )
+                    embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+                    await client.send_message(message.author, embed=embed)
         except IndexError:
-            time.sleep(2)
-            await client.delete_message(msg)
-            asyncio.sleep(21000)
-            msg1 = await client.send_message(message.channel, 'Comando incorreto!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msg1)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/helpstaff`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
             time.sleep(2)
             await client.delete_message(msg)
@@ -175,97 +196,153 @@ async def on_message(message):
         finally:
             pass
 
-
-
-@client.event
-@commands.has_any_role('Diretor', 'Gerente', 'Desenvolvedor', 'Administrador')
-async def on_message(message):
     if message.content.lower().startswith('/tt'):
         try:
-            await client.delete_message(message)
-            auto = random.choice(RANDOM_AUTO)
-            canal = client.get_channel('407669684616560650')
-            time.sleep(3)
-            await client.send_message(canal, auto)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    auto = random.choice(RANDOM_AUTO)
+                    canal = client.get_channel('407669684616560650')
+                    time.sleep(3)
+                    await client.send_message(canal, auto)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/tt`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
 
     if message.content.lower().startswith('/changenick'):
         try:
-            await client.delete_message(message)
-            user = message.mentions[0]
-            args = message.content.split(" ")
-            await client.change_nickname(user, " ".join(args[2:]))
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    user = message.mentions[0]
+                    args = message.content.split(" ")
+                    await client.change_nickname(user, " ".join(args[2:]))
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/changenick [username] [nick]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
-    if message.content.lower().startswith('/gritar'):
+    if message.content.lower().startswith('/say'):
         try:
-            args = message.content.split(" ")
-            await client.send_message(message.channel, (" ".join(args[1:])))
-            asyncio.sleep(1)
-            await client.delete_message(message)
-            asyncio.sleep(1)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    args = message.content.split(" ")
+                    await client.send_message(message.channel, (" ".join(args[1:])))
+                    asyncio.sleep(1)
+                    await client.delete_message(message)
+                    asyncio.sleep(1)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/say [mensagem]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
 
     if message.content.lower().startswith('/anunciar'):
         try:
-            await client.delete_message(message)
-            args = message.content.split(" ")
-            embed = discord.Embed(
-                title="End  📢",
-                color=COR,
-                description=" ".join(args[1:])
-            )
-            embed.set_footer(
-                text="Enviado por: {}  •  End".format(message.author.name),
-                icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
-            )
-            await client.send_message(message.channel, "@everyone")
-            await client.send_message(message.channel, embed=embed)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    args = message.content.split(" ")
+                    embed = discord.Embed(
+                        title="End  📢",
+                        color=COR,
+                        description=" ".join(args[1:])
+                    )
+                    embed.set_footer(
+                        text="Enviado por: {}  •  End".format(message.author.name),
+                        icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
+                    )
+                    await client.send_message(message.channel, "@everyone")
+                    await client.send_message(message.channel, embed=embed)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/anunciar [mensagem]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
@@ -273,227 +350,334 @@ async def on_message(message):
 
     if message.content.lower().startswith('/stafflist'):
         try:
-            await client.delete_message(message)
-            args = message.content.split(" ")
-            embed = discord.Embed(
-                title="Lista da Equipe:",
-                color=COR,
-                description=" ".join(args[1:])
-            )
-            embed.set_footer(
-                text="Enviado por: {}  •  End".format(message.author.name),
-                icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
-            )
-            await client.send_message(message.channel, "@everyone")
-            await client.send_message(message.channel, embed=embed)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    args = message.content.split(" ")
+                    embed = discord.Embed(
+                        title="Lista da Equipe:",
+                        color=COR,
+                        description=" ".join(args[1:])
+                    )
+                    embed.set_footer(
+                        text="Enviado por: {}  •  End".format(message.author.name),
+                        icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
+                    )
+                    await client.send_message(message.channel, "@everyone")
+                    await client.send_message(message.channel, embed=embed)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/stafflist [mensagem]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
 
     if message.content.lower().startswith('/kick'):
         try:
-            asyncio.sleep(10)
-            await client.delete_message(message)
-            channel = client.get_channel('448449971629588481')
-            user = message.mentions[0]
-            await client.kick(user)
-            embed = discord.Embed(
-                title='EXPULSO ⛔',
-                color=COR,
-                description='O usuário **{}#{}**, foi expulso com sucesso!\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/1iJeEea.jpg'
-            )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            await client.send_message(channel, embed=embed)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    asyncio.sleep(10)
+                    await client.delete_message(message)
+                    channel = client.get_channel('448449971629588481')
+                    user = message.mentions[0]
+                    await client.kick(user)
+                    embed = discord.Embed(
+                        title='EXPULSO ⛔',
+                        color=COR,
+                        description='O usuário **{}#{}**, foi expulso com sucesso!\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
+                    )
+                    embed.set_thumbnail(
+                        url='https://i.imgur.com/1iJeEea.jpg'
+                    )
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    await client.send_message(channel, embed=embed)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/kick [username]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
 
     if message.content.lower().startswith('/tempban'):
         try:
-            args = message.content.split(" ")
-            tempo = (" ".join(args[3:]))
-            await client.delete_message(message)
-            channel1 = client.get_channel('448449971629588481')
-            user = message.mentions[0]
-            temp = args[2]
-            timesquad = int(temp)
-            reallytime = datetime.timedelta(seconds=timesquad)
-            await client.ban(user)
-            join = (" ".join(args[2:]))
-            embed = discord.Embed(
-                title='BANIDO ⛔',
-                color=COR,
-                description='O usuário **{}#{}**, foi banido temporariamente!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/1iJeEea.jpg'
-            )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            await client.send_message(canal, embed=embed)
-            time.sleep(timesquad)
-            await client.unban(message.server, user)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    args = message.content.split(" ")
+                    tempo = (" ".join(args[3:]))
+                    await client.delete_message(message)
+                    channel1 = client.get_channel('448449971629588481')
+                    user = message.mentions[0]
+                    temp = args[2]
+                    timesquad = int(temp)
+                    reallytime = datetime.timedelta(seconds=timesquad)
+                    await client.ban(user)
+                    join = (" ".join(args[2:]))
+                    embed = discord.Embed(
+                        title='BANIDO ⛔',
+                        color=COR,
+                        description='O usuário **{}#{}**, foi banido temporariamente!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                    )
+                    embed.set_thumbnail(
+                        url='https://i.imgur.com/1iJeEea.jpg'
+                    )
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    await client.send_message(canal, embed=embed)
+                    time.sleep(timesquad)
+                    await client.unban(message.server, user)
         except IndexError:
-            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
-            time.sleep(10)
-            await client.delete_message(msg)
+            await client.delete_message(message)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/tempban [username] [segundos] [motivo]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msg1 = await client.send_message(message.channel, 'Sem permissão!')
-            time.sleep(10)
-            await client.delete_message(msg1)
+            await client.delete_message(message)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
 
     if message.content.lower().startswith('/mute'):
         try:
-            args = message.content.split(" ")
-            join = (" ".join(args[2:]))
-            user = message.mentions[0]
-            canal = client.get_channel('448449971629588481')
-            cargo = discord.utils.get(user.server.roles, name="Silenciado")
-            embed = discord.Embed(
-                title='SILENCIADO 🔈',
-                color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention))
-            embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            await client.send_message(canal, embed=embed)
-            await client.add_roles(user, cargo)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    args = message.content.split(" ")
+                    join = (" ".join(args[2:]))
+                    user = message.mentions[0]
+                    canal = client.get_channel('448449971629588481')
+                    cargo = discord.utils.get(user.server.roles, name="Silenciado")
+                    embed = discord.Embed(
+                        title='SILENCIADO 🔈',
+                        color=COR,
+                        description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention))
+                    embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    await client.send_message(canal, embed=embed)
+                    await client.add_roles(user, cargo)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/mute [username] [motivo]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
 
     if message.content.lower().startswith('/unmute'):
         try:
-            args = message.content.split(" ")
-            user = message.mentions[0]
-            cargo = discord.utils.get(user.server.roles, name='Silenciado')
-            canal = client.get_channel('448449971629588481')
-            embed = discord.Embed(
-                title='DESMUTADO 🔊',
-                color=COR,
-                description='O usuário **{}#{}**, não está mais silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/1iJeEea.jpg'
-            )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            await client.send_message(canal, embed=embed)
-            await client.remove_roles(user, cargo)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    args = message.content.split(" ")
+                    user = message.mentions[0]
+                    cargo = discord.utils.get(user.server.roles, name='Silenciado')
+                    canal = client.get_channel('448449971629588481')
+                    embed = discord.Embed(
+                        title='DESMUTADO 🔊',
+                        color=COR,
+                        description='O usuário **{}#{}**, não está mais silenciado!\n\nAutor: {}'.format(user.name, user.discriminator, message.author.mention)
+                    )
+                    embed.set_thumbnail(
+                        url='https://i.imgur.com/1iJeEea.jpg'
+                    )
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    await client.send_message(canal, embed=embed)
+                    await client.remove_roles(user, cargo)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/unmute [username]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
 
     if message.content.lower().startswith('/ban'):
         try:
-            asyncio.sleep(10)
-            args = message.content.split(" ")
-            await client.delete_message(message)
-            channel1 = client.get_channel('448449971629588481')
-            user = message.mentions[0]
-            await client.ban(user)
-            join = (" ".join(args[2:]))
-            embed = discord.Embed(
-                title='BANIDO ⛔',
-                color=COR,
-                description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/1iJeEea.jpg'
-            )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            await client.send_message(channel1, embed=embed)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    asyncio.sleep(10)
+                    args = message.content.split(" ")
+                    await client.delete_message(message)
+                    channel1 = client.get_channel('448449971629588481')
+                    user = message.mentions[0]
+                    await client.ban(user)
+                    join = (" ".join(args[2:]))
+                    embed = discord.Embed(
+                        title='BANIDO ⛔',
+                        color=COR,
+                        description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
+                    )
+                    embed.set_thumbnail(
+                        url='https://i.imgur.com/1iJeEea.jpg'
+                    )
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    await client.send_message(channel1, embed=embed)
         except IndexError:
-            msglg = await client.send_message(message.channel, 'Comando incorreto.')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/ban [username] [motivo]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
-            msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msglg)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
         finally:
-            passs
+            pass
 
     if message.content.lower().startswith('/staff+'):
         try:
-            await client.delete_message(message)
-            embed = discord.Embed(
-                title='Comandos para o cargo `STAFF+`:',
-                color=COR,
-                description='/ban [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                            'exemplo: `/ban @JohnnCosta Divulgação de link´s`\n\n'
-                            '/kick [usuário] » Expulsão do discord.\n'
-                            'exemplo: `/kick @JohnnCosta`\n\n'
-                            '/mute [usuário] [motivo] » Mute permanentemente do discord.\n'
-                            'exemplo: `/mute @JohnnCosta Spam`\n\n'
-                            '/unmute [usuário] » Unmute do discord.\n'
-                            'exemplo: `/unmute @JohnnCosta`\n\n'
-                            '/tempban [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
-                            'exemplo: `/tempban @JohnnCosta 172800 Discriminação`\n\n'
-                            '/tempmute [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
-                            'exemplo: `/tempmute @JohnnCosta 21600 Iniciativa de Flood`\n\n'
-                            '/say [mensagem] » bot repete a mensagem.\n'
-                            'exemplo: `/say Olá`\n\n'
-                            '/anunciar [mensagem] » bot repete em Embed\n'
-                            'exemplo: `/anunciar Olá`\n\n'
-            )
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
-            await client.send_message(message.author, embed=embed)
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    embed = discord.Embed(
+                        title='Comandos para o cargo `STAFF+`:',
+                        color=COR,
+                        description='**/ban** [usuário] [motivo] » Banimento permanentemente do discord.\n'
+                                    'exemplo: `/ban @JohnnCosta Divulgação de link´s`\n\n'
+                                    '**/kick** [usuário] » Expulsão do discord.\n'
+                                    'exemplo: `/kick @JohnnCosta`\n\n'
+                                    '**/mute** [usuário] [motivo] » Mute permanentemente do discord.\n'
+                                    'exemplo: `/mute @JohnnCosta Spam`\n\n'
+                                    '**/unmute** [usuário] » Unmute do discord.\n'
+                                    'exemplo: `/unmute @JohnnCosta`\n\n'
+                                    '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
+                                    'exemplo: `/tempban @JohnnCosta 172800 Discriminação`\n\n'
+                                    '**/tempmute** [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
+                                    'exemplo: `/tempmute @JohnnCosta 21600 Iniciativa de Flood`\n\n'
+                                    '**/say** [mensagem] » bot repete a mensagem.\n'
+                                    'exemplo: `/say Olá`\n\n'
+                                    '**/stafflist** [mensagem/staff] » Bot repete a mensagem em Embed.\n'
+                                    'exemplo: `/stafflist :white_small_square: JohnnCosta`\n\n'
+                                    '**/anunciar** [mensagem] » bot repete em Embed\n'
+                                    'exemplo: `/anunciar Olá`\n\n'
+                                    '**/changenick** [usuário] [nick] » Altera nick de um usuário.\n'
+                                    'exemplo: `/changenick @JohnnCosta JohnnCosta #END`\n\n'
+                    )
+                    embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
+                    await client.send_message(message.author, embed=embed)
         except IndexError:
-            time.sleep(2)
-            await client.delete_message(msg)
-            await asyncio.sleep(21000)
-            msg1 = await client.send_message(message.channel, 'Comando incorreto!')
             await client.delete_message(message)
-            time.sleep(10)
-            await client.delete_message(msg1)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/staff+`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
         except:
             time.sleep(2)
             await client.delete_message(msg)
@@ -505,11 +689,6 @@ async def on_message(message):
         finally:
             pass
 
-
-
-
-@client.event
-async def on_message(message):
     if message.content.lower().startswith('/sugestão'):
         try:
             canal = client.get_channel('467704726411018260')
@@ -1095,20 +1274,30 @@ async def on_message(message):
 
     if message.content.lower().startswith('/responder'):
         try:
-            await client.delete_message(message)
-            user = message.mentions[0]
-            remover_resposta = message.content.replace("/responder", "")
-            separar = remover_resposta.split(" ", 2)
-            embed = discord.Embed(
-                title='DÚVIDA 🔍',
-                color=COR,
-                description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
-            )
-            embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
-            embed.set_footer(text='End', icon_url=message.server.icon_url)
-            await client.send_message(user, embed=embed)
-            await client.send_message(message.channel, embed=embed)
-            await client.add_reaction(user, '✅')
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+                "407678481670078475", #Moderador
+                "407706417282416641", #Ajudante
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    user = message.mentions[0]
+                    remover_resposta = message.content.replace("/responder", "")
+                    separar = remover_resposta.split(" ", 2)
+                    embed = discord.Embed(
+                        title='DÚVIDA 🔍',
+                        color=COR,
+                        description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
+                    )
+                    embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
+                    embed.set_footer(text='End', icon_url=message.server.icon_url)
+                    await client.send_message(user, embed=embed)
+                    await client.send_message(message.channel, embed=embed)
+                    await client.add_reaction(user, '✅')
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
