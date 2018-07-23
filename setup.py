@@ -1175,8 +1175,8 @@ async def on_message(message):
                     )
                     embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
                     await client.send_message(message.channel, embed=embed2)
-                    await client.delete_message(message)
         except IndexError:
+            await client.delete_message(message)
             embedd = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
@@ -1184,7 +1184,6 @@ async def on_message(message):
             )
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
-            await client.delete_message(message)
         except:
             embed1 = discord.Embed(
                 title='Usuário não encontrado!',
@@ -1193,7 +1192,6 @@ async def on_message(message):
             )
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed1)
-            await client.delete_message(message)
         finally:
             pass
 
