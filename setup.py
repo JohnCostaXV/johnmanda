@@ -1176,8 +1176,15 @@ async def on_message(message):
                     time.sleep(15)
                     await client.delete_message(msg)
         except IndexError:
-            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
-            time.sleep(10)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/tempmute [username] [segundos] [motivo]`'
+            )
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            msg = await client.send_message(message.channel, embed=embedd)
+            await client.delete_message(message)
+            time.sleep(15)
             await client.delete_message(msg)
         except:
             embed1 = discord.Embed(
