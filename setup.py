@@ -106,9 +106,11 @@ async def on_message(message):
             for r in message.author.roles:
                 if r.id in cargos:
                     embed = discord.Embed(
-                        title='Comandos para o cargo `STAFF`:',
+                        title='Comandos para o a `STAFF`:',
                         color=COR,
-                        description='/tempmute [usuário] » Silenciar temporariamente do discord.\n'
+                        description='**/responder** [usuário] [resposta] » Responda um usuário em *#dúvidas-dos-jogadores*.\n'
+                                    'exemplo: `/responder @JohnnCosta O IP do servidor é jogar.end-mc.com`\n\n'
+                                    '**/tempmute** [usuário] » Silenciar temporariamente do discord.\n'
                                     'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`\n\n'
                                     '*Lembrando que os tempmute é contato por segundo! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
                     )
