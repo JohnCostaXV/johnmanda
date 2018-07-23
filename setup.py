@@ -1140,7 +1140,6 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
-
                     args = message.content.split(" ")
                     tempo = (" ".join(args[3:]))
                     user = message.mentions[0]
