@@ -34,7 +34,7 @@ def mojang(site, json_retorno):
        _json = json.loads(site_conectar.content)
        return _json[json_retorno]
   else:
-     return "cbe7af2b61da46e3aa7d3da39bd55b93"
+     return
 
 
 @client.event
@@ -1061,7 +1061,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='Informações:',
                 color=COR,
-                description="**Nickname**: {}\n**UUID**: {}\n\n**SKIN DOWNLOAD**: [Clique aqui](corpo)".format(nome, uuid)
+                description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
             )
             embed.set_image(url=corpo)
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
