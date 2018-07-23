@@ -1163,7 +1163,9 @@ async def on_message(message):
                     time.sleep(timesquad)
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
+                    print('O {} foi desmutado.'.format(user))
         except IndexError:
+            await client.delete_message(message)
             embedd = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
@@ -1172,13 +1174,14 @@ async def on_message(message):
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
-            embed1 = discord.Embed(
-                title='Usuário não encontrado!',
+            await client.delete_message(message)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
                 color=COR,
-                description='Use `/tempmute [username] [segundos] [motivo]`'
-            )
-            embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            await client.send_message(message.channel, embed=embed1)
+                description='Você não tem permissão para executar esse comando.'
+        )
+        embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+        await client.send_message(message.channel, embed=embed2)
         finally:
             pass
 
