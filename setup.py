@@ -1060,10 +1060,9 @@ async def on_message(message):
         embed = discord.Embed(
             title='Informações:',
             color=COR,
-            description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
+            description="**Nickname**: {}\n**UUID**: {}\n\n**SKIN DOWNLOAD**: [Clique aqui](corpo)".format(nome, uuid)
         )
         embed.set_image(url=corpo)
-        embed.set_footer(text='**SKIN DOWNLOAD**: [Clique aqui](corpo)')
         embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
         await client.send_message(message.channel, embed=embed)
 
