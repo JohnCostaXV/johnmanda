@@ -1166,15 +1166,15 @@ async def on_message(message):
                     time.sleep(timesquad)
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
-                else:
-                    await client.delete_message(message)
-                    embed2 = discord.Embed(
-                        title='Permissão negada!',
-                        color=COR,
-                        description='Você não tem permissão para executar esse comando.'
-                    )
-                    embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                    await client.send_message(message.channel, embed=embed2)
+            else:
+                await client.delete_message(message)
+                embed2 = discord.Embed(
+                    title='Permissão negada!',
+                    color=COR,
+                    description='Você não tem permissão para executar esse comando.'
+                )
+                embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+                await client.send_message(message.channel, embed=embed2)
         except IndexError:
             embedd = discord.Embed(
                 title='Comando incorreto!',
