@@ -1164,8 +1164,8 @@ async def on_message(message):
                     time.sleep(timesquad)
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
-                else:
-                    await client.send_message(message.channel, 'teste')
+            else:
+                await client.send_message(message.channel, 'teste')
         except IndexError:
             msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
             time.sleep(10)
