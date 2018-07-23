@@ -1049,7 +1049,7 @@ async def on_message(message):
 
     if message.content.lower().startswith('/mineinfo'):
         try:
-            remover_mineinfo = message.content.replace("/enviar", "")
+            remover_mineinfo = message.content.replace("/mineinfo", "")
             separar = remover_mineinfo.split(" ", 1)
             nome = "%s" % "".join(separar[1])
 
@@ -1131,5 +1131,43 @@ async def on_message(message):
         finally:
             pass
 
+    if message.content.lower().startswith('/skin'):
+        try:
+            remover_mineinfo = message.content.replace("/skin", "")
+            separar = remover_mineinfo.split(" ", 1)
+            nome = "%s" % "".join(separar[1])
+
+            #UUID
+            uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
+            #Corpo
+            corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
+
+            embed = discord.Embed()
+            embed.set_image(url=corpo)
+            await client.send_message(message.channel, embed=embed)
+        except IndexError:
+            embed = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/skin [nickname]`'
+            )
+            embed.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            msg = await client.send_message(message.channel, embed=embed)
+            await client.delete_message(message)
+            time.sleep(15)
+            await client.delete_message(msg)
+        except:
+            embed1 = discord.Embed(
+                title='Usuário não encontrado!',
+                color=COR,
+                description='Use `/skin [nickname]`'
+            )
+            embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            msg1 = await client.send_message(message.channel, embed=embed1)
+            await client.delete_message(message)
+            time.sleep(15)
+            await client.delete_message(msg1)
+        finally:
+            pass
 
 client.run(os.environ.get("BOT_TOKEN"))
