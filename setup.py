@@ -645,25 +645,25 @@ async def on_message(message):
                         title='Comandos para o cargo `STAFF+`:',
                         color=COR,
                         description='**/ban** [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                                    'exemplo: `/ban @{message.author.mention} Divulgação de link´s`\n\n'
+                                    'exemplo: `/ban @{} Divulgação de link´s`\n\n'
                                     '**/kick** [usuário] » Expulsão do discord.\n'
-                                    'exemplo: `/kick @{message.author.mention}`\n\n'
+                                    'exemplo: `/kick @{}`\n\n'
                                     '**/mute** [usuário] [motivo] » Mute permanentemente do discord.\n'
-                                    'exemplo: `/mute @{message.author.mention} Spam`\n\n'
+                                    'exemplo: `/mute @{} Spam`\n\n'
                                     '**/unmute** [usuário] » Unmute do discord.\n'
-                                    'exemplo: `/unmute @{message.author.mention}`\n\n'
+                                    'exemplo: `/unmute @{}`\n\n'
                                     '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
-                                    'exemplo: `/tempban @{message.author.mention} 172800 Discriminação`\n\n'
+                                    'exemplo: `/tempban @{} 172800 Discriminação`\n\n'
                                     '**/tempmute** [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
-                                    'exemplo: `/tempmute @{message.author.mention} 21600 Iniciativa de Flood`\n\n'
+                                    'exemplo: `/tempmute @{} 21600 Iniciativa de Flood`\n\n'
                                     '**/say** [mensagem] » bot repete a mensagem.\n'
                                     'exemplo: `/say Olá`\n\n'
                                     '**/stafflist** [mensagem/staff] » Bot repete a mensagem em Embed.\n'
-                                    'exemplo: `/stafflist :white_small_square: {message.author.mention}`\n\n'
+                                    'exemplo: `/stafflist :white_small_square: {}`\n\n'
                                     '**/anunciar** [mensagem] » bot repete em Embed\n'
                                     'exemplo: `/anunciar Olá`\n\n'
                                     '**/changenick** [usuário] [nick] » Altera nick de um usuário.\n'
-                                    'exemplo: `/changenick @{message.author.mention} MelhorServidor #END`\n\n'
+                                    'exemplo: `/changenick @{} MelhorServidor #END`\n\n'.format(message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name)
                     )
                     embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
