@@ -1168,7 +1168,6 @@ async def on_message(message):
                 description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
             )
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
-            time.sleep(5)
             await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed1 = discord.Embed(
@@ -1206,10 +1205,7 @@ async def on_message(message):
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
 
-            head = discord.Embed()
-            head.set_image(url=cabeca)
-            time.sleep(5)
-            await client.send_message(message.channel, embed=head)
+            await client.send_message(message.channel, 'Cabeça da skin do minecraft do {}\n{}'.format(nome, cabeca))
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
