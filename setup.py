@@ -1165,6 +1165,7 @@ async def on_message(message):
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
                 else:
+                    await client.delete_message(message)
                     embed2 = discord.Embed(
                         title='Permissão negada!',
                         color=COR,
@@ -1172,31 +1173,30 @@ async def on_message(message):
                     )
                     embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
                     msg = await client.send_message(message.channel, embed=embed2)
-                    await client.delete_message(message)
-                    time.sleep(15)
+                    time.sleep(30)
                     await client.delete_message(msg)
         except IndexError:
+            await client.delete_message(message)
             embedd = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
                 description='Use `/tempmute [username] [segundos] [motivo]`'
             )
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            msg = await client.send_message(message.channel, embed=embedd)
-            await client.delete_message(message)
-            time.sleep(15)
-            await client.delete_message(msg)
+            msg1 = await client.send_message(message.channel, embed=embedd)
+            time.sleep(30)
+            await client.delete_message(msg1)
         except:
+            await client.delete_message(message)
             embed1 = discord.Embed(
                 title='Usuário não encontrado!',
                 color=COR,
                 description='Use `/tempmute [username] [segundos] [motivo]`'
             )
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            msg1 = await client.send_message(message.channel, embed=embed1)
-            await client.delete_message(message)
-            time.sleep(15)
-            await client.delete_message(msg1)
+            msg2 = await client.send_message(message.channel, embed=embed1)
+            time.sleep(30)
+            await client.delete_message(msg2)
         finally:
             pass
 
