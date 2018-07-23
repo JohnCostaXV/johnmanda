@@ -645,17 +645,17 @@ async def on_message(message):
                         title='Comandos para o cargo `STAFF+`:',
                         color=COR,
                         description='**/ban** [usuário] [motivo] » Banimento permanentemente do discord.\n'
-                                    'exemplo: `/ban @JohnnCosta Divulgação de link´s`\n\n'
+                                    'exemplo: `/ban @{0.author.mention} Divulgação de link´s`\n\n'
                                     '**/kick** [usuário] » Expulsão do discord.\n'
-                                    'exemplo: `/kick @JohnnCosta`\n\n'
+                                    'exemplo: `/kick @{1.author.mention}`\n\n'
                                     '**/mute** [usuário] [motivo] » Mute permanentemente do discord.\n'
-                                    'exemplo: `/mute @JohnnCosta Spam`\n\n'
+                                    'exemplo: `/mute @{2.author.mention} Spam`\n\n'
                                     '**/unmute** [usuário] » Unmute do discord.\n'
-                                    'exemplo: `/unmute @JohnnCosta`\n\n'
+                                    'exemplo: `/unmute @{3.author.mention}`\n\n'
                                     '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
-                                    'exemplo: `/tempban @JohnnCosta 172800 Discriminação`\n\n'
+                                    'exemplo: `/tempban @{4.author.mention} 172800 Discriminação`\n\n'
                                     '**/tempmute** [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
-                                    'exemplo: `/tempmute @JohnnCosta 21600 Iniciativa de Flood`\n\n'
+                                    'exemplo: `/tempmute @{5.author.mention} 21600 Iniciativa de Flood`\n\n'
                                     '**/say** [mensagem] » bot repete a mensagem.\n'
                                     'exemplo: `/say Olá`\n\n'
                                     '**/stafflist** [mensagem/staff] » Bot repete a mensagem em Embed.\n'
@@ -663,7 +663,7 @@ async def on_message(message):
                                     '**/anunciar** [mensagem] » bot repete em Embed\n'
                                     'exemplo: `/anunciar Olá`\n\n'
                                     '**/changenick** [usuário] [nick] » Altera nick de um usuário.\n'
-                                    'exemplo: `/changenick @JohnnCosta JohnnCosta #END`\n\n'
+                                    'exemplo: `/changenick @{6.author.mention} MelhorServidor #END`\n\n'
                     )
                     embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
@@ -1302,7 +1302,7 @@ async def on_message(message):
             embed1 = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
-                description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder @JohnnCosta O ip do servidor é jogar.end-mc.com'
+                description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder {} O ip do servidor é jogar.end-mc.com'.format(message.author.mention)
             )
             embed1.set_thumbnail(url=message.server.icon_url)
             er = await client.send_message(message.channel, embed=embed1)
