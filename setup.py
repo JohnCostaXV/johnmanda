@@ -127,83 +127,6 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith('/tempmute'):
-        try:
-            args = message.content.split(" ")
-            tempo = (" ".join(args[3:]))
-            user = message.mentions[0]
-            cargo = discord.utils.get(user.server.roles, name='Silenciado')
-            canal = client.get_channel('448449971629588481')
-            await client.add_roles(user, cargo)
-            print('O {} foi mutado temporariamente.'.format(user))
-            temp = args[2]
-            timesquad = int(temp)
-            reallytime = datetime.timedelta(seconds=timesquad)
-
-            embed = discord.Embed(
-                title='SILENCIADO 🔈',
-                color=COR,
-                description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
-            )
-            embed.set_thumbnail(
-                url='https://i.imgur.com/1iJeEea.jpg'
-            )
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-            await client.send_message(canal, embed=embed)
-            time.sleep(timesquad)
-            cargo = discord.utils.get(user.server.roles, name='Silenciado')
-            await client.remove_roles(user, cargo)
-        #else:
-            #msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-            #time.sleep(10)
-            #await client.delete_message(message)
-            #await client.delete_message(msglg)
-        except IndexError:
-            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
-            time.sleep(10)
-            await client.delete_message(msg)
-        except:
-            msg1 = await client.send_message(message.channel, 'Sem permissão!')
-            time.sleep(10)
-            await client.delete_message(msg1)
-        finally:
-            pass
-
-    if message.content.lower().startswith('/responder'):
-        try:
-            await client.delete_message(message)
-            user = message.mentions[0]
-            remover_resposta = message.content.replace("/responder", "")
-            separar = remover_resposta.split(" ", 2)
-            embed = discord.Embed(
-                title='DÚVIDA 🔍',
-                color=COR,
-                description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
-            )
-            embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
-            embed.set_footer(text='End', icon_url=message.server.icon_url)
-            await client.send_message(user, embed=embed)
-            await client.send_message(message.channel, embed=embed)
-            await client.add_reaction(user, '✅')
-        except IndexError:
-            embed1 = discord.Embed(
-                title='Comando incorreto!',
-                color=COR,
-                description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder @JohnnCosta O ip do servidor é jogar.end-mc.com'
-            )
-            embed1.set_thumbnail(url=message.server.icon_url)
-            er = await client.send_message(message.channel, embed=embed1)
-            time.sleep(50)
-            await client.delete_message(message)
-            await client.delete_message(er)
-        except:
-            asd = await client.send_message(message.channel, 'O {}, está com a dm privada!'.format(user.mention))
-            time.sleep(10)
-            await client.delete_message(message)
-            await client.delete_message(asd)
-        finally:
-            pass
-
     if message.content.lower().startswith('/helpstaff'):
         try:
             await client.delete_message(message)
@@ -278,7 +201,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith('/end'):
+    if message.content.lower().startswith('/changenick'):
         try:
             await client.delete_message(message)
             user = message.mentions[0]
@@ -297,7 +220,7 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.lower().startswith('/say'):
+    if message.content.lower().startswith('/gritar'):
         try:
             args = message.content.split(" ")
             await client.send_message(message.channel, (" ".join(args[1:])))
@@ -1166,6 +1089,91 @@ async def on_message(message):
             msg1 = await client.send_message(message.channel, embed=embed1)
             await client.delete_message(message)
             time.sleep(15)
+            await client.delete_message(msg1)
+        finally:
+            pass
+
+    if message.content.lower().startswith('/responder'):
+        try:
+            await client.delete_message(message)
+            user = message.mentions[0]
+            remover_resposta = message.content.replace("/responder", "")
+            separar = remover_resposta.split(" ", 2)
+            embed = discord.Embed(
+                title='DÚVIDA 🔍',
+                color=COR,
+                description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
+            )
+            embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
+            embed.set_footer(text='End', icon_url=message.server.icon_url)
+            await client.send_message(user, embed=embed)
+            await client.send_message(message.channel, embed=embed)
+            await client.add_reaction(user, '✅')
+        except IndexError:
+            embed1 = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder @JohnnCosta O ip do servidor é jogar.end-mc.com'
+            )
+            embed1.set_thumbnail(url=message.server.icon_url)
+            er = await client.send_message(message.channel, embed=embed1)
+            time.sleep(50)
+            await client.delete_message(message)
+            await client.delete_message(er)
+        except:
+            asd = await client.send_message(message.channel, 'O {}, está com a dm privada!'.format(user.mention))
+            time.sleep(10)
+            await client.delete_message(message)
+            await client.delete_message(asd)
+        finally:
+            pass
+
+    if message.content.lower().startswith('/tempmute'):
+        try:
+            roles = [
+                # IDs dos cargos:
+                "407706417282416641",
+                "407678481670078475",
+                "417426253658849281",
+            ]
+            for r in message.author.roles:
+                if r.id in roles:
+                    args = message.content.split(" ")
+                    tempo = (" ".join(args[3:]))
+                    user = message.mentions[0]
+                    cargo = discord.utils.get(user.server.roles, name='Silenciado')
+                    canal = client.get_channel('448449971629588481')
+                    await client.add_roles(user, cargo)
+                    print('O {} foi mutado temporariamente.'.format(user))
+                    temp = args[2]
+                    timesquad = int(temp)
+                    reallytime = datetime.timedelta(seconds=timesquad)
+
+                    embed = discord.Embed(
+                        title='SILENCIADO 🔈',
+                        color=COR,
+                        description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                    )
+                    embed.set_thumbnail(
+                        url='https://i.imgur.com/1iJeEea.jpg'
+                    )
+                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    await client.send_message(canal, embed=embed)
+                    time.sleep(timesquad)
+                    cargo = discord.utils.get(user.server.roles, name='Silenciado')
+                    await client.remove_roles(user, cargo)
+            else:
+                msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
+                time.sleep(10)
+                await client.delete_message(message)
+                await client.delete_message(msglg)
+        except IndexError:
+            msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
+            time.sleep(10)
+            await client.delete_message(msg)
+        except:
+            msg1 = await client.send_message(message.channel, 'Sem permissão!')
+            time.sleep(10)
             await client.delete_message(msg1)
         finally:
             pass
