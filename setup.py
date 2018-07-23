@@ -1167,7 +1167,6 @@ async def on_message(message):
                     time.sleep(timesquad)
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
-
                 else:
                     embed2 = discord.Embed(
                         title='Permissão negada!',
@@ -1177,7 +1176,6 @@ async def on_message(message):
                     embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
                     await client.send_message(message.channel, embed=embed2)
                     await client.delete_message(message)
-
         except IndexError:
             embedd = discord.Embed(
                 title='Comando incorreto!',
@@ -1187,7 +1185,6 @@ async def on_message(message):
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
             await client.delete_message(message)
-
         except:
             embed1 = discord.Embed(
                 title='Usuário não encontrado!',
