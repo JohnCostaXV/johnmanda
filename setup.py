@@ -1170,7 +1170,7 @@ async def on_message(message):
                         color=COR,
                         description='Você não tem permissão para executar esse comando.'
                     )
-                    embed2.set_footer(text=message.author.name, icon_url=message.avatar_url)
+                    embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
                     msg = await client.send_message(message.channel, embed=embed2)
                     await client.delete_message(message)
                     time.sleep(15)
@@ -1185,7 +1185,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando!'
             )
-            embed1.set_footer(text=message.author.name, icon_url=message.avatar_url)
+            embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msglg = await client.send_message(message.channel, embed=embed1)
             await client.delete_message(message)
             time.sleep(15)
