@@ -749,7 +749,7 @@ async def on_message(message):
                 description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
                             '**/info** [usuário] » Veja as informações de um usuário.\n\n'
                             '**/serverinfo** » Veja as informações do servidor.\n\n'
-                            '**/dado** » Role um dado de um número de 1 á 6.\n\n'
+                            '**/dado** » Role um dado de um número de 1 a 6.\n\n'
                             '**/avatar** [usuário] » Veja o avatar seu ou de um membro.\n\n'
                             '**/convite** » Gere um convite para convidar todos para nossa comunidade.\n\n'
                             '**/ping** » Veja o tempo de resposta do bot.\n\n'
