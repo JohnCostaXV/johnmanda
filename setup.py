@@ -1046,26 +1046,86 @@ async def on_message(message):
 
 
     if message.content.lower().startswith('/mineinfo'):
-        remover_mineinfo = message.content.replace("/enviar", "")
-        separar = remover_mineinfo.split(" ", 1)
+        try:
+            remover_mineinfo = message.content.replace("/enviar", "")
+            separar = remover_mineinfo.split(" ", 1)
+            nome = "%s" % "".join(separar[1])
+
+            #UUID
+            uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
+            #Cabeca
+            #cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
+            #Corpo
+            corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
+
+            embed = discord.Embed(
+                title='Informações:',
+                color=COR,
+                description="**Nickname**: {}\n**UUID**: {}\n\n**SKIN DOWNLOAD**: [Clique aqui](corpo)".format(nome, uuid)
+            )
+            embed.set_image(url=corpo)
+            embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
+            await client.send_message(message.channel, embed=embed)
+        except IndexError:
+            embed1 = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/mineinfo [nickname]`'
+            )
+            embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            msg = await client.send_message(message.channel, embed=embed1)
+            await client.delete_message(message)
+            time.sleep(15)
+            await client.delete_message(msg)
+        except:
+            embed2 = discord.Embed(
+                title='Usuário não encontrado!',
+                color=COR,
+                description='USe `/mineinfo [nickname]`'
+            )
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            msg1 = await client.send_message(message.channel, embed=embed2)
+            await client.delete_message(message)
+            time.sleep(15)
+            await client.delete_message(msg1)
+        finally:
+            pass
+
+    if message.content.lower().startswith('/head'):
+        remover_cabeca = message.content.replace("/head", "")
+        separar = remover_cabeca.split(" ", 1)
         nome = "%s" % "".join(separar[1])
 
         #UUID
         uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
         #Cabeca
-        #cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
-        #Corpo
-        corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
+        cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
 
+        await client.send_message(message.channel, cabeca)
+    except IndexError:
         embed = discord.Embed(
-            title='Informações:',
+            title='Comando incorreto!',
             color=COR,
-            description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
+            description='Use `/head [nickname]`'
         )
-        embed.set_image(url=corpo)
-        embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
-        await client.send_message(message.channel, embed=embed)
-
+        embed.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+        msg = await client.send_message(message.channel, embed=embed)
+        await client.delete_message(message)
+        time.sleep(15)
+        await client.delete_message(msg)
+    except:
+        embed1 = discord.Embed(
+            title='Usuário não encontrado!',
+            color=COR,
+            description='Use `/head [nickname]`'
+        )
+        embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+        msg1 = await client.send_message(message.channel, embed=embed1)
+        await client.delete_message(message)
+        time.sleep(15)
+        await client.delete_message(msg1)
+    finally:
+        pass
 
 
 client.run(os.environ.get("BOT_TOKEN"))
