@@ -1163,9 +1163,15 @@ async def on_message(message):
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
             else:
-                msglg = await client.send_message(message.channel, '❌ Você não pode fazer isso!')
-                time.sleep(10)
+                embed1 = discord.Embed(
+                    title='Sem permissão!',
+                    color=COR,
+                    description='Você não tem permissão para executar esse comando!'
+                )
+                embed1.set_footer(text=message.author.name, icon_url=message.avatar_url)
+                msglg = await client.send_message(message.channel, embed=embed1)
                 await client.delete_message(message)
+                time.sleep(15)
                 await client.delete_message(msglg)
         except IndexError:
             msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
