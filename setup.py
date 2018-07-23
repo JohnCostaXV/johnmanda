@@ -1166,7 +1166,7 @@ async def on_message(message):
                     await client.remove_roles(user, cargo)
                 else:
                     embed2 = discord.Embed(
-                        title='Sem permissão!',
+                        title='Permissão negada!',
                         color=COR,
                         description='Você não tem permissão para executar esse comando.'
                     )
@@ -1188,15 +1188,15 @@ async def on_message(message):
             await client.delete_message(msg)
         except:
             embed1 = discord.Embed(
-                title='Sem permissão!',
+                title='Usuário não encontrado!',
                 color=COR,
-                description='Você não tem permissão para executar esse comando!'
+                description='Use `/tempmute [username] [segundos] [motivo]`'
             )
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            msglg = await client.send_message(message.channel, embed=embed1)
+            msg1 = await client.send_message(message.channel, embed=embed1)
             await client.delete_message(message)
             time.sleep(15)
-            await client.delete_message(msglg)
+            await client.delete_message(msg1)
         finally:
             pass
 
