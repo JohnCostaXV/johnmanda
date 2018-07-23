@@ -1140,13 +1140,16 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
+
                     args = message.content.split(" ")
                     tempo = (" ".join(args[3:]))
                     user = message.mentions[0]
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     canal = client.get_channel('448449971629588481')
+
                     await client.add_roles(user, cargo)
                     print('O {} foi mutado temporariamente.'.format(user))
+
                     temp = args[2]
                     timesquad = int(temp)
                     reallytime = datetime.timedelta(seconds=timesquad)
@@ -1164,8 +1167,8 @@ async def on_message(message):
                     time.sleep(timesquad)
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
+
                 else:
-                    await client.delete_message(message)
                     embed2 = discord.Embed(
                         title='Permissão negada!',
                         color=COR,
@@ -1173,8 +1176,9 @@ async def on_message(message):
                     )
                     embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
                     await client.send_message(message.channel, embed=embed2)
+                    await client.delete_message(message)
+
         except IndexError:
-            await client.delete_message(message)
             embedd = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
@@ -1182,8 +1186,9 @@ async def on_message(message):
             )
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
-        except:
             await client.delete_message(message)
+
+        except:
             embed1 = discord.Embed(
                 title='Usuário não encontrado!',
                 color=COR,
@@ -1191,6 +1196,7 @@ async def on_message(message):
             )
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed1)
+            await client.delete_message(message)
         finally:
             pass
 
