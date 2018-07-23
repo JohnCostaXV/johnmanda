@@ -1172,9 +1172,7 @@ async def on_message(message):
                         description='Você não tem permissão para executar esse comando.'
                     )
                     embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                    msg = await client.send_message(message.channel, embed=embed2)
-                    time.sleep(30)
-                    await client.delete_message(msg)
+                    await client.send_message(message.channel, embed=embed2)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -1183,9 +1181,7 @@ async def on_message(message):
                 description='Use `/tempmute [username] [segundos] [motivo]`'
             )
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            msg1 = await client.send_message(message.channel, embed=embedd)
-            time.sleep(30)
-            await client.delete_message(msg1)
+            await client.send_message(message.channel, embed=embedd)
         except:
             await client.delete_message(message)
             embed1 = discord.Embed(
@@ -1194,9 +1190,7 @@ async def on_message(message):
                 description='Use `/tempmute [username] [segundos] [motivo]`'
             )
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            msg2 = await client.send_message(message.channel, embed=embed1)
-            time.sleep(30)
-            await client.delete_message(msg2)
+            await client.send_message(message.channel, embed=embed1)
         finally:
             pass
 
