@@ -1130,14 +1130,16 @@ async def on_message(message):
 
     if message.content.lower().startswith('/tempmute'):
         try:
-            roles = [
+            cargos = [
                 # IDs dos cargos:
-                "407706417282416641",
-                "407678481670078475",
-                "417426253658849281",
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+                "407678481670078475", #Moderador
+                "407706417282416641", #Ajudante
             ]
             for r in message.author.roles:
-                if r.id in roles:
+                if r.id in cargos:
                     args = message.content.split(" ")
                     tempo = (" ".join(args[3:]))
                     user = message.mentions[0]
@@ -1163,7 +1165,7 @@ async def on_message(message):
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
                 else:
-                    await client.send_message(message.channel, 'teste')            
+                    await client.send_message(message.channel, 'teste')
         except IndexError:
             msg = await client.send_message(message.channel, 'O usuário não é existente ou saiu!')
             time.sleep(10)
