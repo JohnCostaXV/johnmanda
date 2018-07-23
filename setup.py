@@ -1065,7 +1065,6 @@ async def on_message(message):
                 color=COR,
                 description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
             )
-            embed.set_image(url=corpo)
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
             await client.send_message(message.channel, embed=embed)
         except IndexError:
