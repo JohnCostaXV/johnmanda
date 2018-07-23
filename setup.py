@@ -1168,6 +1168,7 @@ async def on_message(message):
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
                 else:
+                    await client.delete_message(message)
                     embed2 = discord.Embed(
                         title='Permissão negada!',
                         color=COR,
