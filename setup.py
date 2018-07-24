@@ -369,7 +369,7 @@ async def on_message(message):
                     )
                     embed.set_footer(
                         text="Enviado por: {}  •  End".format(message.author.name),
-                        icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
+                        icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
                     )
                     await client.send_message(message.channel, "@everyone")
                     await client.send_message(message.channel, embed=embed)
@@ -713,8 +713,8 @@ async def on_message(message):
                 inline=False
             )
             embed.set_footer(
-                text=datetime.datetime.now(),
-                icon_url=message.author.avatar_url
+                text='Sugestão enviada com sucesso.',
+                icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
             )
             botmsg = await client.send_message(canal, embed=embed)
             await client.add_reaction(botmsg, "👍")
