@@ -1285,6 +1285,7 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
+                    canal = client.get_channel('470242474850254848')
                     await client.delete_message(message)
                     user = message.mentions[0]
                     remover_resposta = message.content.replace("/responder", "")
