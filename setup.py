@@ -324,7 +324,7 @@ async def on_message(message):
                     )
                     embed.set_footer(
                         text="Enviado por: {}  •  End".format(message.author.name),
-                        icon_url='https://media3.giphy.com/media/qi29MoLjWNPUI/giphy.gif'
+                        icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
                     )
                     await client.send_message(message.channel, "@everyone")
                     await client.send_message(message.channel, embed=embed)
