@@ -315,8 +315,6 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
-                    tmp1 = datetime.datetime.now()
-                    utcnow = datetime.time(days=tmp1.day)
                     await client.delete_message(message)
                     args = message.content.split(" ")
                     embed = discord.Embed(
@@ -326,7 +324,7 @@ async def on_message(message):
                     )
                     embed.set_author(name='Anúncio', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                     embed.set_footer(
-                        text="Enviado por: {}  •  {}".format(message.author.name, utcnow.day),
+                        text="Enviado por: {}  •  {}".format(message.author.name, date.today()),
                         icon_url=message.author.avatar_url
                     )
                     #await client.send_message(message.channel, "@everyone")
