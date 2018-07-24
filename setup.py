@@ -1301,7 +1301,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url=message.server.icon_url)
                     await client.send_message(user, embed=embed)
                     emb = await client.send_message(canal, embed=embed)
-                    await client.add_reaction(user, '✅')
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
