@@ -126,7 +126,9 @@ async def on_message(message):
                 description='Use `/staff-`'
             )
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            await client.send_message(message.channel, embed=embedd)
+            msg1 = await client.send_message(message.channel, embed=embedd)
+            time.sleep(20)
+            await client.delete_message(msg1)
         except:
             time.sleep(2)
             await client.delete_message(msg)
