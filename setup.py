@@ -861,7 +861,7 @@ async def on_message(message):
             )
             embed.set_footer(
                 text="Solicitação postada com sucesso.",
-                icon_url=message.author.avatar_url
+                icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
             )
             await client.send_message(canal, embed=embed)
             await client.delete_message(message)
@@ -900,7 +900,7 @@ async def on_message(message):
                 value='```%s```' % ''.join(separar[2]),
                 inline=False
             )
-            embed.set_footer(text='Revisão postada com sucesso.', icon_url=message.author.avatar_url
+            embed.set_footer(text='Revisão postada com sucesso.', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
             )
             await client.send_message(message.author, 'Sua revisão foi enviada')
             time.sleep(3)
@@ -941,7 +941,7 @@ async def on_message(message):
             )
             embed.set_footer(
                 text="Denúncia postada com sucesso.",
-                icon_url=message.author.avatar_url
+                icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
             )
             await client.send_message(canal, embed=embed)
             await client.delete_message(message)
