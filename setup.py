@@ -318,13 +318,14 @@ async def on_message(message):
                     await client.delete_message(message)
                     args = message.content.split(" ")
                     embed = discord.Embed(
-                        title="End  📢",
+                        title="",
                         color=COR,
                         description=" ".join(args[1:])
                     )
+                    embed.set_author(name='Anúncio', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                     embed.set_footer(
                         text="Enviado por: {}  •  End".format(message.author.name),
-                        icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
+                        icon_url=message.author.avatar_url
                     )
                     await client.send_message(message.channel, "@everyone")
                     await client.send_message(message.channel, embed=embed)
