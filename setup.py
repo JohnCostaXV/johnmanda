@@ -722,7 +722,7 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.author, "Uso correto do comando: /sugestão <sugestão> | <por quê adicionariamos?>")
         except:
-            await client.send_message(message.author,"Desculpe pelo erro.")
+            await client.send_message(message.author, "Desculpe pelo erro.")
         finally:
             pass
 
