@@ -699,10 +699,11 @@ async def on_message(message):
             remover_sugestao = message.content.replace("/sugestão", "")
             separar = remover_sugestao.split("|", 1)
             embed = discord.Embed(
-                title="SUGESTÃO 💡",
+                title="",
                 color=COR,
                 description="Sugestão recebida. \nEnviada por: {}".format(message.author.mention)
             )
+            embed.set_author(name='Sugestão', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(
                 name="Sugestão:",
                 value="```%s```" % "".join(separar[0]),
@@ -715,7 +716,7 @@ async def on_message(message):
             )
             embed.set_footer(
                 text='Sugestão enviada com sucesso.',
-                icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
+                icon_url=message.author.avatar_url
             )
             botmsg = await client.send_message(canal, embed=embed)
             await client.add_reaction(botmsg, "👍")
@@ -841,10 +842,11 @@ async def on_message(message):
             remover_ativacao = message.content.replace("/ativarvip ", "")
             separar = remover_ativacao.split("|", 2)
             embed = discord.Embed(
-                title='ATIVAÇÃO DE RANKS 💎',
+                title='',
                 color=COR,
                 description='Solicitação recebida. \nEnviada por: {}'.format(message.author.mention)
             )
+            embed.set_author(name='Ativação de vip', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(
                 name="**Nickname:**",
                 value="%s" % "".join(separar[0]),
@@ -882,10 +884,11 @@ async def on_message(message):
             remover_revisão = message.content.replace("/revisão ", "")
             separar = remover_revisão.split("|", 2)
             embed = discord.Embed(
-                title='REVISÃO ⛔',
+                title='',
                 color=COR,
                 description='Revisão recebida. \nEnviada por: {}'.format(message.author.mention)
             )
+            embed.set_author(name='Revisão de banimento', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(
                 name='**Nickname:**',
                 value='```%s```' % ''.join(separar[0]),
@@ -921,10 +924,11 @@ async def on_message(message):
             separar = remover_reportar.split("|", 2)
 
             embed = discord.Embed(
-                title="DENÚNCIA 🔔",
+                title="",
                 color=COR,
                 description="Denúncia recebida. \nEnviada por: {}".format(message.author.mention)
             )
+            embed.set_author(name='Denúncia', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(
                 name="Suspeito:",
                 value="%s" % "".join(separar[0]),
@@ -1069,10 +1073,11 @@ async def on_message(message):
 
     if message.content.lower().startswith('/formulário'):
         embed = discord.Embed(
-            title='FORMULÁRIOS 📝',
+            title='',
             color=COR,
             description='Abaixo terá o link de nossos formulários, lembrando, qualquer um outro não pertence à rede End.'
         )
+        embed.set_author(name='Formulários', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
         embed.add_field(
             name='Aplicação para a equipe:',
             value='[Clique aqui!](https://t.co/wuIvHTsoAh)\n',
@@ -1123,10 +1128,11 @@ async def on_message(message):
             remover_duvida = message.content.replace("/enviar", "")
             separar = remover_duvida.split(" ", 1)
             embed = discord.Embed(
-                title='DÚVIDA 🔍',
+                title='',
                 color=COR,
                 description='Dúvida recebida.\nEnviada por: {}'.format(message.author.mention)
             )
+            embed.set_author(name='Dúvida', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(name='Dúvida:', value="```%s```" % "".join(separar[1]))
             embed.set_footer(text='End', icon_url=message.server.icon_url)
             await client.send_message(message.author, 'Essa é uma cópia de sua dúvida.')
@@ -1294,10 +1300,11 @@ async def on_message(message):
                     remover_resposta = message.content.replace("/responder", "")
                     separar = remover_resposta.split(" ", 2)
                     embed = discord.Embed(
-                        title='DÚVIDA 🔍',
+                        title='',
                         color=COR,
                         description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
                     )
+                    embed.set_author(name='Dúvida', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                     embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
                     embed.set_footer(text='End', icon_url=message.server.icon_url)
                     await client.send_message(user, embed=embed)
