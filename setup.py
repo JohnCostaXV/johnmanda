@@ -338,7 +338,7 @@ async def on_message(message):
                         text="Enviado por: {}".format(message.author.name),
                         icon_url=message.author.avatar_url
                     )
-                    #await client.send_message(message.channel, "@everyone")
+                    await client.send_message(message.channel, "@everyone")
                     await client.send_message(message.channel, embed=embed)
         except IndexError:
             await client.delete_message(message)
