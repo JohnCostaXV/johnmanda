@@ -126,6 +126,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/staff-`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg1 = await client.send_message(message.channel, embed=embedd)
             time.sleep(20)
@@ -177,6 +178,7 @@ async def on_message(message):
                                     '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
                     )
                     embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                     await client.send_message(message.author, embed=embed)
@@ -187,6 +189,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/helpstaff`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -221,6 +224,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/tt`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -230,6 +234,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -256,6 +261,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/changenick [username] [nick]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -265,6 +271,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -292,6 +299,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/say [mensagem]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -301,6 +309,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -338,6 +347,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/anunciar [mensagem]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -347,6 +357,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -374,6 +385,7 @@ async def on_message(message):
                         text="Enviado por: {}".format(message.author.name),
                         icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif'
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     await client.send_message(message.channel, "@everyone")
                     await client.send_message(message.channel, embed=embed)
         except IndexError:
@@ -383,6 +395,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/stafflist [mensagem]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -392,6 +405,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -421,6 +435,7 @@ async def on_message(message):
                     embed.set_thumbnail(
                         url='https://i.imgur.com/1iJeEea.jpg'
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(channel, embed=embed)
         except IndexError:
@@ -430,6 +445,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/kick [username]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -439,6 +455,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -472,6 +489,7 @@ async def on_message(message):
                     embed.set_thumbnail(
                         url='https://i.imgur.com/1iJeEea.jpg'
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
                     time.sleep(timesquad)
@@ -483,6 +501,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/tempban [username] [segundos] [motivo]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -492,6 +511,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -517,6 +537,7 @@ async def on_message(message):
                         color=COR,
                         description='O usuário **{}#{}**, foi silenciado!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention))
                     embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
                     await client.add_roles(user, cargo)
@@ -527,6 +548,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/mute [username] [motivo]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -536,6 +558,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -563,6 +586,7 @@ async def on_message(message):
                     embed.set_thumbnail(
                         url='https://i.imgur.com/1iJeEea.jpg'
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
                     await client.remove_roles(user, cargo)
@@ -573,6 +597,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/unmute [username]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -582,6 +607,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -613,6 +639,7 @@ async def on_message(message):
                     embed.set_thumbnail(
                         url='https://i.imgur.com/1iJeEea.jpg'
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(channel1, embed=embed)
         except IndexError:
@@ -622,6 +649,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/ban [username] [motivo]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -631,6 +659,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
@@ -670,6 +699,7 @@ async def on_message(message):
                                     '**/changenick** [usuário] [nick] » Altera nick de um usuário.\n'
                                     'exemplo: `/changenick @{} MelhorServidor #END`\n\n'.format(message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name)
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
@@ -681,6 +711,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/staff+`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -716,6 +747,7 @@ async def on_message(message):
                 value="```%s```" % "".join(separar[1]),
                 inline=False
             )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(
                 text='Sugestão enviada com sucesso.',
                 icon_url=message.author.avatar_url
@@ -737,6 +769,7 @@ async def on_message(message):
             color=COR,
             description=':game_die: Joguei o dado, o resultado é: {}'.format(str(numr))
         )
+        embed.timestamp = datetime.datetime.utcnow()
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/moeda'):
@@ -775,6 +808,7 @@ async def on_message(message):
                             '**/reportar** [usuário/nickname] | [motivo] | [prova] » Denúncie um usuário do discord ou do servidor.\n\n'
                             '**/sugestão** [sugestão] | [por quê adicionariamos?] » Crie uma sugestão.'
                 )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
@@ -834,6 +868,7 @@ async def on_message(message):
         )
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
+        embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text='End', icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
@@ -864,6 +899,7 @@ async def on_message(message):
                 value="%s" % "".join(separar[2]),
                 inline=False
             )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(
                 text="Solicitação postada com sucesso.",
                 icon_url=message.author.avatar_url
@@ -906,6 +942,7 @@ async def on_message(message):
                 value='```%s```' % ''.join(separar[2]),
                 inline=False
             )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(text='Revisão postada com sucesso.', icon_url=message.author.avatar_url
             )
             await client.send_message(message.author, 'Sua revisão foi enviada')
@@ -946,6 +983,7 @@ async def on_message(message):
                 value="%s" % "".join(separar[2]),
                 inline=False
             )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(
                 text="Denúncia postada com sucesso.",
                 icon_url=message.author.avatar_url
@@ -969,6 +1007,7 @@ async def on_message(message):
                 color=COR,
                 description='**Seja bem-vindo ao discord da rede End. Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
             )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
@@ -1009,6 +1048,7 @@ async def on_message(message):
         embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
         embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
         embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+        embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
@@ -1054,6 +1094,7 @@ async def on_message(message):
             userembed.set_thumbnail(
                 url='https://i.imgur.com/1iJeEea.jpg'
             )
+            userembed.timestamp = datetime.datetime.utcnow()
             userembed.set_footer(
                 text="End",
                 icon_url="https://i.imgur.com/1iJeEea.jpg"
@@ -1079,6 +1120,7 @@ async def on_message(message):
             color=COR,
             description='Abaixo terá o link de nossos formulários, lembrando, qualquer um outro não pertence à rede End.'
         )
+        embed.timestamp = datetime.datetime.utcnow()
         embed.set_author(name='Formulários', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
         embed.add_field(
             name='Aplicação para a equipe:',
@@ -1095,8 +1137,6 @@ async def on_message(message):
             value='[Clique aqui!](https://t.co/DXerrQWXPY)',
             inline=False
         )
-        embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
-        embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
         embed.set_footer(text='End', icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
@@ -1116,6 +1156,7 @@ async def on_message(message):
             color=COR,
             description=':ping_pong: Ping - {ping_sec} segundos'.format(ping_sec=time_delta.total_seconds())
         )
+        embed.timestamp = datetime.datetime.utcnow()
         await client.edit_message(bot_msg, embed=embed)
 
     if message.content.lower().startswith('/convite'):
@@ -1134,6 +1175,7 @@ async def on_message(message):
                 color=COR,
                 description='Dúvida recebida.\nEnviada por: {}'.format(message.author.mention)
             )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name='Dúvida', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(name='Dúvida:', value="```%s```" % "".join(separar[1]))
             embed.set_footer(text='End', icon_url=message.server.icon_url)
@@ -1146,6 +1188,7 @@ async def on_message(message):
                 color=COR,
                 description='Use, `/enviar [dúvida]`\n\nPor exemplo: /enviar Qual é o ip do servidor?'
             )
+            embed1.timestamp = datetime.datetime.utcnow()
             embed1.set_thumbnail(url=message.server.icon_url)
             err = await client.send_message(message.channel, embed=embed1)
             time.sleep(10)
@@ -1178,6 +1221,7 @@ async def on_message(message):
                 color=COR,
                 description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
             )
+            embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
             await client.send_message(message.channel, embed=embed)
         except IndexError:
@@ -1186,6 +1230,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/mineinfo [nickname]`'
             )
+            embed1.timestamp = datetime.datetime.utcnow()
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg = await client.send_message(message.channel, embed=embed1)
             await client.delete_message(message)
@@ -1197,6 +1242,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/mineinfo [nickname]`'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg1 = await client.send_message(message.channel, embed=embed2)
             await client.delete_message(message)
@@ -1306,6 +1352,7 @@ async def on_message(message):
                         color=COR,
                         description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_author(name='Dúvida', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                     embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
                     embed.set_footer(text='End', icon_url=message.server.icon_url)
@@ -1317,6 +1364,7 @@ async def on_message(message):
                 color=COR,
                 description='Use, `/responder [usuário] [resposta]`\nPor exemplo: /responder {} O ip do servidor é jogar.end-mc.com'.format(message.author.mention)
             )
+            embed1.timestamp = datetime.datetime.utcnow()
             embed1.set_thumbnail(url=message.server.icon_url)
             er = await client.send_message(message.channel, embed=embed1)
             time.sleep(50)
@@ -1361,6 +1409,7 @@ async def on_message(message):
                     embed.set_thumbnail(
                         url='https://i.imgur.com/1iJeEea.jpg'
                     )
+                    embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
                     time.sleep(timesquad)
@@ -1374,6 +1423,7 @@ async def on_message(message):
                 color=COR,
                 description='Use `/tempmute [username] [segundos] [motivo]`'
             )
+            embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
@@ -1383,6 +1433,7 @@ async def on_message(message):
                 color=COR,
                 description='Você não tem permissão para executar esse comando.'
             )
+            embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed2)
         finally:
