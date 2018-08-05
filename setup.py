@@ -72,7 +72,7 @@ async def on_ready():
     print('Status = {}'.format(RANDOM_STATUS))
     try:
         choice = random.choice(RANDOM_STATUS)
-        await client.change_presence(game=discord.Game(name=choice, type=1))
+        await client.change_presence(game=discord.Game(name=choice, url="https://www.twitch.tv/johncostaxv", type=1))
         await client.send_message(client, "Online!")
     except Exception as e:
         print("Todos direitos {}.".format("reservados"))
