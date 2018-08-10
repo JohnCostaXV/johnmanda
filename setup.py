@@ -119,18 +119,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                     await client.send_message(message.author, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)  
-                  
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -194,17 +182,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                     await client.send_message(message.author, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -277,17 +254,6 @@ async def on_message(message):
                     user = message.mentions[0]
                     args = message.content.split(" ")
                     await client.change_nickname(user, " ".join(args[2:]))
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -326,17 +292,6 @@ async def on_message(message):
                     asyncio.sleep(1)
                     await client.delete_message(message)
                     asyncio.sleep(1)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -385,17 +340,6 @@ async def on_message(message):
                     )
                     await client.send_message(message.channel, "@everyone")
                     await client.send_message(message.channel, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -444,17 +388,6 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     await client.send_message(message.channel, "@everyone")
                     await client.send_message(message.channel, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -505,17 +438,6 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(channel, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)        
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -572,17 +494,6 @@ async def on_message(message):
                     await client.send_message(canal, embed=embed)
                     time.sleep(timesquad)
                     await client.unban(message.server, user)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)        
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -630,17 +541,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
                     await client.add_roles(user, cargo)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)        
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -690,17 +590,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
                     await client.remove_roles(user, cargo)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)        
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -753,17 +642,6 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(channel1, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)        
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -826,17 +704,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                     await client.send_message(message.author, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)        
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -1488,17 +1355,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url=message.server.icon_url)
                     await client.send_message(user, embed=embed)
                     emb = await client.send_message(canal, embed=embed)
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)        
         except IndexError:
             embed1 = discord.Embed(
                 title='Comando incorreto!',
@@ -1557,17 +1413,6 @@ async def on_message(message):
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
                     print('O {} foi desmutado.'.format(user))
-            else:
-                 embed2 = discord.Embed(
-                     title='Permissão negada!',
-                     color=COR,
-                     description='Você não tem permissão para executar esse comando.'
-                 )
-                 embed2.timestamp = datetime.datetime.utcnow()
-                 embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                 msg = await client.send_message(message.channel, embed=embed2)
-                 await asyncio.sleep(10)
-                 await client.delete_message(msg)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
