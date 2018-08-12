@@ -13,7 +13,6 @@ import json
 import requests
 import base64
 
-RANDOM_STATUS = ['jogar.end-mc.com', 'Atualmente ' + str(len(server.members) + ' membros!']
 RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
 
 client = discord.Client()
@@ -69,8 +68,8 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('Versão 1.0')
-    print('Status = {}'.format(RANDOM_STATUS))
     try:
+        RANDOM_STATUS = ['jogar.end-mc.com', 'Atualmente ' + str(len(client.server.members) + ' membros!']
         choice = random.choice(RANDOM_STATUS)
         await client.change_presence(game=discord.Game(name=choice, url="https://www.twitch.tv/johncostaxv", type=1))
         await client.send_message(client, "Online!")
