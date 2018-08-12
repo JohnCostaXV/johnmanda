@@ -28,6 +28,31 @@ msg_user = None
 user_timer = {}
 user_spam_count = {}
 
+ip = "jogar.end-mc.com";
+
+def MCAPI(site):
+  site_conectar = requests.get(site)
+  if site_conectar.status_code == 200:
+       _json = json.loads(site_conectar.content)
+       return _json;
+
+#Server
+Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
+
+#Server info
+online = True;
+jogadores_max = 0;
+jogadores_online = 0;
+motd = "Nenhum";
+
+if (Server['status'] != "success"):
+    online = False;
+else:
+  jogadores_max = Server['players']['max'];
+  jogadores_online = Server['players']['now'];
+  motd = Server['motd'];
+
+
 def mojang(site, json_retorno):
   site_conectar = requests.get(site)
   if site_conectar.status_code == 200:
@@ -93,6 +118,61 @@ async def tutorial_uptime():
 
 @client.event
 async def on_message(message):
+    if message.content.lower().startswith('/End'):
+        if (online):
+            embed = discord.Embed(
+                title='Status do End:'
+                color=COR,
+                description='Servidor: **ONLINE**'
+            )
+            embed.add_field(
+                name='IP:',
+                value=ip,
+                inline=True
+            )
+            embed.add_field(
+                name='Jogadores Online:',
+                value="{}/{}".format(str(jogadores_online), str(jogadores_max)),
+                inline=True
+            )
+            embed.add_field(
+                name='Motd:',
+                value=motd
+                inline=True
+            )
+            embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+            embed.timestamp = datetime.datetime.utcnow()
+            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+
+            await client.send_message(message.channel, embed=embed)
+        else:
+            embed1 = discord.Embed(
+                title='Status do End:'
+                color=COR,
+                description='Servidor: **OFFLINE**'
+            )
+            embed1.add_field(
+                name='IP:',
+                value=ip,
+                inline=True
+            )
+            embed1.add_field(
+                name='Jogadores Online:',
+                value="{}/{}".format(str(jogadores_online), str(jogadores_max)),
+                inline=True
+            )
+            embed1.add_field(
+                name='Motd:',
+                value="*Servidor Offline*"
+                inline=True
+            )
+            embed1.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
+            embed1.timestamp = datetime.datetime.utcnow()
+            embed1.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            await client.send_message(message.channel, embed=embed1)
+
+
+
     if message.content.lower().startswith('/staff-'):
         try:
             cargos = [
