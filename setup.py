@@ -63,13 +63,13 @@ async def randommessage():
     await client.send_message(canal, mensagens)
 
 @client.event
-async def on_ready():
+async def on_ready(message):
     print('Iniciado com sucesso!')
     print(client.user.name)
     print(client.user.id)
     print('Versão 1.0')
     try:
-        RANDOM_STATUS = ['jogar.end-mc.com', 'Atualmente ' + str(len(client.server.members) + ' membros!']
+        RANDOM_STATUS = ['jogar.end-mc.com', 'Atualmente ' + str(len(message.server.members) + ' membros!']
         choice = random.choice(RANDOM_STATUS)
         await client.change_presence(game=discord.Game(name=choice, url="https://www.twitch.tv/johncostaxv", type=1))
         await client.send_message(client, "Online!")
