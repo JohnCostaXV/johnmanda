@@ -118,7 +118,7 @@ else:
 
 @client.event
 async def on_message(message):
-    if message.content.lower().startswith('/End'):
+    if message.content.lower().startswith("/status"):
         if (online):
             embed = discord.Embed(
                 title='Status do End:',
