@@ -121,7 +121,7 @@ async def on_message(message):
     if message.content.lower().startswith('/End'):
         if (online):
             embed = discord.Embed(
-                title='Status do End:'
+                title='Status do End:',
                 color=COR,
                 description='Servidor: **ONLINE**'
             )
@@ -147,7 +147,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=embed)
         else:
             embed1 = discord.Embed(
-                title='Status do End:'
+                title='Status do End:',
                 color=COR,
                 description='Servidor: **OFFLINE**'
             )
