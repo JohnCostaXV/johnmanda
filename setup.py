@@ -137,7 +137,7 @@ async def on_message(message):
             )
             embed.add_field(
                 name='Motd:',
-                value=motd
+                value=motd,
                 inline=True
             )
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
@@ -163,7 +163,7 @@ async def on_message(message):
             )
             embed1.add_field(
                 name='Motd:',
-                value="*Servidor Offline*"
+                value="*Servidor Offline*",
                 inline=True
             )
             embed1.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
