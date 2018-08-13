@@ -876,7 +876,7 @@ async def on_message(message):
                             '**/ip** » Veja o IP de conexão ao servidor.\n\n'
                             '**/enviar** [dúvida] » Enviar uma dúvida para a equipe.\n\n'
                             '**/moeda** » Brinque de cara ou coroa.\n\n\n'
-                            '**MINECRAFT:**\n\n'
+                            '**MINECRAFT:**`DESATIVADO!`\n\n'
                             '**/mineinfo** [nickname] » Envia informações de um usuário.\n\n'
                             '**/skin** [nickname] » Veja a skin de um usuário.\n\n'
                             '**/head** [nickname] » Veja a cabeça da skin de um usuário.\n\n\n'
