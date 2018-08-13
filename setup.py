@@ -889,23 +889,29 @@ async def on_message(message):
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
             embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed1 = discord.Embed(
+                color=COR,
+                description='Todos os comandos enviado em seu privado!'
+            )
+            embed1.set_author(name="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
+            apg = await client.send_message(message.channel, embed=embed1)
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
             await client.send_message(message.author, embed=embed)
         except IndexError:
-            time.sleep(2)
+            await asyncio.sleep(2)
             await client.delete_message(msg)
             asyncio.sleep(21000)
             msg1 = await client.send_message(message.channel, 'Error')
             await client.delete_message(message)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(msg1)
         except:
-            time.sleep(2)
+            await client.delete_message(apg)
+            await asyncio.sleep(2)
             await client.delete_message(msg)
-            asyncio.sleep(21000)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(tst)
         finally:
             pass
