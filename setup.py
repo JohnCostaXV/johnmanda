@@ -907,7 +907,6 @@ async def on_message(message):
             await client.delete_message(msg1)
         except:
             await client.delete_message(apg)
-            await asyncio.sleep(2)
             await client.delete_message(msg)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
