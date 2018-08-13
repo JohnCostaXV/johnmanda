@@ -895,11 +895,9 @@ async def on_message(message):
             )
             embed1.set_author(name="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
             apg = await client.send_message(message.channel, embed=embed1)
-            msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
             await client.send_message(message.author, embed=embed)
         except IndexError:
             await asyncio.sleep(2)
-            await client.delete_message(msg)
             asyncio.sleep(21000)
             msg1 = await client.send_message(message.channel, 'Error')
             await client.delete_message(message)
@@ -907,7 +905,6 @@ async def on_message(message):
             await client.delete_message(msg1)
         except:
             await client.delete_message(apg)
-            await client.delete_message(msg)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
             await asyncio.sleep(10)
