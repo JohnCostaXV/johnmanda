@@ -1133,7 +1133,7 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/info'):
-	if message.content('/info '):
+	if (message.content('/info ')):
 		
 	else:
 	     client.message.author
