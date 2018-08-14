@@ -1180,6 +1180,49 @@ async def on_message(message):
                 icon_url="https://i.imgur.com/1iJeEea.jpg"
             )
             await client.send_message(message.channel, embed=userembed)
+            
+            userembed1 = discord.Embed(
+                title="Informações do usuário",
+                description="\n",
+                color=COR
+            )
+            userembed1.set_author(
+                name=user.server.name,
+                icon_url=user.server.icon_url
+            )
+            userembed1.add_field(
+                name="Nome de usuário:",
+                value=message.author.name
+            )
+            userembed1.add_field(
+                name="Juntou-se ao servidor em:",
+                value=message.author.joinedat
+            )
+            userembed1.add_field(
+                name="Usuário criado em:",
+                value=message.author.createdat
+            )
+            userembed1.add_field(
+                name="Identificação:",
+                value=message.author.discriminator
+            )
+            userembed1.add_field(
+                name="ID de Usuário:",
+                value=message.author.id
+            )
+            userembed1.set_thumbnail(
+                url='https://i.imgur.com/1iJeEea.jpg'
+            )
+            userembed1.timestamp = datetime.datetime.utcnow()
+            userembed1.set_footer(
+                text="End",
+                icon_url="https://i.imgur.com/1iJeEea.jpg"
+            )
+            
+            if message.content.replace("/info ", ""):
+              await client.send_message(message.channel, embed=userembed1)
+            else:
+              await client.send_message(message.channel, embed=userembed1)
         except IndexError:
             await client.delete_message(message)
             msg = await client.send_message(message.channel, "{}, mencione um usuário existente, por exemplo, `/info @{}`.".format(message.author.mention, message.author.name))
