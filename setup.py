@@ -1137,7 +1137,6 @@ async def on_message(message):
 	    msg = await client.send_message(message.channel, "{}, fuck, `fuck @JohnnCosta`.".format(message.author.mention))
 	    await asyncio.sleep(10)
 	    await client.delete_message(msg)
-	return
         try:
             tmp1 = datetime.datetime.now()
 
