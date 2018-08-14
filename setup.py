@@ -1141,8 +1141,6 @@ async def on_message(message):
         
 	try:
             tmp1 = datetime.datetime.now()
-			
-
             utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
             del tmp1
             user = message.mentions[0]
