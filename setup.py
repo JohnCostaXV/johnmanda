@@ -1124,7 +1124,7 @@ async def on_message(message):
         embed.add_field(name="ID:", value=message.server.id, inline=True)
         embed.add_field(name="Cargos:", value=len(message.server.roles), inline=True)
         embed.add_field(name=":family: Membros:", value=len(message.server.members), inline=True)
-        embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime.format("%d de %beiro de %Y, ás %H:%M:%S"))
+        embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M:%S"))
         embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
         embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
         embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
@@ -1133,19 +1133,14 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/info'):
-        if (message.content.lower() == '/info'):
-          msg = await client.send_message(message.channel, "{}, fuck, `fuck @JohnnCosta`.".format(message.author.mention))
-          await asyncio.sleep(10)
-          await client.delete_message(msg)
-          return
-          
-    	try:
+        try:
             tmp1 = datetime.datetime.now()
+
             utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
             del tmp1
             user = message.mentions[0]
-            userjoinedat = str(user.joined_at.format("%d de %B de %Y, ás %H:%M:%S")).split('.', 1)[0]
-            usercreatedat = str(user.created_at.format("%d de %B de %Y, ás %H:%M:%S")).split('.', 1)[0]
+            userjoinedat = str(user.joined_at.strftime("%d de %B de %Y, ás %H:%M:%S")).split('.', 1)[0]
+            usercreatedat = str(user.created_at.strftime("%d de %B de %Y, ás %H:%M:%S")).split('.', 1)[0]
 
             userembed = discord.Embed(
                 title="Informações do usuário",
@@ -1187,7 +1182,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=userembed)
         except IndexError:
             await client.delete_message(message)
-            msg = await client.send_message(message.channel, "{}, mencione um usuário existente, por exemplo, `/info @JohnnCosta`.".format(message.author.mention))
+            msg = await client.send_message(message.channel, "{}, mencione um usuário existente, por exemplo, `/info @{}`.".format(message.author.mention, message.author.name))
             time.sleep(10)
             await client.delete_message(msg)
         except:
