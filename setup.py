@@ -1124,7 +1124,7 @@ async def on_message(message):
         embed.add_field(name="ID:", value=message.server.id, inline=True)
         embed.add_field(name="Cargos:", value=len(message.server.roles), inline=True)
         embed.add_field(name=":family: Membros:", value=len(message.server.members), inline=True)
-        embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M:%S"))
+        embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime.format("%d de %beiro de %Y, ás %H:%M:%S"))
         embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
         embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
         embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
@@ -1132,9 +1132,10 @@ async def on_message(message):
         embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.lower().startswith('/info'):
-        print message;
+    if message.content.lower().startswith('/info '):
         try:
+            if (message.mentions[0]==null):
+              return "a"
             tmp1 = datetime.datetime.now()
 
             utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
@@ -1181,7 +1182,7 @@ async def on_message(message):
                 icon_url="https://i.imgur.com/1iJeEea.jpg"
             )
             await client.send_message(message.channel, embed=userembed)
-        except IndexError
+        except IndexError:
             await client.delete_message(message)
             msg = await client.send_message(message.channel, "{}, mencione um usuário existente, por exemplo, `/info @JohnnCosta`.".format(message.author.mention))
             time.sleep(10)
