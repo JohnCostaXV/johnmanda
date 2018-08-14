@@ -1132,7 +1132,7 @@ async def on_message(message):
         embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.lower().startswith('/info '):
+    if message.content.lower().startswith('/info'):
         try:
             if (message.mentions[0]==null):
               return "a"
