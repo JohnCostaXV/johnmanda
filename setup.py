@@ -1133,11 +1133,11 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/info'):
-	    if (message.content.lower() == "/info"):
-		    msg = await client.send_message(message.channel, "{}, fuck, `fuck @JohnnCosta`.".format(message.author.mention))
-            time.sleep(10)
-            await client.delete_message(msg)
-			return
+	if (message.content.lower() == "/info"):
+		msg = await client.send_message(message.channel, "{}, fuck, `fuck @JohnnCosta`.".format(message.author.mention))
+        await asyncio.sleep(10)
+        await client.delete_message(msg)
+		return
         try:
             tmp1 = datetime.datetime.now()
 
