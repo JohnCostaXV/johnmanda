@@ -1133,7 +1133,7 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/info'):
-       print(message.content)
+        print(message.content)
         try:
             tmp1 = datetime.datetime.now()
 
