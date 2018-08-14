@@ -1132,14 +1132,16 @@ async def on_message(message):
         embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.lower().startswith('/info'):
-      if (message.content.lower() == "/info"):
-	  msg = await client.send_message(message.channel, "{}, fuck, `fuck @JohnnCosta`.".format(message.author.mention))
-	  await asyncio.sleep(10)
-	  await client.delete_message(msg)
-	  return
-        try:
+    if (message.content.lower().startswith('/info')):
+        if (message.content.lower() == '/info'):
+            msg = await client.send_message(message.channel, "{}, fuck, `fuck @JohnnCosta`.".format(message.author.mention))
+	        await asyncio.sleep(10)
+	        await client.delete_message(msg)
+	        return
+        
+		try:
             tmp1 = datetime.datetime.now()
+			
 
             utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
             del tmp1
