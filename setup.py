@@ -1132,10 +1132,8 @@ async def on_message(message):
         embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
-    if message.content.lower().startswith('/info '):
+    if message.content.lower().startswith('/info'):
         try:
-            if (message.mentions[0]==null):
-              return "a"
             tmp1 = datetime.datetime.now()
 
             utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
@@ -1183,6 +1181,8 @@ async def on_message(message):
             )
             await client.send_message(message.channel, embed=userembed)
         except IndexError:
+            if (message.mentions[0] == null):
+                msg = await client.send_message(message.channel, "{}, MERDA, `/info @JohnnCosta`.".format(message.author.mention))
             await client.delete_message(message)
             msg = await client.send_message(message.channel, "{}, mencione um usuário existente, por exemplo, `/info @JohnnCosta`.".format(message.author.mention))
             time.sleep(10)
