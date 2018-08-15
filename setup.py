@@ -1340,8 +1340,7 @@ async def on_message(message):
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
 
-            cabeca.save('head.png')
-            await client.send_file(message.channel, 'head.png')
+            await client.send_file(message.channel, cabeca)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
