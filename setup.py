@@ -560,16 +560,15 @@ async def on_message(message):
                     await client.ban(user)
                     join = (" ".join(args[2:]))
                     embed = discord.Embed(
-                        title='BANIDO ⛔',
+                        title="Informações:",
                         color=COR,
-                        description='O usuário **{}#{}**, foi banido temporariamente!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
-                    )
-                    embed.set_thumbnail(
-                        url='https://i.imgur.com/1iJeEea.jpg'
+                        description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Duração**: {}\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, join, reallytime, message.author.mention, message.channel.mention)
                     )
                     embed.timestamp = datetime.datetime.utcnow()
-                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-                    await client.send_message(canal, embed=embed)
+                    embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                    embed.set_thumbnail(url=message.author.avatar_url)
+                    embed.set_footer(text="Equipe de moderação.", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                    await client.send_message(channel1, embed=embed)
                     time.sleep(timesquad)
                     await client.unban(message.server, user)
         except IndexError:
