@@ -562,7 +562,7 @@ async def on_message(message):
                     embed = discord.Embed(
                         title="Informações:",
                         color=COR,
-                        description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Duração**: {}\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, join, reallytime, message.author.mention, message.channel.mention)
+                        description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Duração**: {}\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, tempo, reallytime, message.author.mention, message.channel.mention)
                     )
                     embed.timestamp = datetime.datetime.utcnow()
                     embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
