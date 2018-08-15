@@ -718,6 +718,7 @@ async def on_message(message):
                     embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
                     embed.set_thumbnail(url=message.author.avatar_url)
                     embed.set_footer(text="Equipe de moderação.", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                    await client.send_message(channel1, embed=embed)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
