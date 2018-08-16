@@ -1334,23 +1334,17 @@ async def on_message(message):
             remover_cabeca = message.content.replace("/head", "")
             separar = remover_cabeca.split(" ", 1)
             nome = "%s" % "".join(separar[1])
-            embed1 = discord.Embed(
-                description="Procurando a sua head atual!"
-            )
-            embed1.set_author(name='Procurando...', icon_url=message.author.avatar_url)
-            embed1.set_thumbnail(url='https://media.giphy.com/media/l3q2IYN87QjIg51kc/giphy.gif')
-            sc = await client.send_message(message.channel, embed=embed)
+            msg = await client.send_message(message.channel, "{}, aguarde um momento enquanto pesquisamos.".format(message.author.mention))
+
 
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
-
-            embed = discord.Embed()
-            embed.set_image(url=cabeca)
+              
             await asyncio.sleep(5)
-            await client.delete_message(sc)
-            await client.send_message(message.channel, embed=embed)
+            await client.delete_message(msg)
+            await client.send_message(message.channel, cabeca)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
@@ -1381,12 +1375,7 @@ async def on_message(message):
             remover_mineinfo = message.content.replace("/skin", "")
             separar = remover_mineinfo.split(" ", 1)
             nome = "%s" % "".join(separar[1])
-            embed1 = discord.Embed(
-                description="Procurando a sua skin atual!"
-            )
-            embed1.set_author(name='Procurando...', icon_url=message.author.avatar_url)
-            embed1.set_thumbnail(url='https://media.giphy.com/media/l3q2IYN87QjIg51kc/giphy.gif')
-            sc = await client.send_message(message.channel, embed=embed)
+            msg = await client.send_message(message.channel, "{}, aguarde um momento enquanto pesquisamos.".format(message.author.mention))
       
             
             #UUID
@@ -1397,7 +1386,7 @@ async def on_message(message):
             embed = discord.Embed()
             embed.set_image(url=corpo)
             await asyncio.sleep(5)
-            await client.delete_message(sc)
+            await client.delete_message(msg)
             await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed = discord.Embed(
