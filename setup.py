@@ -1340,8 +1340,7 @@ async def on_message(message):
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
 
-            await client.send_message('**Username: `{}`**'.format(nome))
-            await client.send_file(message.channel, cabeca, filename="{}.png".format(nome))
+            await client.send_file(message.channel, cabeca)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
@@ -1372,13 +1371,19 @@ async def on_message(message):
             remover_mineinfo = message.content.replace("/skin", "")
             separar = remover_mineinfo.split(" ", 1)
             nome = "%s" % "".join(separar[1])
-
+            msg = await client.send_message(message.channel, "{}, aguarde um momento enquanto pesquisamos.".format(message.author.mention))
+      
+            
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Corpo
             corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
-
-            await client.send_file(message.channel, '{}.png'.format(corpo))
+            
+            embed = discord.Embed()
+            embed.set_image(url=corpo)
+            await asyncio.sleep(5)
+            await client.delete_message(msg)
+            await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
