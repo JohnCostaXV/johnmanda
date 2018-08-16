@@ -1341,10 +1341,12 @@ async def on_message(message):
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
-              
+             
+            embed = discord.Embed()
+            embed.set_image(url=cabeca)
             await asyncio.sleep(5)
             await client.delete_message(msg)
-            await client.send_message(message.channel, cabeca)
+            await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
