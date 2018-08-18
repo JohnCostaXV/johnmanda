@@ -717,7 +717,7 @@ async def on_message(message):
                         await asyncio.sleep(4)
                         await client.delete_message(msg)  
                   
-      except IndexError:
+       except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
                 title='Comando incorreto!',
