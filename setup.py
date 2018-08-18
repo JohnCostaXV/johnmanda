@@ -691,7 +691,7 @@ async def on_message(message):
             pass
 
     if message.content.lower().startswith('/limpar'):
-      try:
+        try:
             cargos = [
                 # IDs dos cargos:
                 "407677666750365706", #Diretor
@@ -717,7 +717,7 @@ async def on_message(message):
                         await asyncio.sleep(4)
                         await client.delete_message(msg)  
                   
-       except IndexError:
+        except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
                 title='Comando incorreto!',
