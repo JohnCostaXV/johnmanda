@@ -711,7 +711,7 @@ async def on_message(message):
                         em.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
                         em.add_field(name="Canal:", value=f"{ctx.message.channel.mention}")
                         em.timestamp = datetime.datetime.utcnow()
-                        em.set_footer(text="End" icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                        em.set_footer(text="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                         msg = await client.send_message(ctx.message.channel, embed=em)
                         await client.send_message(message.channel, embed=em)
                         await asyncio.sleep(4)
