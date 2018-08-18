@@ -690,6 +690,55 @@ async def on_message(message):
         finally:
             pass
 
+    if message.content.lower().startswith('/limpar'):
+      try:
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+                "407678188773179417", #Administrador
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    int=None
+                    if number is None:
+                        await client.reply("**Use `/limpar [número da quantia de mensagem]`.**")
+                    else:
+                        number += 1
+                        deleted = await client.purge_from(client.message.channel, limit=number)
+                        num = number - 1
+                        em = discord.Embed(title=None, description=f'{ctx.message.author} deletou __{num}__ mensagens!', colour=0x3498db)
+                        em.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+                        em.add_field(name="Canal:", value=f"{ctx.message.channel.mention}")
+                        em.timestamp = datetime.datetime.utcnow()
+                        em.set_footer(text="End" icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                        msg = await client.send_message(ctx.message.channel, embed=em)
+                        await client.send_message(message.channel, embed=em)
+                        await asyncio.sleep(4)
+                        await client.delete_message(msg)  
+                  
+      except IndexError:
+            await client.delete_message(message)
+            embedd = discord.Embed(
+                title='Comando incorreto!',
+                color=COR,
+                description='Use `/limpar [quantidade]`'
+            )
+            embedd.timestamp = datetime.datetime.utcnow()
+            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embedd)
+        except:
+            await client.delete_message(message)
+            embed2 = discord.Embed(
+                title='Permissão negada!',
+                color=COR,
+                description='Você não tem permissão para executar esse comando.'
+            )
+            embed2.timestamp = datetime.datetime.utcnow()
+            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed2)
+        finally:
+            pass            
 
     if message.content.lower().startswith('/ban'):
         try:
