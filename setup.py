@@ -93,16 +93,15 @@ async def tutorial_uptime():
             minutes = 0
             hour += 1
 
-def MCAPI(site)
+def MCAPI(site):
+  site_conectar = requests.get(site)
+  if site_conectar.status_code == 200:
+       _json = json.loads(site_conectar.content)
+       return _json;
 
 @client.event
 async def on_message(message):
     if message.content.lower().startswith("/status"):
-        site_conectar = requests.get(site)
-        if site_conectar.status_code == 200:
-             _json = json.loads(site_conectar.content)
-             return _json;
-
         #Server
         Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
 
