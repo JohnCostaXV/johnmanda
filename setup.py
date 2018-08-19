@@ -93,7 +93,7 @@ async def tutorial_uptime():
             minutes = 0
             hour += 1
 
-def MCAPI(site):
+def MCAPI(site)
 
 @client.event
 async def on_message(message):
