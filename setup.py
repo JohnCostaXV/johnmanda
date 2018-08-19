@@ -97,6 +97,7 @@ async def tutorial_uptime():
 
 @client.event
 async def on_message(message):
+MCAPI(site):
     if message.content.lower().startswith("/status"):
         site_conectar = requests.get(site)
         if site_conectar.status_code == 200:
