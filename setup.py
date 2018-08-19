@@ -1544,7 +1544,7 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
-                    time.sleep(timesquad)
+                    await asyncio.sleep(timesquad)
                     await client.remove_roles(user, cargo)
                     print('O {} foi desmutado.'.format(user))
         except IndexError:
