@@ -94,31 +94,30 @@ async def tutorial_uptime():
             hour += 1
 
 
-def MCAPI(site):
-  site_conectar = requests.get(site)
-  if site_conectar.status_code == 200:
-       _json = json.loads(site_conectar.content)
-       return _json;
-
-#Server
-Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
-
-#Server info
-online = True;
-jogadores_max = 0;
-jogadores_online = 0;
-motd = "Nenhum";
-
-if (Server['status'] != "success"):
-    online = False;
-else:
-  jogadores_max = Server['players']['max'];
-  jogadores_online = Server['players']['now'];
-  motd = Server['motd'];
 
 @client.event
 async def on_message(message):
     if message.content.lower().startswith("/status"):
+        site_conectar = requests.get(site)
+        if site_conectar.status_code == 200:
+             _json = json.loads(site_conectar.content)
+             return _json;
+
+        #Server
+        Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
+
+        #Server info
+        online = True;
+        jogadores_max = 0;
+        jogadores_online = 0;
+        motd = "Nenhum";
+
+        if (Server['status'] != "success"):
+            online = False;
+        else:
+          jogadores_max = Server['players']['max'];
+          jogadores_online = Server['players']['now'];
+          motd = Server['motd'];
         if (online):
             embed = discord.Embed(
                 title='Status do End:',
