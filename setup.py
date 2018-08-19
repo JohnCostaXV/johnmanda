@@ -1536,7 +1536,7 @@ async def on_message(message):
                     embed = discord.Embed(
                         title='SILENCIADO 🔈',
                         color=COR,
-                        description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                        description='O usuário {}, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.mention, reallytime, tempo, message.author.mention)
                     )
                     embed.set_thumbnail(
                         url='https://i.imgur.com/1iJeEea.jpg'
@@ -1545,7 +1545,6 @@ async def on_message(message):
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
                     time.sleep(timesquad)
-                    cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     await client.remove_roles(user, cargo)
                     print('O {} foi desmutado.'.format(user))
         except IndexError:
