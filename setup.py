@@ -43,7 +43,7 @@ def mojang(site, json_retorno):
 @client.event
 async def on_member_join(member):
     canal = client.get_channel('448326795692081152')
-    await client.send_message(canal, 'Seja bem-vindo(a) {}! Aguarde 10 minutos para ser verificado e receber `membro`!'.format(member.mention))
+    react = await client.send_message(canal, 'Seja bem-vindo(a) {}! Aguarde 10 minutos para ser verificado e receber `membro` ou clique na reação(`👤`).'.format(member.mention))
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
@@ -53,11 +53,26 @@ async def on_member_join(member):
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
     embed.set_footer(text='End', icon_url='https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif')
     await client.send_message(canal, embed=embed)
-    await asyncio.sleep(60)
+    await client.add_reaction(react, "👤")
+    await asyncio.sleep(600)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
     print("Adicionado o cargo '" + role.name + "' para " + member.name)
 
+    global msg_id
+    msg_id = react.id
+
+    global msg_user
+    msg_user = member
+
+@client.event
+async def on_reaction_add(reaction, user):
+    msg = reaction.message
+
+    if reaction.emoji == "👤" and msg.id == msg_id: #and user == msg_user:
+     role = discord.utils.find(lambda r: r.name == "Membro", msg.server.roles)
+     await client.add_roles(user, role)
+     print("Reação do '" + user.name + "'.")
 
 @client.event
 async def randommessage():
