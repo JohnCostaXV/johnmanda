@@ -53,6 +53,7 @@ async def on_member_join(member):
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
     embed.set_footer(text='End', icon_url='https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif')
     await client.send_message(canal, embed=embed)
+    await asyncio.sleep(60)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
     print("Adicionado o cargo '" + role.name + "' para " + member.name)
