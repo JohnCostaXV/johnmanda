@@ -43,7 +43,7 @@ def mojang(site, json_retorno):
 @client.event
 async def on_member_join(member):
     canal = client.get_channel('448326795692081152')
-    await client.send_message(canal, 'Seja bem-vindo(a) {}! Em 10 minutos você será verificado e receberá o cargo membro!'.format(member.mention))
+    await client.send_message(canal, 'Seja bem-vindo(a) {}! Aguarde 10 minutos para ser verificado e receber `membro`!'.format(member.mention))
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
@@ -53,7 +53,6 @@ async def on_member_join(member):
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
     embed.set_footer(text='End', icon_url='https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif')
     await client.send_message(canal, embed=embed)
-    await asyncio.sleep(60)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
     print("Adicionado o cargo '" + role.name + "' para " + member.name)
@@ -94,32 +93,30 @@ async def tutorial_uptime():
             minutes = 0
             hour += 1
 
-
 def MCAPI(site):
   site_conectar = requests.get(site)
   if site_conectar.status_code == 200:
        _json = json.loads(site_conectar.content)
        return _json;
 
-#Server
-Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
-
-#Server info
-online = True;
-jogadores_max = 0;
-jogadores_online = 0;
-motd = "Nenhum";
-
-if (Server['status'] != "success"):
-    online = False;
-else:
-  jogadores_max = Server['players']['max'];
-  jogadores_online = Server['players']['now'];
-  motd = Server['motd'];
-
 @client.event
 async def on_message(message):
     if message.content.lower().startswith("/status"):
+        #Server
+        Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
+
+        #Server info
+        online = True;
+        jogadores_max = 0;
+        jogadores_online = 0;
+        motd = "Nenhum";
+
+        if (Server['status'] != "success"):
+            online = False;
+        else:
+          jogadores_max = Server['players']['max'];
+          jogadores_online = Server['players']['now'];
+          motd = Server['motd'];
         if (online):
             embed = discord.Embed(
                 title='Status do End:',
@@ -561,17 +558,16 @@ async def on_message(message):
                     await client.ban(user)
                     join = (" ".join(args[2:]))
                     embed = discord.Embed(
-                        title='BANIDO ⛔',
+                        title="Informações:",
                         color=COR,
-                        description='O usuário **{}#{}**, foi banido temporariamente!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
-                    )
-                    embed.set_thumbnail(
-                        url='https://i.imgur.com/1iJeEea.jpg'
+                        description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Duração**: {}\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, tempo, reallytime, message.author.mention, message.channel.mention)
                     )
                     embed.timestamp = datetime.datetime.utcnow()
-                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
-                    await client.send_message(canal, embed=embed)
-                    time.sleep(timesquad)
+                    embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                    embed.set_thumbnail(url=message.author.avatar_url)
+                    embed.set_footer(text="Equipe de moderação", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                    await client.send_message(channel1, embed=embed)
+                    await asyncio.sleep(timesquad)
                     await client.unban(message.server, user)
         except IndexError:
             await client.delete_message(message)
@@ -692,7 +688,6 @@ async def on_message(message):
         finally:
             pass
 
-
     if message.content.lower().startswith('/ban'):
         try:
             cargos = [
@@ -711,15 +706,14 @@ async def on_message(message):
                     await client.ban(user)
                     join = (" ".join(args[2:]))
                     embed = discord.Embed(
-                        title='BANIDO ⛔',
+                        title="Informações:",
                         color=COR,
-                        description='O usuário **{}#{}**, foi banido!\n\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, join, message.author.mention)
-                    )
-                    embed.set_thumbnail(
-                        url='https://i.imgur.com/1iJeEea.jpg'
+                        description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, join, message.author.mention, message.channel.mention)
                     )
                     embed.timestamp = datetime.datetime.utcnow()
-                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                    embed.set_thumbnail(url=message.author.avatar_url)
+                    embed.set_footer(text="Equipe de moderação", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                     await client.send_message(channel1, embed=embed)
         except IndexError:
             await client.delete_message(message)
@@ -1145,16 +1139,16 @@ async def on_message(message):
 
             userembed = discord.Embed(
                 title="Informações do usuário",
-                description="**ID**: {}\n\n**Avatar**: [download](" + user.avatar_url + ")\n**Criando em**: {}\n**Status**: {}\n**Entrou no servidor em**: {}\n**Cargos**: {}".format(user.id, usercreatedat,),
+                description="\n",
                 color=COR
             )
             userembed.set_author(
-                name="{} <> {}".format(user.name, user.discriminator),
-                icon_url=user.avatar_url
+                name=user.server.name,
+                icon_url=user.server.icon_url
             )
             userembed.add_field(
-                name="Informações:",
-                value="{}\n**ID**:{}"user.name
+                name="Nome de usuário:",
+                value=user.name
             )
             userembed.add_field(
                 name="Juntou-se ao servidor em:",
@@ -1337,15 +1331,19 @@ async def on_message(message):
             remover_cabeca = message.content.replace("/head", "")
             separar = remover_cabeca.split(" ", 1)
             nome = "%s" % "".join(separar[1])
+            msg = await client.send_message(message.channel, "{}, aguarde um momento enquanto pesquisamos.".format(message.author.mention))
+
 
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
-
-            head = discord.Embed()
-            head.set_image(url=cabeca)
-            await client.send_message(message.channel, embed=head)
+             
+            embed = discord.Embed()
+            embed.set_image(url=cabeca)
+            await asyncio.sleep(5)
+            await client.delete_message(msg)
+            await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
@@ -1376,13 +1374,19 @@ async def on_message(message):
             remover_mineinfo = message.content.replace("/skin", "")
             separar = remover_mineinfo.split(" ", 1)
             nome = "%s" % "".join(separar[1])
-
+            msg = await client.send_message(message.channel, "{}, aguarde um momento enquanto pesquisamos.".format(message.author.mention))
+      
+            
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Corpo
             corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
-
-            await client.send_file(message.channel, '{}.png'.format(corpo))
+            
+            embed = discord.Embed()
+            embed.set_image(url=corpo)
+            await asyncio.sleep(5)
+            await client.delete_message(msg)
+            await client.send_message(message.channel, embed=embed)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
@@ -1482,7 +1486,7 @@ async def on_message(message):
                     embed = discord.Embed(
                         title='SILENCIADO 🔈',
                         color=COR,
-                        description='O usuário **{}#{}**, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.name, user.discriminator, reallytime, tempo, message.author.mention)
+                        description='O usuário {}, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.mention, reallytime, tempo, message.author.mention)
                     )
                     embed.set_thumbnail(
                         url='https://i.imgur.com/1iJeEea.jpg'
@@ -1490,8 +1494,7 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
                     await client.send_message(canal, embed=embed)
-                    time.sleep(timesquad)
-                    cargo = discord.utils.get(user.server.roles, name='Silenciado')
+                    await asyncio.sleep(timesquad)
                     await client.remove_roles(user, cargo)
                     print('O {} foi desmutado.'.format(user))
         except IndexError:
