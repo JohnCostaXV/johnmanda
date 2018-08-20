@@ -53,7 +53,7 @@ async def on_member_join(member):
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
     embed.set_footer(text='End', icon_url='https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif')
     await client.send_message(canal, embed=embed)
-    await client.add_reaction(react, "👤")
+    await client.add_reaction(react, "✅")
     await asyncio.sleep(600)
     role = discord.utils.get(member.server.roles, name="Membro")
     await client.add_roles(member, role)
@@ -69,8 +69,8 @@ async def on_member_join(member):
 async def on_reaction_add(reaction, user):
     msg = reaction.message
 
-    if reaction.emoji == "👤" and msg.id == msg_id: #and user == msg_user:
-     role = discord.utils.find(lambda r: r.name == "Membro", msg.server.roles)
+    if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
+     role = discord.utils.get(user.server.roles, name="Membro")
      await client.add_roles(user, role)
      print("Reação do '" + user.name + "'.")
 
