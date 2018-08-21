@@ -89,7 +89,7 @@ async def on_ready():
     print(client.user.id)
     print('Versão 1.0')
     try:
-        RANDOM_STATUS = ['jogar.end-mc.com']
+        RANDOM_STATUS = ['jogar.end-mc.com', '/comandos']
         choice = random.choice(RANDOM_STATUS)
         await client.change_presence(game=discord.Game(name=choice, url="https://www.twitch.tv/johncostaxv", type=1))
         await client.send_message(client, "Online!")
@@ -118,7 +118,7 @@ def MCAPI(site):
 
 @client.event
 async def on_message(message):
-    if message.content.lower().startswith("/eform"):
+    if message.content.lower().startswith("/esorteio"):
         cargos = [
             # IDs dos cargos:
             "407677666750365706", #Diretor
@@ -1143,7 +1143,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='Você solicitou o comando e aqui estamos enviando umas informações básicas sobre o End.',
                 color=COR,
-                description='**Seja bem-vindo ao discord da rede End. Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
+                description='**Seja bem-vindo ao discord da rede End. Segue abaixo informações básicas sobre a rede que podem te ajudar!**\n\nIP: jogar.end-mc.com\n\nLoja: [clique aqui!](http://loja.end-mc.com)\n\nTwitter: [clique aqui!](https://twitter.com/ServidorEnd)\n\nFórum: **Em breve**\n\nFormulário p/ equipe: [clique aqui!](https://bit.ly/endform)\n\n***__Caso precise de outro tipo de ajuda contate um membro da equipe__***'
             )
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
