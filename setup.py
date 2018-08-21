@@ -946,7 +946,7 @@ async def on_message(message):
             embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
             embed1 = discord.Embed(
                 color=COR,
-                description='Comandos foram enviado em sua DM!'
+                description='Todos os comandos foram enviados em sua DM!'
             )
             embed1.set_author(name="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
             apg = await client.send_message(message.channel, embed=embed1)
