@@ -1354,7 +1354,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='Informações:',
                 color=COR,
-                description="**Nickname**: {}\n**UUID**: {}\n\n**Skin**: [Download](https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png)\n\n".format(nome, uuid)
+                description="**Nickname**: {}\n**UUID**: {}\n\n**Skin**: [Download](https://crafatar.com/renders/body/'" + uuid +"'?default=HF_Steve&overlay.png)\n\n".format(nome, uuid)
             )
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
