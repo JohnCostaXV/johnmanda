@@ -74,7 +74,6 @@ async def on_reaction_add(reaction, user):
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
      role = discord.utils.get(user.server.roles, name="Membro")
      await client.add_roles(user, role)
-     await client.remove_roles(bot, role)
      print("Reação do '" + user.name + "'.")
 
 @client.event
