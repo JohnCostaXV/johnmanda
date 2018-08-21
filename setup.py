@@ -151,7 +151,7 @@ async def on_message(message):
                 )
                 embed.set_author(name="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
                 embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                embed.set_thumbnail(url="https://pbs.twimg.com/media/Dh8UfXjW0AEps6n.jpg")
+                embed.set_image(url="https://pbs.twimg.com/media/Dh8UfXjW0AEps6n.jpg")
                 embed.timestamp = datetime.datetime.utcnow()
                 await client.send_message(canal, embed=embed)
 
