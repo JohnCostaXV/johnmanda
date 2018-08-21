@@ -43,7 +43,7 @@ def mojang(site, json_retorno):
 @client.event
 async def on_member_join(member):
     canal = client.get_channel('448326795692081152')
-    react = await client.send_message(canal, 'Seja bem-vindo(a) {}! Aguarde 10 minutos para ser verificado e receber `membro` ou clique na reação(`👤`).'.format(member.mention))
+    react = await client.send_message(canal, 'Seja bem-vindo(a) {}! Aguarde 10 minutos para ser verificado e receber `membro` ou clique na reação(`✅`).'.format(member.mention))
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
@@ -69,10 +69,12 @@ async def on_member_join(member):
 @client.event
 async def on_reaction_add(reaction, user):
     msg = reaction.message
+    bot = client.user
 
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
      role = discord.utils.get(user.server.roles, name="Membro")
      await client.add_roles(user, role)
+     await client.remove_roles(bot, role)
      print("Reação do '" + user.name + "'.")
 
 @client.event
@@ -118,6 +120,10 @@ def MCAPI(site):
 
 @client.event
 async def on_message(message):
+    if message.content.lower().startswith("@End"):
+        await client.add_reaction(message.author, "👀")
+
+
     if message.content.lower().startswith("/status"):
         #Server
         Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
@@ -234,6 +240,11 @@ async def on_message(message):
             await client.delete_message(tst)
         finally:
             pass
+
+    if message.content.endswith('-?'):
+        resposta = random.choice(['Não respondo a isso','Sim','As vezes','Não','Claro','NUNCA!','Um dia talvez','A resposta está dentro de ti','Mais ou menos','Uma Bosta','Podia ser pior'])
+        await client.send_message(message.channel, resposta)
+        return
 
 
     if message.content.lower().startswith('/helpstaff'):
