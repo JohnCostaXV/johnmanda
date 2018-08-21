@@ -88,14 +88,11 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('Versão 1.0')
-    try:
-        RANDOM_STATUS = ['jogar.end-mc.com', '/comandos']
-        choice = random.choice(RANDOM_STATUS)
-        await client.change_presence(game=discord.Game(name=choice, url="https://www.twitch.tv/johncostaxv", type=1))
-        await client.send_message(client, "Online!")
-    except Exception as e:
-        print("Todos direitos {}.".format("reservados"))
+    print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
+    await client.change_presence(game=discord.Game(name="/comandos", url="https://www.twitch.tv/johncostaxv", type=1))
+    await asyncio.sleep(600)
+    await client.change_presence(game=discord.Game(name="jogar.end-mc.com", url="https://www.twitch.tv/johncostaxv", type=1))
 
 async def tutorial_uptime():
     await client.wait_until_ready()
