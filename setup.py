@@ -889,7 +889,7 @@ async def on_message(message):
             await client.add_reaction(botmsg, "👍")
             await client.add_reaction(botmsg, "👎")
         except IndexError:
-            await client.send_message(message.author, "Uso correto do comando: /sugestão <sugestão> | <por quê adicionariamos?>")
+            await client.send_message(message.channel, "Uso correto do comando: /sugestão <sugestão> | <por quê adicionariamos?>")
         except:
             await client.send_message(message.author, "Desculpe pelo erro.")
         finally:
@@ -1042,7 +1042,7 @@ async def on_message(message):
             await client.send_message(canal, embed=embed)
             await client.delete_message(message)
         except IndexError:
-            await client.send_message(message.author, '{}, use /ativarvip [nickname] | [rank] | [Prova]'.format(message.author.mention))
+            await client.send_message(message.channel, '{}, use /ativarvip [nickname] | [rank] | [Prova]'.format(message.author.mention))
             await client.delete_message(message)
         except:
             await client.send_message(message.author, 'Desculpe pelo erro.')
@@ -1080,11 +1080,9 @@ async def on_message(message):
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(text='Revisão postada com sucesso.', icon_url=message.author.avatar_url
             )
-            await client.send_message(message.author, 'Sua revisão foi enviada')
-            time.sleep(3)
             await client.send_message(canal, embed=embed)
         except IndexError:
-            await client.send_message(message.author, '{}, use /revisão <nickname> | <motivo> | <Por quê está irregular?>'.format(message.author.mention))
+            await client.send_message(message.channel, '{}, use /revisão <nickname> | <motivo> | <Por quê está irregular?>'.format(message.author.mention))
         except:
             await client.send_message(message.author, 'Desculpe pelo erro.')
             print('Error')
@@ -1355,8 +1353,7 @@ async def on_message(message):
                 title='Informações:',
                 color=COR,
                 description="**Nickname**: {}\n"
-                            "**UUID**: {}\n"
-                            "**Skin**: [download](https://crafatar.com/renders/body/" + uuid + "?default=HF_Steve&overlay.png)".format(nome, uuid)
+                            "**UUID**: {}\n".format(nome, uuid)
             )
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
