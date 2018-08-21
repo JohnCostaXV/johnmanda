@@ -69,7 +69,6 @@ async def on_member_join(member):
 @client.event
 async def on_reaction_add(reaction, user):
     msg = reaction.message
-    bot = client.user
 
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
      role = discord.utils.get(user.server.roles, name="Membro")
