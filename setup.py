@@ -932,7 +932,7 @@ async def on_message(message):
                             '**/enviar** [dúvida] » Enviar uma dúvida para a equipe.\n\n'
                             '**/moeda** » Brinque de cara ou coroa.\n\n\n'
                             '**MINECRAFT:** `DESATIVADO!`\n\n'
-                            '**/mineinfo** [nickname] » Envia informações de um usuário. `DESATIVADO!`\n\n'
+                            '**/mineinfo** [nickname] » Envia informações de um usuário. `ATIVADO!`\n\n'
                             '**/skin** [nickname] » Veja a skin de um usuário. `DESATIVADO!`\n\n'
                             '**/head** [nickname] » Veja a cabeça da skin de um usuário. `DESATIVADO!`\n\n\n'
                             '**UTILITÁRIOS:**\n\n'
@@ -1354,7 +1354,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title='Informações:',
                 color=COR,
-                description="**Nickname**: {}\n**UUID**: {}".format(nome, uuid)
+                description="**Nickname**: {}\n**UUID**: {}\n\n**Skin**: [Download](corpo)".format(nome, uuid)
             )
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
