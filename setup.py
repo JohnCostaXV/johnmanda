@@ -126,6 +126,7 @@ async def on_message(message):
         for r in message.author.roles:
             if r.id in cargos:
                 canal = client.get_channel("448326186095869953")
+                await client.send_message(canal, "@everyone")
                 embed = discord.Embed(
                     description="Participe de nosso sorteio, faça todos os requisitos. Basta [clicar aqui](https://twitter.com/ServidorEnd/status/1017958913797476353) e participar!"
                 )
@@ -142,6 +143,7 @@ async def on_message(message):
         for r in message.author.roles:
             if r.id in cargos:
                 canal = client.get_channel("448326186095869953")
+                await client.send_message(canal, "@everyone")
                 embed = discord.Embed(
                     description="Estamos com vagas para o cargo Construtor! Para se aplicar, basta [clicar aqui](https://docs.google.com/forms/d/e/1FAIpQLSeDDlHFhtHD-7Zsp6zrJs5UHf0lTPPL5HpWWeGI24Sf9U5w2Q/viewform)!"
                 )
