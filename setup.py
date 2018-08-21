@@ -47,7 +47,7 @@ async def on_member_join(member):
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
-        description='**Redes sociais:**\n\n[Twitter](https://twitter.com/ServidorEnd) » https://twitter.com/ServidorEnd\n[Discord](https://discord.gg/uhxPeqS) » https://discord.gg/uhxPeqS\n\n**Endereços:**\n\n[Loja](https://loja.end-mc.com/) » https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\nAtualmente **' + str(len(member.server.members)) + '** membros!'
+        description='**Redes sociais:**\n\nTwitter » https://twitter.com/ServidorEnd\nDiscord » https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nLoja » https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\nAtualmente **' + str(len(member.server.members)) + '** membros!'
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
@@ -118,9 +118,6 @@ def MCAPI(site):
 
 @client.event
 async def on_message(message):
-    if message.content.lower().startswith("@End"):
-        await client.add_reaction(message.author, "👀")
-
 
     if message.content.lower().startswith("/status"):
         #Server
