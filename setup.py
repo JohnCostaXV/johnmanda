@@ -54,16 +54,17 @@ async def on_member_join(member):
     embed.set_footer(text='End', icon_url='https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif')
     await client.send_message(canal, embed=embed)
     await client.add_reaction(react, "✅")
-    #await asyncio.sleep(600)
-    #role = discord.utils.get(member.server.roles, name="Membro")
-    #await client.add_roles(member, role)
-    #print("Adicionado o cargo '" + role.name + "' para " + member.name)
 
     global msg_id
     msg_id = react.id
 
     global msg_user
     msg_user = member
+
+    await asyncio.sleep(600)
+    role = discord.utils.get(member.server.roles, name="Membro")
+    await client.add_roles(member, role)
+    print("Adicionado o cargo '" + role.name + "' para " + member.name)
 
 @client.event
 async def on_reaction_add(reaction, user):
