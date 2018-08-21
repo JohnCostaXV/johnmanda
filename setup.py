@@ -129,6 +129,7 @@ async def on_message(message):
                 canal = client.get_channel("448326186095869953")
                 await client.send_message(canal, "@everyone")
                 embed = discord.Embed(
+                    color=COR,
                     description="Participe de nosso sorteio, faça todos os requisitos. Basta [clicar aqui](https://twitter.com/ServidorEnd/status/1017958913797476353) e participar!"
                 )
                 embed.set_author(name="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
@@ -147,9 +148,10 @@ async def on_message(message):
                 canal = client.get_channel("448326186095869953")
                 await client.send_message(canal, "@everyone")
                 embed = discord.Embed(
+                    color=COR,
                     description="Estamos com vagas para o cargo Construtor! Para se aplicar, basta [clicar aqui](https://docs.google.com/forms/d/e/1FAIpQLSeDDlHFhtHD-7Zsp6zrJs5UHf0lTPPL5HpWWeGI24Sf9U5w2Q/viewform)!"
                 )
-                embed.set_author(name="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                embed.set_author(name="#End", icon_url="https://i.imgur.com/1iJeEea.jpg")
                 embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                 embed.set_image(url="https://pbs.twimg.com/media/Dh8UfXjW0AEps6n.jpg")
                 embed.timestamp = datetime.datetime.utcnow()
