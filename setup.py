@@ -87,6 +87,7 @@ async def on_reaction_add(reaction, user):
      role1 = discord.utils.get(user.server.roles, name="Unregister")
      await client.remove_roles(user, role1)
      await client.remove_reaction(msg, "✅", user)
+     await client.delete_message(msg)
 
 @client.event
 async def randommessage():
