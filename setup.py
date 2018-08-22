@@ -137,7 +137,7 @@ async def on_message(message):
         for r in message.author.roles:
             if r.id in cargos:
                 await client.delete_message(message)
-                await client.send_message(canal, "@everyone")
+                await client.send_message(message.channel, "@everyone")
                 embed = discord.Embed(
                     color=COR,
                     description="Data: 22/08/2018\n\n**DISCORD**\n\n- Sistema de verificação implementado. Tal ação deverá ser realizada ao entrar no servidor."
@@ -425,6 +425,7 @@ async def on_message(message):
                         description=" ".join(args[2:])
                     )
                     change.set_author(name="📋 Changelog")
+                    await client.send_message(message.channel, embed = change)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
