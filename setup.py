@@ -139,7 +139,7 @@ async def on_message(message):
                 await client.delete_message(message)
                 embed = discord.Embed(
                     color=COR,
-                    description="Data: 22/08/2018\n\n**EQUIPE**\n\n- @potteerx adicionado à equipe ocupando o cargo @Ajudante. \n\n**DISCORD**\n\n- Sistema de verificação implementado. Tal ação deverá ser realizada ao entrar no servidor."
+                    description="Data: 22/08/2018\n\n**EQUIPE**\n\n- @potteerx adicionado à equipe ocupando o cargo de @Ajudante. \n\n**DISCORD**\n\n- Sistema de verificação implementado. Tal ação deverá ser realizada ao entrar no servidor."
                 )
                 embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                 embed.set_image(url="https://media.giphy.com/media/9Vxthk9QQ18MTNiwVk/giphy.gif")
