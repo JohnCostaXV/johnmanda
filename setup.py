@@ -47,7 +47,7 @@ async def on_member_join(member):
 
     entrada = client.get_channel("481630545265164288")
     enter = discord.Embed(
-        title="Procedimentos",
+        title="Procedimento",
         color=COR,
         description="Para se autenticar e, ter acesso à todos os canais, você deve clicar na reação(`✅`) abaixo."
     )
