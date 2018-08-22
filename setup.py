@@ -420,7 +420,6 @@ async def on_message(message):
             for r in message.author.roles:
                 if r.id in cargos:
                     await client.delete_message(message)
-                    user = message.mentions[0]
                     args = message.content.split(" ")
                     change = discord.Embed(
                         title=datetime.datetime.utcnow.strftime("%d/%m/%Y"),
