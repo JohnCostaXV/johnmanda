@@ -421,7 +421,7 @@ async def on_message(message):
                     await client.delete_message(message)
                     args = message.content.split(" ")
                     change = discord.Embed(
-                        title=" ".join(args[1]),
+                        title="".join(args[1]),
                         description=" ".join(args[2:])
                     )
                     change.set_author(name="📋 Changelog")
