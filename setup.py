@@ -129,6 +129,26 @@ def MCAPI(site):
 
 @client.event
 async def on_message(message):
+    if message.content.lower().startswith("/eanunciar"):
+        cargos = [
+            # IDs dos cargos:
+            "407677666750365706", #Diretor
+        ]
+        for r in message.author.roles:
+            if r.id in cargos:
+                await client.delete_message(message)
+                canal = client.get_channel("448326186095869953")
+                await client.send_message(canal, "@everyone")
+                embed = discord.Embed(
+                    color=COR,
+                    description="Data: 22/08/2018\n\n**DISCORD**\n\n- Sistema de verificação implementado. Tal ação deverá ser realizada ao entrar no servidor."
+                )
+                embed.set_author(name="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
+                embed.set_image(url="https://media.giphy.com/media/9Vxthk9QQ18MTNiwVk/giphy.gif")
+                embed.timestamp = datetime.datetime.utcnow()
+                await client.send_message(canal, embed=embed)
+    
     if message.content.lower().startswith("/esorteio"):
         cargos = [
             # IDs dos cargos:
