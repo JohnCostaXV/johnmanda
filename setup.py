@@ -42,8 +42,23 @@ def mojang(site, json_retorno):
 
 @client.event
 async def on_member_join(member):
+    role = discord.utils.get(member.server.roles, name="Unregister")
+    await client.add_roles(member, role)
+
+    entrada = client.get_channel("481630545265164288")
+    enter = discord.Embed(
+        title="Procedimentos",
+        color=COR,
+        description="Para se autenticar e, ter acesso à todos os canais, você deve clicar na reação(`✅`) abaixo."
+    )
+    enter.set_author(name="Sistema de verificação", icon_url=member.server.icon_url)
+    enter.set_footer(text="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+
+    react = await client.send_message(entrada, embed = enter)
+    await client.add_reaction(react, "✅")
+
     canal = client.get_channel('448326795692081152')
-    react = await client.send_message(canal, 'Seja bem-vindo(a) {}! Aguarde 10 minutos para ser verificado e receber `membro` ou clique na reação(`✅`).'.format(member.mention))
+    await client.send_message(canal, 'Seja bem-vindo(a) {}!'.format(member.mention))
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
@@ -53,18 +68,12 @@ async def on_member_join(member):
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
     embed.set_footer(text='End', icon_url='https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif')
     await client.send_message(canal, embed=embed)
-    await client.add_reaction(react, "✅")
 
     global msg_id
     msg_id = react.id
 
     global msg_user
     msg_user = member
-
-    await asyncio.sleep(600)
-    role = discord.utils.get(member.server.roles, name="Membro")
-    await client.add_roles(member, role)
-    print("Adicionado o cargo '" + role.name + "' para " + member.name)
 
 @client.event
 async def on_reaction_add(reaction, user):
@@ -74,6 +83,10 @@ async def on_reaction_add(reaction, user):
      role = discord.utils.get(user.server.roles, name="Membro")
      await client.add_roles(user, role)
      print("Reação do '" + user.name + "'.")
+
+     role1 = discord.utils.get(user.server.roles, name="Unregister")
+     await client.remove_roles(user, role1)
+     await client.remove_reaction(msg, "✅", user)
 
 @client.event
 async def randommessage():
