@@ -1628,7 +1628,7 @@ async def on_message(message):
             color=COR,
             description="Para se autenticar e, ter acesso à todos os canais, você deve clicar na reação(`✅`) abaixo."
         )
-        enter.set_author(name="Sistema de verificação", icon_url=member.server.icon_url)
+        enter.set_author(name="Sistema de verificação", icon_url=message.server.icon_url)
         enter.set_footer(text="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
 
         react = await client.send_message(entrada, embed = enter)
