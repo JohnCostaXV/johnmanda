@@ -149,7 +149,7 @@ async def on_message(message):
                 await client.delete_message(message)
                 embed = discord.Embed(
                     color=COR,
-                    description="Faltam alguns minutos para a finalização da votação decisiva para a entrada ou não do VIP BETA em nossa loja durante o fim de semana. Você ainda votou? Não perca tempo, vote agora [clicando aqui](https://twitter.com/ServidorEnd/status/1032641301882306560)!"
+                    description="Faltam alguns minutos para a finalização da votação decisiva para a entrada ou não do VIP BETA em nossa loja durante o fim de semana. Você ainda **não** votou? Não perca tempo, vote agora [clicando aqui](https://twitter.com/ServidorEnd/status/1032641301882306560)!"
                 )
                 embed.set_author(name="#END", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                 embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url=message.author.avatar_url)
