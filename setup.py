@@ -985,11 +985,18 @@ async def on_message(message):
                 text='Sugestão enviada com sucesso.',
                 icon_url=message.author.avatar_url
             )
+            await client.send_message(message.channel, "{}, sua sugestão foi enviada com sucesso!".format(message.author.mention))
             botmsg = await client.send_message(canal, embed=embed)
             await client.add_reaction(botmsg, "👍")
             await client.add_reaction(botmsg, "👎")
         except IndexError:
-            await client.send_message(message.channel, "Uso correto do comando: /sugestão <sugestão> | <por quê adicionariamos?>")
+            error = discord.Embed(
+                title="Comando incorreto!",
+                color=COR,
+                description="Use `/sugestão [sugestão] | [por quê adicionariamos?]`"
+            )
+            error.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed = error)
         except:
             await client.send_message(message.author, "Desculpe pelo erro.")
         finally:
