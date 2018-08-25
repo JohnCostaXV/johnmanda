@@ -311,12 +311,6 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.endswith('-?'):
-        resposta = random.choice(['Não respondo a isso','Sim','As vezes','Não','Claro','NUNCA!','Um dia talvez','A resposta está dentro de ti','Mais ou menos','Uma Bosta','Podia ser pior'])
-        await client.send_message(message.channel, resposta)
-        return
-
-
     if message.content.lower().startswith('/helpstaff'):
         try:
             cargos = [
