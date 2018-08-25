@@ -1625,15 +1625,14 @@ async def on_message(message):
                     timesquad = int(temp)
                     reallytime = datetime.timedelta(seconds=timesquad)
                     embed = discord.Embed(
-                        title='SILENCIADO 🔈',
+                        title='Informações:',
                         color=COR,
-                        description='O usuário {}, foi silenciado!\n\n**Duração**: {}\n**Motivo**: {}\n**Autor**: {}'.format(user.mention, reallytime, tempo, message.author.mention)
+                        description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Duração**: `{}`\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, tempo, reallytime, message.author.mention, message.channel.mention)
                     )
-                    embed.set_thumbnail(
-                        url='https://i.imgur.com/1iJeEea.jpg'
-                    )
+                    embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                    embed.set_thumbnail(url=message.author.avatar_url)
                     embed.timestamp = datetime.datetime.utcnow()
-                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                     await client.add_roles(user, cargo)
                     print('O {} foi mutado temporariamente.'.format(user))
                     await client.send_message(canal, embed=embed)
