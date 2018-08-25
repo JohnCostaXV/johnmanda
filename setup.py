@@ -1654,6 +1654,7 @@ async def on_reaction_add(reaction, user):
      await client.add_roles(user, role)
      print("Reação do '" + user.name + "'.")
      await client.remove_reaction(msg, "✅", user)
+     await client.add_reaction(msg, "✅")
         
 
 client.run(os.environ.get("BOT_TOKEN"))
