@@ -112,10 +112,6 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name="/comandos", url="https://www.twitch.tv/johncostaxv", type=1))
     await asyncio.sleep(100)
     await client.change_presence(game=discord.Game(name="jogar.end-mc.com", url="https://www.twitch.tv/johncostaxv", type=1))
-    await asyncio.sleep(100)
-    await client.change_presence(game=discord.Game(name="/comandos", url="https://www.twitch.tv/johncostaxv", type=1))
-    await asyncio.sleep(100)
-    await client.change_presence(game=discord.Game(name="jogar.end-mc.com", url="https://www.twitch.tv/johncostaxv", type=1))
 
 async def tutorial_uptime():
     await client.wait_until_ready()
