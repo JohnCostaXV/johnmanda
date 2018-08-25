@@ -1072,11 +1072,11 @@ async def on_message(message):
         except IndexError:
             await client.delete_message(message)
             msg = await client.send_message(message.channel, '{}, mencione um usuário existente, por exemplo, `/avatar @JohnnCosta`.'.format(message.author.mention))
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(msg)
         except:
             msg1 = await client.send_message(message.channel, 'Desculpe pelo erro.')
-            time.sleep(5)
+            await asyncio.sleep(5)
             await client.delete_message(msg1)
         finally:
             pass
@@ -1233,17 +1233,15 @@ async def on_message(message):
             msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
             await client.send_message(message.author, embed=embed)
         except IndexError:
-            time.sleep(2)
+            await asyncio.sleep(2)
             await client.delete_message(msg)
-            asyncio.sleep(21000)
             msg1 = await client.send_message(message.channel, 'Error')
             await client.delete_message(message)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(msg1)
         except:
-            time.sleep(2)
+            await asyncio.sleep(2)
             await client.delete_message(msg)
-            asyncio.sleep(21000)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
             time.sleep(10)
@@ -1322,12 +1320,12 @@ async def on_message(message):
         except IndexError:
             await client.delete_message(message)
             msg = await client.send_message(message.channel, "{}, mencione um usuário existente, por exemplo, `/info @{}`.".format(message.author.mention, message.author.name))
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(msg)
         except:
             await client.delete_message(message)
             msg1 = await client.send_message(message.channel, "Desculpe pelo erro.")
-            time.sleep(5)
+            await asyncio.sleep(5)
             await client.delete_message(msg1)
         finally:
             pass
@@ -1380,7 +1378,7 @@ async def on_message(message):
 
     if message.content.lower().startswith('/convite'):
         msg = await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
-        time.sleep(50)
+        await asyncio.sleep(50)
         await client.delete_message(msg)
 
     if message.content.lower().startswith('/enviar'):
@@ -1410,13 +1408,13 @@ async def on_message(message):
             embed1.timestamp = datetime.datetime.utcnow()
             embed1.set_thumbnail(url=message.server.icon_url)
             err = await client.send_message(message.channel, embed=embed1)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(message)
             await client.delete_message(err)
         except:
             tst = await client.send_message(message.channel, '{}, libere seu privado e efetue o comando novamente!'.format(message.author.mention))
             await client.delete_message(message)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(tst)
         finally:
             pass
@@ -1454,7 +1452,7 @@ async def on_message(message):
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg = await client.send_message(message.channel, embed=embed1)
             await client.delete_message(message)
-            time.sleep(15)
+            await asyncio.sleep(15)
             await client.delete_message(msg)
         except:
             embed2 = discord.Embed(
@@ -1466,7 +1464,7 @@ async def on_message(message):
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg1 = await client.send_message(message.channel, embed=embed2)
             await client.delete_message(message)
-            time.sleep(15)
+            await asyncio.sleep(15)
             await client.delete_message(msg1)
         finally:
             pass
@@ -1498,7 +1496,7 @@ async def on_message(message):
             embed.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg = await client.send_message(message.channel, embed=embed)
             await client.delete_message(message)
-            time.sleep(15)
+            await asyncio.sleep(15)
             await client.delete_message(msg)
         except:
             embed1 = discord.Embed(
@@ -1509,7 +1507,7 @@ async def on_message(message):
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg1 = await client.send_message(message.channel, embed=embed1)
             await client.delete_message(message)
-            time.sleep(15)
+            await asyncio.sleep(15)
             await client.delete_message(msg1)
         finally:
             pass
@@ -1541,7 +1539,7 @@ async def on_message(message):
             embed.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg = await client.send_message(message.channel, embed=embed)
             await client.delete_message(message)
-            time.sleep(15)
+            await asyncio.sleep(15)
             await client.delete_message(msg)
         except:
             embed1 = discord.Embed(
@@ -1552,7 +1550,7 @@ async def on_message(message):
             embed1.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg1 = await client.send_message(message.channel, embed=embed1)
             await client.delete_message(message)
-            time.sleep(15)
+            await asyncio.sleep(15)
             await client.delete_message(msg1)
         finally:
             pass
@@ -1594,13 +1592,13 @@ async def on_message(message):
             embed1.timestamp = datetime.datetime.utcnow()
             embed1.set_thumbnail(url=message.server.icon_url)
             er = await client.send_message(message.channel, embed=embed1)
-            time.sleep(50)
+            await asyncio.sleep(50)
             await client.delete_message(message)
             await client.delete_message(er)
         except:
             await client.delete_message(emb)
             asd = await client.send_message(message.channel, 'O {}, está com a dm privada!'.format(user.mention))
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(message)
             await client.delete_message(asd)
         finally:
@@ -1623,8 +1621,6 @@ async def on_message(message):
                     user = message.mentions[0]
                     cargo = discord.utils.get(user.server.roles, name='Silenciado')
                     canal = client.get_channel('448449971629588481')
-                    await client.add_roles(user, cargo)
-                    print('O {} foi mutado temporariamente.'.format(user))
                     temp = args[2]
                     timesquad = int(temp)
                     reallytime = datetime.timedelta(seconds=timesquad)
@@ -1638,6 +1634,8 @@ async def on_message(message):
                     )
                     embed.timestamp = datetime.datetime.utcnow()
                     embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    await client.add_roles(user, cargo)
+                    print('O {} foi mutado temporariamente.'.format(user))
                     await client.send_message(canal, embed=embed)
                     await asyncio.sleep(timesquad)
                     await client.remove_roles(user, cargo)
