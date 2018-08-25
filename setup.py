@@ -1616,6 +1616,7 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
+                    await client.delete_message(message)
                     args = message.content.split(" ")
                     tempo = (" ".join(args[3:]))
                     user = message.mentions[0]
