@@ -1655,7 +1655,7 @@ async def on_message(message):
             embed2 = discord.Embed(
                 title='Permissão negada!',
                 color=COR,
-                description='Você não tem permissão para executar esse comando.'
+                description='Não tenho permissão para silenciar este usuário.'
             )
             embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
