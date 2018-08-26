@@ -1606,6 +1606,7 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
+                    await client.delete_message(message)
                     args = message.content.split(" ")
                     tempo = (" ".join(args[3:]))
                     user = message.mentions[0]
@@ -1629,6 +1630,8 @@ async def on_message(message):
                     await asyncio.sleep(timesquad)
                     await client.remove_roles(user, cargo)
                     print('O {} foi desmutado.'.format(user))
+            else:
+                await client.send_message(message.channel, "{}, você não tem permissão!".format(message.author.mention))
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -1638,7 +1641,9 @@ async def on_message(message):
             )
             embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            await client.send_message(message.channel, embed=embedd)
+            incorreto = await client.send_message(message.channel, embed=embedd)
+            await asyncio.sleep(10)
+            await client.delete_message(incorreto)
         except:
             await client.delete_message(message)
             embed2 = discord.Embed(
@@ -1648,7 +1653,9 @@ async def on_message(message):
             )
             embed2.timestamp = datetime.datetime.utcnow()
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            await client.send_message(message.channel, embed=embed2)
+            perm = await client.send_message(message.channel, embed=embed2)
+            await asyncio.sleep(10)
+            await delete_message(perm)
         finally:
             pass
 
