@@ -1655,7 +1655,7 @@ async def on_message(message):
             embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             perm = await client.send_message(message.channel, embed=embed2)
             await asyncio.sleep(10)
-            await delete_message(perm)
+            await client.delete_message(perm)
         finally:
             pass
 
