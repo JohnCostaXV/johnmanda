@@ -229,7 +229,7 @@ async def on_message(message):
             )
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed.timestamp = datetime.datetime.utcnow()
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(message.channel, embed=embed)
         else:
             embed1 = discord.Embed(
@@ -254,7 +254,7 @@ async def on_message(message):
             )
             embed1.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed1.timestamp = datetime.datetime.utcnow()
-            embed1.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed1.set_footer(text='Comando por: {}'.format(message.author.name), icon_url='https://i.imgur.com/1iJeEea.jpg')
             await client.send_message(message.channel, embed=embed1)
 
 
@@ -404,46 +404,6 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.lower().startswith("/changelog"):
-        try:
-            cargos = [
-                # IDs dos cargos:
-                "407677666750365706", #Diretor
-                "417426253658849281", #Gerente
-                "407678188773179417", #Administrador
-            ]
-            for r in message.author.roles:
-                if r.id in cargos:
-                    await client.delete_message(message)
-                    args = message.content.split(" ")
-                    change = discord.Embed(
-                        title="".join(args[1]),
-                        description=" ".join(args[2:])
-                    )
-                    change.set_author(name="📋 Changelog")
-                    await client.send_message(message.channel, embed = change)
-        except IndexError:
-            await client.delete_message(message)
-            embedd = discord.Embed(
-                title='Comando incorreto!',
-                color=COR,
-                description='Use `/changelog [mensagem]`'
-            )
-            embedd.timestamp = datetime.datetime.utcnow()
-            embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            await client.send_message(message.channel, embed=embedd)
-        except:
-            await client.delete_message(message)
-            embed2 = discord.Embed(
-                title='Permissão negada!',
-                color=COR,
-                description='Você não tem permissão para executar esse comando.'
-            )
-            embed2.timestamp = datetime.datetime.utcnow()
-            embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-            await client.send_message(message.channel, embed=embed2)
-        finally:
-            pass
 
 
     if message.content.lower().startswith('/changenick'):
@@ -978,6 +938,7 @@ async def on_message(message):
             color=COR,
             description=':game_die: Joguei o dado, o resultado é: {}'.format(str(numr))
         )
+        embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url=message.author.avatar_url)
         embed.timestamp = datetime.datetime.utcnow()
         await client.send_message(message.channel, embed=embed)
 
@@ -1080,7 +1041,7 @@ async def on_message(message):
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
         embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text='End', icon_url="https://i.imgur.com/1iJeEea.jpg")
+        embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/ativarvip'):
@@ -1256,7 +1217,7 @@ async def on_message(message):
         embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
         embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
         embed.timestamp = datetime.datetime.utcnow()
-        embed.set_footer(text="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
+        embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
     if message.content.lower().startswith('/info'):
@@ -1303,7 +1264,7 @@ async def on_message(message):
             )
             userembed.timestamp = datetime.datetime.utcnow()
             userembed.set_footer(
-                text="End",
+                text='Comando por: {}'.format(message.author.name),
                 icon_url="https://i.imgur.com/1iJeEea.jpg"
             )
             await client.send_message(message.channel, embed=userembed)
@@ -1344,7 +1305,7 @@ async def on_message(message):
             value='[Clique aqui!](https://t.co/DXerrQWXPY)',
             inline=False
         )
-        embed.set_footer(text='End', icon_url="https://i.imgur.com/1iJeEea.jpg")
+        embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
         await client.send_message(message.channel, embed=embed)
 
     if message.content.startswith('/ip'):
