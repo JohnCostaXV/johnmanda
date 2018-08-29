@@ -130,7 +130,7 @@ def MCAPI(site):
 
 @client.event
 async def on_message(message):
-    if message.content.startswith("/acabouvote"):
+    if message.content.startswith("/discorddott"):
         cargos = [
             # IDs dos cargos:
             "407677666750365706", #Diretor
@@ -141,12 +141,12 @@ async def on_message(message):
                 await client.delete_message(message)
                 embed = discord.Embed(
                     color=COR,
-                    description="🤪 Alternativa ganhadora: ´Só se o desconto for bom!´.\n\nÉ desconto que vocês querem? É desconto que vocês terão! Sábado, às 12:00, o VIP BETA será adicionado aos produtos de nossa loja por R$ 89,99 (*preço antigo: R$ 149,99*) e assim permanecerá por 24 horas, até Domingo, às 12:00!\nVeja o tweet [clicando aqui](https://twitter.com/ServidorEnd/status/1033005607744413696)!"
+                    description="💬 Segue a gente e quer ficar por dentro de todas as novidades do servidor além de bater um papo com nossa comunidade?\n\n📢 Entre em nosso Discord agora mesmo!\n💥 http://discord.me/redeend\n[Clique aqui](https://twitter.com/ServidorEnd/status/1034818019611037696) para ver o tweet."
                 )
                 embed.set_author(name="End 🌀 (@ServidorEnd)", icon_url="https://i.imgur.com/1iJeEea.jpg")
                 embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                 embed.timestamp = datetime.datetime.utcnow()
-                embed.set_image(url="https://i.imgur.com/qEcoExp.jpg")
+                embed.set_image(url="https://i.imgur.com/sFPJtts.png")
                 await client.send_message(message.channel, embed=embed)
     
     if message.content.lower().startswith("/esorteio"):
