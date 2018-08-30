@@ -133,6 +133,9 @@ async def on_message(message):
     if message.content.lower().startswith("https"):
         await client.delete_message(message)
 
+    if message.content.lower().startswith("http"):
+        await client.delete_message(message)
+
 
     if message.content.startswith("/discorddott"):
         cargos = [
