@@ -135,6 +135,12 @@ async def on_message(message):
 
     if message.content.lower().startswith("http"):
         await client.delete_message(message)
+    
+    if message.content.lower().startswith("www"):
+        await client.delete_message(message)
+
+    if message.content.lower().endswith(".com"):
+        await client.delete_message(message)
 
 
     if message.content.startswith("/discorddott"):
