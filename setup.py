@@ -184,7 +184,7 @@ async def on_message(message):
                     color=COR,
                     description="Estamos com vagas para o cargo Construtor! Para se aplicar, basta [clicar aqui](https://docs.google.com/forms/d/e/1FAIpQLSeDDlHFhtHD-7Zsp6zrJs5UHf0lTPPL5HpWWeGI24Sf9U5w2Q/viewform)!"
                 )
-                embed.set_author(name="#End", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                embed.set_author(name="End informa:", icon_url="https://i.imgur.com/1iJeEea.jpg")
                 embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
                 embed.set_image(url="https://pbs.twimg.com/media/Dh8UfXjW0AEps6n.jpg")
                 embed.timestamp = datetime.datetime.utcnow()
@@ -1593,10 +1593,7 @@ async def on_message(message):
                     await asyncio.sleep(timesquad)
                     await client.remove_roles(user, cargo)
                     print('O {} foi desmutado.'.format(user))
-            else:
-                await client.send_message(message.channel, "{}, você não tem permissão!".format(message.author.mention))
         except IndexError:
-            await client.delete_message(message)
             embedd = discord.Embed(
                 title='Comando incorreto!',
                 color=COR,
@@ -1608,7 +1605,6 @@ async def on_message(message):
             await asyncio.sleep(10)
             await client.delete_message(incorreto)
         except:
-            await client.delete_message(message)
             embed2 = discord.Embed(
                 title='Permissão negada!',
                 color=COR,
