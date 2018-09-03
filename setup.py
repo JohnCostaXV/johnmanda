@@ -298,15 +298,13 @@ async def on_message(message):
             embedd.timestamp = datetime.datetime.utcnow()
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             msg1 = await client.send_message(message.channel, embed=embedd)
-            time.sleep(20)
+            await asyncio.sleep(20)
             await client.delete_message(msg1)
         except:
-            time.sleep(2)
             await client.delete_message(msg)
-            asyncio.sleep(21000)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(tst)
         finally:
             pass
@@ -361,12 +359,10 @@ async def on_message(message):
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
-            time.sleep(2)
             await client.delete_message(msg)
-            asyncio.sleep(21000)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(tst)
         finally:
             pass
@@ -383,7 +379,7 @@ async def on_message(message):
                     await client.delete_message(message)
                     auto = random.choice(RANDOM_AUTO)
                     canal = client.get_channel('407669684616560650')
-                    time.sleep(3)
+                    await asyncio.sleep(3)
                     await client.send_message(canal, auto)
         except IndexError:
             await client.delete_message(message)
@@ -458,9 +454,7 @@ async def on_message(message):
                 if r.id in cargos:
                     args = message.content.split(" ")
                     await client.send_message(message.channel, (" ".join(args[1:])))
-                    asyncio.sleep(1)
                     await client.delete_message(message)
-                    asyncio.sleep(1)
         except IndexError:
             await client.delete_message(message)
             embedd = discord.Embed(
@@ -791,7 +785,6 @@ async def on_message(message):
             ]
             for r in message.author.roles:
                 if r.id in cargos:
-                    asyncio.sleep(10)
                     args = message.content.split(" ")
                     await client.delete_message(message)
                     channel1 = client.get_channel('448449971629588481')
@@ -881,12 +874,11 @@ async def on_message(message):
             embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embedd)
         except:
-            time.sleep(2)
             await client.delete_message(msg)
             await asyncio.sleep(21000)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
-            time.sleep(10)
+            await asyncio.sleep(10)
             await client.delete_message(tst)
         finally:
             pass
@@ -994,7 +986,6 @@ async def on_message(message):
             await client.send_message(message.author, embed=embed)
         except IndexError:
             await asyncio.sleep(2)
-            asyncio.sleep(21000)
             msg1 = await client.send_message(message.channel, 'Error')
             await client.delete_message(message)
             await asyncio.sleep(10)
