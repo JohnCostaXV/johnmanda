@@ -1420,7 +1420,6 @@ async def on_message(message):
             remover_cabeca = message.content.replace("/head", "")
             separar = remover_cabeca.split(" ", 1)
             nome = "%s" % "".join(separar[1])
-            msg = await client.send_message(message.channel, "{}, aguarde um momento enquanto pesquisamos.".format(message.author.mention))
 
 
             #UUID
@@ -1460,8 +1459,6 @@ async def on_message(message):
             remover_mineinfo = message.content.replace("/skin", "")
             separar = remover_mineinfo.split(" ", 1)
             nome = "%s" % "".join(separar[1])
-            msg = await client.send_message(message.channel, "{}, aguarde um momento enquanto pesquisamos.".format(message.author.mention))
-      
             
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
