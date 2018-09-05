@@ -1222,8 +1222,8 @@ async def on_message(message):
             utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
             del tmp1
             user = message.mentions[0]
-            userjoinedat = str(user.joined_at.strftime("%d de %B de %Y, ás %H:%M:%S")).split('.', 1)[0]
-            usercreatedat = str(user.created_at.strftime("%d de %B de %Y, ás %H:%M:%S")).split('.', 1)[0]
+            userjoinedat = str(user.joined_at.strftime("%d/%m/%Y - %H:%M:%S")).split('.', 1)[0]
+            usercreatedat = str(user.created_at.strftime("%d/%m/%Y - %H:%M:%S")).split('.', 1)[0]
 
             userembed = discord.Embed(
                 title="Informações do usuário",
@@ -1428,11 +1428,8 @@ async def on_message(message):
             #Cabeca
             cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
              
-            embed = discord.Embed()
-            embed.set_image(url=cabeca)
-            await asyncio.sleep(5)
-            await client.delete_message(msg)
-            await client.send_message(message.channel, embed=embed)
+    
+            await client.send_message(message.channel, cabeca)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
@@ -1471,11 +1468,7 @@ async def on_message(message):
             #Corpo
             corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
             
-            embed = discord.Embed()
-            embed.set_image(url=corpo)
-            await asyncio.sleep(5)
-            await client.delete_message(msg)
-            await client.send_message(message.channel, embed=embed)
+            await client.send_message(message.channel, corpo)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
