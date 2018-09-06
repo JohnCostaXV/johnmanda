@@ -1465,7 +1465,7 @@ async def on_message(message):
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Corpo
-            skin = requests.get("https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png")
+            skin = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
 
             
             await client.send_file(message.channel, skin, filename="{}.png".format(nome))
