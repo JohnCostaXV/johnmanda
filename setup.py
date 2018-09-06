@@ -62,7 +62,7 @@ async def on_member_join(member):
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
         color=COR,
-        description='**Redes sociais:**\n\nTwitter » https://twitter.com/ServidorEnd\nDiscord » https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nLoja » https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: jogar.end-mc.com\n\nO servidor encontra-se em desenvolvimento e todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\nAtualmente **' + str(len(member.server.members)) + '** membros!'
+        description='**Redes sociais:**\n\nTwitter » https://twitter.com/ServidorEnd\nDiscord » https://discord.gg/uhxPeqS\n\n**Endereços:**\n\nLoja » https://loja.end-mc.com/\nEndereço de ip para conexão ao servidor: **jogar.end-mc.com**\n\nO servidor encontra-se em fase **BETA** todas as atualizações são anunciadas aqui, no Discord, e em nosso Twitter.\n\nAtualmente **' + str(len(member.server.members)) + '** membros!'
     )
     embed.set_author(name='{}#{}'.format(member.name, member.discriminator), icon_url=member.avatar_url)
     embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
