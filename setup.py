@@ -1465,9 +1465,8 @@ async def on_message(message):
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Corpo
-            corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
+            skin = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
 
-            skin = requests.get(corpo).content
             
             await client.send_file(message.channel, skin, filename="{}.png".format(nome))
         except IndexError:
