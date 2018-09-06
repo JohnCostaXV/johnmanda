@@ -1467,8 +1467,8 @@ async def on_message(message):
             #Corpo
             skin = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
 
-            
-            await client.send_file(message.channel, skin, filename="{}.png".format(nome))
+            await client.send_message(message.channel, "**Nick**: {}".format(nome))
+            await client.send_message(message.channel, skin)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
