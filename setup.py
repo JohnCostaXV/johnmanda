@@ -317,7 +317,7 @@ async def on_message(message):
             title="📖 FAQ - Servidores End",
             color=COR,
             description="**Como funciona**: Basta clicar na reação correspondente do item que você deseja!\n"
-                        "**Observação**: Caso você tenha dm privada você não receberá, então sinta-se livre em perguntar no {}".format(canal)
+                        "**Observação**: Caso você tenha dm privada você não receberá, então sinta-se livre em perguntar no {}".format(canal.mention)
         )
         faq = discord.Embed(
             title="Tópicos:",
