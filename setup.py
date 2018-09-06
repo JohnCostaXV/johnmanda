@@ -1465,7 +1465,7 @@ async def on_message(message):
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Corpo
-            corpo = requests.get('https://crafatar.com/renders/body/' + uuid +'?default=HF_Steve&overlay.png')
+            corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
 
             skin = requests.get(corpo).content
             
