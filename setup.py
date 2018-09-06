@@ -310,25 +310,6 @@ async def on_message(message):
         finally:
             pass
 
-    if message.content.lower().startswith("/faq"):
-        canal = client.get_channel("431992571686813706")
-        await client.delete_message(message)
-        embed = discord.Embed(
-            title="📖 FAQ - Servidores End",
-            color=COR,
-            description="**Como funciona**: Basta clicar na reação correspondente do item que você deseja!\n"
-                        "**Observação**: Caso você tenha dm privada você não receberá, então sinta-se livre em perguntar no {}".format(canal.mention)
-        )
-        faq = discord.Embed(
-            title="Tópicos:",
-            color=COR,
-            description="💎 - Informações sobre **compras**\n"
-                        "📋 - Informações sobre **aplicações**"
-        )
-        await client.send_message(message.channel, embed=embed)
-        tst = await client.send_message(message.channel, embed=faq)
-        await client.add_reaction(tst, "💎")
-        await client.add_reaction(tst, "📋")
     
     if message.content.lower().startswith('/helpstaff'):
         try:
