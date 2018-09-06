@@ -1467,7 +1467,7 @@ async def on_message(message):
             #Corpo
             corpo = requests.get('https://crafatar.com/renders/body/' + uuid +'?default=HF_Steve&overlay.png')
 
-            skin = requests.get(corpo)
+            skin = requests.get(corpo).content
             
             await client.send_file(message.channel, skin, filename="{}.png".format(nome))
         except IndexError:
