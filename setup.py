@@ -1124,6 +1124,16 @@ async def on_message(message):
         finally:
             pass
 
+    if message.content.lower().startswith("/image"):
+        args = message.content.split(" ")
+        embed = discord.Embed(
+            title="Teste",
+            color=COR,
+            description="testado"
+        )
+        embed.set_image(url=" .png".join(args[1:]))
+        await client.send_message(message.channel, embed=embed)
+
     if message.content.lower().startswith('/reportar'):
         try:
             canal = client.get_channel('466665871218049024')
