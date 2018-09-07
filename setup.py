@@ -1200,18 +1200,21 @@ async def on_message(message):
 
     if message.content.lower().startswith('/serverinfo'):
         embed = discord.Embed(
-            title='Informações do Servidor',
+            title=message.server.name,
             color=0x03c3f5,
             descripition='Essas são as informações\n')
-        embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
-        embed.add_field(name="Nome:", value=message.server.name, inline=True)
-        embed.add_field(name=":crown: Dono:", value=message.server.owner.mention)
+        embed.set_author(name="Informações do Discord:")
         embed.add_field(name="ID:", value=message.server.id, inline=True)
         embed.add_field(name="Cargos:", value=len(message.server.roles), inline=True)
-        embed.add_field(name=":family: Membros:", value=len(message.server.members), inline=True)
-        embed.add_field(name=":date: Criado em:", value=message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M:%S"))
+        embed.add_field(name="Membros:", value=len(message.server.members), inline=True)
+        embed.add_field(name="Criado em:", value=message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M:%S"))
         embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
-        embed.add_field(name=":flag_br: Região:", value=str(message.server.region).title())
+        embed.add_field(name="Região:", value=str(message.server.region).title())
+        embed.add_field(name="\n", value="\n")
+        embed.add_field(name="Dono:", value=message.server.owner.mention)
+        embed.add_field(name="Discriminação:", value=message.server.owner.discriminator)
+        embed.add_field(name="Id:", value=message.server.owner.id)
+        embed.add_field(name="foto:", value='[Download](' + message.server.owner.avatar_url + ')')
         embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
@@ -1241,6 +1244,10 @@ async def on_message(message):
                 value=user.name
             )
             userembed.add_field(
+                name="Foto do usuário:",
+                value='[Download](' + user.avatar_url + ')'
+            )
+            userembed.add_field(
                 name="Juntou-se ao servidor em:",
                 value=userjoinedat
             )
@@ -1249,7 +1256,7 @@ async def on_message(message):
                 value=usercreatedat
             )
             userembed.add_field(
-                name="Identificação:",
+                name="Discriminação:",
                 value=user.discriminator
             )
             userembed.add_field(
