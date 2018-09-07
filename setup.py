@@ -1223,17 +1223,14 @@ async def on_message(message):
 
         if message.content.lower().startswith('/info'):
             try:
-                tmp1 = datetime.datetime.now()
-
-                utcnow = datetime.time(hour=tmp1.hour, minute=tmp1.minute, second=tmp1.second)
-                del tmp1
                 user = message.mentions[0]
                 userjoinedat = str(user.joined_at.strftime("%d/%m/%Y - %H:%M:%S")).split('.', 1)[0]
                 usercreatedat = str(user.created_at.strftime("%d/%m/%Y - %H:%M:%S")).split('.', 1)[0]
+                role = discord.utils.get(user.server.roles)
 
                 userembed = discord.Embed(
                     title="Informações do usuário",
-                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}\n\n**Cargos**: `{}`".format(user.status, usercreatedat, userjoinedat, user.roles.mention),
+                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}\n\n**Cargos**: `{}`".format(user.status, usercreatedat, userjoinedat, role),
                     color=COR
                 )
                 userembed.set_author(
