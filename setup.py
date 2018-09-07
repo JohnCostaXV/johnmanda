@@ -1233,44 +1233,19 @@ async def on_message(message):
 
                 userembed = discord.Embed(
                     title="Informações do usuário",
-                    description="\n",
+                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](" + user.avatar_url + ")\n**Status**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}\n\n**Cargos**: `{}`".format(user.name, user.id, user.status, usercreatedat, userjoinedat, user.roles),
                     color=COR
                 )
                 userembed.set_author(
-                    name=user.server.name,
-                    icon_url=user.server.icon_url
-                )
-                userembed.add_field(
-                    name="Nome de usuário:",
-                    value=user.name
-                )
-                userembed.add_field(
-                    name="Foto do usuário:",
-                    value='[Download](' + user.avatar_url + ')'
-                )
-                userembed.add_field(
-                    name="Juntou-se ao servidor em:",
-                    value=userjoinedat
-                )
-                userembed.add_field(
-                    name="Usuário criado em:",
-                    value=usercreatedat
-                )
-                userembed.add_field(
-                    name="Discriminação:",
-                    value="#{}".format(user.discriminator)
-                )
-                userembed.add_field(
-                    name="ID de usuário:",
-                    value=user.id
-                )
+                    name=user,
+                    icon_url=user.avatar_url)
                 userembed.set_thumbnail(
-                    url='https://i.imgur.com/1iJeEea.jpg'
+                    url=user.avatar_url
                 )
                 userembed.timestamp = datetime.datetime.utcnow()
                 userembed.set_footer(
                     text='Comando por: {}'.format(message.author.name),
-                    icon_url="https://i.imgur.com/1iJeEea.jpg"
+                    icon_url=user.avatar_url
                 )
                 await client.send_message(message.channel, embed=userembed)
             except IndexError:
