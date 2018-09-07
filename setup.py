@@ -966,10 +966,10 @@ async def on_message(message):
                             '**/ip** » Veja o IP de conexão ao servidor.\n\n'
                             '**/enviar** [dúvida] » Enviar uma dúvida para a equipe.\n\n'
                             '**/moeda** » Brinque de cara ou coroa.\n\n\n'
-                            '**MINECRAFT:** `DESATIVADO!`\n\n'
-                            '**/mineinfo** [nickname] » Envia informações de um usuário. `ATIVADO!`\n\n'
-                            '**/skin** [nickname] » Veja a skin de um usuário. `DESATIVADO!`\n\n'
-                            '**/head** [nickname] » Veja a cabeça da skin de um usuário. `DESATIVADO!`\n\n\n'
+                            '**MINECRAFT:**\n\n'
+                            '**/mineinfo** [nickname] » Envia informações de um usuário.\n\n'
+                            '**/skin** [nickname] » Veja a skin de um usuário. **DESATIVADO**\n\n'
+                            '**/head** [nickname] » Veja a cabeça da skin de um usuário. **DESATIVADO**\n\n\n'
                             '**UTILITÁRIOS:**\n\n'
                             '**/ativarvip** [nickname] | [rank] | [prova] » Crie uma solicitação do seu rank no Discord.\n\n'
                             '**/revisão** [nickname] | [motivo] | [por quê está irregular?] » Crie uma revisão de seu banimento.\n\n'
@@ -1303,6 +1303,7 @@ async def on_message(message):
             inline=False
         )
         embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
+        await client.send_message(message.channel, "{}".format(message.author.mention))
         await client.send_message(message.channel, embed=embed)
 
     if message.content.startswith('/ip'):
@@ -1427,10 +1428,11 @@ async def on_message(message):
             #UUID
             uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
             #Cabeca
-            cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
+            skin = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
              
     
-            await client.send_message(message.channel, cabeca)
+            await client.send_message(message.channel, "**Nick**: {}".format(nome))
+            await client.send_message(message.channel, skin)
         except IndexError:
             embed = discord.Embed(
                 title='Comando incorreto!',
