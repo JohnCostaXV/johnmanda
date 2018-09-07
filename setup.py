@@ -953,7 +953,6 @@ async def on_message(message):
     if message.content.lower().startswith('/comandos'):
         try:
             embed = discord.Embed(
-                title='Comandos do bot:',
                 color=COR,
                 description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
                             '**/info** [usuário] » Veja as informações de um usuário.\n\n'
@@ -979,13 +978,14 @@ async def on_message(message):
                             '**/sugestão** [sugestão] | [por quê adicionariamos?] » Crie uma sugestão.'
                 )
             embed.timestamp = datetime.datetime.utcnow()
-            embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
-            embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+            embed.set_author(name="Comandos - EndBOT", icon_url=message.author.avatar_url)
+            embed.set_footer(text='Johnn#0001', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed1 = discord.Embed(
                 color=COR,
                 description='Todos os comandos foram enviados em sua DM!'
             )
             embed1.set_author(name="End", icon_url="https://i.imgur.com/1iJeEea.jpg")
+            apg1 = await client.send_message(message.channel, "{}".format(message.author.mention))
             apg = await client.send_message(message.channel, embed=embed1)
             await client.send_message(message.author, embed=embed)
         except IndexError:
@@ -995,6 +995,7 @@ async def on_message(message):
             await asyncio.sleep(10)
             await client.delete_message(msg1)
         except:
+            await client.delete_message(apg1)
             await client.delete_message(apg)
             tst = await client.send_message(message.channel, '{}, libere o privado!'.format(message.author.mention))
             await client.delete_message(message)
