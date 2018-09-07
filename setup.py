@@ -277,7 +277,6 @@ async def on_message(message):
             for r in message.author.roles:
                 if r.id in cargos:
                     embed = discord.Embed(
-                        title='Comandos para o a `STAFF`:',
                         color=COR,
                         description='**/responder** [usuário] [resposta] » Responda um usuário em *#dúvidas-dos-jogadores*.\n'
                                     'exemplo: `/responder @JohnnCosta O IP do servidor é jogar.end-mc.com`\n\n'
@@ -285,8 +284,9 @@ async def on_message(message):
                                     'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`\n\n'
                                     '*Lembrando que os tempmute é contato por segundo! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
                     )
-                    embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
-                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.timestamp = datetime.datetime.utcnow()
+                    embed.set_author(name="Comandos STAFF - EndBOT", icon_url=message.author.avatar_url)
+                    embed.set_footer(text='Johnn#0001', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                     await client.send_message(message.author, embed=embed)
         except IndexError:
@@ -324,7 +324,6 @@ async def on_message(message):
             for r in message.author.roles:
                 if r.id in cargos:
                     embed = discord.Embed(
-                        title='PUNIÇÕES & TEMPOS:',
                         color=COR,
                         description='**Uso de caps-lock excessivo** - *__14400__ segundos de tempmute*\n\n'
                                     '**Spam** - *__14400__ segundos de tempmute*\n\n'
@@ -345,9 +344,9 @@ async def on_message(message):
                                     '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
                                     '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
                     )
-                    embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
                     embed.timestamp = datetime.datetime.utcnow()
-                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_author(name="Punições - EndBOT", icon_url=message.author.avatar_url)
+                    embed.set_footer(text='Johnn#0001', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                     await client.send_message(message.author, embed=embed)
         except IndexError:
@@ -837,7 +836,6 @@ async def on_message(message):
             for r in message.author.roles:
                 if r.id in cargos:
                     embed = discord.Embed(
-                        title='Comandos para o cargo `STAFF+`:',
                         color=COR,
                         description='**/ban** [usuário] [motivo] » Banimento permanentemente do discord.\n'
                                     'exemplo: `/ban @{} Divulgação de link´s`\n\n'
@@ -863,8 +861,8 @@ async def on_message(message):
                                     'exemplo: `/changenick @{} MelhorServidor #END`\n\n'.format(message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name)
                     )
                     embed.timestamp = datetime.datetime.utcnow()
-                    embed.set_author(name=message.server.name, icon_url='https://i.imgur.com/1iJeEea.jpg')
-                    embed.set_footer(text='End', icon_url='https://i.imgur.com/1iJeEea.jpg')
+                    embed.set_author(name="Comandos STAFF+ - EndBOT", icon_url=message.author.avatar_url)
+                    embed.set_footer(text='Johnn#0001', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                     msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                     await client.send_message(message.author, embed=embed)
         except IndexError:
