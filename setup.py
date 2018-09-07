@@ -1562,7 +1562,6 @@ async def on_message(message):
         ]    
         for r in message.author.roles:
             if r.id in cargos:
-                await client.delete_message(message)
                 args = message.content.split(" ")
                 try:
                     ammount = int(args[1]) + 1 if len(args) > 0 else 2
