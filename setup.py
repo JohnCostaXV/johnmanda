@@ -1210,7 +1210,6 @@ async def on_message(message):
         embed.add_field(name="Criado em:", value=message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M:%S"))
         embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
         embed.add_field(name="Região:", value=str(message.server.region).title())
-        embed.add_field(name="\a", value="\a")
         embed.add_field(name="Dono:", value=message.server.owner.mention)
         embed.add_field(name="Discriminação:", value=message.server.owner.discriminator)
         embed.add_field(name="Id:", value=message.server.owner.id)
