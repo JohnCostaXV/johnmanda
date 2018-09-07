@@ -1565,9 +1565,9 @@ async def on_message(message):
                 await client.delete_message(message)
                 args = message.content.split(" ")
                 try:
-                    ammount = int(args[0]) + 1 if len(args) > 0 else 2
+                    ammount = int(args[1]) + 1 if len(args) > 0 else 2
                 except:
-                    await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), descrition="Por gentileza, digite um valor para limpar!"))
+                    await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), description="Por gentileza, digite um valor para limpar!"))
                     return
 
                 cleared = 0
