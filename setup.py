@@ -1129,7 +1129,7 @@ async def on_message(message):
         await client.send_message(message.channel, "{}, enviei uma mensagem em seu privado!".format(message.author.mention))
         msg = await client.start_private_message(message.author)
         await client.send_message(msg, "Olá {}, tudo bom?".format(message.author.mention))
-        print(message.private_message)
+        print(message.content.msg)
 
     if message.content.lower().startswith('/reportar'):
         try:
