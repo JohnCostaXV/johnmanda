@@ -1259,7 +1259,7 @@ async def on_message(message):
                 value="#{}".format(user.discriminator)
             )
             userembed.add_field(
-                name="ID de Usuário:",
+                name="ID de usuário:",
                 value=user.id
             )
             userembed.set_thumbnail(
@@ -1550,6 +1550,42 @@ async def on_message(message):
             await client.delete_message(asd)
         finally:
             pass
+
+    if message.content.lower().startswith("/clear"):
+        cargos = [
+            # IDs dos cargos:
+            "407677666750365706", #Diretor
+            "417426253658849281", #Gerente
+            "407678188773179417", #Administrador
+            "407678481670078475", #Moderador
+            "407706417282416641", #Ajudante
+        ]    
+        for r in message.author.roles:
+            if r.id in cargos:
+                await client.delete_message(message)
+                args = message.content.split(" ")
+                try:
+                    ammount = int(args[0]) + 1 if len(args) > 0 else 2
+                except:
+                    await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.red(), descrition="Por gentileza, digite um valor para limpar!"))
+                    return
+
+                cleared = 0
+                failed = 0
+
+                async for m in client.logs_from(message.channel, limit=ammount):
+                    try:
+                        await client.delete_message(m)
+                        cleared += 1
+                    except:
+                        failed += 1
+                        pass
+
+                failed_str = "\n\nFalha para limpar %s message(s)." % failed if failed > 0 else ""
+                returnmsg = await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="%s limpou %s message(s).%s" % (message.author.mention, cleared, failed_str)))
+                await asyncio.sleep(5)
+                await client.delete_message(returnmsg)
+
 
     if message.content.lower().startswith('/tempmute'):
         try:
