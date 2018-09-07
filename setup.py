@@ -133,7 +133,8 @@ def MCAPI(site):
 
 @client.event
 async def on_message(message):
-    
+	if "discord.gg" in msg.content or "discord\.gg" in message.content:
+	    await client.delete_message(message)
 
     if message.content.startswith("/discorddott"):
         cargos = [
