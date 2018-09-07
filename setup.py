@@ -853,6 +853,8 @@ async def on_message(message):
                                     'exemplo: `/tempmute @{} 21600 Iniciativa de Flood`\n\n'
                                     '**/say** [mensagem] » bot repete a mensagem.\n'
                                     'exemplo: `/say Olá`\n\n'
+                                    '**/clear** [quantidade] » Apagar uma quantidade de mensagens.\n'
+                                    'exemplo: `/clear 5`\n\n'
                                     '**/stafflist** [mensagem/staff] » Bot repete a mensagem em Embed.\n'
                                     'exemplo: `/stafflist :white_small_square: {}`\n\n'
                                     '**/anunciar** [mensagem] » bot repete em Embed\n'
