@@ -1226,11 +1226,11 @@ async def on_message(message):
                 user = message.mentions[0]
                 userjoinedat = str(user.joined_at.strftime("%d/%m/%Y - %H:%M")).split('.', 1)[0]
                 usercreatedat = str(user.created_at.strftime("%d/%m/%Y - %H:%M")).split('.', 1)[0]
-                role = discord.utils.get(user.server.roles)
+                role = discord.utils.get(user.roles)
 
                 userembed = discord.Embed(
                     title="Informações do usuário",
-                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}\n\n**Cargos**: `{}`".format(user.status, usercreatedat, userjoinedat, user.role),
+                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}\n\n**Cargos**: `{}`".format(user.status, usercreatedat, userjoinedat, role),
                     color=COR
                 )
                 userembed.set_author(
