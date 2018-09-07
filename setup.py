@@ -209,9 +209,9 @@ async def on_message(message):
             if (Server['status'] != "success"):
                 online = False;
             else:
-            jogadores_max = Server['players']['max'];
-            jogadores_online = Server['players']['now'];
-            motd = Server['motd'];
+                jogadores_max = Server['players']['max'];
+                jogadores_online = Server['players']['now'];
+                motd = Server['motd'];
             if (online):
                 embed = discord.Embed(
                     title='Status do End:',
