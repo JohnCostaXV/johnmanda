@@ -1557,8 +1557,6 @@ async def on_message(message):
             "407677666750365706", #Diretor
             "417426253658849281", #Gerente
             "407678188773179417", #Administrador
-            "407678481670078475", #Moderador
-            "407706417282416641", #Ajudante
         ]    
         for r in message.author.roles:
             if r.id in cargos:
