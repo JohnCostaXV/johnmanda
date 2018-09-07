@@ -1124,15 +1124,11 @@ async def on_message(message):
         finally:
             pass
 
-    if input.startswith('.direct'):
-        content = re.sub(r'^\W*\w+\W*', '', message.content)
-        await client.send_message(client.get_user_info(id), content)
-
     if message.content.lower().startswith("/conversar"):
         await client.send_message(message.channel, "{}, enviei uma mensagem em seu privado!".format(message.author.mention))
         msg = await client.start_private_message(message.author)
         await client.send_message(msg, "Olá {}, tudo bom?".format(message.author.mention))
-        print(message.content)
+        await client.send_message(message.channel, msg)
 
     if message.content.lower().startswith('/reportar'):
         try:
