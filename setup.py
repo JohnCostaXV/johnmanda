@@ -1217,7 +1217,7 @@ async def on_message(message):
 
             cargos = len(message.server.roles)
             emojis = len(message.server.emojis)
-            canais= len(message.server.channels)
+            canais = len(message.server.channels)
             membros = len(message.server.members)
             players = len(jogadores_online)
 
