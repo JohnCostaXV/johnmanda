@@ -955,7 +955,7 @@ async def on_message(message):
                     color=COR,
                     description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
                                 '**/info** [usuário] » Veja as informações de um usuário.\n\n'
-                                '**/serverinfo** » Veja as informações do servidor.\n\n'
+                                '**/end** » Veja as informações do servidor.\n\n'
                                 '**/dado** » Role um dado de um número de 1 a 6.\n\n'
                                 '**/avatar** [usuário] » Veja o avatar seu ou de um membro.\n\n'
                                 '**/convite** » Gere um convite para convidar todos para nossa comunidade.\n\n'
@@ -1200,22 +1200,25 @@ async def on_message(message):
                 pass
 
 
-        if message.content.lower().startswith('/serverinfo'):
+        if message.content.lower().startswith('/end'):
+            Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
+
+            #Server info
+            online = True;
+            jogadores_max = 0;
+            jogadores_online = 0;
+            motd = "Nenhum";
+
+            if (Server['status'] != "success"):
+                online = False;
+            else:
+                jogadores_online = Server['players']['now'];
+
             embed = discord.Embed(
-                title=message.server.name,
+                title="Informações:",
                 color=0x03c3f5,
-                descripition='Essas são as informações\n')
-            embed.set_author(name="Informações do Discord:")
-            embed.add_field(name="ID:", value=message.server.id, inline=True)
-            embed.add_field(name="Cargos:", value=len(message.server.roles), inline=True)
-            embed.add_field(name="Membros:", value=len(message.server.members), inline=True)
-            embed.add_field(name="Criado em:", value=message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M:%S"))
-            embed.add_field(name="Emojis:", value=f"{len(message.server.emojis)}/100")
-            embed.add_field(name="Região:", value=str(message.server.region).title())
-            embed.add_field(name="Dono:", value=message.server.owner.mention)
-            embed.add_field(name="Discriminação:", value=message.server.owner.discriminator)
-            embed.add_field(name="Id:", value=message.server.owner.id)
-            embed.add_field(name="foto:", value='[Download](' + message.server.owner.avatar_url + ')')
+                descripition="**Servidor**:\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord**:\n**Foto**: [Download](" + message.server.icon_url + ")\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(str(jogadores_online), message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), len(message.server.roles), len(message.server.emojis), len(message.server.channels), len(message.server.members)))
+            embed.set_author(name="Servidores End", icon_url="message.server.icon_url")
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
