@@ -1219,11 +1219,12 @@ async def on_message(message):
             emojis = len(message.server.emojis)
             canais= len(message.server.channels)
             membros = len(message.server.members)
+            players = len(jogadores_online)
 
             embed = discord.Embed(
                 title="Informações:",
                 color=COR,
-                descripition="**Discord**:\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), cargos, emojis, canais, membros))
+                descripition="**Servidor**:\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord**:\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(players, message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), cargos, emojis, canais, membros))
             embed.set_author(name="Servidores End", icon_url=message.server.icon_url)
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed.timestamp = datetime.datetime.utcnow()
