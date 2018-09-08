@@ -1224,7 +1224,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title="Informações:",
                 color=COR,
-                description="**Servidor:**\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord:**\n**Foto**: [Download](".format(players) + icon + ")\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais**: {}\n\n**Usuários**: {}".format(message.server.id, criadoem, cargos, emojis, canais, membros))
+                description="**Servidor:**\n**IP**: jogar.end-mc.com\n**Jogadores online**: {}/1500\n\n**Discord:**\n**Foto**: [Download](".format(players) + icon + ")\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais**: {}\n\n**Usuários**: {}".format(message.server.id, criadoem, cargos, emojis, canais, membros))
             embed.set_author(name="Servidores End", icon_url=message.server.icon_url)
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
