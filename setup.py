@@ -1198,6 +1198,27 @@ async def on_message(message):
                 await client.delete_message(tst)
             finally:
                 pass
+
+        if message.content.lower().startswith('/enteste'):
+            Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
+
+            #Server info
+            online = True;
+            jogadores_max = 0;
+            jogadores_online = 0;
+            motd = "Nenhum";
+
+            if (Server['status'] != "success"):
+                online = False;
+            else:
+                jogadores_online = Server['players']['now'];
+
+            cargos = len(message.server.roles)
+            emojis = len(message.server.emojis)
+            canais = len(message.server.channels)
+            membros = len(message.server.members)
+            players = str(jogadores_online)
+            await client.send_message(message.channel, "cargos: {}\nemojis: {}\ncanais: {}\nmembros: {}\njogadores: {}".format(cargos, emojis canais, membros, players))
             
 
 
