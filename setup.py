@@ -1217,7 +1217,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title="Informações:",
                 color=0x03c3f5,
-                descripition="**Servidor**:\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord**:\n**Foto**: [Download](" + message.server.icon_url + ")\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(str(jogadores_online), message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), len(message.server.roles), len(message.server.emojis), len(message.server.channels), len(message.server.members)))
+                descripition="**Servidor**:\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord**:\n**Foto**: [Download](".format(str(jogadores_online)) + message.server.icon_url + ")\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), len(message.server.roles), len(message.server.emojis), len(message.server.channels), len(message.server.members)))
             embed.set_author(name="Servidores End", icon_url=message.server.icon_url)
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed.timestamp = datetime.datetime.utcnow()
