@@ -1218,7 +1218,7 @@ async def on_message(message):
             canais = len(message.server.channels)
             membros = len(message.server.members)
             players = str(jogadores_online)
-            await client.send_message(message.channel, "cargos: {}\nemojis: {}\ncanais: {}\nmembros: {}\njogadores: {}".format(cargos, emojis canais, membros, players))
+            await client.send_message(message.channel, "cargos: {}\nemojis: {}\ncanais: {}\nmembros: {}\njogadores: {}".format(cargos, emojis, canais, membros, players))
             
 
 
