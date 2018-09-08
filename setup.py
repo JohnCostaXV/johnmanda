@@ -1223,7 +1223,7 @@ async def on_message(message):
 
         if message.content.lower().startswith('/info'):
             try:
-                status = user.status
+                status = str(user.status)
                 user = message.mentions[0]
                 userjoinedat = str(user.joined_at.strftime("%d/%m/%Y - %H:%M")).split('.', 1)[0]
                 usercreatedat = str(user.created_at.strftime("%d/%m/%Y - %H:%M")).split('.', 1)[0]
@@ -1257,11 +1257,6 @@ async def on_message(message):
                 await client.delete_message(msg1)
             finally:
                 pass
-
-        if message.content.lower().startswith("test"):
-            user = message.mentions[0]
-            status = str(user.status)
-            await client.send_message(message.channel, status.replace("idl", "John Gay"))
 
 
         if message.content.lower().startswith('/formulário'):
