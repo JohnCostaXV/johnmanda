@@ -1258,6 +1258,10 @@ async def on_message(message):
             finally:
                 pass
 
+        if messsage.content.lower().startswith("test"):
+            status = "idl";
+            await client.send_message(message.channel, status.replace("idl", "John Gay"))
+
 
         if message.content.lower().startswith('/formulário'):
             embed = discord.Embed(
