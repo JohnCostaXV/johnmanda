@@ -955,7 +955,7 @@ async def on_message(message):
                     color=COR,
                     description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
                                 '**/info** [usuário] » Veja as informações de um usuário.\n\n'
-                                '**/endinfo** » Veja as informações do servidor.\n\n'
+                                '**/end** » Veja as informações do servidor.\n\n'
                                 '**/dado** » Role um dado de um número de 1 a 6.\n\n'
                                 '**/avatar** [usuário] » Veja o avatar seu ou de um membro.\n\n'
                                 '**/convite** » Gere um convite para convidar todos para nossa comunidade.\n\n'
@@ -1200,7 +1200,7 @@ async def on_message(message):
                 pass
 
 
-        if message.content.lower().startswith('/endinfo'):
+        if message.content.lower().startswith('/end'):
             Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
 
             #Server info
@@ -1218,7 +1218,7 @@ async def on_message(message):
                 title="Informações:",
                 color=0x03c3f5,
                 descripition="**Servidor**:\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord**:\n**Foto**: [Download](" + message.server.icon_url + ")\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(str(jogadores_online), message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), len(message.server.roles), len(message.server.emojis), len(message.server.channels), len(message.server.members)))
-            embed.set_author(name="Servidores End", icon_url="message.server.icon_url")
+            embed.set_author(name="Servidores End", icon_url=message.server.icon_url)
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
