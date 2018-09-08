@@ -1259,7 +1259,8 @@ async def on_message(message):
                 pass
 
         if message.content.lower().startswith("test"):
-            status = "idl";
+            user = message.mentions[0]
+            status = user.status;
             await client.send_message(message.channel, status.replace("idl", "John Gay"))
 
 
