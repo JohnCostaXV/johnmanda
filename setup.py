@@ -1201,7 +1201,10 @@ async def on_message(message):
             
         if message.content.lower().startswith('/endteste'):
             cargos = len(message.server.roles)
-            await client.send_message(message.channel, cargos)
+            emojis = len(message.server.emojis)
+            canais= len(message.server.channels)
+            membros = len(message.server.members)
+            await client.send_message(message.channel, "{}\n{}\n{}\n{}".format(cargos, emojis, canais, membros))
 
 
         if message.content.lower().startswith('/end!'):
@@ -1221,7 +1224,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title="Informações:",
                 color=COR,
-                descripition="**Servidor**:\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord**:\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(str(jogadores_online), message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), str(message.server.roles), str(message.server.emojis), str(message.server.channels), str(message.server.members)))
+                descripition="**Servidor**:\n**IP**: jogar.end-mc.com\nJogadores online: {}/1500\n\n**Discord**:\n**ID**: {}\n**Criado em**: {}\n\n**CEOs**: Raaamos, Rosiello_, JohnnCosta, SeveBR e Mystherion.\n\n**Cargos**: {}\n**Emojis**: {}\n**Canais: {}\n\n**Usuários**: {}".format(str(jogadores_online), message.server.id, message.server.created_at.strftime("%d de %beiro de %Y, ás %H:%M"), len(message.server.roles), len(message.server.emojis), len(message.server.channels), len(message.server.members)))
             embed.set_author(name="Servidores End", icon_url=message.server.icon_url)
             embed.set_thumbnail(url='https://i.imgur.com/1iJeEea.jpg')
             embed.timestamp = datetime.datetime.utcnow()
