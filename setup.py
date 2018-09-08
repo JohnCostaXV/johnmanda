@@ -955,7 +955,7 @@ async def on_message(message):
                     color=COR,
                     description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
                                 '**/info** [usuário] » Veja as informações de um usuário.\n\n'
-                                '**/end** » Veja as informações do servidor.\n\n'
+                                '**/endinfo** » Veja as informações do servidor.\n\n'
                                 '**/dado** » Role um dado de um número de 1 a 6.\n\n'
                                 '**/avatar** [usuário] » Veja o avatar seu ou de um membro.\n\n'
                                 '**/convite** » Gere um convite para convidar todos para nossa comunidade.\n\n'
@@ -1200,7 +1200,7 @@ async def on_message(message):
                 pass
 
 
-        if message.content.lower().startswith('/end'):
+        if message.content.lower().startswith('/endinfo'):
             Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
 
             #Server info
