@@ -1201,7 +1201,7 @@ async def on_message(message):
             
 
 
-        if message.content.lower().startswith('/end!'):
+        if message.content.lower().startswith('/end'):
             Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
 
             #Server info
@@ -1219,7 +1219,7 @@ async def on_message(message):
             emojis = len(message.server.emojis)
             canais = len(message.server.channels)
             membros = len(message.server.members)
-            players = len(jogadores_online)
+            players = str(jogadores_online)
 
             embed = discord.Embed(
                 title="Informações:",
