@@ -1223,8 +1223,8 @@ async def on_message(message):
 
         if message.content.lower().startswith('/info'):
             try:
-                status = str(user.status)
                 user = message.mentions[0]
+                status = str(user.status)
                 userjoinedat = str(user.joined_at.strftime("%d/%m/%Y - %H:%M")).split('.', 1)[0]
                 usercreatedat = str(user.created_at.strftime("%d/%m/%Y - %H:%M")).split('.', 1)[0]
 
