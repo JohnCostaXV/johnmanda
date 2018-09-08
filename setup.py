@@ -1200,11 +1200,11 @@ async def on_message(message):
                 pass
             
         if message.content.lower().startswith('/endteste'):
-            cargos = str(message.server.roles)
+            cargos = len(message.server.roles)
             await client.send_message(message.channel, cargos)
 
 
-        if message.content.lower().startswith('/end'):
+        if message.content.lower().startswith('/end!'):
             Server = MCAPI('https://mcapi.us/server/status?ip=' + ip);
 
             #Server info
