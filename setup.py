@@ -39,6 +39,18 @@ def mojang(site, json_retorno):
   else:
      return
 
+@client.event
+async def on_member_remove(member):
+    canal = client.get_channne("488495765224685590")
+    saida = discord.Embed(
+        color=COR,
+        description="**SAÍDA**\n\n{} saiu do servidor.".format(member.name)
+    )
+    saida.set_author(name=member)
+    saida.set_thumbnail(url=member.avatar_url)
+    saida.set_footer(text="ID: {}".format(member.id))
+    await client.send_message(canal, embed=saida)
+
 
 @client.event
 async def on_member_join(member):
