@@ -232,6 +232,7 @@ async def on_message(message):
                     description="**SERVIDOR:**\n**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n\n**UUID**: {}".format(nick, cargo, cash, xp, registro, ulogin, uuid)
                 )
                 embed.set_author(name="Servidores End", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                embed.timestamp = datetime.datetime.utcnow()
                 embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
                 await client.send_message(message.channel, embed=embed)
             except IndexError:
@@ -251,7 +252,7 @@ async def on_message(message):
                 embedd = discord.Embed(
                     title='Não encontramos o seu DiscordID!',
                     color=COR,
-                    description='Use `/testtestamento` para iniciar o processo de autenticação da sua conta do __Discord__ com o servidor.'
+                    description='Use `/autenticardc` para iniciar o processo de autenticação da sua conta do __Discord__ com o servidor.'
                 )
                 embedd.timestamp = datetime.datetime.utcnow()
                 embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
@@ -260,6 +261,16 @@ async def on_message(message):
                 await client.delete_message(msg1)
             finally:
                 pass
+        
+        if message.content.lower().startswith("/autenticardc"):
+            embed = discord.Embed(
+                title="MANUTENÇÃO",
+                color=COR,
+                description="Sistema em desenvolvimento."
+            )
+            embed.timestamp = datetime.datetime.utcnow()
+            embed.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+            await client.send_message(message.channel, embed=embed)
         
 
 
