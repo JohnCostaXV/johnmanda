@@ -214,7 +214,7 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     await client.send_message(canal, embed=embed)
 
-        if message.content.lower().startswith("/dadostest"):
+        if message.content.lower().startswith("/testtest"):
             idd = message.author.id
             #site
             uuid = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "UUID");
