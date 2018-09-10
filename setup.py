@@ -145,6 +145,14 @@ def MCAPI(site):
        _json = json.loads(site_conectar.content)
        return _json;
 
+def zoeira(site, json_retorno):
+  site_conectar = requests.get(site)
+  if site_conectar.status_code == 200:
+       _json = json.loads(site_conectar.content)
+       return _json[json_retorno]
+  else:
+     return
+
 @client.event
 async def on_message(message):
     if message.server is not None:
@@ -205,6 +213,20 @@ async def on_message(message):
                     embed.set_image(url="https://pbs.twimg.com/media/Dh8UfXjW0AEps6n.jpg")
                     embed.timestamp = datetime.datetime.utcnow()
                     await client.send_message(canal, embed=embed)
+
+        if message.content.lower().startswith("/dadostest"):
+            idd = message.author.id
+            #site
+            site = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "UUID");
+            
+            embed = discord.Embed(
+                title="Informações:",
+                color=COR,
+                description="**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n**"
+            )
+            embed.set_author(name="Servidores End")
+            embed.set_footer(text="**UUID**: {}".format(site))
+            await client.send_message(message.channel, embed=embed)
 
 
 
