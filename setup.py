@@ -217,15 +217,21 @@ async def on_message(message):
         if message.content.lower().startswith("/dadostest"):
             idd = message.author.id
             #site
-            site = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "UUID");
+            uuid = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "UUID");
+            nick = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Nome");
+            cargo = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Rank");
+            cash = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Cash");
+            xp = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Exp");
+            registro = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "DataRegistro");
+            ulogin = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "DataUltimoLogin");
             
             embed = discord.Embed(
                 title="Informações:",
                 color=COR,
-                description="**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n**"
+                description="**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n\n**UUID**: {}".format(nick, cargo, cash, xp, registro, ulogin, uuid)
             )
             embed.set_author(name="Servidores End")
-            embed.set_footer(text="**UUID**: {}".format(site))
+            embed.set_footer(text="Comando por: {}".format(message.author.name))
             await client.send_message(message.channel, embed=embed)
 
 
