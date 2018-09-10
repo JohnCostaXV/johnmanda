@@ -228,9 +228,9 @@ async def on_message(message):
             embed = discord.Embed(
                 title="Informações:",
                 color=COR,
-                description="**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n\n**UUID**: {}".format(nick, cargo, cash, xp, registro, ulogin, uuid)
+                description="**SERVIDOR:**\n**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n\n**UUID**: {}".format(nick, cargo, cash, xp, registro, ulogin, uuid)
             )
-            embed.set_author(name="Servidores End")
+            embed.set_author(name="Servidores End", icon_url="https://i.imgur.com/1iJeEea.jpg")
             embed.set_footer(text="Comando por: {}".format(message.author.name))
             await client.send_message(message.channel, embed=embed)
 
