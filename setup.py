@@ -215,24 +215,52 @@ async def on_message(message):
                     await client.send_message(canal, embed=embed)
 
         if message.content.lower().startswith("/testtest"):
-            idd = message.author.id
-            #site
-            uuid = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "UUID");
-            nick = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Nome");
-            cargo = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Rank");
-            cash = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Cash");
-            xp = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Exp");
-            registro = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "DataRegistro");
-            ulogin = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "DataUltimoLogin");
-            
-            embed = discord.Embed(
-                title="Informações:",
-                color=COR,
-                description="**SERVIDOR:**\n**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n\n**UUID**: {}".format(nick, cargo, cash, xp, registro, ulogin, uuid)
-            )
-            embed.set_author(name="Servidores End", icon_url="https://i.imgur.com/1iJeEea.jpg")
-            embed.set_footer(text="Comando por: {}".format(message.author.name))
-            await client.send_message(message.channel, embed=embed)
+            try:
+                idd = message.author.id
+                #site
+                uuid = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "UUID");
+                nick = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Nome");
+                cargo = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Rank");
+                cash = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Cash");
+                xp = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "Exp");
+                registro = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "DataRegistro");
+                ulogin = zoeira("http://zoeirapedia.org/WebWalls/API/discord/api.php?discordid="+ idd +"&token=o0BZMusWy3HPCdY27hGFicNWiAxwScz8S1XfmF2b89qBcF3ZnAfLdtiBtWyDymBHeZnGefidePf7UYX8Z3K2ms4XFr", "DataUltimoLogin");
+                
+                embed = discord.Embed(
+                    title="Informações:",
+                    color=COR,
+                    description="**SERVIDOR:**\n**Nick**: {}\n**Cargo**: {}\n\n**Cash**: {}\n**XP**: {}\n\n**Data de registro**: {}\n**Último login**: {}\n\n**UUID**: {}".format(nick, cargo, cash, xp, registro, ulogin, uuid)
+                )
+                embed.set_author(name="Servidores End", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
+                await client.send_message(message.channel, embed=embed)
+            except IndexError:
+                await client.delete_message(message)
+                embedd = discord.Embed(
+                    title='Comando incorreto!',
+                    color=COR,
+                    description='Use `/testtest`'
+                )
+                embedd.timestamp = datetime.datetime.utcnow()
+                embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+                msg1 = await client.send_message(message.channel, embed=embedd)
+                await asyncio.sleep(20)
+                await client.delete_message(msg1)
+            except:
+                await client.delete_message(message)
+                embedd = discord.Embed(
+                    title='Não encontramos o seu DiscordID!',
+                    color=COR,
+                    description='Use `/testtestamento` para iniciar o processo de autenticação da sua conta do __Discord__ com o servidor.'
+                )
+                embedd.timestamp = datetime.datetime.utcnow()
+                embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+                msg1 = await client.send_message(message.channel, embed=embedd)
+                await asyncio.sleep(20)
+                await client.delete_message(msg1)
+            finally:
+                pass
+        
 
 
 
