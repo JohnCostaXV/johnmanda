@@ -1309,17 +1309,12 @@ async def on_message(message):
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
             await client.send_message(message.channel, embed=embed)
 
-        if message.content.lower().startswith("/act"):
-            jogando = message.author.activity.name
-            await client.send_message(message.channel, jogando)
-
         if message.content.lower().startswith('/info'):
             try:
                 user = message.mentions[0]
                 status = str(user.status)
                 userjoinedat = str(user.joined_at.strftime("%d de %B de %Y, às %H:%M")).split('.', 1)[0]
                 usercreatedat = str(user.created_at.strftime("%d de %B de %Y, às %H:%M")).split('.', 1)[0]
-                jogando = str(user.activity)
 
                 userembed = discord.Embed(
                     title="Informações do usuário",
