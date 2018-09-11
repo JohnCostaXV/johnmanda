@@ -1382,22 +1382,6 @@ async def on_message(message):
         if message.content.startswith('/ip'):
             await client.send_message(message.channel, 'Olá {}! Bom, o ip para conectar-se ao servidor é esse aqui: __jogar.end-mc.com__'.format(message.author.mention))
 
-        if message.content.lower().startswith('/ping'):
-            embed1 = discord.Embed(
-                title='Pong! 🎾',
-                color=COR,
-                description="Pong `calc ms`"
-            )
-            bot_msg = await client.send_message(message.channel, embed=embed1)
-            time_delta = bot_msg.timestamp - message.timestamp
-            embed = discord.Embed(
-                title='Pong!',
-                color=COR,
-                description=':ping_pong: Ping - {ping_sec} segundos'.format(ping_sec=time_delta.total_seconds())
-            )
-            embed.timestamp = datetime.datetime.utcnow()
-            await client.edit_message(bot_msg, embed=embed)
-
         if message.content.lower().startswith('/convite'):
             msg = await client.send_message(message.channel, 'Convite do servidor: https://discord.gg/uhxPeqS')
             await asyncio.sleep(50)
@@ -1531,12 +1515,13 @@ async def on_message(message):
             finally:
                 pass
 
-        if message.content.lower().startswith('testping'):
+        if message.content.lower().startswith('/ping'):
             channel = message.channel
             t1 = time.perf_counter()
             await client.send_typing(channel)
             t2 = time.perf_counter()
-            ping_embed = discord.Embed(title="🏓 Pong!", color=0x000000, description='Meu tempo de resposta é `{}ms`!'.format(round((t2 - t1) * 1000)))
+            ping_embed = discord.Embed(title="🏓 Pong!", color=COR, description='Meu tempo de resposta é `{}ms`!'.format(round((t2 - t1) * 1000)))
+            ping_embed.timestamp = datetime.datetime.utcnow()
             await client.send_message(message.channel, f"{message.author.mention}", embed=ping_embed)
 
         if message.content.lower().startswith('/skin'):
@@ -1550,7 +1535,7 @@ async def on_message(message):
                 #Corpo
                 corpo = "https://use.gameapis.net/mc/images/skin/" + uuid +"/100"
 
-                skin = discord.Embed()
+                skin = discord.Embed(color=COR)
                 skin.set_image(url=corpo)
 
                 await client.send_message(message.channel, embed = skin)
