@@ -1310,6 +1310,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=embed)
 
         if message.content.lower().startswith("/act"):
+            user = message.mentions[0]
             jogando = str(user.activity)
             await client.send_message(message.channel, jogando)
 
