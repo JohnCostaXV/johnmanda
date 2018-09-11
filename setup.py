@@ -1540,10 +1540,9 @@ async def on_message(message):
                 #UUID
                 uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
                 #Corpo
-                skin = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
+                skin = "https://use.gameapis.net/mc/images/skin/" + uuid +"/100"
 
-                await client.send_message(message.channel, "**Nick**: {}".format(nome))
-                await client.send_message(message.channel, skin)
+                await client.send_file(message.channel, skin, filename="{}.png".format(nome))
             except IndexError:
                 embed = discord.Embed(
                     title='Comando incorreto!',
