@@ -1309,13 +1309,6 @@ async def on_message(message):
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
             await client.send_message(message.channel, embed=embed)
 
-        if message.content.lower().startswith("/act"):
-            user = message.mentions[0]
-
-            embed = discord.Embed()
-            embed.add_field(name='Jogando:', value=user.activity, inline=True)
-            await client.send_message(message.channel, embed=embed)
-
         if message.content.lower().startswith('/info'):
             try:
                 user = message.mentions[0]
