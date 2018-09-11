@@ -1315,10 +1315,17 @@ async def on_message(message):
                 status = str(user.status)
                 userjoinedat = str(user.joined_at.strftime("%d de %B de %Y, às %H:%M")).split('.', 1)[0]
                 usercreatedat = str(user.created_at.strftime("%d de %B de %Y, às %H:%M")).split('.', 1)[0]
+                jogando = str(user.activity)
+
+                role = user.top_role.name
+                if role == "@everyone":
+                    role = "N/A"
+                    
+                voice_state = None if not user.voice else user.voice.channel
 
                 userembed = discord.Embed(
                     title="Informações do usuário",
-                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}".format(status.replace("dnd", "Ocupado").replace("idle", "Ausente").replace("online", "Disponível").replace("offline", "Offline"), usercreatedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro"), userjoinedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro")),
+                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Jogando**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}\n\n**Voz**: {}\n**Cargo**: {}".format(status.replace("dnd", "Ocupado").replace("idle", "Ausente").replace("online", "Disponível").replace("offline", "Offline"), jogando, usercreatedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro"), userjoinedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro"), voice_state, role),
                     color=COR
                 )
                 userembed.set_author(
