@@ -1055,7 +1055,7 @@ async def on_message(message):
                                 '**/moeda** » Brinque de cara ou coroa.\n\n\n'
                                 '**MINECRAFT:**\n\n'
                                 '**/mineinfo** [nickname] » Envia informações de um usuário.\n\n'
-                                '**/skin** [nickname] » Veja a skin de um usuário. **DESATIVADO**\n\n'
+                                '**/skin** [nickname] » Veja a skin de um usuário.\n\n'
                                 '**/head** [nickname] » Veja a cabeça da skin de um usuário. **DESATIVADO**\n\n\n'
                                 '**UTILITÁRIOS:**\n\n'
                                 '**/ativarvip** [nickname] | [rank] | [prova] » Crie uma solicitação do seu rank no Discord.\n\n'
@@ -1443,16 +1443,15 @@ async def on_message(message):
 
                 #UUID
                 uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
-                #Cabeca
-                #cabeca = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
-                #Corpo
-                corpo = "https://crafatar.com/renders/body/" + uuid +"?default=HF_Steve&overlay.png"
+                #skinfile
+                skin = "https://use.gameapis.net/mc/images/rawskin/{}".format(uuid)
 
                 embed = discord.Embed(
                     title='Informações:',
                     color=COR,
                     description="**Nickname**: {}\n"
-                                "**UUID**: {}\n".format(nome, uuid)
+                                "**UUID**: {}\n\n"
+                                "**Skin**: [Download](" + skin + ")".format(nome, uuid)
                 )
                 embed.timestamp = datetime.datetime.utcnow()
                 embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
