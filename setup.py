@@ -1542,7 +1542,7 @@ async def on_message(message):
                 #Corpo
                 corpo = "https://use.gameapis.net/mc/images/skin/" + uuid +"/100"
 
-                await client.send_message(message.channel, "**Nickname**: {}.png".format(corpo))
+                await client.send_message(message.channel, "**Nickname**: {}\n{}".format(nome, corpo))
             except IndexError:
                 embed = discord.Embed(
                     title='Comando incorreto!',
