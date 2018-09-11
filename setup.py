@@ -1309,6 +1309,14 @@ async def on_message(message):
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
             await client.send_message(message.channel, embed=embed)
 
+        if message.content.lower().startswith("/roles"):
+            user = message.mentions[0]
+            role = user.top_role.name
+            if role == "@everyone":
+                role = "N/A"
+
+            await client.send_message(message.channel, role)
+
         if message.content.lower().startswith('/info'):
             try:
                 user = message.mentions[0]
