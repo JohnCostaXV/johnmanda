@@ -1533,8 +1533,7 @@ async def on_message(message):
                 #UUID
                 uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
                 #Corpo
-                corpo = "https://use.gameapis.net/mc/images/skin/" + uuid +"/100"
-
+                corpo = "https://use.gameapis.net/mc/images/skin/{}".format(uuid) 
                 skin = discord.Embed(color=COR)
                 skin.set_image(url=corpo)
 
