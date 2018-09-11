@@ -12,8 +12,14 @@ import re
 import json
 import requests
 import base64
+from googletrans import Translator
 
 RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
+
+translator = Translator(service_urls=[
+      'translate.google.com',
+      'translate.google.co.kr',
+    ])
 
 client = discord.Client()
 COR = 0x3498DB
@@ -155,6 +161,28 @@ def zoeira(site, json_retorno):
 @client.event
 async def on_message(message):
     if message.server is not None:
+        prefixo = "/"
+        if message.content.startswith(prefixo+"traduzir"):
+            try:
+                a1 = len(prefixo) + 9
+                a2 = len(prefixo) + 11
+                d1 = len(prefixo) + 12
+                d2 = len(prefixo) + 14
+                texto = len(prefixo) + 15
+                antes = message.content[a1:a2]
+                depois = message.content[d1:d2]
+                traduzir = message.content[texto:]
+                traduzido = translator.translate(text=traduzir, dest=depois, src=antes).text
+                embed = discord.Embed(title='Tradutor') \
+                    .add_field(name='Antes:', value=f"`{traduzir}`", inline=True) \
+                    .add_field(name='Depois:', value=f"`{traduzido}`", inline=False) \
+                    .set_thumbnail(url='https://www.chip.pl/uploads/2013/03/67c793b3e536664516ef7dbef4b95b45-300x300.png') \
+                    .set_footer(text=client.user.name, icon_url=client.user.avatar_url)
+                await client.send_message(message.channel, embed=embed)
+            except ValueError:
+                await client.send_message(message.channel, "Linguagem(ns) inválida(s) ou comando usado de forma errada!")
+
+
         if message.content.startswith("/discorddott"):
             cargos = [
                 # IDs dos cargos:
