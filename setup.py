@@ -1313,7 +1313,7 @@ async def on_message(message):
             user = message.mentions[0]
 
             embed = discord.Embed()
-            embed.set_field(name='Jogando:', value=user.activity, inline=True)
+            embed.add_field(name='Jogando:', value=user.activity, inline=True)
             await client.send_message(message.channel, embed=embed)
 
         if message.content.lower().startswith('/info'):
