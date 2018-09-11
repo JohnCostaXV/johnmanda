@@ -1,4 +1,5 @@
 import discord
+from googletrans import Translator
 from discord.ext.commands import Bot
 from discord.ext import commands
 import random
@@ -12,7 +13,6 @@ import re
 import json
 import requests
 import base64
-from googletrans import Translator
 
 RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
 
