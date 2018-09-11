@@ -1542,7 +1542,7 @@ async def on_message(message):
                 #Corpo
                 corpo = "https://use.gameapis.net/mc/images/skin/" + uuid +"/100"
 
-                skin = requests.get(corpo).content
+                skin = requests.get(corpo)
 
                 await client.send_file(message.channel, skin, filename="{}.png".format(nome))
             except IndexError:
