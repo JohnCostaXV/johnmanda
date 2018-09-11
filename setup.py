@@ -1434,6 +1434,13 @@ async def on_message(message):
             finally:
                 pass
 
+        if message.content.lower().startswith("/mudartopic"):
+            args = message.mentions[0]
+            canal = client.get_channel("488513020884942848")
+            topic = " ".join(args[2:])
+
+            await client.edit_channel(canal, name=topic)
+
 
         if message.content.lower().startswith('/mineinfo'):
             try:
@@ -1449,9 +1456,7 @@ async def on_message(message):
                 embed = discord.Embed(
                     title='Informações:',
                     color=COR,
-                    description="**Nickname**: {}\n"
-                                "**UUID**: {}\n\n"
-                                "**Skin**: [Download](" + skin + ")".format(nome, uuid)
+                    description="**Nickname**: {}\n**UUID**: {}\n\n**Skin**: [Download](".format(nome, uuid) + skin + ")"
                 )
                 embed.timestamp = datetime.datetime.utcnow()
                 embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
