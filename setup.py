@@ -41,7 +41,7 @@ def mojang(site, json_retorno):
 
 @client.event
 async def on_member_remove(member):
-    canal = client.get_channne("488495765224685590")
+    canal = client.get_channel("488495765224685590")
     saida = discord.Embed(
         color=COR,
         description="**SAÍDA**\n\n{} saiu do servidor.".format(member.name)
@@ -1309,24 +1309,21 @@ async def on_message(message):
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
             await client.send_message(message.channel, embed=embed)
 
-        if message.content.lower().startswith("/roles"):
-            user = message.mentions[0]
-            role = user.top_role.name
-            if role == "@everyone":
-                role = "N/A"
-
-            await client.send_message(message.channel, role)
-
         if message.content.lower().startswith('/info'):
             try:
                 user = message.mentions[0]
                 status = str(user.status)
+
                 userjoinedat = str(user.joined_at.strftime("%d de %B de %Y, às %H:%M")).split('.', 1)[0]
                 usercreatedat = str(user.created_at.strftime("%d de %B de %Y, às %H:%M")).split('.', 1)[0]
 
+                role = user.top_role.name
+                if role == "@everyone":
+                    role = "N/A"
+
                 userembed = discord.Embed(
                     title="Informações do usuário",
-                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Criado em**: {}\n**Entrou no servidor em**: {}".format(status.replace("dnd", "Ocupado").replace("idle", "Ausente").replace("online", "Disponível").replace("offline", "Offline"), usercreatedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro"), userjoinedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro")),
+                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Cargos**: {}\n\n**Criado em**: {}\n**Entrou no servidor em**: {}".format(status.replace("dnd", "Ocupado").replace("idle", "Ausente").replace("online", "Disponível").replace("offline", "Offline"), role, usercreatedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro"), userjoinedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("june", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro")),
                     color=COR
                 )
                 userembed.set_author(
