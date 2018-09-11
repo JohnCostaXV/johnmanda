@@ -161,6 +161,13 @@ def zoeira(site, json_retorno):
 @client.event
 async def on_message(message):
     if message.server is not None:
+        dcs = ["discord.gg/", "discord.gg//", "https://discord.gg/"]
+        for listadc in dcs:
+            if listadc in message.content.lower():
+                if not message.author.server_permissions.administrator:
+                    return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
+
+
         prefixo = "/"
         if message.content.startswith(prefixo+"traduzir"):
             try:
