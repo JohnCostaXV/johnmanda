@@ -1531,6 +1531,14 @@ async def on_message(message):
             finally:
                 pass
 
+        if message.content.lower().startswith('testping'):
+            channel = message.channel
+            t1 = time.perf_counter()
+            await client.send_typing(channel)
+            t2 = time.perf_counter()
+            ping_embed = discord.Embed(title="🏓 Pong!", color=0x000000, description='Meu tempo de resposta é `{}ms`!'.format(round((t2 - t1) * 1000)))
+            await client.send_message(message.channel, f"{message.author.mention}", embed=ping_embed)
+
         if message.content.lower().startswith('/skin'):
             try:
                 remover_mineinfo = message.content.replace("/skin", "")
@@ -1542,7 +1550,10 @@ async def on_message(message):
                 #Corpo
                 corpo = "https://use.gameapis.net/mc/images/skin/" + uuid +"/100"
 
-                await client.send_message(message.channel, "**Nickname**: {}\n{}".format(nome, corpo))
+                skin = discord.embed()
+                skin.set_image(url=corpo)
+
+                await client.send_message(message.channel, embed = skin)
             except IndexError:
                 embed = discord.Embed(
                     title='Comando incorreto!',
