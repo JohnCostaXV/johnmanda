@@ -1550,7 +1550,7 @@ async def on_message(message):
                 #Corpo
                 corpo = "https://use.gameapis.net/mc/images/skin/" + uuid +"/100"
 
-                skin = discord.embed()
+                skin = discord.Embed()
                 skin.set_image(url=corpo)
 
                 await client.send_message(message.channel, embed = skin)
