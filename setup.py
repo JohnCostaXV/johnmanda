@@ -1,5 +1,4 @@
 import discord
-from googletrans import Translator
 from discord.ext.commands import Bot
 from discord.ext import commands
 import random
@@ -16,10 +15,6 @@ import base64
 
 RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
 
-translator = Translator(service_urls=[
-      'translate.google.com',
-      'translate.google.co.kr',
-    ])
 
 client = discord.Client()
 COR = 0x3498DB
@@ -125,11 +120,13 @@ async def on_ready():
     print('Versão 1.0')
     print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
-    await client.change_presence(game=discord.Game(name="Online com mais de {} membros!".format(str(len(set(client.get_all_members())))), url="https://www.twitch.tv/johncostaxv", type=1))
-    await asyncio.sleep(100)
-    await client.change_presence(game=discord.Game(name="/comandos", url="https://www.twitch.tv/johncostaxv", type=1))
-    await asyncio.sleep(100)
-    await client.change_presence(game=discord.Game(name="jogar.end-mc.com", url="https://www.twitch.tv/johncostaxv", type=1))
+    while True:
+        await client.change_presence(game=discord.Game(name="Online com mais de {} membros!".format(str(len(set(client.get_all_members())))), url="https://www.twitch.tv/johncostaxv", type=1))
+        await asyncio.sleep(100)
+        await client.change_presence(game=discord.Game(name="/comandos", url="https://www.twitch.tv/johncostaxv", type=1))
+        await asyncio.sleep(100)
+        await client.change_presence(game=discord.Game(name="jogar.end-mc.com", url="https://www.twitch.tv/johncostaxv", type=1))
+        await asyncio.sleep(100)
 
 async def tutorial_uptime():
     await client.wait_until_ready()
@@ -166,29 +163,6 @@ async def on_message(message):
             if listadc in message.content.lower():
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
-
-
-        prefixo = "/"
-        if message.content.startswith(prefixo+"traduzir"):
-            try:
-                a1 = len(prefixo) + 9
-                a2 = len(prefixo) + 11
-                d1 = len(prefixo) + 12
-                d2 = len(prefixo) + 14
-                texto = len(prefixo) + 15
-                antes = message.content[a1:a2]
-                depois = message.content[d1:d2]
-                traduzir = message.content[texto:]
-                traduzido = translator.translate(text=traduzir, dest=depois, src=antes).text
-                embed = discord.Embed(title='Tradutor') \
-                    .add_field(name='Antes:', value=f"`{traduzir}`", inline=True) \
-                    .add_field(name='Depois:', value=f"`{traduzido}`", inline=False) \
-                    .set_thumbnail(url='https://www.chip.pl/uploads/2013/03/67c793b3e536664516ef7dbef4b95b45-300x300.png') \
-                    .set_footer(text=client.user.name, icon_url=client.user.avatar_url)
-                await client.send_message(message.channel, embed=embed)
-            except ValueError:
-                await client.send_message(message.channel, "Linguagem(ns) inválida(s) ou comando usado de forma errada!")
-
 
         if message.content.startswith("/discorddott"):
             cargos = [
