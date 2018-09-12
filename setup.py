@@ -1352,7 +1352,18 @@ async def on_message(message):
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
             await client.send_message(message.channel, embed=embed)
 
-        
+        if message.content.lower().startswith("/listabans"):
+            cargos = [
+                    # IDs dos cargos:
+                    "407677666750365706", #Diretor
+                    "417426253658849281" #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    x = await client.get_bans(message.server)
+                    xx = '\n'.join([y.name for y in x])
+                    embedban = discord.Embed(title="***Banimentos:***", description=xx, color=0xdb709e)
+                    return await client.send_message(message.channel, embed=embedban)
         
 
         if message.content.lower().startswith('/info'):
