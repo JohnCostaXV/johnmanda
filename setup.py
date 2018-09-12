@@ -1351,6 +1351,8 @@ async def on_message(message):
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
             await client.send_message(message.channel, embed=embed)
+
+        
         
 
         if message.content.lower().startswith('/info'):
@@ -1684,6 +1686,47 @@ async def on_message(message):
                     returnmsg = await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="%s limpou %s message(s).%s" % (message.author.mention, cleared, failed_str)))
                     await asyncio.sleep(5)
                     await client.delete_message(returnmsg)
+
+        if message.content.startswith('tsttempmute'):
+            try:
+                cargos = [
+                        # IDs dos cargos:
+                        "407677666750365706", #Diretor
+                        "417426253658849281", #Gerente
+                        "407678188773179417", #Administrador
+                        "407678481670078475", #Moderador
+                        "407706417282416641", #Ajudante
+                ]
+                for r in message.author.roles:
+                    if r.id in cargos:
+                        mutado = "Silenciado"
+                        xtx = message.content.split(' ')
+                        if xtx[2] == 'segundos' or xtx[2] == 'segundo' or xtx[2] == 's':
+                            segundos = int(xtx[1])
+                            uid = str(xtx[3]).replace('<', '').replace('>', '').replace('@', '').replace('!', '')
+                            membro = message.server.get_member(uid)
+                            muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
+                            await client.add_roles(membro, muted)
+                            await asyncio.sleep(int(segundos))
+                            await client.remove_roles(membro, muted)
+                        elif xtx[2] == 'minutos' or xtx[2] == 'minuto' or xtx[2] == 'm':
+                            minutos = int(xtx[1]) * 60
+                            uid = str(xtx[3]).replace('<', '').replace('>', '').replace('@', '').replace('!', '')
+                            membro = message.server.get_member(uid)
+                            muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
+                            await client.add_roles(membro, muted)
+                            await asyncio.sleep(int(minutos))
+                            await client.remove_roles(membro, muted)
+                        elif xtx[2] == 'horas' or xtx[2] == 'hora' or xtx[2] == 'h':
+                            horas = int(xtx[1]) * 3600
+                            uid = str(xtx[3]).replace('<', '').replace('>', '').replace('@', '').replace('!', '')
+                            membro = message.server.get_member(uid)
+                            muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
+                            await client.add_roles(membro, muted)
+                            await asyncio.sleep(int(horas))
+                            await client.remove_roles(membro, muted)
+            except IndexError:
+                await client.send_message(message.channel, "Erro, o uso é /tempmute 1 h/m/s @usuário.")
 
 
         if message.content.lower().startswith('/tempmute'):
