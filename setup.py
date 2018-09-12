@@ -1362,8 +1362,8 @@ async def on_message(message):
             urlnews = (str(lernews['articles'][0]['url']))
             datanews = (str(lernews['articles'][0]['publishedAt']))
             imgnews = (str(lernews['articles'][0]['urlToImage']))
-            embednews = discord.Embed(color=0x65ff00)
-            embednews.add_field(name='Autor Da notícia:', value="{}".format(authornews))
+            embednews = discord.Embed(color=COR)
+            embednews.add_field(name='Autor da notícia:', value="{}".format(authornews))
             embednews.add_field(name='Título:', value="{}".format(titulonews))
             embednews.add_field(name='Descrição:', value="{}".format(descriptionnews))
             embednews.add_field(name='Link da noticia:', value="{}".format(urlnews))
@@ -1384,7 +1384,7 @@ async def on_message(message):
                     x = await client.get_bans(message.server)
                     xx = '\n'.join([y.name for y in x])
                     embedban = discord.Embed(title="***Banimentos:***", description=xx, color=0xdb709e)
-                    return await client.send_message(message.channel, embed=embedban)
+                    await client.send_message(message.channel, embed=embedban)
         
 
         if message.content.lower().startswith('/info'):
