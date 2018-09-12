@@ -1687,7 +1687,7 @@ async def on_message(message):
                     await asyncio.sleep(5)
                     await client.delete_message(returnmsg)
 
-        if message.content.startswith('tsttempmute'):
+        if message.content.startswith('/tempmute'):
             try:
                 cargos = [
                         # IDs dos cargos:
@@ -1707,6 +1707,18 @@ async def on_message(message):
                             membro = message.server.get_member(uid)
                             muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
                             await client.add_roles(membro, muted)
+                            canal = client.get_channel('448449971629588481')
+                            motivo = " ".join(xtx[3:])
+                            embed = discord.Embed(
+                            title='Informações:',
+                            color=COR,
+                            description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Punição**: Tempmute\n**Duração**: `{}s`\n\n**Autor**: {}\n**Canal**: {}".format(membro.name, membro.id, motivo, segundos, message.author.mention, message.channel.mention)
+                            )
+                            embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                            embed.set_thumbnail(url=message.author.avatar_url)
+                            embed.timestamp = datetime.datetime.utcnow()
+                            embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                            await client.send_message(message.channel, embed=embed)
                             await asyncio.sleep(int(segundos))
                             await client.remove_roles(membro, muted)
                         elif xtx[2] == 'minutos' or xtx[2] == 'minuto' or xtx[2] == 'm':
@@ -1715,6 +1727,19 @@ async def on_message(message):
                             membro = message.server.get_member(uid)
                             muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
                             await client.add_roles(membro, muted)
+
+                            canal = client.get_channel('448449971629588481')
+                            motivo = " ".join(xtx[3:])
+                            embed = discord.Embed(
+                            title='Informações:',
+                            color=COR,
+                            description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Punição**: Tempmute\n**Duração**: `{}m`\n\n**Autor**: {}\n**Canal**: {}".format(membro.name, membro.id, motivo, minutos, message.author.mention, message.channel.mention)
+                            )
+                            embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                            embed.set_thumbnail(url=message.author.avatar_url)
+                            embed.timestamp = datetime.datetime.utcnow()
+                            embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                            await client.send_message(message.channel, embed=embed)
                             await asyncio.sleep(int(minutos))
                             await client.remove_roles(membro, muted)
                         elif xtx[2] == 'horas' or xtx[2] == 'hora' or xtx[2] == 'h':
@@ -1723,72 +1748,32 @@ async def on_message(message):
                             membro = message.server.get_member(uid)
                             muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
                             await client.add_roles(membro, muted)
-                            await asyncio.sleep(int(horas))
-                            await client.remove_roles(membro, muted)
-            except IndexError:
-                await client.send_message(message.channel, "Erro, o uso é /tempmute 1 h/m/s @usuário.")
-
-
-        if message.content.lower().startswith('/tempmute'):
-            try:
-                cargos = [
-                    # IDs dos cargos:
-                    "407677666750365706", #Diretor
-                    "417426253658849281", #Gerente
-                    "407678188773179417", #Administrador
-                    "407678481670078475", #Moderador
-                    "407706417282416641", #Ajudante
-                ]
-                for r in message.author.roles:
-                    if r.id in cargos:
-                        await client.delete_message(message)
-                        args = message.content.split(" ")
-                        tempo = (" ".join(args[3:]))
-                        user = message.mentions[0]
-                        cargo = discord.utils.get(user.server.roles, name='Silenciado')
-                        canal = client.get_channel('448449971629588481')
-                        temp = args[2]
-                        timesquad = int(temp)
-                        reallytime = datetime.timedelta(seconds=timesquad)
-                        embed = discord.Embed(
+                            canal = client.get_channel('448449971629588481')
+                            motivo = " ".join(xtx[3:])
+                            embed = discord.Embed(
                             title='Informações:',
                             color=COR,
-                            description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Punição**: Tempmute\n**Duração**: `{}`\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, tempo, reallytime, message.author.mention, message.channel.mention)
-                        )
-                        embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
-                        embed.set_thumbnail(url=message.author.avatar_url)
-                        embed.timestamp = datetime.datetime.utcnow()
-                        embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                        await client.add_roles(user, cargo)
-                        print('O {} foi mutado temporariamente.'.format(user))
-                        await client.send_message(canal, embed=embed)
-                        await asyncio.sleep(timesquad)
-                        await client.remove_roles(user, cargo)
-                        print('O {} foi desmutado.'.format(user))
+                            description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Punição**: Tempmute\n**Duração**: `{}h`\n\n**Autor**: {}\n**Canal**: {}".format(membro.name, membro.id, motivo, horas, message.author.mention, message.channel.mention)
+                            )
+                            embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                            embed.set_thumbnail(url=message.author.avatar_url)
+                            embed.timestamp = datetime.datetime.utcnow()
+                            embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                            await client.send_message(message.channel, embed=embed)
+                            await asyncio.sleep(int(horas))
+                            await client.remove_roles(membro, muted)
             except IndexError:
                 embedd = discord.Embed(
                     title='Comando incorreto!',
                     color=COR,
-                    description='Use `/tempmute [username] [segundos] [motivo]`'
+                    description='Use `/tempmute [tempo h/m/s] [usuário] [motivo]`'
                 )
                 embedd.timestamp = datetime.datetime.utcnow()
                 embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
                 incorreto = await client.send_message(message.channel, embed=embedd)
                 await asyncio.sleep(10)
                 await client.delete_message(incorreto)
-            except:
-                embed2 = discord.Embed(
-                    title='Permissão negada!',
-                    color=COR,
-                    description='Não tenho permissão para silenciar este usuário.'
-                )
-                embed2.timestamp = datetime.datetime.utcnow()
-                embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                perm = await client.send_message(message.channel, embed=embed2)
-                await asyncio.sleep(10)
-                await client.delete_message(perm)
-            finally:
-                pass
+
 
         
 
