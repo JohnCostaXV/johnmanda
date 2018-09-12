@@ -1352,6 +1352,27 @@ async def on_message(message):
             embed.set_footer(text='Comando por: {}'.format(message.author.name), icon_url="https://i.imgur.com/1iJeEea.jpg")
             await client.send_message(message.channel, embed=embed)
 
+
+        if message.content.lower().startswith('/notícias'):
+            reqnews = requests.get('https://newsapi.org/v2/top-headlines?sources=globo&apiKey=6888a62938c744a79d4dec22809ba3d1')
+            lernews = json.loads(reqnews.text)
+            authornews = (str(lernews['articles'][0]['author']))
+            titulonews = (str(lernews['articles'][0]['title']))
+            descriptionnews = (str(lernews['articles'][0]['description']))
+            urlnews = (str(lernews['articles'][0]['url']))
+            datanews = (str(lernews['articles'][0]['publishedAt']))
+            imgnews = (str(lernews['articles'][0]['urlToImage']))
+            embednews = discord.Embed(color=0x65ff00)
+            embednews.add_field(name='Autor Da notícia:', value="{}".format(authornews))
+            embednews.add_field(name='Título:', value="{}".format(titulonews))
+            embednews.add_field(name='Descrição:', value="{}".format(descriptionnews))
+            embednews.add_field(name='Link da noticia:', value="{}".format(urlnews))
+            embednews.set_footer(text='Data da noticia: ' + datanews)
+            embednews.set_thumbnail(url=imgnews)
+            await client.send_message(message.channel, embed=embednews)
+        
+
+
         if message.content.lower().startswith("/listabans"):
             cargos = [
                     # IDs dos cargos:
