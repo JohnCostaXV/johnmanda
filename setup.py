@@ -191,16 +191,8 @@ async def on_message(message):
                 msg1 = await client.send_message(message.channel, embed=embedd)
                 await asyncio.sleep(20)
                 await client.delete_message(msg1)
-            except:
-                msg =await client.send_message(message.channel, "desculpe pelo erro.")
-                await asyncio.sleep(10)
-                await client.delete_message(msg)
             finally:
-                pass
-
-
-        
-        
+                pass    
         
 
         if message.content.startswith("/discorddott"):
