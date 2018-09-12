@@ -171,6 +171,12 @@ async def on_message(message):
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
 
+        if message.content.lower().startswith("/emojizar"):
+            args = message.content.split(" ")
+            resposta = " ".join(args[1:])
+
+            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:"))
+
         if message.content.startswith("/discorddott"):
             cargos = [
                 # IDs dos cargos:
@@ -537,6 +543,7 @@ async def on_message(message):
                 await client.send_message(message.channel, embed=embed2)
             finally:
                 pass
+
 
         if message.content.lower().startswith('/say'):
             try:
@@ -1023,6 +1030,7 @@ async def on_message(message):
                 await client.send_message(message.author, "Desculpe pelo erro.")
             finally:
                 pass
+
 
         if message.content.lower().startswith('/dado'):
             numr = random.randint(1,6)
