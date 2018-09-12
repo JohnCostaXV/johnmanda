@@ -42,7 +42,8 @@ def mojang(site, json_retorno):
 
 @client.event
 async def on_member_remove(member):
-    canal = client.get_channel("488495765224685590")
+    canal1 = client.get_channel("488495765224685590")
+    canal = client.get_channel("448326795692081152")
 
     await client.edit_channel(canal, topic="Membros: "+str(member.server.member_count).replace('1', '1⃣').replace('2', '2⃣').replace('3', '3⃣').replace('4', '4⃣').replace('5', '5⃣').replace('6', '6⃣').replace('7', '7⃣').replace('8', '8⃣').replace('9', '9⃣').replace('0', '0⃣'))
 
@@ -53,7 +54,7 @@ async def on_member_remove(member):
     saida.set_author(name=member)
     saida.set_thumbnail(url=member.avatar_url)
     saida.set_footer(text="ID: {}".format(member.id))
-    await client.send_message(canal, embed=saida)
+    await client.send_message(canal1, embed=saida)
 
 
 @client.event
