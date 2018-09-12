@@ -398,10 +398,10 @@ async def on_message(message):
                         embed = discord.Embed(
                             color=COR,
                             description='**/responder** [usuário] [resposta] » Responda um usuário em *#dúvidas-dos-jogadores*.\n'
-                                        'exemplo: `/responder @JohnnCosta O IP do servidor é jogar.end-mc.com`\n\n'
-                                        '**/tempmute** [usuário] » Silenciar temporariamente do discord.\n'
-                                        'exemplo: `/tempmute @JohnnCosta 28800 Palavras inadequadas`\n\n'
-                                        '*Lembrando que os tempmute é contato por segundo! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
+                                        'exemplo: `/responder @Johnn O IP do servidor é jogar.end-mc.com`\n\n'
+                                        '**/tempmute** [tempo] [usuário] [motivo] » Silenciar temporariamente do discord.\n'
+                                        'exemplo: `/tempmute 1 h @Johnn Palavras inadequadas`\n\n'
+                                        '*Lembrando que os tempmute devem ter o espaço entre o número e o h/m/s! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
                         )
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_author(name="Comandos STAFF - EndBOT", icon_url=message.author.avatar_url)
@@ -444,24 +444,24 @@ async def on_message(message):
                     if r.id in cargos:
                         embed = discord.Embed(
                             color=COR,
-                            description='**Uso de caps-lock excessivo** - *__14400__ segundos de tempmute*\n\n'
-                                        '**Spam** - *__14400__ segundos de tempmute*\n\n'
-                                        '**Flood** - *__14400__ segundos de mute*\n\n'
+                            description='**Uso de caps-lock excessivo** - *__4__ horas de tempmute*\n\n'
+                                        '**Spam** - *__4__ horas de tempmute*\n\n'
+                                        '**Flood** - *__4__ horas de mute*\n\n'
                                         '**Divulgação/Citação de servidores** - *Ban permanente*\n\n'
-                                        '**Iniciativa de flood** - *__21600__ segundos de mute*\n\n'
-                                        '**Mensagem fake** - *__10800__ segundos de mute*\n\n'
-                                        '**Ameaça ao jogador** - *Ban temporário de __86400__ segundos*\n\n'
+                                        '**Iniciativa de flood** - *__6__ horas de mute*\n\n'
+                                        '**Mensagem fake** - *__3__ horas de mute*\n\n'
+                                        '**Ameaça ao jogador** - *Ban temporário de __24__ horas*\n\n'
                                         '**Ameaça ao servidor** - *Ban permanente*.\n\n'
                                         '**Abuso de bug´s** - *Ban permanente*.\n\n'
-                                        '**Uso inadequado do chat** - *__43200__ segundos de mute*\n\n'
-                                        '**Discriminação** - *Ban temporário de __172800__ segundos*.\n\n'
-                                        '**Anti-Jogo** - *Ban temporário de __43200__ segundos*.\n\n'
+                                        '**Uso inadequado do chat** - *__12__ horas de mute*\n\n'
+                                        '**Discriminação** - *Ban temporário de __48__ horas*.\n\n'
+                                        '**Anti-Jogo** - *Ban temporário de __12__ horas*.\n\n'
                                         '**Falsificação de provas** - *Ban permanente*.\n\n'
                                         '**Chantagem** - *Ban permanente*.\n\n'
                                         '**Ofensa à staff** - *Ban permanente*.\n\n'
                                         '**Uso de hack** - *Ban permanente*.\n\n'
                                         '**Uso de algum programa proibido** - *Ban permanente*.\n\n'
-                                        '**Palavras inadequadas** - *__28800__ segundos de mute*.\n\n'
+                                        '**Palavras inadequadas** - *__8__ horas de mute*.\n\n'
                         )
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_author(name="Punições - EndBOT", icon_url=message.author.avatar_url)
@@ -967,7 +967,7 @@ async def on_message(message):
                                         'exemplo: `/unmute @{}`\n\n'
                                         '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
                                         'exemplo: `/tempban @{} 172800 Discriminação`\n\n'
-                                        '**/tempmute** [usuário] [duração] [motivo] » Mute temporariamente do discord.\n'
+                                        '**/tempmute** [tempo] [usuário] [motivo] » Mute temporariamente do discord.\n'
                                         'exemplo: `/tempmute @{} 21600 Iniciativa de Flood`\n\n'
                                         '**/say** [mensagem] » bot repete a mensagem.\n'
                                         'exemplo: `/say Olá`\n\n'
