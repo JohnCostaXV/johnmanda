@@ -175,7 +175,7 @@ async def on_message(message):
             args = message.content.split(" ")
             resposta = " ".join(args[1:])
 
-            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:"))
+            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:").replace("b", ":regional_indicator_b"))
 
 
         if message.content.lower().startswith("/emojizar"):
