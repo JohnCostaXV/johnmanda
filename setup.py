@@ -1372,21 +1372,6 @@ async def on_message(message):
             await client.send_message(message.channel, embed=embednews)
         
 
-
-        if message.content.lower().startswith("/listabans"):
-            cargos = [
-                    # IDs dos cargos:
-                    "407677666750365706", #Diretor
-                    "417426253658849281" #Gerente
-            ]
-            for r in message.author.roles:
-                if r.id in cargos:
-                    x = await client.get_bans(message.server)
-                    xx = '\n'.join([y.name for y in x])
-                    embedban = discord.Embed(title="***Banimentos:***", description=xx, color=0xdb709e)
-                    await client.send_message(message.channel, embed=embedban)
-        
-
         if message.content.lower().startswith('/info'):
             try:
                 user = message.mentions[0]
