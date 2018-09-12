@@ -171,6 +171,13 @@ async def on_message(message):
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
 
+        if message.content.lower().startswith("/emoji"):
+            args = message.content.split(" ")
+            resposta = " ".join(args[1:])
+
+            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:")
+
+
         if message.content.lower().startswith("/emojizar"):
             try:
                 args = message.content.split(" ")
