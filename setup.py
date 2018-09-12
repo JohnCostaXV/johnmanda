@@ -1439,7 +1439,7 @@ async def on_message(message):
             canal = client.get_channel("488513020884942848")
             topic = " ".join(args[1:])
 
-            await client.edit_channel(canal, name=topic)
+            await client.edit_channel(canal, topic=topic)
 
 
         if message.content.lower().startswith('/mineinfo'):
