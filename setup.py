@@ -175,7 +175,7 @@ async def on_message(message):
             args = message.content.split(" ")
             resposta = " ".join(args[1:])
 
-            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:")
+            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:"))
 
 
         if message.content.lower().startswith("/emojizar"):
@@ -202,6 +202,10 @@ async def on_message(message):
                 await client.delete_message(msg)
             finally:
                 pass
+
+
+        
+        
         
 
         if message.content.startswith("/discorddott"):
