@@ -43,6 +43,9 @@ def mojang(site, json_retorno):
 @client.event
 async def on_member_remove(member):
     canal = client.get_channel("488495765224685590")
+
+    await client.edit_channel(canal, topic="Membros: "+str(member.server.member_count).replace('1', '1⃣').replace('2', '2⃣').replace('3', '3⃣').replace('4', '4⃣').replace('5', '5⃣').replace('6', '6⃣').replace('7', '7⃣').replace('8', '8⃣').replace('9', '9⃣').replace('0', '0⃣'))
+
     saida = discord.Embed(
         color=COR,
         description="**SAÍDA**\n\n{} saiu do servidor.".format(member.name)
@@ -71,6 +74,9 @@ async def on_member_join(member):
     await client.add_reaction(react, "✅")
 
     canal = client.get_channel('448326795692081152')
+
+    await client.edit_channel(canal, topic="Membros: "+str(member.server.member_count).replace('1', '1⃣').replace('2', '2⃣').replace('3', '3⃣').replace('4', '4⃣').replace('5', '5⃣').replace('6', '6⃣').replace('7', '7⃣').replace('8', '8⃣').replace('9', '9⃣').replace('0', '0⃣'))
+
     await client.send_message(canal, 'Seja bem-vindo(a) {}!'.format(member.mention))
     embed = discord.Embed(
         title='Seja bem-vindo(a) ao grupo do Discord da rede de servidores End!',
