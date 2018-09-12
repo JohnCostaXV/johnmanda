@@ -1435,9 +1435,9 @@ async def on_message(message):
                 pass
 
         if message.content.lower().startswith("/mudartopic"):
-            args = message.mentions[0]
+            args = message.content.split(" ")
             canal = client.get_channel("488513020884942848")
-            topic = " ".join(args[2:])
+            topic = " ".join(args[1:])
 
             await client.edit_channel(canal, name=topic)
 
