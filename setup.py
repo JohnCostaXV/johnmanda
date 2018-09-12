@@ -1048,6 +1048,7 @@ async def on_message(message):
                 embed = discord.Embed(
                     color=COR,
                     description='*Esses são os comandos que não necessitam de permissão.*\n\n\n'
+                                '**DIVERSOS:**\n\n'
                                 '**/info** [usuário] » Veja as informações de um usuário.\n\n'
                                 '**/end** » Veja as informações do servidor.\n\n'
                                 '**/dado** » Role um dado de um número de 1 a 6.\n\n'
@@ -1063,7 +1064,7 @@ async def on_message(message):
                                 '**MINECRAFT:**\n\n'
                                 '**/mineinfo** [nickname] » Envia informações de um usuário.\n\n'
                                 '**/skin** [nickname] » Veja a skin de um usuário.\n\n'
-                                '**/head** [nickname] » Veja a cabeça da skin de um usuário. **DESATIVADO**\n\n\n'
+                                '**/head** [nickname] » Veja a cabeça da skin de um usuário.\n\n\n'
                                 '**UTILITÁRIOS:**\n\n'
                                 '**/ativarvip** [nickname] | [rank] | [prova] » Crie uma solicitação do seu rank no Discord.\n\n'
                                 '**/revisão** [nickname] | [motivo] | [por quê está irregular?] » Crie uma revisão de seu banimento.\n\n'
@@ -1441,14 +1442,6 @@ async def on_message(message):
             finally:
                 pass
 
-        if message.content.lower().startswith("/mudartopic"):
-            args = message.content.split(" ")
-            canal = client.get_channel("488513020884942848")
-            topic = " ".join(args[1:])
-
-            await client.edit_channel(canal, topic=topic)
-
-
         if message.content.lower().startswith('/mineinfo'):
             try:
                 remover_mineinfo = message.content.replace("/mineinfo", "")
@@ -1505,11 +1498,12 @@ async def on_message(message):
                 #UUID
                 uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
                 #Cabeca
-                skin = "https://crafatar.com/renders/head/" + uuid +"?default=HF_Steve&overlay.png"
+                cabeca = "https://use.gameapis.net/mc/images/avatar/{}".format(uuid)
                 
-        
-                await client.send_message(message.channel, "**Nick**: {}".format(nome))
-                await client.send_message(message.channel, skin)
+                coco = discord.Embed(color=COR)
+                coco.set_image(url=cabeca)
+                await client.send_message(message.channel, embed = coco)
+                
             except IndexError:
                 embed = discord.Embed(
                     title='Comando incorreto!',
