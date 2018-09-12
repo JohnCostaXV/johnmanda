@@ -1708,7 +1708,7 @@ async def on_message(message):
                             muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
                             await client.add_roles(membro, muted)
                             canal = client.get_channel('448449971629588481')
-                            motivo = " ".join(xtx[3:])
+                            motivo = " ".join(xtx[4:])
                             embed = discord.Embed(
                             title='Informações:',
                             color=COR,
@@ -1718,7 +1718,7 @@ async def on_message(message):
                             embed.set_thumbnail(url=message.author.avatar_url)
                             embed.timestamp = datetime.datetime.utcnow()
                             embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                            await client.send_message(message.channel, embed=embed)
+                            await client.send_message(canal, embed=embed)
                             await asyncio.sleep(int(segundos))
                             await client.remove_roles(membro, muted)
                         elif xtx[2] == 'minutos' or xtx[2] == 'minuto' or xtx[2] == 'm':
@@ -1729,7 +1729,7 @@ async def on_message(message):
                             await client.add_roles(membro, muted)
 
                             canal = client.get_channel('448449971629588481')
-                            motivo = " ".join(xtx[3:])
+                            motivo = " ".join(xtx[4:])
                             embed = discord.Embed(
                             title='Informações:',
                             color=COR,
@@ -1739,7 +1739,7 @@ async def on_message(message):
                             embed.set_thumbnail(url=message.author.avatar_url)
                             embed.timestamp = datetime.datetime.utcnow()
                             embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                            await client.send_message(message.channel, embed=embed)
+                            await client.send_message(canal, embed=embed)
                             await asyncio.sleep(int(minutos))
                             await client.remove_roles(membro, muted)
                         elif xtx[2] == 'horas' or xtx[2] == 'hora' or xtx[2] == 'h':
@@ -1749,7 +1749,7 @@ async def on_message(message):
                             muted = discord.utils.find(lambda r: r.name == mutado, message.server.roles)
                             await client.add_roles(membro, muted)
                             canal = client.get_channel('448449971629588481')
-                            motivo = " ".join(xtx[3:])
+                            motivo = " ".join(xtx[4:])
                             embed = discord.Embed(
                             title='Informações:',
                             color=COR,
@@ -1759,7 +1759,7 @@ async def on_message(message):
                             embed.set_thumbnail(url=message.author.avatar_url)
                             embed.timestamp = datetime.datetime.utcnow()
                             embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                            await client.send_message(message.channel, embed=embed)
+                            await client.send_message(canal, embed=embed)
                             await asyncio.sleep(int(horas))
                             await client.remove_roles(membro, muted)
             except IndexError:
