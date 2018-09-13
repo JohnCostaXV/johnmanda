@@ -167,20 +167,11 @@ def zoeira(site, json_retorno):
 @client.event
 async def on_message(message):
     if message.server is not None:
-        dcs = ["discord.gg/", "discord.gg//", "https://discord.gg/", "www", "https", "http"]
+        dcs = ["discord.gg/", "discord.gg//", "https://discord.gg/"]
         for listadc in dcs:
             if listadc in message.content.lower():
-                cargos = [
-                        # IDs dos cargos:
-                        "407677666750365706", #Diretor
-                        "417426253658849281", #Gerente
-                        "407678188773179417", #Administrador
-                        "407678481670078475", #Moderador
-                        "407706417282416641", #Ajudante
-                ]
-                for r in message.author.roles:
-                    if not cargos:
-                        return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
+                if not message.author.server_permissions.administrator:
+                    return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
 
 
         if message.content.lower().startswith('/juntarnomes'):
