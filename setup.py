@@ -172,13 +172,26 @@ async def on_message(message):
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
 
 
+        if message.content.lower().startswith('/juntarnomes'):
+            try:
+                cont = message.mentions[0].name
+                cont2 = message.mentions[1].name
+                cont3 = len(cont2)
+                cont4 = cont3 - 4
+                cont5 = cont[0:4]
+                cont6 = cont2[cont4:cont3]
+                cont7 = cont5 + cont6
+                await client.send_message(message.channel,"Junção do nome de {} com {} = **{}**".format(message.mentions[0].mention,message.mentions[1].mention, cont7))
+            except IndexError:
+                await client.send_message(message.channel, "{} Você não mencionou dois usuarios".format(message.author.mention))
+
 
         if message.content.lower().startswith("/emojizar"):
             args = message.content.split(" ")
             resposta = " ".join(args[1:])
             #.replace("1", "⃣").replace("2", "⃣").replace("3", "3⃣").replace("4", "4⃣").replace("5", "5⃣").replace("6", "6⃣").replace("7", "7⃣").replace("8", "8⃣").replace("9", "9⃣").replace("0", "0⃣").replace("#", "#⃣")
 
-            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:").replace("b", ":regional_indicator_b:").replace("c", ":regional_indicator_c:").replace("d", ":regional_indicator_d:").replace("e", ":regional_indicator_e:").replace("f", ":regional_indicator_f:").replace("g", ":regional_indicator_g:").replace("h", ":regional_indicator_h:").replace("i", ":regional_indicator_i:").replace("j", ":regional_indicator_j:").replace("k", ":regional_indicator_k:").replace("l", ":regional_indicator_l:").replace("m", ":regional_indicator_m:").replace("n", ":regional_indicator_n:").replace("o", ":regional_indicator_o:").replace("p", ":regional_indicator_p:").replace("q", ":regional_indicator_q:").replace("r", ":regional_indicator_r:").replace("s", ":regional_indicator_s:").replace("t", ":regional_indicator_t:").replace("u", ":regional_indicator_u:").replace("v", ":regional_indicator_v:").replace("w", ":regional_indicator_w:").replace("x", ":regional_indicator_x:").replace("y", ":regional_indicator_y:").replace("z", ":regional_indicator_z:"))   
+            await client.send_message(message.channel, resposta.replace("a", ":regional_indicator_a:"))#.replace("b", ":regional_indicator_b:").replace("c", ":regional_indicator_c:").replace("d", ":regional_indicator_d:").replace("e", ":regional_indicator_e:").replace("f", ":regional_indicator_f:").replace("g", ":regional_indicator_g:").replace("h", ":regional_indicator_h:").replace("i", ":regional_indicator_i:").replace("j", ":regional_indicator_j:").replace("k", ":regional_indicator_k:").replace("l", ":regional_indicator_l:").replace("m", ":regional_indicator_m:").replace("n", ":regional_indicator_n:").replace("o", ":regional_indicator_o:").replace("p", ":regional_indicator_p:").replace("q", ":regional_indicator_q:").replace("r", ":regional_indicator_r:").replace("s", ":regional_indicator_s:").replace("t", ":regional_indicator_t:").replace("u", ":regional_indicator_u:").replace("v", ":regional_indicator_v:").replace("w", ":regional_indicator_w:").replace("x", ":regional_indicator_x:").replace("y", ":regional_indicator_y:").replace("z", ":regional_indicator_z:"))   
         
 
         if message.content.startswith("/discorddott"):
