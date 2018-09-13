@@ -179,9 +179,8 @@ async def on_message(message):
                         "407706417282416641", #Ajudante
                 ]
                 for r in message.author.roles:
-                    if r.id in cargos:
-                        if not cargos:
-                            return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
+                    if not cargos:
+                        return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
 
 
         if message.content.lower().startswith('/juntarnomes'):
