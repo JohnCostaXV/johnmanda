@@ -154,6 +154,8 @@ def MCAPI(site):
        _json = json.loads(site_conectar.content)
        return _json;
 
+       
+
 def zoeira(site, json_retorno):
   site_conectar = requests.get(site)
   if site_conectar.status_code == 200:
@@ -1493,7 +1495,7 @@ async def on_message(message):
 
             site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t={}".format(conquista)
 
-            embed = discord.Embed(color=COR)
+            embed = discord.Embed()
             embed.set_image(url=site)
 
             await client.send_message(message.channel, embed=embed)
