@@ -1486,6 +1486,18 @@ async def on_message(message):
                 await client.delete_message(tst)
             finally:
                 pass
+        
+        if message.content.lower().startswith("/achievement"):
+            args = message.content.split(" ")
+            conquista = " ".join(args[1:])
+
+            site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t={}".format(conquista)
+
+            embed = discord.Embed(color=COR)
+            embed.set_image(url=site)
+
+            await client.send_message(message.channel, embed=embed)
+
 
         if message.content.lower().startswith('/mineinfo'):
             try:
