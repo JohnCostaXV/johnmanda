@@ -257,6 +257,7 @@ async def on_message(message):
             cargos = [
                 # IDs dos cargos:
                 "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
             ]
             for r in message.author.roles:
                 if r.id in cargos:
@@ -267,8 +268,13 @@ async def on_message(message):
                     await client.send_message(canal, "@everyone")
                     embed= discord.Embed(
                         color=COR,
-                        description="**Temporada de aplicação à equipe**\n\nA temporada de aplicação à equipe está aberta novamente! E aí, quer m"
+                        description="**📢 QUER FAZER PARTE DA EQUIPE DO #END?**\n\n📎 Quer fazer parte da nossa equipe? Então aproveite que as vagas estão abertas!\nPreencha o formulário abaixo e em breve entraremos em contato e anunciaremos os novos integrantes da nossa equipe!\n\n📝Formulário: https://bit.ly/Endform"
                     )
+                    embed.set_author(name="End 🌀 (@ServidorEnd)", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                    embed.set_image(url="https://i.imgur.com/f9ti538.jpg")
+                    embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                    embed.timestamp = datetime.datetime.utcnow()
+                    await client.send_message(canal, embed=embed)
 
         if message.content.lower().startswith("/testtest"):
             try:
@@ -1442,7 +1448,7 @@ async def on_message(message):
             embed.set_author(name='Formulários', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(
                 name='Aplicação para a equipe:',
-                value='[Clique aqui!](https://t.co/wuIvHTsoAh)\n',
+                value='[Clique aqui!](https://bit.ly/Endform)\n',
                 inline=False
             )
             embed.add_field(
