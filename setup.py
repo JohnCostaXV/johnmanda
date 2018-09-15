@@ -1535,6 +1535,15 @@ async def on_message(message):
             embed.set_image(url=site)
 
             await client.send_message(message.channel, embed=embed)
+        
+        if message.content.lower().startswith("/testamento"):
+            histo = mojang('https://mc-heads.net/minecraft/profile/JohnnCosta', 'username_history');
+
+            nick_list = "";
+            for nicks in histo['username_history']:
+                nick_list += nicks['name'] + ", "
+
+            await client.send_message(message.channel, nick_list)
 
 
         if message.content.lower().startswith('/mineinfo'):
@@ -1549,9 +1558,9 @@ async def on_message(message):
                 #skinfile
                 skin = "https://use.gameapis.net/mc/images/rawskin/{}".format(uuid)
 
-                nicknames = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_changes');
+                nicknames = mojang('https://mc-heads.net/minecraft/profile/' + uuid, 'username_changes');
                 
-                histo = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_history');
+                histo = mojang('https://mc-heads.net/minecraft/profile/' + uuid, 'username_history');
 
                 nick_list = "";
                 for nicks in histo['username_history']:
