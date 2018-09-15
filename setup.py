@@ -1556,12 +1556,12 @@ async def on_message(message):
 
                 nick_list = "";
                 for nicks in histo:
-                    nick_list += nicks['name'] + "\n -"
+                    nick_list += nicks['name'] + ", "
 
                 embed = discord.Embed(
                     title='Informações:',
                     color=COR,
-                    description="**Nickname**: {}\n**UUID**: {}\n**Mudanças de nickname**: {}\n**Histórico de nomes**:\n`- {}`\n\n**Skin**: [Download](".format(nome, uuid, nicknames, nick_list) + skin + ")"
+                    description="**Nickname**: {}\n**UUID**: {}\n**Mudanças de nickname**: {}\n**Histórico de nomes**:\n`{}`\n\n**Skin**: [Download](".format(nome, uuid, nicknames, nick_list) + skin + ")"
                 )
                 embed.timestamp = datetime.datetime.utcnow()
                 embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
