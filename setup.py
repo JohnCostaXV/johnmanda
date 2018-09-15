@@ -1526,11 +1526,12 @@ async def on_message(message):
                     await client.send_message(message.channel, ''+emojified+'')
         
         if message.content.lower().startswith("/achievement"):
-            args = message.content.split(" ")
-            conquista = " ".join(args[1:])
+            remover_mineinfo = message.content.replace("/achievement", "")
+            separar = remover_mineinfo.split(" ", 1)
+            texto = "%s" % "".join(separar[1:])
             exceder = ''
 
-            site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t={}".format(conquista)
+            site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t={}".format(texto)
 
             if conquista == '':
                 await client.send_message(message.channel, "Envie o texto para aparecer na conquista! Exemplo: `/achievement Ola`")
