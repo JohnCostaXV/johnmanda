@@ -1525,7 +1525,7 @@ async def on_message(message):
                 uuid = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'id');
                 nicknames = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_changes');
                 #skinfile
-                skin = "https://use.gameapis.net/mc/images/rawskin/{}".format(uuid)
+                skin = "https://mc-heads.net/download/{}".format(uuid)
 
                 embed = discord.Embed(
                     title='Informações:',
