@@ -1744,7 +1744,7 @@ async def on_message(message):
             finally:
                 pass
 
-        if message.content.lower().startswith("/clear"):
+        if message.content.lower().startswith("/limpar"):
             cargos = [
                 # IDs dos cargos:
                 "407677666750365706", #Diretor
