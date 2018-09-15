@@ -1528,7 +1528,7 @@ async def on_message(message):
         if message.content.lower().startswith("/achievement"):
             #remover_mineinfo = message.content.replace("/achievement", "")
             #separar = remover_mineinfo.split(" ", 1)
-            #texto = "%s" % "".join(separar[1:])
+            texto = "%s" % "".join(separar[1:])
             exceder = ''
 
             site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t=Olá tudo bom?"#.format(texto)
