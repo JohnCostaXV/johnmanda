@@ -1536,14 +1536,6 @@ async def on_message(message):
 
             await client.send_message(message.channel, embed=embed)
         
-        if message.content.lower().startswith("/testamento"):
-            histo = mojang('https://mc-heads.net/minecraft/profile/JohnnCosta', 'username_history');
-
-            nick_list = "";
-            for nicks in histo['username_history']:
-                nick_list += nicks['name'] + "\n"
-
-            await client.send_message(message.channel, str(nick_list))
 
 
         if message.content.lower().startswith('/mineinfo'):
@@ -1563,8 +1555,8 @@ async def on_message(message):
                 histo = mojang('https://mc-heads.net/minecraft/profile/' + uuid, 'username_history');
 
                 nick_list = "";
-                for nicks in histo['username_history']:
-                    nick_list += nicks['name'] + ", "
+                for nicks in histo:
+                    nick_list += nicks['name'] + "\n"
 
                 embed = discord.Embed(
                     title='Informações:',
