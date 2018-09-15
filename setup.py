@@ -1528,13 +1528,24 @@ async def on_message(message):
         if message.content.lower().startswith("/achievement"):
             args = message.content.split(" ")
             conquista = " ".join(args[1:])
+            exceder = ''
 
             site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t={}".format(conquista)
+
+            if conquista == '':
+                await client.send_message(message.channel, "Envie o texto para aparecer na conquista! Exemplo: `/achievement Ola`")
+                return
+            
+            if len(exceder) + 0 >= 15:
+                await client.send_message(message.channel, 'O texto de conquista excedeu o máximo de caracteres!')
+                return
 
             embed = discord.Embed()
             embed.set_image(url=site)
 
             await client.send_message(message.channel, embed=embed)
+
+
         
 
 
