@@ -11,6 +11,7 @@ import os
 import re
 import json
 import requests
+import urllib.request as req
 import base64
 
 RANDOM_AUTO = ['**TWITTER**\n\nSiga nosso twitter para ter informações exclusívas da nossa rede de servidores End. - https://twitter.com/ServidorEnd']
@@ -1666,10 +1667,10 @@ async def on_message(message):
                 uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
                 #Corpo
                 corpo = "https://mc-heads.net/body/{}".format(uuid) 
-                skin = discord.Embed(color=COR)
-                skin.set_image(url=corpo)
 
-                await client.send_message(message.channel, embed = skin)
+                skin = req.urlretrieve(corpo, "{}.png".format(nome))
+
+                await client.send_file(message.channel, skin)
             except IndexError:
                 embed = discord.Embed(
                     title='Comando incorreto!',
