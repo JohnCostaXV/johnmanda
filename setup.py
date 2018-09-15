@@ -1504,7 +1504,8 @@ async def on_message(message):
                 pass
 
         if message.content.lower().startswith("/emojizar"):
-            text = message.content.split(" ")
+            args = message.content.split(" ")
+            text = " ".join(args[1:])
             emojified = '⬇ Copie e cole aqui: ⬇\n'
             formatted = re.sub(r'[^A-Za-z ]+', "", text).lower()
             if text == '':
