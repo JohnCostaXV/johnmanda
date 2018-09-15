@@ -1524,7 +1524,15 @@ async def on_message(message):
                     return
                 else:
                     await client.send_message(message.channel, ''+emojified+'')
-        
+
+        if message.content.lower().startswith("/achi"):
+            site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t=Olá tudo bom?"
+
+            embed = discord.Embed()
+            embed.set_image(url=site)
+
+            await client.send_message(message.channel, embed=embed)
+
         if message.content.lower().startswith("/achievement"):
             #remover_mineinfo = message.content.replace("/achievement", "")
             #separar = remover_mineinfo.split(" ", 1)
