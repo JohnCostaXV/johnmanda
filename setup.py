@@ -1672,6 +1672,7 @@ async def on_message(message):
 
                 await client.send_file(message.channel, skin)
 
+                await asyncio.sleep(10)
                 os.remove("a3.png")
             except IndexError:
                 embed = discord.Embed(
