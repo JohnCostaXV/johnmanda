@@ -1506,7 +1506,7 @@ async def on_message(message):
         if message.content.lower().startswith("/emojizar"):
             args = message.content.split(" ")
             text = " ".join(args[1:])
-            emojified = text
+            emojified = " "
             formatted = re.sub(r'[^A-Za-z ]+', "", text).lower()
             if text == '':
                 await client.send_message(message.channel, 'Lembre-se de dizer o que você deseja converter!')
