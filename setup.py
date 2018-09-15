@@ -187,14 +187,6 @@ async def on_message(message):
             except IndexError:
                 await client.send_message(message.channel, "{} Você não mencionou dois usuarios".format(message.author.mention))
 
-
-        if message.content.lower().startswith("/emojizar"):
-            args = message.content.split(" ")
-            resposta = " ".join(args[1:])
-
-            await client.send_message(message.channel, "{}".format(resposta.replace("A", " :regional_indicator_a: ").replace("b", " :regional_indicator_b: ").replace("c", " :regional_indicator_c: ").replace("d", " :regional_indicator_d: ").replace("e", " :regional_indicator_e: ").replace("f", " :regional_indicator_f: ").replace("g", " :regional_indicator_g: ").replace("h", " :regional_indicator_h: ").replace("i", " :regional_indicator_i: ").replace("j", " :regional_indicator_j: ").replace("k", " :regional_indicator_k: ").replace("l", " :regional_indicator_l: ").replace("m", " :regional_indicator_m: ").replace("n", " :regional_indicator_n: ").replace("o", " :regional_indicator_o: ").replace("p", " :regional_indicator_p: ").replace("q", " :regional_indicator_q: ").replace("r", " :regional_indicator_r: ").replace("s", " :regional_indicator_s: ").replace("t", " :regional_indicator_t: ").replace("u", " :regional_indicator_u: ").replace("v", " :regional_indicator_v: ").replace("w", " :regional_indicator_w: ").replace("x", " :regional_indicator_x: ").replace("y", " :regional_indicator_y: ").replace("z", " :regional_indicator_z: ").replace("1", "⃣").replace("2", "⃣").replace("3", "3⃣").replace("4", "4⃣").replace("5", "5⃣").replace("6", "6⃣").replace("7", "7⃣").replace("8", "8⃣").replace("9", "9⃣").replace("0", "0⃣").replace("#", "#⃣")))   
-        
-
         if message.content.startswith("/discorddott"):
             cargos = [
                 # IDs dos cargos:
@@ -1100,7 +1092,7 @@ async def on_message(message):
                                 '**DIVERSOS:**\n\n'
                                 '**/info** [usuário] » Veja as informações de um usuário.\n\n'
                                 '**/end** » Veja as informações do servidor.\n\n'
-                                '**/emojizar** [texto] » Transforme a mensagem em emojis.\n\n'
+                                '**/juntarnomes** [usuário1] [usuário2] » Junte o nome de dois usuários.\n\n'
                                 '**/dado** » Role um dado de um número de 1 a 6.\n\n'
                                 '**/avatar** [usuário] » Veja o avatar seu ou de um membro.\n\n'
                                 '**/convite** » Gere um convite para convidar todos para nossa comunidade.\n\n'
