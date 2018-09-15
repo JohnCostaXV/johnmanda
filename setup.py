@@ -1596,12 +1596,7 @@ async def on_message(message):
                 
                 coco = discord.Embed(color=COR)
                 coco.set_image(url=cabeca)
-
-                url = json.loads(base64.b64decode(requests.get('https://sessionserver.mojang.com/session/minecraft/profile/{}'.format(uuid)).json()['properties'][0]['value']).decode('utf-8'))['textures']['SKIN']['url']
-                skin = requests.get(url).content
-
-                await client.send_file(message.channel, skin, filename="123.png")
-
+                await asyncio.sleep(1)
                 await client.send_message(message.channel, embed = coco)
                 
             except IndexError:
