@@ -1539,11 +1539,11 @@ async def on_message(message):
         if message.content.lower().startswith("/testamento"):
             histo = mojang('https://mc-heads.net/minecraft/profile/JohnnCosta', 'username_history');
 
-            nick_list = str("");
+            nick_list = "";
             for nicks in histo['username_history']:
                 nick_list += nicks['name'] + "\n"
 
-            await client.send_message(message.channel, nick_list)
+            await client.send_message(message.channel, str(nick_list))
 
 
         if message.content.lower().startswith('/mineinfo'):
