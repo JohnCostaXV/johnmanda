@@ -1556,7 +1556,7 @@ async def on_message(message):
 
                 nick_list = "";
                 for nicks in histo:
-                    nick_list += nicks['name'] + ", "
+                    nick_list += nicks['name'] + "\n "
 
                 embed = discord.Embed(
                     title='Informações:',
