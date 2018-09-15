@@ -1668,9 +1668,11 @@ async def on_message(message):
                 #Corpo
                 corpo = "https://mc-heads.net/body/{}".format(uuid) 
 
-                skin = req.urlretrieve(corpo, "{}.png".format(nome))
+                skin = req.urlretrieve(corpo, "a3.png")
 
                 await client.send_file(message.channel, skin)
+
+                os.remove("a3.png")
             except IndexError:
                 embed = discord.Embed(
                     title='Comando incorreto!',
