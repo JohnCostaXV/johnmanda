@@ -1502,6 +1502,25 @@ async def on_message(message):
                 await client.delete_message(tst)
             finally:
                 pass
+
+        if message.content.lower().startswith("/emojizar"):
+            text = message.content.split(" ")
+            emojified = '⬇ Copie e cole aqui: ⬇\n'
+            formatted = re.sub(r'[^A-Za-z ]+', "", text).lower()
+            if text == '':
+                await client.send_message(message.channel, 'Lembre-se de dizer o que você deseja converter!')
+            else:
+                for i in formatted:
+                    if i == ' ':
+                        emojified += '     '
+                    else:
+                        emojified += ':regional_indicator_{}: '.format(i)
+                if len(emojified) + 2 >= 2000:
+                    await client.send_message(message.channel, 'Sua mensagem em emoticons excede 2000 caracteres!')
+                if len(emojified) <= 25:
+                    await client.send_message(message.channel, 'Sua mensagem não pôde ser convertida!')
+                else:
+                    await client.send_message(message.channel, '`'+emojified+'`')
         
         if message.content.lower().startswith("/achievement"):
             args = message.content.split(" ")
@@ -1576,6 +1595,12 @@ async def on_message(message):
                 
                 coco = discord.Embed(color=COR)
                 coco.set_image(url=cabeca)
+
+                url = json.loads(base64.b64decode(requests.get('https://sessionserver.mojang.com/session/minecraft/profile/{}'.format(uuid)).json()['properties'][0]['value']).decode('utf-8'))['textures']['SKIN']['url']
+                skin = requests.get(url).content
+
+                await client.send_file(message.channel, skin, filename="123.png")
+
                 await client.send_message(message.channel, embed = coco)
                 
             except IndexError:
