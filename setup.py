@@ -1518,8 +1518,10 @@ async def on_message(message):
                         emojified += ':regional_indicator_{}: '.format(i)
                 if len(emojified) + 1 >= 50:
                     await client.send_message(message.channel, 'Sua mensagem em emoticons excede 100 caracteres!')
+                    return
                 if len(emojified) <= 25:
                     await client.send_message(message.channel, 'Sua mensagem não pôde ser convertida!')
+                    return
                 else:
                     await client.send_message(message.channel, ''+emojified+'')
         
