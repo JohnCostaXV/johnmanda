@@ -1525,21 +1525,13 @@ async def on_message(message):
                 else:
                     await client.send_message(message.channel, ''+emojified+'')
 
-        if message.content.lower().startswith("/achi"):
-            site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t=Olá tudo bom?"
-
-            embed = discord.Embed()
-            embed.set_image(url=site)
-
-            await client.send_message(message.channel, embed=embed)
-
         if message.content.lower().startswith("/achievement"):
-            #remover_mineinfo = message.content.replace("/achievement", "")
-            #separar = remover_mineinfo.split(" ", 1)
+            remover_mineinfo = message.content.replace("/achievement", "")
+            separar = remover_mineinfo.split(" ", 1)
             texto = "%s" % "".join(separar[1:])
             exceder = ''
 
-            site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t=Olá tudo bom?"#.format(texto)
+            site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t={}".format(texto)
 
             if texto == '':
                 await client.send_message(message.channel, "Envie o texto para aparecer na conquista! Exemplo: `/achievement Ola`")
