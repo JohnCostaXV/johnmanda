@@ -1543,14 +1543,24 @@ async def on_message(message):
 
                 #UUID
                 uuid = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'id');
+                
+                
                 nicknames = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_changes');
+                
+                histo = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_history');
+
+                historico_de_nome = "";
+
+                for hist in histo["username_history"]:
+                    historico_de_nome += hist["name"]
+                
                 #skinfile
                 skin = "https://mc-heads.net/download/{}".format(uuid)
 
                 embed = discord.Embed(
                     title='Informações:',
                     color=COR,
-                    description="**Nickname**: {}\n**UUID**: {}\n**Mudanças de nickname**: {}\n\n**Skin**: [Download](".format(nome, uuid, nicknames) + skin + ")"
+                    description="**Nickname**: {}\n**UUID**: {}\n**Mudanças de nickname**: {}\n\n**Skin**: [Download](".format(nome, uuid, nicknames) + skin + ")\n\n**Historico de nomes**: {}".format(historico_de_nome)
                 )
                 embed.timestamp = datetime.datetime.utcnow()
                 embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
