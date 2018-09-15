@@ -1670,7 +1670,7 @@ async def on_message(message):
 
                 skin = req.urlretrieve(corpo, "a3.png")
 
-                await client.send_file(message.channel, skin)
+                await client.send_file(message.channel, corpo, filename="{}.png".format(nome))
 
                 await asyncio.sleep(10)
                 os.remove("a3.png")
