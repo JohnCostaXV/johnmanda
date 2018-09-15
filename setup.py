@@ -1565,6 +1565,7 @@ async def on_message(message):
                 )
                 embed.timestamp = datetime.datetime.utcnow()
                 embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
+                embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
                 await client.send_message(message.channel, embed=embed)
             except IndexError:
                 embed1 = discord.Embed(
