@@ -1522,14 +1522,15 @@ async def on_message(message):
                 nome = "%s" % "".join(separar[1])
 
                 #UUID
-                uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
+                uuid = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'id');
+                nicknames = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_changes');
                 #skinfile
                 skin = "https://use.gameapis.net/mc/images/rawskin/{}".format(uuid)
 
                 embed = discord.Embed(
                     title='Informações:',
                     color=COR,
-                    description="**Nickname**: {}\n**UUID**: {}\n\n**Skin**: [Download](".format(nome, uuid) + skin + ")"
+                    description="**Nickname**: {}\n**UUID**: {}\n**Mudanças de nickname**: {}\n\n**Skin**: [Download](".format(nome, uuid, nicknames) + skin + ")"
                 )
                 embed.timestamp = datetime.datetime.utcnow()
                 embed.set_author(name='Perfil de Minecraft:', icon_url=message.server.icon_url)
@@ -1571,7 +1572,7 @@ async def on_message(message):
                 #UUID
                 uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
                 #Cabeca
-                cabeca = "https://use.gameapis.net/mc/images/avatar/{}".format(uuid)
+                cabeca = "https://mc-heads.net/head/{}".format(uuid)
                 
                 coco = discord.Embed(color=COR)
                 coco.set_image(url=cabeca)
@@ -1620,7 +1621,7 @@ async def on_message(message):
                 #UUID
                 uuid = mojang('https://api.mojang.com/users/profiles/minecraft/' + nome, 'id');
                 #Corpo
-                corpo = "https://use.gameapis.net/mc/images/skin/{}".format(uuid) 
+                corpo = "https://mc-heads.net/body/{}".format(uuid) 
                 skin = discord.Embed(color=COR)
                 skin.set_image(url=corpo)
 
