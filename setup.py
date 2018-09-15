@@ -1506,7 +1506,7 @@ async def on_message(message):
         if message.content.lower().startswith("/emojizar"):
             args = message.content.split(" ")
             text = " ".join(args[1:])
-            emojified = " "
+            emojified = ''
             formatted = re.sub(r'[^A-Za-z ]+', "", text).lower()
             if text == '':
                 await client.send_message(message.channel, 'Lembre-se de dizer o que você deseja converter!')
@@ -1521,7 +1521,7 @@ async def on_message(message):
                 if len(emojified) <= 25:
                     await client.send_message(message.channel, 'Sua mensagem não pôde ser convertida!')
                 else:
-                    await client.send_message(message.channel, '`'+emojified+'`')
+                    await client.send_message(message.channel, ''+emojified+'')
         
         if message.content.lower().startswith("/achievement"):
             args = message.content.split(" ")
