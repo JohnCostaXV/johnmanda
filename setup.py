@@ -1546,6 +1546,9 @@ async def on_message(message):
                 #UUID
                 uuid = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'id');
                 
+                #skinfile
+                skin = "https://mc-heads.net/download/{}".format(uuid)
+                
                 nicknames = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_changes');
                 
                 histo = mojang('https://mc-heads.net/minecraft/profile/' + nome, 'username_history');
@@ -1553,9 +1556,6 @@ async def on_message(message):
                 nick_list = "";
                 for nicks in histo['username_history']:
                     nick_list += nicks['name'] + ", "
-                
-                #skinfile
-                skin = "https://mc-heads.net/download/{}".format(uuid)
 
                 embed = discord.Embed(
                     title='Informações:',
