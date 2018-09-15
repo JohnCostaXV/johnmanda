@@ -1668,12 +1668,10 @@ async def on_message(message):
                 #Corpo
                 corpo = "https://mc-heads.net/body/{}".format(uuid) 
 
-                skin = req.urlretrieve(corpo, "a3.png")
-
-                await client.send_file(message.channel, corpo, filename="{}.png".format(nome))
-
-                await asyncio.sleep(10)
-                os.remove("a3.png")
+                coco = discord.Embed(color=COR)
+                coco.set_image(url=corpo)
+                await asyncio.sleep(1)
+                await client.send_message(message.channel, embed = coco)
             except IndexError:
                 embed = discord.Embed(
                     title='Comando incorreto!',
