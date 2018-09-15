@@ -1529,7 +1529,6 @@ async def on_message(message):
             remover_mineinfo = message.content.replace("/achievement", "")
             separar = remover_mineinfo.split(" ", 1)
             texto = "%s" % "".join(separar[1:])
-            exceder = ''
 
             site = "https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Conquista+desbloqueada%21&t={}".format(texto.replace(" ", "%20"))
 
@@ -1537,7 +1536,7 @@ async def on_message(message):
                 await client.send_message(message.channel, "Envie o texto para aparecer na conquista! Exemplo: `/achievement Ola`")
                 return
             
-            if len(exceder) + 0 >= 15:
+            if len(texto) + 0 >= 15:
                 await client.send_message(message.channel, 'O texto de conquista excedeu o máximo de caracteres!')
                 return
 
