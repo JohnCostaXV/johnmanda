@@ -114,7 +114,7 @@ async def on_reaction_add(reaction, user):
 
      await asyncio.sleep(1)
      canal = client.get_channel("407682154626023425")
-     await client.send_message(message.channel, user.mention)
+     await client.send_message(canal, user.mention)
 
 
 @client.event
@@ -199,6 +199,8 @@ async def on_message(message):
                         embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
                         embed.timestamp = datetime.datetime.utcnow()
                         react = await client.send_message(message.channel, embed=embed)
+                        await client.add_reaction(react, "👍")
+                        await client.add_reaction(react, "👎")
                         await asyncio.sleep(1)
                         await client.delete_message(message)
             except IndexError:
