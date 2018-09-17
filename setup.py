@@ -193,7 +193,7 @@ async def on_message(message):
                         
 
                         embed = discord.Embed(
-                            title="`Votação`",
+                            title="`📋 Votação`",
                             color=COR,
                             description="**Enquete**: {}".format(resposta)
                         )
