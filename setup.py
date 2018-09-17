@@ -184,6 +184,7 @@ async def on_message(message):
                     # IDs dos cargos:
                     "407677666750365706", #Diretor
                     "417426253658849281", #Gerente
+                    "423960269820264448"
                 ]
                 for r in message.author.roles:
                     if r.id in cargos:
