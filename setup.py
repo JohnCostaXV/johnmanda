@@ -196,7 +196,7 @@ async def on_message(message):
                             title="`{}`".format(resposta),
                             color=COR
                         )
-                        embed.set_author(name="📋  Votação")
+                        embed.set_author(name="📋 | ENQUETE")
                         embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
