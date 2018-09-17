@@ -193,12 +193,13 @@ async def on_message(message):
                         
 
                         embed = discord.Embed(
-                            title="`📋 Votação`",
+                            title="`📋 | Votação`",
                             color=COR,
                             description="**Enquete**: {}".format(resposta)
                         )
                         embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
                         embed.timestamp = datetime.datetime.utcnow()
+                        embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
                         react = await client.send_message(message.channel, embed=embed)
                         await client.add_reaction(react, "👍")
                         await client.add_reaction(react, "👎")
@@ -210,7 +211,7 @@ async def on_message(message):
                     description="**Comando incorreto!**\n\nUse a forma correta `/votação [enquete]`"
                 )
                 error.timestamp = datetime.datetime.utcnow()
-                embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
+                error.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
                 msg = await client.send_message(message.channel, embed=error)
                 await asyncio.sleep(10)
                 await client.delete_message(msg)
