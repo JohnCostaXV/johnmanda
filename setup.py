@@ -112,6 +112,10 @@ async def on_reaction_add(reaction, user):
      await client.remove_reaction(msg, "✅", user)
      await client.delete_message(msg)
 
+     await asyncio.sleep(1)
+     canal = client.get_channel("407682154626023425")
+     await client.send_message(message.channel, user.mention)
+
 
 @client.event
 async def randommessage():
@@ -173,6 +177,45 @@ async def on_message(message):
             if listadc in message.content.lower():
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
+
+        if message.content.lower().startswith("/votação"):
+            try:
+                cargos = [
+                    # IDs dos cargos:
+                    "407677666750365706", #Diretor
+                    "417426253658849281", #Gerente
+                ]
+                for r in message.author.roles:
+                    if r.id in cargos:
+                        args = message.content.split(" ")
+                        resposta = " ".join(args[1:])
+                        
+
+                        embed = discord.Embed(
+                            title="`Votação`",
+                            color=COR,
+                            description="**Enquete**: {}".format(resposta)
+                        )
+                        embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
+                        embed.timestamp = datetime.datetime.utcnow()
+                        react = await client.send_message(message.channel, embed=embed)
+                        await asyncio.sleep(1)
+                        await client.delete_message(message)
+            except IndexError:
+                error = discord.Embed(
+                    color=COR,
+                    description="**Comando incorreto!**\n\nUse a forma correta `/votação [enquete]`"
+                )
+                error.timestamp = datetime.datetime.utcnow()
+                embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
+                msg = await client.send_message(message.channel, embed=error)
+                await asyncio.sleep(10)
+                await client.delete_message(msg)
+            except:
+                await client.send_message(message.channel, "Sem permissão!")
+            finally:
+                pass
+
 
 
         if message.content.lower().startswith('/juntarnomes'):
@@ -1647,6 +1690,8 @@ async def on_message(message):
                 await client.delete_message(msg1)
             finally:
                 pass
+
+        
 
         if message.content.lower().startswith('/ping'):
             channel = message.channel
