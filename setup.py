@@ -114,8 +114,9 @@ async def on_reaction_add(reaction, user):
 
      await asyncio.sleep(1)
      canal = client.get_channel("407682154626023425")
-     await client.send_message(canal, user.mention)
-
+     delete = await client.send_message(canal, user.mention)
+     await asyncio.sleep(3)
+     await client.delete_message(delete)
 
 @client.event
 async def randommessage():
