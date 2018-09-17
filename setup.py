@@ -133,11 +133,11 @@ async def on_ready():
     print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
     while True:
-        await client.change_presence(game=discord.Game(name="Online com mais de {} membros!".format(str(len(set(client.get_all_members())))), type=1))
+        await client.change_presence(game=discord.Game(name="Online com mais de {} membros!".format(str(len(set(client.get_all_members()))))))
         await asyncio.sleep(100)
         await client.change_presence(game=discord.Game(name="/comandos", url="https://www.twitch.tv/johncostaxv", type=1))
         await asyncio.sleep(100)
-        await client.change_presence(game=discord.Game(name="jogar.end-mc.com", type=1))
+        await client.change_presence(game=discord.Game(name="jogar.end-mc.com"))
         await asyncio.sleep(100)
 
 async def tutorial_uptime():
