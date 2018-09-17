@@ -133,11 +133,11 @@ async def on_ready():
     print("Todos direitos {}.".format("reservados"))
     print("Copyright ©")
     while True:
-        await client.change_presence(game=discord.Game(name="Online com mais de {} membros!".format(str(len(set(client.get_all_members())))), url="https://www.twitch.tv/johncostaxv", type=1))
+        await client.change_presence(game=discord.Game(name="Online com mais de {} membros!".format(str(len(set(client.get_all_members())))), type=1))
         await asyncio.sleep(100)
         await client.change_presence(game=discord.Game(name="/comandos", url="https://www.twitch.tv/johncostaxv", type=1))
         await asyncio.sleep(100)
-        await client.change_presence(game=discord.Game(name="jogar.end-mc.com", url="https://www.twitch.tv/johncostaxv", type=1))
+        await client.change_presence(game=discord.Game(name="jogar.end-mc.com", type=1))
         await asyncio.sleep(100)
 
 async def tutorial_uptime():
@@ -193,10 +193,10 @@ async def on_message(message):
                         
 
                         embed = discord.Embed(
-                            title="`📋 | Votação`",
-                            color=COR,
-                            description="**Enquete**: {}".format(resposta)
+                            title="`{}`".format(resposta),
+                            color=COR
                         )
+                        embed.set_author(name="📋  Votação")
                         embed.set_footer(text="Comando por: {}".format(message.author.name), icon_url=message.author.avatar_url)
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_thumbnail(url="https://i.imgur.com/1iJeEea.jpg")
