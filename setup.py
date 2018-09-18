@@ -174,31 +174,7 @@ async def on_message(message):
             if listadc in message.content.lower():
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
-
-        if message.content.lower().startswith("/setarcargo"):
-            try:
-                cargos = [
-                    # IDs dos cargos:
-                    "407677666750365706", #Diretor
-                    "417426253658849281", #Gerente
-                    "407678188773179417", #Administrador
-                ]
-                for r in message.author.roles:
-                    if r.id in cargos:
-                        await client.delete_message(message)
-                        user = message.mentions[0]
-                        args = message.content.split(" ")
-                        fun = " ".join(args[1])
-                        role = discord.utils.get(message.server.roles, name=fun)
-                        await client.add_roles(user, role)
-                        await client.send_message(message.channel, "Cargo setado com sucesso!")
-            except IndexError:
-                await client.send_message(message.channel, "{}, você precisa mencionar o membro que deseja setar o cargo.".format(message.author.mention))
-            except:
-                await client.send_message(message.channel, "{}, o cargo não foi encontrado.".format(message.author.mention))
-            finally:
-                pass
-
+                    
         if message.content.lower().startswith("/votação"):
             try:
                 cargos = [
