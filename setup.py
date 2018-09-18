@@ -166,6 +166,8 @@ def zoeira(site, json_retorno):
   else:
      return
 
+lista = ["Filho da puta", "Servidor lixo", "Staff lixo"]
+
 @client.event
 async def on_message(message):
     if message.server is not None:
@@ -174,6 +176,10 @@ async def on_message(message):
             if listadc in message.content.lower():
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
+        
+        for palavra in lista:
+            if palavra in message.content.lower():
+                return await client.send_message(message.channel, "Meça suas palavras brother.")
 
         if message.content.lower().startswith("/votação"):
             try:
