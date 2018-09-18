@@ -187,7 +187,9 @@ async def on_message(message):
                     if r.id in cargos:
                         await client.delete_message(message)
                         user = message.mentions[0]
-                        role = discord.utils.get(message.server.roles, name="Ajudante")
+                        args = message.content.split(" ")
+                        fun = " ".join(args[1])
+                        role = discord.utils.get(message.server.roles, name=fun)
                         await client.add_roles(user, role)
                         await client.send_message(message.channel, "Cargo setado com sucesso!")
             except IndexError:
