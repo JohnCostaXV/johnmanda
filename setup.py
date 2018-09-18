@@ -174,7 +174,7 @@ async def on_message(message):
             if listadc in message.content.lower():
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
-                    
+
         if message.content.lower().startswith("/votação"):
             try:
                 cargos = [
@@ -231,64 +231,6 @@ async def on_message(message):
                 await client.send_message(message.channel,"Junção do nome de {} com {} = **{}**".format(message.mentions[0].mention,message.mentions[1].mention, cont7))
             except IndexError:
                 await client.send_message(message.channel, "{} Você não mencionou dois usuarios".format(message.author.mention))
-
-        if message.content.startswith("/discorddott"):
-            cargos = [
-                # IDs dos cargos:
-                "407677666750365706", #Diretor
-            ]
-            for r in message.author.roles:
-                if r.id in cargos:
-                    await client.send_message(message.channel, "@everyone")
-                    await client.delete_message(message)
-                    embed = discord.Embed(
-                        color=COR,
-                        description="💬 Segue a gente e quer ficar por dentro de todas as novidades do servidor além de bater um papo com nossa comunidade?\n\n📢 Entre em nosso Discord agora mesmo!\n💥 http://discord.me/redeend\n\n[Clique aqui](https://twitter.com/ServidorEnd/status/1034818019611037696) para ver o tweet."
-                    )
-                    embed.set_author(name="End 🌀 (@ServidorEnd)", icon_url="https://i.imgur.com/1iJeEea.jpg")
-                    embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                    embed.timestamp = datetime.datetime.utcnow()
-                    embed.set_image(url="https://i.imgur.com/sFPJtts.png")
-                    await client.send_message(message.channel, embed=embed)
-        
-        if message.content.lower().startswith("/esorteio"):
-            cargos = [
-                # IDs dos cargos:
-                "407677666750365706", #Diretor
-            ]
-            for r in message.author.roles:
-                if r.id in cargos:
-                    await client.delete_message(message)
-                    canal = client.get_channel("448326186095869953")
-                    await client.send_message(canal, "@everyone")
-                    embed = discord.Embed(
-                        color=COR,
-                        description="Participe de nosso sorteio, faça todos os requisitos. Basta [clicar aqui](https://twitter.com/ServidorEnd/status/1017958913797476353) e participar!"
-                    )
-                    embed.set_author(name="End 🌀 (@ServidorEnd)", icon_url="https://i.imgur.com/1iJeEea.jpg")
-                    embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                    embed.timestamp = datetime.datetime.utcnow()
-                    await client.send_message(canal, embed=embed)
-
-        if message.content.lower().startswith("/ebuild"):
-            cargos = [
-                # IDs dos cargos:
-                "407677666750365706", #Diretor
-            ]
-            for r in message.author.roles:
-                if r.id in cargos:
-                    await client.delete_message(message)
-                    canal = client.get_channel("448326186095869953")
-                    await client.send_message(canal, "@everyone")
-                    embed = discord.Embed(
-                        color=COR,
-                        description="Estamos com vagas para o cargo Construtor! Para se aplicar, basta [clicar aqui](https://docs.google.com/forms/d/e/1FAIpQLSeDDlHFhtHD-7Zsp6zrJs5UHf0lTPPL5HpWWeGI24Sf9U5w2Q/viewform)!"
-                    )
-                    embed.set_author(name="End informa:", icon_url="https://i.imgur.com/1iJeEea.jpg")
-                    embed.set_footer(text="Enviado por: {}".format(message.author.name), icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                    embed.set_image(url="https://pbs.twimg.com/media/Dh8UfXjW0AEps6n.jpg")
-                    embed.timestamp = datetime.datetime.utcnow()
-                    await client.send_message(canal, embed=embed)
 
         if message.content.startswith("/voltavaga"):
             cargos = [
@@ -1146,13 +1088,13 @@ async def on_message(message):
                                 '**/youtuber** » Veja os requisitos para ter tag youtuber.\n\n'
                                 '**/formulário** » Veja os formulários disponíveis do servidor.\n\n'
                                 '**/ip** » Veja o IP de conexão ao servidor.\n\n'
-                                '**/enviar** [dúvida] » Enviar uma dúvida para a equipe.\n\n'
                                 '**/moeda** » Brinque de cara ou coroa.\n\n\n'
                                 '**MINECRAFT:**\n\n'
                                 '**/mineinfo** [nickname] » Envia informações de um usuário.\n\n'
                                 '**/skin** [nickname] » Veja a skin de um usuário.\n\n'
                                 '**/head** [nickname] » Veja a cabeça da skin de um usuário.\n\n\n'
                                 '**UTILITÁRIOS:**\n\n'
+                                '**/enviar** [dúvida] » Enviar uma dúvida para a equipe.\n\n'
                                 '**/ativarvip** [nickname] | [rank] | [prova] » Crie uma solicitação do seu rank no Discord.\n\n'
                                 '**/revisão** [nickname] | [motivo] | [por quê está irregular?] » Crie uma revisão de seu banimento.\n\n'
                                 '**/reportar** [usuário/nickname] | [motivo] | [prova] » Denúncie um usuário do discord ou do servidor.\n\n'
