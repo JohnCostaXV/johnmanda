@@ -112,12 +112,6 @@ async def on_reaction_add(reaction, user):
      await client.remove_reaction(msg, "✅", user)
      await client.delete_message(msg)
 
-     await asyncio.sleep(1)
-     canal = client.get_channel("407682154626023425")
-     delete = await client.send_message(canal, user.mention)
-     await asyncio.sleep(3)
-     await client.delete_message(delete)
-
 @client.event
 async def randommessage():
     canal = client.get_channel('407669684616560650')
@@ -180,6 +174,28 @@ async def on_message(message):
             if listadc in message.content.lower():
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
+
+        if message.content.lower().startswith("/setarcargo"):
+            try:
+                cargos = [
+                    # IDs dos cargos:
+                    "407677666750365706", #Diretor
+                    "417426253658849281", #Gerente
+                    "407678188773179417", #Administrador
+                ]
+                for r in message.author.roles:
+                    if r.id in cargos:
+                        args = message.content.split(" ")
+                        membro = message.mentions[0]
+                        role = discord.utils.get(message.server.roles, name=" ".join(args[2]))
+                        await client.add_roles(membro, role)
+                        await client.send_message(message.channel, "Cargo setado com sucesso!")
+            except IndexError:
+                await client.send_message(message.channel, "{}, você precisa mencionar o membro que deseja setar o cargo.".format(message.author.mention))
+            except:
+                await client.send_message(message.channel, "{}, o cargo não foi encontrado.".format(message.author.mention))
+            finally:
+                pass
 
         if message.content.lower().startswith("/votação"):
             try:
