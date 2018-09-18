@@ -166,14 +166,8 @@ def zoeira(site, json_retorno):
   else:
      return
 
-lista = ["Filho da puta", "Servidor lixo", "Staff lixo"]
-
 @client.event
 async def on_message(message):
-    for palavra in lista:
-        if palavra in message.content.lower():
-            return await client.send_message(message.channel, "Você não pode falar isso aqui cara.")
-
     if message.server is not None:
         dcs = ["discord.gg/", "discord.gg//", "https://discord.gg/"]
         for listadc in dcs:
