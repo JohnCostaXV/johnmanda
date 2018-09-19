@@ -1380,36 +1380,42 @@ async def on_message(message):
 
         
         if message.content.lower().startswith("/chat off"):
-            cargos = [
-                # IDs dos cargos:
-                "407677666750365706", #Diretor
-                "417426253658849281", #Gerente
-                "407678188773179417", #Administrador
-            ]
-            for r in message.author.roles:
-                if r.id in cargos:
-                    membro = discord.utils.find(lambda r: r.name == "Membro", message.server.roles)
-                    fechado = discord.PermissionOverwrite()
-                    #fechado.read_messages = False
-                    fechado.send_messages = False
-                    await client.edit_channel_permissions(message.channel, membro, fechado)
-                    await client.send_message(message.channel, "{} desativou o chat.".format(message.author.mention))
+            try:
+                cargos = [
+                    # IDs dos cargos:
+                    "407677666750365706", #Diretor
+                    "417426253658849281", #Gerente
+                    "407678188773179417", #Administrador
+                ]
+                for r in message.author.roles:
+                    if r.id in cargos:
+                        membro = discord.utils.find(lambda r: r.name == "Membro", message.server.roles)
+                        fechado = discord.PermissionOverwrite()
+                        #fechado.read_messages = False
+                        fechado.send_messages = False
+                        await client.edit_channel_permissions(message.channel, membro, fechado)
+                        await client.send_message(message.channel, "{} desativou o chat.".format(message.author.mention))
+            except:
+                await client.send_message(message.channel, "{}, o canal já está desativado.".format(message.author.mention))
 
         if message.content.lower().startswith("/chat on"):
-            cargos = [
-                # IDs dos cargos:
-                "407677666750365706", #Diretor
-                "417426253658849281", #Gerente
-                "407678188773179417", #Administrador
-            ]
-            for r in message.author.roles:
-                if r.id in cargos:
-                    membro = discord.utils.find(lambda r: r.name == "Membro", message.server.roles)
-                    fechado = discord.PermissionOverwrite()
-                    #fechado.read_messages = False
-                    fechado.send_messages = True
-                    await client.edit_channel_permissions(message.channel, membro, fechado)
-                    await client.send_message(message.channel, "{} ativou o chat.".format(message.author.mention))
+            try:
+                cargos = [
+                    # IDs dos cargos:
+                    "407677666750365706", #Diretor
+                    "417426253658849281", #Gerente
+                    "407678188773179417", #Administrador
+                ]
+                for r in message.author.roles:
+                    if r.id in cargos:
+                        membro = discord.utils.find(lambda r: r.name == "Membro", message.server.roles)
+                        fechado = discord.PermissionOverwrite()
+                        #fechado.read_messages = False
+                        fechado.send_messages = True
+                        await client.edit_channel_permissions(message.channel, membro, fechado)
+                        await client.send_message(message.channel, "{} ativou o chat.".format(message.author.mention))
+            except:
+                await client.send_message(message.channel, "{}, o canal já está ativado.".format(message.author.mention))
         
 
         if message.content.lower().startswith('/info'):
