@@ -1393,7 +1393,7 @@ async def on_message(message):
 
                 userembed = discord.Embed(
                     title="Informações do usuário",
-                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Jogando**: {}\n**Maior cargo**:`{}`\n**Cargos**: `{}`\n\n**Criado em**: {}\n**Entrou no servidor em**: {}".format(status.replace("dnd", "Ocupado").replace("idle", "Ausente").replace("online", "Disponível").replace("offline", "Offline"), game.replace("None", "Nada"), role, cargo, usercreatedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("June", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro"), userjoinedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("June", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro")),
+                    description="**Apelido**: {}\n**ID**: {}\n\n**Foto**: [Download](".format(user.name, user.id) + user.avatar_url + ")\n**Status**: {}\n**Jogando**: {}\n**Maior cargo**: `{}`\n\n**Criado em**: {}\n**Entrou no servidor em**: {}".format(status.replace("dnd", "Ocupado").replace("idle", "Ausente").replace("online", "Disponível").replace("offline", "Offline"), game.replace("None", "Nada"), role, usercreatedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("June", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro"), userjoinedat.replace("January", "janeiro").replace("February", "fevereiro").replace("March", "março").replace("April", "abril").replace("May", "maio").replace("June", "junho").replace("July", "julho").replace("August", "agosto").replace("September", "setembro").replace("October", "outubro").replace("November", "novembro").replace("December", "dezembro")),
                     color=COR
                 )
                 userembed.set_author(
@@ -1405,7 +1405,7 @@ async def on_message(message):
                 userembed.timestamp = datetime.datetime.utcnow()
                 userembed.set_footer(
                     text='Comando por: {}'.format(message.author.name),
-                    icon_url=user.avatar_url
+                    icon_url=message.author.avatar_url
                 )
                 await client.send_message(message.channel, embed=userembed)
             except IndexError:
