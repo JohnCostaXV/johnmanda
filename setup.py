@@ -1377,6 +1377,20 @@ async def on_message(message):
             embednews.set_footer(text='Data da noticia: ' + datanews)
             embednews.set_thumbnail(url=imgnews)
             await client.send_message(message.channel, embed=embednews)
+        
+        if message.content.lower().startswith('/setcargo'):
+            if message.author.server_permissions.manage_roles:
+                try:
+                    a = message.mentions[0]
+                    b = str(message.content).split()
+                    c = b[2]
+                    d = discord.Object(id="{}".format(int(str(c).strip("<>@&"))))
+                    await client.add_roles(a,d)
+                    await client.send_message(message.channel, "O cargo {} foi adicionado no(a) {}".format(c,a.mention))
+                except:
+                    await client.send_message(message.channel, "{} o comando esta faltando o usuário ou o cargo".format(message.author.mention))
+            else:
+                await client.send_message(message.channel, "{}, você não tem permissão de usar esse comando".format(message.author))
 
         
         if message.content.lower().startswith("/chat off"):
