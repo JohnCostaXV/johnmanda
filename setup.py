@@ -233,6 +233,9 @@ async def on_message(message):
             except IndexError:
                 await client.send_message(message.channel, "{} Você não mencionou dois usuarios".format(message.author.mention))
 
+
+
+
         if message.content.startswith("/voltavaga"):
             cargos = [
                 # IDs dos cargos:
@@ -1374,6 +1377,23 @@ async def on_message(message):
             embednews.set_footer(text='Data da noticia: ' + datanews)
             embednews.set_thumbnail(url=imgnews)
             await client.send_message(message.channel, embed=embednews)
+
+        
+        if message.content.lower().startswith("/chat off"):
+            membro = discord.utils.find(lambda r: r.name == "@eveyone", message.server.roles)
+            fechado = discord.PermissionOverwrite()
+            #fechado.read_messages = False
+            fechado.send_messages = False
+            await client.edit_channel_permissions(message.channel, membro, fechado)
+            await client.send_message(message.channel, "{} desativou o chat.".format(message.author.mention))
+
+        if message.content.lower().startswith("/chat on"):
+            membro = discord.utils.find(lambda r: r.name == "@eveyone", message.server.roles)
+            fechado = discord.PermissionOverwrite()
+            #fechado.read_messages = False
+            fechado.send_messages = True
+            await client.edit_channel_permissions(message.channel, membro, fechado)
+            await client.send_message(message.channel, "{} ativou o chat.".format(message.author.mention))
         
 
         if message.content.lower().startswith('/info'):
