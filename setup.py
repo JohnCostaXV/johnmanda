@@ -1386,7 +1386,7 @@ async def on_message(message):
                     c = b[2]
                     d = discord.Object(id="{}".format(int(str(c).strip("<>@&"))))
                     await client.add_roles(a,d)
-                    await client.send_message(message.channel, "O cargo {} foi adicionado no(a) {}".format(c,a.mention))
+                    await client.send_message(message.channel, "O cargo {} foi adicionado no(a) {}.".format(c,a.mention))
                 except:
                     await client.send_message(message.channel, "{} o comando esta faltando o usuário ou o cargo".format(message.author.mention))
             else:
