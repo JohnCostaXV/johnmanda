@@ -1380,7 +1380,7 @@ async def on_message(message):
 
         
         if message.content.lower().startswith("/chat off"):
-            membro = discord.utils.find(lambda r: r.name == "@eveyone", message.server.roles)
+            membro = discord.utils.find(lambda r: r.name == "Membro", message.server.roles)
             fechado = discord.PermissionOverwrite()
             #fechado.read_messages = False
             fechado.send_messages = False
@@ -1388,7 +1388,7 @@ async def on_message(message):
             await client.send_message(message.channel, "{} desativou o chat.".format(message.author.mention))
 
         if message.content.lower().startswith("/chat on"):
-            membro = discord.utils.find(lambda r: r.name == "@eveyone", message.server.roles)
+            membro = discord.utils.find(lambda r: r.name == "Membro", message.server.roles)
             fechado = discord.PermissionOverwrite()
             #fechado.read_messages = False
             fechado.send_messages = True
