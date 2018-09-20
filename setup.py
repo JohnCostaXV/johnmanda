@@ -63,17 +63,6 @@ async def on_member_join(member):
     role = discord.utils.get(member.server.roles, name="Unregister")
     await client.add_roles(member, role)
 
-    entrada = client.get_channel("481630545265164288")
-    enter = discord.Embed(
-        title="Procedimento",
-        color=COR,
-        description="Para se autenticar e, ter acesso à todos os canais, você deve clicar na reação(`✅`) abaixo."
-    )
-    enter.set_author(name="Sistema de verificação", icon_url=member.server.icon_url)
-    enter.set_footer(text="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-
-    react = await client.send_message(entrada, embed = enter)
-    await client.add_reaction(react, "✅")
 
     canal = client.get_channel('448326795692081152')
 
@@ -90,27 +79,8 @@ async def on_member_join(member):
     embed.set_footer(text='Entrada')
     embed.timestamp = datetime.datetime.utcnow()
     await client.send_message(canal, embed=embed)
+   
 
-    global msg_id
-    msg_id = react.id
-
-    global msg_user
-    msg_user = member       
-
-@client.event
-async def on_reaction_add(reaction, user):
-    msg = reaction.message
-
-    if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
-     role1 = discord.utils.get(user.server.roles, name="Unregister")
-     await client.remove_roles(user, role1)
-     
-     await asyncio.sleep(1)
-     role = discord.utils.get(user.server.roles, name="Membro")
-     await client.add_roles(user, role)
-     print("Reação do '" + user.name + "'.")
-     await client.remove_reaction(msg, "✅", user)
-     await client.delete_message(msg)
 
 @client.event
 async def randommessage():
@@ -1914,6 +1884,50 @@ async def on_message(message):
                 await asyncio.sleep(10)
                 await client.delete_message(incorreto)
 
+        if message.content.lower().startswith("/registrar"):
+            cargos = [
+                # IDs dos cargos:
+                "407677666750365706", #Diretor
+                "417426253658849281", #Gerente
+            ]
+            for r in message.author.roles:
+                if r.id in cargos:
+                    await client.delete_message(message)
+                    entrada = client.get_channel("481630545265164288")
+                    enter = discord.Embed(
+                        title="Procedimento",
+                        color=COR,
+                        description="Para se autenticar e, ter acesso à todos os canais, você deve clicar na reação(`✅`) abaixo."
+                    )
+                    enter.set_author(name="Sistema de verificação", icon_url=message.server.icon_url)
+                    enter.set_footer(text="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+
+                    react = await client.send_message(entrada, embed = enter)
+                    await client.add_reaction(react, "✅")
+
+
+                    global msg_id
+                    msg_id = react.id
+
+                    global msg_user
+                    msg_user = message.author
+
+
+        
+
+@client.event
+async def on_reaction_add(reaction, user):
+    msg = reaction.message
+
+    if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
+     await client.remove_reaction(msg, "✅", user)
+     role1 = discord.utils.get(user.server.roles, name="Unregister")
+     await client.remove_roles(user, role1)
+     
+     await asyncio.sleep(1)
+     role = discord.utils.get(user.server.roles, name="Membro")
+     await client.add_roles(user, role)
+     print("Reação do '" + user.name + "'.")
 
         
 
