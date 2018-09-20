@@ -63,7 +63,6 @@ async def on_member_join(member):
     role = discord.utils.get(member.server.roles, name="Unregister")
     await client.add_roles(member, role)
 
-
     canal = client.get_channel('448326795692081152')
 
     await client.edit_channel(canal, topic="Membros: "+str(member.server.member_count).replace('1', '1⃣').replace('2', '2⃣').replace('3', '3⃣').replace('4', '4⃣').replace('5', '5⃣').replace('6', '6⃣').replace('7', '7⃣').replace('8', '8⃣').replace('9', '9⃣').replace('0', '0⃣'))
@@ -79,6 +78,11 @@ async def on_member_join(member):
     embed.set_footer(text='Entrada')
     embed.timestamp = datetime.datetime.utcnow()
     await client.send_message(canal, embed=embed)
+
+    entrada = client.get_channel("481630545265164288")
+    ent = await client.send_message(entrada, member.mention)
+    await asyncio.sleep(3)
+    await client.delete_message(ent)
    
 
 
@@ -1901,7 +1905,7 @@ async def on_message(message):
                     )
                     enter.set_author(name="Sistema de verificação", icon_url=message.server.icon_url)
                     enter.set_footer(text="End", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-
+                    
                     react = await client.send_message(entrada, embed = enter)
                     await client.add_reaction(react, "✅")
 
