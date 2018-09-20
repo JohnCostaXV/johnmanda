@@ -1920,7 +1920,6 @@ async def on_reaction_add(reaction, user):
     msg = reaction.message
 
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
-     await client.remove_reaction(msg, "✅", user)
      role1 = discord.utils.get(user.server.roles, name="Unregister")
      await client.remove_roles(user, role1)
      
@@ -1928,6 +1927,9 @@ async def on_reaction_add(reaction, user):
      role = discord.utils.get(user.server.roles, name="Membro")
      await client.add_roles(user, role)
      print("Reação do '" + user.name + "'.")
+
+     #await asyncio.sleep(10)
+     #await client.remove_reaction(msg, "✅", user)
 
         
 
