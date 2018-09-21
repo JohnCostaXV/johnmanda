@@ -948,11 +948,11 @@ async def on_message(message):
                                         '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
                                         'exemplo: `/tempban @{} 172800 Discriminação`\n\n'
                                         '**/tempmute** [tempo] [usuário] [motivo] » Mute temporariamente do discord.\n'
-                                        'exemplo: `/tempmute @{} 21600 Iniciativa de Flood`\n\n'
+                                        'exemplo: `/tempmute 6 h @{} Iniciativa de Flood`\n\n'
                                         '**/say** [mensagem] » bot repete a mensagem.\n'
                                         'exemplo: `/say Olá`\n\n'
-                                        '**/clear** [quantidade] » Apagar uma quantidade de mensagens.\n'
-                                        'exemplo: `/clear 5`\n\n'
+                                        '**/limpar** [quantidade] » Apagar uma quantidade de mensagens.\n'
+                                        'exemplo: `/limpar 5`\n\n'
                                         '**/stafflist** [mensagem/staff] » Bot repete a mensagem em Embed.\n'
                                         'exemplo: `/stafflist :white_small_square: {}`\n\n'
                                         '**/anunciar** [mensagem] » bot repete em Embed\n'
@@ -1932,8 +1932,7 @@ async def on_reaction_add(reaction, user):
      await client.add_roles(user, role)
      print("Reação do '" + user.name + "'.")
 
-     #await asyncio.sleep(10)
-     #await client.remove_reaction(msg, "✅", user)
+     await client.remove_reaction(msg, "✅", user)
 
         
 
