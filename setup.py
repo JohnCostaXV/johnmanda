@@ -895,6 +895,8 @@ async def on_message(message):
                                         'exemplo: `/tempban 48 h @{} Discriminação`\n\n'
                                         '**/tempmute** [tempo] [usuário] [motivo] » Mute temporariamente do discord.\n'
                                         'exemplo: `/tempmute 6 h @{} Iniciativa de Flood`\n\n'
+                                        '**/chat off/on** » Desativa/ativa o canal de texto para membros.\n'
+                                        'exemplo: `/chat on`\n\n'
                                         '**/say** [mensagem] » bot repete a mensagem.\n'
                                         'exemplo: `/say Olá`\n\n'
                                         '**/limpar** [quantidade] » Apagar uma quantidade de mensagens.\n'
