@@ -726,60 +726,6 @@ async def on_message(message):
                 pass
 
 
-        if message.content.lower().startswith('/tempban'):
-            try:
-                cargos = [
-                    # IDs dos cargos:
-                    "407677666750365706", #Diretor
-                    "417426253658849281", #Gerente
-                ]
-                for r in message.author.roles:
-                    if r.id in cargos:
-                        args = message.content.split(" ")
-                        tempo = (" ".join(args[3:]))
-                        await client.delete_message(message)
-                        channel1 = client.get_channel('448449971629588481')
-                        user = message.mentions[0]
-                        temp = args[2]
-                        timesquad = int(temp)
-                        reallytime = datetime.timedelta(seconds=timesquad)
-                        await client.ban(user)
-                        join = (" ".join(args[2:]))
-                        embed = discord.Embed(
-                            title="Informações:",
-                            color=COR,
-                            description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Duração**: {}\n\n**Autor**: {}\n**Canal**: {}".format(user.name, user.id, tempo, reallytime, message.author.mention, message.channel.mention)
-                        )
-                        embed.timestamp = datetime.datetime.utcnow()
-                        embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
-                        embed.set_thumbnail(url=message.author.avatar_url)
-                        embed.set_footer(text="Equipe de moderação", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
-                        await client.send_message(channel1, embed=embed)
-                        await asyncio.sleep(timesquad)
-                        await client.unban(message.server, user)
-            except IndexError:
-                await client.delete_message(message)
-                embedd = discord.Embed(
-                    title='Comando incorreto!',
-                    color=COR,
-                    description='Use `/tempban [username] [segundos] [motivo]`'
-                )
-                embedd.timestamp = datetime.datetime.utcnow()
-                embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                await client.send_message(message.channel, embed=embedd)
-            except:
-                await client.delete_message(message)
-                embed2 = discord.Embed(
-                    title='Permissão negada!',
-                    color=COR,
-                    description='Você não tem permissão para executar esse comando.'
-                )
-                embed2.timestamp = datetime.datetime.utcnow()
-                embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
-                await client.send_message(message.channel, embed=embed2)
-            finally:
-                pass
-
 
         if message.content.lower().startswith('/mute'):
             try:
@@ -945,8 +891,8 @@ async def on_message(message):
                                         'exemplo: `/mute @{} Spam`\n\n'
                                         '**/unmute** [usuário] » Unmute do discord.\n'
                                         'exemplo: `/unmute @{}`\n\n'
-                                        '**/tempban** [usuário] [duração] [motivo] » Banimento temporariamente do discord.\n'
-                                        'exemplo: `/tempban @{} 172800 Discriminação`\n\n'
+                                        '**/tempban** [tempo] [usuário] [motivo] » Banimento temporariamente do discord.\n'
+                                        'exemplo: `/tempban 48 h @{} Discriminação`\n\n'
                                         '**/tempmute** [tempo] [usuário] [motivo] » Mute temporariamente do discord.\n'
                                         'exemplo: `/tempmute 6 h @{} Iniciativa de Flood`\n\n'
                                         '**/say** [mensagem] » bot repete a mensagem.\n'
@@ -1801,6 +1747,99 @@ async def on_message(message):
                     returnmsg = await client.send_message(message.channel, embed=discord.Embed(color=discord.Color.blue(), description="%s limpou %s message(s).%s" % (message.author.mention, cleared, failed_str)))
                     await asyncio.sleep(5)
                     await client.delete_message(returnmsg)
+
+        if message.content.lower().startswith('/tempban'):
+            try:
+                cargos = [
+                    # IDs dos cargos:
+                    "407677666750365706", #Diretor
+                    "417426253658849281", #Gerente
+                ]
+                for r in message.author.roles:
+                    if r.id in cargos:
+                        xtx = message.content.split(' ')
+                        if xtx[2] == 'segundos' or xtx[2] == 'segundo' or xtx[2] == 's':
+                            segundos = int(xtx[1])
+                            uid = str(xtx[3]).replace('<', '').replace('>', '').replace('@', '').replace('!', '')
+                            membro = message.server.get_member(uid)
+                            await client.ban(membro)
+                            canal = client.get_channel('448449971629588481')
+                            motivo = " ".join(xtx[4:])
+                            embed = discord.Embed(
+                                title="Informações:",
+                                color=COR,
+                                description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Duração**: {}\n\n**Autor**: {}\n**Canal**: {}".format(membro.name, membro.id, motivo, segundos, message.author.mention, message.channel.mention)
+                            )
+                            embed.timestamp = datetime.datetime.utcnow()
+                            embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                            embed.set_thumbnail(url=message.author.avatar_url)
+                            embed.set_footer(text="Equipe de moderação", icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                            await client.send_message(canal, embed=embed)
+                            await asyncio.sleep(segundos)
+                            await client.unban(message.server, membro)
+                        elif xtx[2] == 'minutos' or xtx[2] == 'minuto' or xtx[2] == 'm':
+                            minutos = int(xtx[1]) * 60
+                            uid = str(xtx[3]).replace('<', '').replace('>', '').replace('@', '').replace('!', '')
+                            membro = message.server.get_member(uid)
+                            await client.ban(membro)
+                            canal = client.get_channel('448449971629588481')
+                            motivo = " ".join(xtx[4:])
+                            minutuz = int(minutos)
+                            embed = discord.Embed(
+                            title='Informações:',
+                            color=COR,
+                            description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Punição**: Tempmute\n**Duração**: `{}`\n\n**Autor**: {}\n**Canal**: {}".format(membro.name, membro.id, motivo, minutuz, message.author.mention, message.channel.mention)
+                            )
+                            embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                            embed.set_thumbnail(url=message.author.avatar_url)
+                            embed.timestamp = datetime.datetime.utcnow()
+                            embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                            await client.send_message(canal, embed=embed)
+                            await asyncio.sleep(minutuz)
+                            await client.unban(message.server, membro)
+                        elif xtx[2] == 'horas' or xtx[2] == 'hora' or xtx[2] == 'h':
+                            horas = int(xtx[1]) * 3600
+                            uid = str(xtx[3]).replace('<', '').replace('>', '').replace('@', '').replace('!', '')
+                            membro = message.server.get_member(uid)
+                            await client.ban(membro)
+                            canal = client.get_channel('448449971629588481')
+                            motivo = " ".join(xtx[4:])
+                            horaz = int(horas)
+                            embed = discord.Embed(
+                            title='Informações:',
+                            color=COR,
+                            description="**Usuário**: `{}`\n**ID**: `{}`\n**Motivo**: `{}`\n**Punição**: Tempmute\n**Duração**: `{}`\n\n**Autor**: {}\n**Canal**: {}".format(membro.name, membro.id, motivo, horaz, message.author.mention, message.channel.mention)
+                            )
+                            embed.set_author(name="PUNIÇÃO", icon_url="https://i.imgur.com/1iJeEea.jpg")
+                            embed.set_thumbnail(url=message.author.avatar_url)
+                            embed.timestamp = datetime.datetime.utcnow()
+                            embed.set_footer(text='Equipe de moderação', icon_url="https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif")
+                            await client.send_message(canal, embed=embed)
+                            await asyncio.sleep(horaz)
+                            await client.unban(message.server, membro)
+            except IndexError:
+                await client.delete_message(message)
+                embedd = discord.Embed(
+                    title='Comando incorreto!',
+                    color=COR,
+                    description='Use `/tempban  [tempo h/m/s] [usuário] [motivo]`'
+                )
+                embedd.timestamp = datetime.datetime.utcnow()
+                embedd.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+                await client.send_message(message.channel, embed=embedd)
+            except:
+                await client.delete_message(message)
+                embed2 = discord.Embed(
+                    title='Permissão negada!',
+                    color=COR,
+                    description='Você não tem permissão para executar esse comando.'
+                )
+                embed2.timestamp = datetime.datetime.utcnow()
+                embed2.set_footer(text=message.author.name, icon_url=message.author.avatar_url)
+                await client.send_message(message.channel, embed=embed2)
+            finally:
+                pass
+
 
         if message.content.startswith('/tempmute'):
             try:
