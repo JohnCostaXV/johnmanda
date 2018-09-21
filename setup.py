@@ -1410,17 +1410,12 @@ async def on_message(message):
             embed.timestamp = datetime.datetime.utcnow()
             embed.set_author(name='Formulários', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
             embed.add_field(
-                name='Aplicação para a equipe:',
+                name='Aplicação para a `AJUDANTE`:',
                 value='[Clique aqui!](https://bit.ly/Endform)\n',
                 inline=False
             )
             embed.add_field(
-                name='Aplicação para o HRC:',
-                value='[Clique aqui!](https://bit.ly/2KSMniB)',
-                inline=False
-            )
-            embed.add_field(
-                name='Aplicação para BUILDER:',
+                name='Aplicação para `BUILDER`:',
                 value='[Clique aqui!](https://t.co/DXerrQWXPY)',
                 inline=False
             )
