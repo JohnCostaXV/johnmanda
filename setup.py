@@ -384,7 +384,7 @@ async def on_message(message):
                                         '*Lembrando que os tempmute devem ter o espaço entre o número e o h/m/s! Caso esteja com dúvidas em relação ao tempo de cada punição, envie em `#comandos-dos-bots` ´/helpstaff´.*'
                         )
                         embed.timestamp = datetime.datetime.utcnow()
-                        embed.set_author(name="Comandos STAFF - EndBOT", icon_url=message.author.avatar_url)
+                        embed.set_author(name="Comandos `STAFF` - EndBOT", icon_url=message.author.avatar_url)
                         embed.set_footer(text='Johnn#0001', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                         msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                         await client.send_message(message.author, embed=embed)
@@ -961,7 +961,7 @@ async def on_message(message):
                                         'exemplo: `/changenick @{} MelhorServidor #END`\n\n'.format(message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name, message.author.name)
                         )
                         embed.timestamp = datetime.datetime.utcnow()
-                        embed.set_author(name="Comandos STAFF+ - EndBOT", icon_url=message.author.avatar_url)
+                        embed.set_author(name="Comandos `STAFF+` - EndBOT", icon_url=message.author.avatar_url)
                         embed.set_footer(text='Johnn#0001', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                         msg = await client.send_message(message.channel, '{}, enviamos uma mensagem em seu privado!'.format(message.author.mention))
                         await client.send_message(message.author, embed=embed)
@@ -1057,6 +1057,7 @@ async def on_message(message):
                                 '**DIVERSOS:**\n\n'
                                 '**/info** [usuário] » Veja as informações de um usuário.\n\n'
                                 '**/end** » Veja as informações do servidor.\n\n'
+                                '**/emojizar** [texto] » Transforme suas palavras em emojis.\n\n'
                                 '**/juntarnomes** [usuário1] [usuário2] » Junte o nome de dois usuários.\n\n'
                                 '**/dado** » Role um dado de um número de 1 a 6.\n\n'
                                 '**/avatar** [usuário] » Veja o avatar seu ou de um membro.\n\n'
@@ -1740,12 +1741,12 @@ async def on_message(message):
                         embed = discord.Embed(
                             title='',
                             color=COR,
-                            description='Dúvida respondida.\nRespondida por: {}'.format(message.author.mention)
+                            description='Respondendo dúvida do: {}.\nRespondida por: {}'.format(user.mention, message.author.mention)
                         )
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_author(name='Dúvida', icon_url='https://images-ext-1.discordapp.net/external/BCKxPNzZzEVfkbIublv7_3wG2016jTwGk3onTemVRnM/%3Fv%3D1/https/cdn.discordapp.com/emojis/450112878108999680.gif')
                         embed.add_field(name='Resposta:', value="```%s```" % "".join(separar[2]))
-                        embed.set_footer(text='End', icon_url=message.server.icon_url)
+                        embed.set_footer(text='Equipe de suporte', icon_url=message.server.icon_url)
                         await client.send_message(user, embed=embed)
                         emb = await client.send_message(canal, embed=embed)
             except IndexError:
