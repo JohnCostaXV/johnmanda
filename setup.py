@@ -1961,7 +1961,7 @@ async def on_reaction_add(reaction, user):
     msg = reaction.message
 
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
-     for role in msg.author.roles:
+     for role in user.roles:
          if role.name == "Unregister":
              await client.remove_reaction(msg, "✅", user)
 
