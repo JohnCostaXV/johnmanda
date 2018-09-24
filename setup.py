@@ -1953,24 +1953,7 @@ async def on_message(message):
                     global msg_user
                     msg_user = message.author
 
-        
-        if message.content.lower().startswith("/iniciarsorteio"):
-            embed = discord.Embed(
-                title="SORTEIO",
-                color=COR,
-                description="Sorteio iniciado, basta reagir para participar!"
-            )
-            embed.timestamp = datetime.datetime.utcnow()
-            embed.set_footer(text="Sorteio encerra em 24 horas.")
-
-            sorteio = await client.send_message(message.channel, embed=embed)
-            await client.add_reaction(sorteio, "🎉")
-
-            global msg_id
-            msg_id = sorteio.id
- 
-            global msg_user
-            msg_user = message.author
+    
         
 
 @client.event
@@ -1990,17 +1973,6 @@ async def on_reaction_add(reaction, user):
      await client.add_roles(user, role)
      print("Reação do '" + user.name + "'.")
     
-    if reaction.emoji == "🎉" and msg.id == msg_id: #and user == msg_user:
-     await asyncio.sleep(5)
-     g = random.choice(msg)
-     n1 = '{}'.format(g.name)
-     m1 = discord.utils.get(user.server.members, name="{}".format(n1))
-     sort = discord.Embed(title="SORTEIO", color=COR, description="Sorteio encerrado, o ganhador foi {}.".format(m1.mention))
-     sort.timestamp = datetime.datetime.utcnow()
-     sort.set_footer(text="Sorteio encerrado.")
-     await client.edit_message(msg, embed=sort)
-     canal = client.get_channel("431992571686813706")
-     await client.send_message(canal, "{}".format(m1.mention))
 
         
 
