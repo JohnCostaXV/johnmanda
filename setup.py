@@ -156,7 +156,7 @@ async def on_message(message):
 
             everyone = discord.ChannelPermissions(target=message.server.default_role, overwrite=everyone_perms)
             mine = discord.ChannelPermissions(target=message.server.me, overwrite=my_perms)
-            await client.create_channel(message.server, '{}'.format(message.author.name), everyone, mine)
+            await client.create_channel(message.channel, '{}'.format(message.author.name), everyone, mine)
 
 
         if message.content.lower().startswith("/votação"):
