@@ -149,6 +149,15 @@ async def on_message(message):
                 if not message.author.server_permissions.administrator:
                     return await client.delete_message(message), await client.send_message(message.channel, message.author.mention + " ❌ **Você não pode divulgar aqui!**")
         
+        if message.content.lower().startswith("/criarteste"):
+            await client.delete_message(message)
+            everyone_perms = discord.PermissionOverwrite(read_messages=False)
+            my_perms = discord.PermissionOverwrite(read_messages=True)
+
+            everyone = discord.ChannelPermissions(target=message.server.default_role, overwrite=everyone_perms)
+            mine = discord.ChannelPermissions(target=message.server.me, overwrite=my_perms)
+            await client.create_channel(message.server, '{}'.format(message.author.name), everyone, mine)
+
 
         if message.content.lower().startswith("/votação"):
             try:
